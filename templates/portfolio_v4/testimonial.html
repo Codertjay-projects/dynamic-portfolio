@@ -1,0 +1,44 @@
+{% load static %}
+<section class="dark_background dtr-section overflow-hidden dtr-py-100 bg-light-blue">
+    <div class="container">
+
+        <!-- heading starts -->
+        <div class="secondary_color dtr-styled-heading heading-center">
+            <h2 class="secondary_color">Testimonial</h2>
+        </div>
+        <!-- heading ends -->
+
+        <!--===== row 1 starts =====-->
+        <div class="row">
+            <div class="col-12">
+
+                <!--===== testimonial slider starts =====-->
+                <div class="dtr-slick-slider dtr-slider-side-arrows dtr-testimonial-style-left">
+
+                    {% for item in testimonial %}
+                        <!--== slide 1 starts ==-->
+                        <div class="secondary_color dtr-testimonial clearfix">
+                            <div class="secondary_color dtr-testimonial-image color-blue"><img src="{{ item.imageURL }}"
+                                                                               alt="image"></div>
+                            <div class="secondary_color dtr-testimonial-content-wrapper">
+                                <div class="dtr-testimonial-content">“{{ item.detail }} ”
+                                </div>
+                                <div class="secondary_color dtr-client-info">
+                                    <h5 class="secondary_color dtr-client-name">{{ item.client_name }}</h5>
+                                    <a href="{{ item.url }}" target="_blank"><h5 class="secondary_color dtr-client-job">Link </h5></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--== slide 1 ends ==-->
+                    {% endfor %}
+
+
+                </div>
+                <!--===== testimonial slider ends =====-->
+
+            </div>
+        </div>
+        <!--===== row 1 ends =====-->
+
+    </div>
+</section>

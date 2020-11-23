@@ -1,0 +1,41 @@
+{% load static %}
+<section class="services_height "
+         style="background-image: url('{{ profile.backgroundImageURL }}');background-attachment: fixed ">
+    <section class="service_background ">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="display-3 font-italic"
+                        style="{% if layout.background_color == 'light' %} color: {{ layout.secondary_color }}!important;
+                        {% elif layout.background_color == 'dark' %} color: white;
+                        {% endif %}">Service </h1>
+                </div>
+            </div>
+
+            <div class="row " style="">
+                {% for item in service.all %}
+                    <div class="col-md-6 col-sm-6 col-xs-12 " style="">
+                        <div class="" style="background-color: #d4cece;border-radius: 15%">
+                            <div class="image-responsive">
+                                <img class="my_service_image" src="{{ item.imageURL }}" alt="{{ item.name }}">
+                            </div>
+
+                            <h3 class="font-weight-bold secondary_color  ">{{ item.name }}</h3>
+                            <p class=" text-muted">
+                                {{ item.description|truncatechars:500 }}</p>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+
+            </div>
+        </div>
+
+
+    </section>
+</section>
+{% if profile.background_color == 'light' %}
+<hr class="p-0" style="background-color: {{ layout.primary_color }} ;height: 3px;margin: 0px;padding: 0px">
+
+{% endif %}

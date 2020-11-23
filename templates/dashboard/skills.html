@@ -1,0 +1,223 @@
+{% extends 'dashboard/dashboard.html' %}
+{% load crispy_forms_filters %}
+
+
+{% block panel %}
+
+
+    <div class="content  ">
+        <div class="container">
+            <div class="row ">
+
+                <div class="col-md-12" style="">
+                    <div class="card">
+                        <div class="card-header card-header-primary card-header-icon" style="">
+                            <div class="card-icon">
+                                <h4 class="card-title text-light" style="">Skill</h4>
+                            </div>
+
+                        </div>
+                        <div class="card-body" style="">
+                            <div class="table-responsive">
+                                <table class="table table-shopping">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">Icon</th>
+                                        <th>Name</th>
+                                        <th>Percent</th>
+                                        <th class="th-description">Description</th>
+                                        <th class="th-description">Delete</th>
+                                        <th class="th-description">Edit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in skills %}
+                                        <tr>
+                                            <td>
+                                                <h2 class="">
+                                                    {% if item.icon %}
+                                                        {{ item.icon.as_html }}
+                                                    {% endif %}
+                                                </h2>
+                                            </td>
+                                            <td class="td-name">
+                                                {{ item.name }}
+                                            </td>
+                                            <td class="td-name">
+                                                {{ item.percent }}%
+                                            </td>
+
+                                            <td class="text-muted">
+                                                {{ item.description }}
+                                            </td>
+                                            <td class="td-actions">
+                                                <form action="{% url 'profile:skillDelete' %}" method="post">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="id" value="{{ item.id }}">
+                                                    <button type="submit" rel="tooltip" data-placement="left"
+                                                            title=""
+                                                            class="btn btn-link text-danger"
+                                                            data-original-title="Delete">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            <td class="td-actions text-info">
+                                                <button class="btn btn-link text-secondary"
+                                                        data-placement="left"
+                                                        data-original-title="Edit"
+                                                        data-toggle="modal"
+                                                        data-target="#{{ item.name|slugify }}{{ item.id }}">
+                                                    Edit
+                                                    <div class="ripple-container"></div>
+                                                </button>
+
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="card">
+                    <div class="card-header card-header-primary card-header-text">
+                        <div class="card-text">
+                            <h4 class="card-title">
+                                Create Skills</h4>
+                        </div>
+                    </div>
+                    <div class="card-container">
+                        <div class="col-12">
+                            <form action="{% url 'profile:skillCreate' %}" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                <div class="col-12 mt-2">
+                                    {{ skill_form.name|as_crispy_field }}
+                                </div>
+
+
+                                <div class="col-12 mt-2">
+                                    <h5 class="text-warning">Note you can download the svg icons here <a href="#"><i
+                                            class="fa fa-link fa-2x"></i></a>
+                                    </h5>
+                                    {{ skill_form.icon }}
+                                </div>
+
+
+                                <div class="col-12 mt-2">
+                                    {{ skill_form.percent|as_crispy_field }}
+                                </div>
+
+
+                                <div class="col-12  mt-3">
+                                    {{ skill_form.description|as_crispy_field }}
+                                </div>
+                                <div class="col-12 mt-5">
+                                    <button class="float-right btn btn-outline-primary text-red">Create</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+    {% for skill in skills %}
+        <div class="modal fade " id="{{ skill.name|slugify }}{{ skill.id }}" tabindex="-1"
+             role="dialog"
+             aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ skill.name }}</h4>
+                        <button type="button" class="close"
+                                data-dismiss="modal"
+                                aria-hidden="true">
+                            <i class="fa fa-close"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card ">
+                            <div class="card-container">
+                                <div class="col-12">
+                                    <form action="{% url 'profile:skillUpdate' %}"
+                                          method="post"
+                                          enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{ skill.id }}" name="id">
+
+                                        <div class="col-12 mt-2">
+                                            <label for="id_name">Name</label>
+                                            <input type="text" name="name"
+                                                   class=" font-weight-bold mt-3 textinput textInput form-control"
+                                                   maxlength="50" required="" value="{{ skill.name }}"
+                                                   id="id_name">
+                                        </div>
+                                        <div class="col-12 mt-2">
+                                            <label for="id_percent">
+                                                Percent
+                                            </label>
+                                            <input type="number" name="percent" value="{{ skill.percent }}"
+                                                   class=" font-weight-bold mt-3 numberinput form-control"
+                                                   placeholder="maximum number of 100 and minimum of 1" maxlength="100"
+                                                   min="1" max="100" id="id_percent">
+                                        </div>
+
+                                        <div class="col-12 my-4">
+                                        <span><label for="id_icon">Icon</label>
+                                            {{ skill_form.icon }}</span>
+                                        </div>
+
+
+                                        <div class="col-12 mt-2">
+                                            <div id="div_id_description"
+                                                 class="form-group bmd-form-group">
+
+                                                <label for="id_description"
+                                                       class="requiredField bmd-label-static">
+                                                    Description<span
+                                                        class="asteriskField">*</span>
+                                                </label>
+                                                <textarea name="description"
+                                                          cols="100"
+                                                          rows="4"
+                                                          class=" textarea form-control"
+                                                          placeholder="just a little description with maximum characters of 50"
+                                                          maxlength="200"
+                                                          required=""
+                                                          id="id_description">{{ skill.description }}</textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 mt-5">
+                                            <button class="float-right btn btn-outline-primary text-red">
+                                                Update
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  End Modal -->
+    {% endfor %}
+
+{% endblock %}

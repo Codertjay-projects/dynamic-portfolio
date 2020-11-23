@@ -1,0 +1,113 @@
+{% load static %}
+<section id="about" class="dark_background dtr-section dtr-pt-100 dtr-pb-80 bg-light-blue">
+    <div class="container">
+
+        <!--===== row 1 starts =====-->
+        <div class="row d-flex align-items-center">
+
+            <!-- column 1 starts -->
+            <div class="col-12 col-md-6 small-device-space">
+                <div class="dtr-pr-30"><img src="{{ profile.profilePicsImageURL }}" alt="image"></div>
+                {#                <div class="dtr-pr-30"><img src="{% static 'portfolio_v4/assets/images/personal_img.png' %}" alt="image"></div>#}
+            </div>
+            <!-- column 1 ends -->
+
+            <!-- column 2 starts -->
+            <div class="col-12 col-md-6">
+
+                <!-- heading starts -->
+                <div class="dtr-styled-heading">
+                    <h2 class="secondary_color">About Me</h2>
+                </div>
+                <!-- heading ends -->
+
+                <!-- text -->
+                <p class="font-weight-500 color-dark">.</p>
+                <p class="secondary_color dtr-mt-20">{{ profile.about }}.</p>
+                <div class="secondary_color row dtr-mt-20">
+                    <div class="col-12 col-md-6">
+                        <table class="table dtr-border-table">
+                            <tbody class="secondary_color">
+                            <tr class="secondary_color">
+                                <th class="secondary_color">Name :</th>
+                                <td>{{ profile.user.last_name }} {{ profile.user.first_name }}</td>
+                            </tr>
+                            <tr class="secondary_color">
+                                <td class="secondary_color">Email :</td>
+                                <td class="secondary_color">{{ profile.user.email }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="secondary_color col-12 col-md-6">
+                        <table class="table dtr-border-table">
+                            <tbody class="secondary_color">
+
+                            <tr>
+                                <td class="secondary_color">Phone :</td>
+                                {% if profile.phone_number %}
+                                    <td class="secondary_color">{{ profile.phone_number }}</td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <td class="secondary_color">Location :</td>
+                                <td class="secondary_color">{{ profile.get_country_display }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- link starts -->
+                <a href="#" class="dtr-btn btn-blue dtr-mt-30">Download CV <i
+                        class="icon-chevron-compact-right"></i></a></div>
+            <!-- column 2 ends -->
+
+        </div>
+        <!--===== row 1 ends =====-->
+
+        <!-- heading starts -->
+
+        <div class="dtr-styled-heading heading-left dtr-mt-100">
+            <h2 class="secondary_color">My Skills</h2>
+        </div>
+
+        <!-- heading ends -->
+        <div class="row">
+
+            {% for item in skills %}
+                <!--===== row 2 starts =====-->
+
+                <!-- column 1 starts -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <!-- 1st progress bar starts -->
+                    <p class="secondary_color  d-flex justify-content-between"><span
+                            class="secondary_color  dtr-progress-title">
+                          {% if item.icon %}
+                              {{ item.icon.as_html }}
+                          {% endif %}
+                        {{ item.name }}
+                    </span>
+                        <span
+                                class="secondary_color dtr-progress-value">{{ item.percent }}%</span></p>
+                    <div class="dtr-progress progress">
+                        <div class="primary_color progress-bar bg-dark wow fadeInLeft" role="progressbar"
+                             style="width: {{ item.percent }}%;"
+                             aria-valuenow="{{ item.percent }}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <!-- 1st progress bar ends -->
+                </div>
+                <!-- column 1 ends -->
+
+                <!-- column 2 starts -->
+
+                <!-- column 2 ends -->
+
+
+            {% endfor %}
+        </div>
+        <!--===== row 2 ends =====-->
+
+
+    </div>
+</section>

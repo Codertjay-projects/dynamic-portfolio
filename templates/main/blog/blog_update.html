@@ -1,0 +1,75 @@
+{% extends 'main/blog/blog_base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+
+{% block styles %}
+    {{ form.media }}
+
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+
+    <div class="section-grey">
+        <div class="container mb-5 ">
+            <div class="row mt-5" style="margin-top:10vh;">
+                <div class="col-12 mx-auto">
+                    <div class="display-4 text-primary">
+                        <h2 class="card-title align-items-center text-capitalize text-primary">
+                            Update {{ post.title }}</h2>
+                    </div>
+                </div>
+                <div class="col-12 ">
+
+                    <div class="card box-shadow mt-5">
+
+                        <div class="card-content">
+                            <form action="." method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="col-12">
+                                    <div class="col-12 mt-5">
+                                        {{ form.title|as_crispy_field }}
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-md-6  mt-5">
+                                            {{ form.slug|as_crispy_field }}
+                                        </div>
+
+                                        <div class="col-md-6 mt-5 text-dark" style="margin-top: 10px;">
+                                            <div class="font-weight-bold display-4">
+                                                Image
+                                            </div>
+                                            {{ form.image }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12   text-dark">
+                                    {{ form.published_date|as_crispy_field }}
+                                </div>
+
+
+                                <div class="col-12  mt-5">
+                                    {{ form.category|as_crispy_field }}
+                                </div>
+                                <div class="col-12  mt-5">
+                                    {{ form.description }}
+                                </div>
+                                <button class="float-right btn btn-primary float-left ">Update</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

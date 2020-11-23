@@ -1,0 +1,61 @@
+<div id="testimonial" class="dark_background services section-padding">
+
+    <!-- Start Container 1 -->
+
+    <div class="container-fluid">
+
+        <!-- Start Titles Section Services -->
+
+        <div class="contents-titles-section">
+
+            <h2 class="secondary_color wow slideInDown section-title" data-wow-duration="2s"><span
+                    class="color-me"> </span>Testimonials
+            </h2>
+            <hr class="line-title-center">
+        </div>
+
+        <!-- End Titles Section Services -->
+
+    </div>
+
+    <!-- End Container 1 -->
+
+    <!-- Start Container 2 -->
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="spaceing-service">
+                <div class="owl-carousel owl-theme">
+                    {% if testimonial %}
+                        <!-- Start Box 1 - My Services -->
+                        {% for item in  testimonial %}
+                            <div class="item">
+                                <div class="service">
+
+                                    <img src="{{ item.imageURL }}" alt="{{ item.name }}"
+                                         style="height: 20vh">
+                                    <h2 class="secondary_color"
+                                        style="color: {{ layout.secondary_color }}">{{ item.client_name }}</h2><span class=" float-right"><a
+                                        class="primary_color btn  float-right" href="{{ item.url }}" target="_blank">Link </a></span>
+
+                                    <p class="text-muted">{{ item.detail|truncatechars:200 }}</p>
+
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <!-- End Box 1 - My Services -->
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- End Container 2 -->
+
+</div>
+
+<hr class="background_image primary_color" style="line-height: 15px;background-attachment: fixed">

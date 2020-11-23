@@ -1,0 +1,133 @@
+{% load static %}
+
+
+{% if profile %}
+    <div class="contactus-1  remove_m_p contact_background_image"
+         id="Contact">
+        <section class="contact_background">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h2 class="title secondary_color">Get in Touch</h2>
+                        <h5 class="description secondary_color">You need more information? Check what other persons are
+                            saying about our
+                            product. They are very happy with their purchase.</h5>
+                        <div class="info info-horizontal">
+                            <div class="icon icon-primary">
+                                <i class="fa-search-location secondary_color"></i>
+                            </div>
+                            {% if profile.address %}
+                                <div class="description secondary_color">
+                                    <h4 class="info-title secondary_color">Find us at the office</h4>
+                                    <p>{{ profile.address }}
+                                    </p>
+                                </div>
+                            {% endif %}
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-8 mx-auto secondary_color text-small ">
+                                        <a href={{ profile.twitter }} target="_blank"
+                                           class="btn btn-just-icon  btn-simple  secondary_color">
+                                            twitter<i class="fa fa-twitter"></i>
+                                        </a>
+                                        <a href={{ profile.facebook }} target="_blank"
+                                           class="btn btn-just-icon  btn-simple  secondary_color text-capitalize">
+                                            facebook <i class="fa fa-facebook-square"></i>
+                                        </a>
+                                        <a href={{ profile.linkedin }}   target="_blank"
+                                           class="btn btn-just-icon btn-simple ml-5  secondary_color">
+                                            LinkedIn<i class="fa fa-linkedin-square"></i>
+                                        </a>
+                                        <h4 class="info-title secondary_color">Give {{ profile.user.username }} a ring</h4>
+                                        <p class="font-weight-700 secondary_color"> {{ profile.user.first_name }} {{ profile.user.last_name }}<br>
+                                            {{ profile.phone_number }}<br>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-5 col-md-offset-2">
+                        <div class="card card-contact ">
+                            <form role="form" id="contact-form" method="post">
+
+                                {% csrf_token %}
+                                <div class="header header-raised  text-center"
+                                     style="background-color: {{ layout.primary_color }}!important;">
+                                    <h4 class="card-title">Contact Us</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating is-empty" id="div_id_contact_name">
+                                                <label class="control-label" for="id_contact_name"> Name</label>
+                                                <input type="text" name="contact_name" class="form-control"
+                                                       maxlength="50" required id="id_contact_name">
+                                                <span class="material-input"></span></div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group label-floating is-empty"
+                                                 id="div_id_contact_email" for="id_contact_email">
+                                                <label class="control-label  requiredField"
+                                                       id="div_id_contact_email">Email</label>
+                                                <input type="email" name="id_contact_email"
+                                                       class="form-control emailinput" required>
+                                                <span class="material-input"></span></div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group label-floating is-empty requiredField"
+                                                 id="div_id_contact_subject">
+
+                                                <label class="control-label" for="id_contact_subject"> Name</label>
+                                                <input type="text" name="contact_subject" class="form-control"
+                                                       maxlength="50" required id="id_contact_subject">
+                                                <span class="material-input"></span></div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="form-group label-floating is-empty  requiredField">
+                                        <label class="control-label" for="id_contact_message"></label>
+                                        <textarea name="contact_message" placeholder=" message "
+                                                  class="form-control" id="message" rows="6"
+                                                  id="id_contact_message" required></textarea>
+                                        <span class="material-input"></span></div>
+
+
+                                    <input type="hidden" name="to_email" placeholder="Your Email "
+                                           class="form-control shadow d-none" value={{ profile.user.email }}
+                                                   id="id_to_email">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="optionsCheckboxes"><span
+                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    I'm not a robot
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="submit" class="btn btn-primary pull-right"
+                                                    style="background-color: {{ layout.primary_color }}!important;">
+                                                Send
+                                                Message
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endif %}
+

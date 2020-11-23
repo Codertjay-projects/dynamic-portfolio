@@ -1,0 +1,157 @@
+{% extends 'main/blog/blog_base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+
+
+{% block content %}
+{#    <div class="main main-raised">#}
+
+        <div class="container-fluid">
+
+            <div class="section section-text " >
+
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+
+
+                            <div class="card card-plain card-blog">
+                                <div class="card-image">
+                                    <img class=" img-raised" src="{{ post.imageURL }}" style="height: 60vh;width:100%;">
+
+                                </div>
+
+
+                                <h3 class="title">{{ post.title }}</h3>
+                                <p>{{ post.get_markdown }}</p>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="section section-blog-info">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="blog-tags">
+                                            Share:
+                                            <a href="#pablo" class="btn btn-google btn-round pull-right">
+                                                <i class="fa fa-google"></i> count
+                                            </a>
+                                            <a href="#pablo" class="btn btn-twitter btn-round pull-right">
+                                                <i class="fa fa-twitter"></i> count
+                                            </a>
+                                            <a href="#pablo" class="btn btn-facebook btn-round pull-right">
+                                                <i class="fa fa-facebook-square"></i> count
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="card card-profile card-plain">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="card-avatar">
+                                                <a href="#pablo">
+                                                    <img class="img" src="{{ post.user.profilePicsImageURL }}">
+                                                </a>
+                                                <div class="ripple-container"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h4 class="card-title">{{ post.user.first_name }}
+                                                - {{ post.user.last_name }}</h4>
+                                            <p class="description">{{ post.user.profile.about }}.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section section-comments">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="media-area">
+                                    <h3 class="title text-center">
+                                        {{ post.comments.count }}
+                                        Comment{% if post.comments.count > 1 %}s
+                                    {% endif %}
+                                    </h3>
+                                    {% for foo in post.comments.all %}
+                                        <div class="media">
+                                            <a class="pull-left" href="#pablo">
+                                                <div class="avatar">
+                                                    <img class="media-object"
+                                                         src="{{ foo.user.profile.profilePicsImageURL }}"
+                                                         alt="...">
+                                                </div>
+                                            </a>
+                                            <div class="media-body">
+                                                <h4 class="media-heading">{{ foo.user.first_name }} {{ foo.user.last_name }}
+                                                    <small>·
+                                                        {{ foo.timestamp|timesince }} ago</small></h4>
+                                                <h6 class="text-muted"></h6>
+
+                                                <p>{{ foo.content }}!</p>
+
+                                                <div class="media-footer">
+                                                    <a href="#pablo" class="btn btn-primary btn-simple pull-right"
+                                                       rel="tooltip"
+                                                       title="" data-original-title="Reply to Comment">
+                                                        <i class="material-icons">reply</i> Reply
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+
+                                </div>
+                                <h3 class="title text-center">Post your comment</h3>
+                                <div class="media media-post">
+                                    <a class="pull-left author" href="#pablo">
+                                        <div class="avatar">
+                                            <img class="media-object" alt="64x64" style="height: 64px;width: 64px;"
+                                                 src="{{ post.imageURL }}">
+                                        </div>
+                                    </a>
+                                    <div class="media-body">
+                                        <form action="{% url 'blog:blog_comment' post.slug %}" method="post">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                {{ form.content|as_crispy_field }}
+                                            </div>
+                                            <div class="media-footer">
+                                                <button type="submit"
+                                                        class="btn btn-primary btn-round btn-wd pull-right">
+                                                    Post
+                                                    Comment
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div> <!-- end_date media-post -->
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {% comment %} beginnin you might alse be intersted in {% endcomment %}
+                    {% include 'main/blog/latest_post.html' %}
+
+                    {% comment %} end_date of you might also be intersted in {% endcomment %}
+                </div>
+            </div>
+        </div>
+{#    </div>#}
+{% endblock %}

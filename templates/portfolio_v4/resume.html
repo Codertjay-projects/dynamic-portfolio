@@ -1,0 +1,32 @@
+<section id="timeline" class="dark_background dtr-section dtr-py-100 bg-light-blue">
+    <div class="container">
+
+        <!-- heading starts -->
+        <div class="dtr-styled-heading heading-left">
+            <h2 class="secondary_color">My Experience</h2>
+        </div>
+        <!-- heading ends -->
+
+        <div class="row">
+            {% for item in resume %}
+                <!-- column 1 starts -->
+                <div class="col-12 col-lg-6">
+                    <div class="dtr-pr-15">
+                        <!-- timeline item 1 starts -->
+                        <div class="dtr-timeline-item">
+                            <p class="secondary_color  dtr-timeline-title">{{ item.start_date }} - {{ item.end_date }}</p>
+                            <div class="dtr-timeline-text">
+                                <h5 class="secondary_color">{{ item.name }}</h5>
+                                <p class="secondary_color">{{ item.detail }}</p>
+                            </div>
+                        </div>
+                        <!-- timeline item 1 ends -->
+                    </div>
+                </div>
+                <!-- column 1 ends -->
+
+            {% endfor %}
+
+        </div>
+    </div>
+</section>

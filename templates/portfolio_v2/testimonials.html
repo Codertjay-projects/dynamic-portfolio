@@ -1,0 +1,44 @@
+<div class="testimonials-2  remove_m_p {% if layout.background_color == 'light' %} my_light_section
+{% elif layout.background_color == 'dark' %} section-dark
+{% endif %}" {% comment %}style="height: 40vh !important;"{% endcomment %}>
+
+    <div class="container">
+        <h1 class="font-weight-bold  font-italic  title text-center"
+            style="{% if layout.background_color == 'light' %} color: {{ layout.secondary_color }}!important;
+            {% elif layout.background_color == 'dark' %} color: white;
+            {% endif %}">
+            Testimonials</h1>
+        <div class="owl-carousel owl-theme">
+
+            {% for test in testimonial %}
+
+                <div class="item">
+                    <div class="card card-testimonial card-plain remove_m_p">
+                        <div class="card-avatar">
+                            <a href="#pablo">
+                                <img class="img" src="{{ test.imageURL }}">
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <h5 class="card-description">"{{ test.detail|truncatechars:200 }}"</h5>
+                            <h4 class="card-title">{{ test.name }}</h4>
+                            <div class="footer  test-light">
+
+                                <a href="{{ test.link }}"
+                                   style="{% if layout.background_color == 'light' %} color: {{ layout.secondary_color }}!important;
+                                   {% elif layout.background_color == 'dark' %} color: white;
+                                   {% endif %}">
+                                    <h4 class="">
+                                        Link to project<i class=" fa fa-link "></i>
+                                    </h4>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<div id="blog" class="dark_background blog section-padding">
+
+    <!-- Start Container 1 -->
+
+    <div class="container-fluid">
+
+        <!-- Start Titles Section Services -->
+
+        <div class="contents-titles-section">
+
+            <h2 class="secondary_color wow slideInDown section-title"
+                data-wow-duration="2s">
+                <span class="secondary_color">My</span> Blog</h2>
+            <hr class="line-title-center">
+
+        </div>
+
+        <!-- End Titles Section Services -->
+
+    </div>
+
+    <!-- End Container 1 -->
+
+    <!-- Start Container 2 -->
+
+    <div class="container">
+        <!-- Start Box Blog 1 -->
+        <div class="row m-5 p-5">
+
+            {% for item in post %}
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 box-blog">
+
+                    <div class="blog-item">
+
+                        <div class="catgoreys">
+
+                            <!-- Start Catgorey Blog  -->
+                            <div class="catgorey-blog">
+                                <span>{{ item.get_category_display }}</span>
+                            </div>
+                            <!-- End Catgorey Blog  -->
+                            <!-- Start icon Blog list  -->
+
+                            <div class="catgorey-blog-more">
+                                <i class="fa fa-info-circle"></i>
+                            </div>
+                            <!-- End icon Blog list  -->
+
+                        </div>
+
+                        <!-- Start Picture Blog  -->
+
+                        <div class="blog-picture">
+
+                            <img src="{{ item.imageURL }}"
+                                 style="width: 381px;height: 215px"
+                                 class="img-responsive" alt="picture blogs">
+                            <!-- * img source -->
+
+                        </div>
+
+                        <!-- End Picture Blog  -->
+
+                        <!-- Start Title Blog  -->
+
+                        <div class="title-blog">
+
+                            <h2><a href="#">{{ item.name }}</a></h2>
+
+                        </div>
+
+                        <!-- End Title Blog  -->
+
+                        <!-- Start Paragraph Blog  -->
+
+                        <div class="paragraph-blog">
+
+                            <p>{{ item.get_mark_down|truncatewords:10 }}.</p>
+
+                        </div>
+
+                        <!-- End Paragraph Blog  -->
+
+                        <!-- Start Section How Many Watched This Post & Read More -->
+
+                        <div class="watch-read">
+                            <!-- Start Read More Blog  -->
+
+                            <div class="read-more-blog">
+                                <a href="{% url 'blog:blog_detail' item.slug %}"><span>read more</span></a>
+                            </div>
+
+                            <!-- End Read More Blog  -->
+
+                        </div>
+
+                        <!-- End Section How Many Watched This Post & Read More -->
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+        <!-- End Box Blog 1 -->
+
+
+    </div>
+
+    <!-- End Container 2 -->
+
+    <div class="container m-5 p-5">
+        <div class="row  m-5 p-5 mx-auto ">
+
+            <a href="{% url 'blog:blog_list' %}" class="text-center text-capitalize font-weight-bold">
+                <button type="button" class="btn btn-primary">Read More</button>
+            </a>
+        </div>
+    </div>
+
+</div>

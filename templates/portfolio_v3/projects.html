@@ -1,0 +1,115 @@
+<div id="portfolio" class="dark_background portfolio section-padding">
+
+    <!-- Start Container 1 -->
+
+    <div class="container-fluid">
+
+        <!-- Start Titles Section Portfolio -->
+
+        <div class="contents-titles-section">
+
+            <h2 class="wow slideInDown section-title" data-wow-duration="2s">
+                <span class="secondary_color color-me">my</span> portfolio
+            </h2>
+            <hr class="line-title-center">
+
+        </div>
+
+        <!-- Start Titles Section Portfolio-->
+
+    </div>
+
+    <!-- End Container 1 -->
+
+    <!-- Start Container 2 -->
+
+    <div class="container-fluid">
+
+        <!-- Start Filter Box Portfolio According To Menu Of Portfolio Works  -->
+
+        <div class="filter-sections filter-box">
+
+            <ul class="filter-menu">
+
+                <li>
+                    <a href="#all" class="filter" id="active-color " data-filter="all">See All</a>
+                </li>
+
+                {% for item in project %}
+                    <li class="secondary_color">
+                        <a href="#{{ item.name|slugify }}" class="filter"
+                           data-filter=".{{ item.name|slugify }}">
+                            {{ item.name }}</a>
+                    </li>
+
+                {% endfor %}
+
+
+            </ul>
+
+
+        </div>
+
+        <!-- End Filter Box Portfolio According To Menu Of Portfolio Works  -->
+
+    </div>
+
+    <!-- End Container 2 -->
+
+    <!-- Start Container 3 -->
+
+    <div class="container-fluid" id="container-mixItUp">
+        <div class="demo-gallery dark mrb35">
+            <ul id="captions" class="captions list-unstyled row">
+                <!-- Start Box portfolio item 1 -->
+                {% for item in ProjectItem %}
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 box-portfolio-items mix
+                {{ item.project.name|slugify }}  gallery-item "
+                         data-src="{{ item.imageURL }}"
+                         data-sub-html="<h4>{{ item.name }}</h4> <p>
+                                                {{ item.description }}
+                                                </p>">
+
+                        <div class="portfolio-item">
+
+                            <!-- Start Pportfolio Picture  -->
+
+                            <div class="portfolio-img">
+
+                                <img src="{{ item.imageURL }}" class="img-responsive"
+                                     style="width:391px ;height: 280px"
+                                     alt="Portfolio img">
+                                <!-- * img source -->
+
+                            </div>
+
+                            <!-- End Pportfolio Picture  -->
+
+                            <!-- Start Pportfolio Information  -->
+
+                            <div class="portfolio-info">
+
+                                <h2 class="secondary_color">
+                                    <a href="#" style="color: {{ layout.secondary_color }}">
+                                        {{ item.name }}
+                                    </a>
+                                </h2>
+                                <p>{{ item.description|truncatewords:10 }}</p>
+
+                            </div>
+
+                            <!-- End Pportfolio Information  -->
+
+                        </div>
+
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- End Container 3 -->
+
+</div>

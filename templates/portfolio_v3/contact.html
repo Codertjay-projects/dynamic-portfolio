@@ -1,0 +1,80 @@
+{% load crispy_forms_filters %}
+<div id="contact" class="primary_color contact">
+
+    <!-- Start Overly Contact Me -->
+
+    <div class="overly-contact-me"></div>
+
+    <!-- End Overly Contact Me -->
+
+    <!-- Start Container 1 -->
+
+    <div class="container-fluid">
+
+        <div class="section-padding">
+
+            <div class="container-fluid">
+
+                <!-- Start Titles Section Services -->
+
+                <div class="contents-titles-section">
+
+                    <h2 class="wow slideInDown section-title" data-wow-duration="2s">Contact <span
+                            class="secondary_color ">{{ profile.user.first_name }}</span></h2>
+                    <hr class="line-title-center">
+
+                </div>
+
+                <!-- End Titles Section Services -->
+
+            </div>
+
+            <!-- Start Contact Form -->
+
+            <div class="form-contact">
+
+                <form action="" method="post">
+                   {% comment %} <div class="col-12">
+                        {{ contact_name|as_crispy_field }}
+                    </div>
+                    <div class="col-12">
+                        {{ contact_email|as_crispy_field }}
+                    </div>
+                    <div class="col-12">
+                        {{ contact_subject|as_crispy_field }}
+                    </div>
+                    <div class="col-12">
+                        {{ contact_message|as_crispy_field }}
+                    </div>
+{% endcomment %}
+                    <div class="col-12">
+                        {{ contact_user_form|crispy }}
+                    </div>
+
+{% comment %}
+                    <input type="text" id="u_name" class="form-control" placeholder="Your name">
+
+                    <input type="email" id="u_email" class="form-control" placeholder="E-mail">
+
+                    <input type="tel" id="u_phone" class="form-control" placeholder="Phone">
+
+                    <input type="url" id="u_website" class="form-control" placeholder="Your website">
+
+                    <textarea class="form-control" placeholder="Message"></textarea>
+{% endcomment %}
+
+                    <button class="btn send-message" type="submit">Send Message</button>
+
+                </form>
+
+            </div>
+
+            <!-- End Contact Form -->
+
+        </div>
+
+    </div>
+
+    <!-- End Container 1 -->
+
+</div>

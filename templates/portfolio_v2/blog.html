@@ -1,0 +1,54 @@
+<div class="blogs-2 {% if layout.background_color == 'light' %} section-white
+{% elif layout.background_color == 'dark' %} section-dark
+{% endif %}  " id="blogs-2" style="background-color: {{ layout.background_color }} !important;">
+
+    <div class="container" id="Blog">
+        <div class="row">
+
+            <div class="col-10 offset-1 mx-auto">
+                <h2 class="title text-center"
+                    style="{% if layout.background_color == 'light' %} color: {{ layout.secondary_color }}!important;
+                    {% elif layout.background_color == 'dark' %} color: white;
+                    {% endif %};"> Blogposts</h2>
+                <br>
+            </div>
+            <div class="row">
+
+                {% for item in  post %}
+                    <div class="col-sm-7 mx-sm-2    col-md-5 col-lg-4  mx-auto">
+                        <div class="card card-plain card-blog">
+                            <div class="card-image">
+                                <a href="#pablo">
+                                    <img style="height: 159px ;!important;" class="img img-raised"
+                                         src={{ item.imageURL }}>
+                                </a>
+                                <div class="colored-shadow"
+                                     style="background-image: url({{ item.imageURL }}); opacity: 1;"></div>
+                            </div>
+
+                            <div class="card-content" style="color: {{ layout.primary_color }}!important;">
+                                <h6 class="category text-info"
+                                    style="color: {{ layout.primary_color }}!important;">{{ item.get_category_display }}</h6>
+                                <h4 class="card-title">
+                                    <a href="#pablo">{{ item.name }}</a>
+                                </h4>
+                                <p class="card-description text-light">
+                                    {{ item.get_mark_down|truncatewords:20 }}.<a
+                                        href="#pablo"> Read More </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>

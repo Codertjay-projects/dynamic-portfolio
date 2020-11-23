@@ -1,0 +1,49 @@
+<div class=" m-5 {% if layout.background_color == 'light' %} section-white
+{% elif layout.background_color == 'dark' %} section-dark
+{% endif %}" id="About" style="width: 100%;min-height: 70vh">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5 mb-5">
+                <h1 class="text-light display-2 text-center mt-5
+         font-weight-bolder"
+                    style="{% if layout.background_color == 'light' %} color: {{ layout.secondary_color }}!important;
+                    {% elif layout.background_color == 'dark' %} color: white;
+                    {% endif %}">
+                    About Me</h1>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row mt-5">
+
+
+            <div class="col-md-6">
+                <div class="card primary_color">
+                    <div class="card-image">
+                        <img class="img-fluid" src="{{ profile.profilePicsImageURL }}" alt="" style="height: auto;">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 p-4 ml-4">
+                <div class="card-content">
+                    <h2 class="font-weight-bold" style="{% if layout.background_color == 'light' %} color: {{ layout.secondary_color }}!important;
+                                   {% elif layout.background_color == 'dark' %} color: white;
+                                   {% endif %}">I am {{ profile.user.first_name }} {{ profile.user.last_name }}</h2>
+                    <h5 class=" text-muted"
+                        style="{% if layout.background_color == 'light' %} color: {{ layout.secondary_color }}!important;
+                        {% elif layout.background_color == 'dark' %} color: white;
+                        {% endif %}">{{ profile.about }}.
+                    </h5>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% if profile.background_color == 'light' %}
+<hr class="p-0" style="background-color: {{ layout.primary_color }} ;height: 3px;margin: 0px;padding: 0px">
+
+{% endif %}

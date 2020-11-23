@@ -1,0 +1,36 @@
+<section id="progress" class="p-5 " style="">
+    <div class="container" style="">
+        <!--title-->
+        <div class="row text-center">
+            <div class="col" style="">
+                <h1 class="display-4 text-uppercase  mb-0" style="">
+                    <strong>Skills</strong>
+                </h1>
+                <div class="title-underline bg-danger bg-dark"></div>
+            </div>
+
+        </div>
+        <!--end of title-->
+        <!--row-->
+        <div class="row">
+            {% for skill in skills %}
+                <div class="col-md-8 mx-auto" style="">
+                    <!--progress bar single-->
+                    <div class="" style="display: flex;justify-content: space-between">
+                        {% if skill.icon %}
+                            {{ skill.icon.as_html }}
+                        {% endif %}
+                        <h3 class="text-white secondary_color">{{ skill.name }}</h3>
+                        <h3 class="text-white secondary_color " style="font-weight: bolder">{{ skill.percent }}%</h3>
+                    </div>
+                    <div class="progress bg-secondary">
+                        <div class="progress-bar bg-success" style="width: {{ skill.percent }}%;height: 3px"></div>
+                    </div>
+                    <!--end of progress bar single-->
+                </div>
+            {% endfor %}
+
+        </div>
+        <!--end of row-->
+    </div>
+</section>

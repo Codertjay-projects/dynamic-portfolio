@@ -1,0 +1,201 @@
+{% extends 'dashboard/dashboard.html' %}
+{% load crispy_forms_filters %}
+
+
+{% block panel %}
+
+
+    <div class="content  ">
+        <div class="container">
+            <div class="row ">
+
+                <div class="col-md-12" style="">
+                    <div class="card">
+                        <div class="card-header card-header-primary card-header-icon" style="">
+                            <div class="card-icon">
+                                <h4 class="card-title text-light" style="">Skill</h4>
+                            </div>
+
+                        </div>
+                        <div class="card-body" style="">
+                            <div class="table-responsive">
+                                <table class="table table-shopping">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center" style="width: 25%">Image</th>
+                                        <th style="width: 25%">Name</th>
+                                        <th class="th-description" style="width: 30%">Description</th>
+                                        <th class="action" style="width: 10%">Delete</th>
+                                        <th class="th-description" style="width: 10%">Edit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in service %}
+                                        <tr>
+                                            <td>
+                                                <div class="img-container">
+                                                    {% if item.image %}
+                                                        <img src="{{ item.imageURL }}" alt="{{ item.name }}">
+                                                    {% endif %}
+                                                </div>
+                                            </td>
+                                            <td class="td-name">
+                                                {{ item.name }}
+                                            </td>
+
+                                            <td class="text-muted">
+                                                {{ item.description }}
+                                            </td>
+                                            <td class="td-actions">
+                                                <form action="{% url 'profile:serviceDelete' %}" method="post">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="id" value="{{ item.id }}">
+                                                    <button type="submit" rel="tooltip" data-placement="left"
+                                                            title=""
+                                                            class="btn btn-link text-danger"
+                                                            data-original-title="Delete">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            <td class="td-actions text-info">
+                                                <button class="btn btn-link text-secondary"
+                                                        data-placement="left"
+                                                        data-original-title="Edit"
+                                                        data-toggle="modal"
+                                                        data-target="#{{ item.name|slugify }}{{ item.id }}">
+                                                    Edit
+                                                    <div class="ripple-container"></div>
+                                                </button>
+
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="card">
+                    <div class="card-header card-header-primary card-header-text">
+                        <div class="card-text">
+                            <h4 class="card-title">
+                                Create Skills</h4>
+                        </div>
+                    </div>
+                    <div class="card-container">
+                        <div class="col-12">
+                            <form action="{% url 'profile:serviceCreate' %}" method="post"
+                                  enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                <div class="col-12 mt-2">
+                                    {{ service_form.name|as_crispy_field }}
+                                </div>
+
+
+                                <div class="col-12 mt-2">
+                                    {{ service_form.image }}
+                                </div>
+
+
+                                <div class="col-12  mt-3">
+                                    {{ service_form.description|as_crispy_field }}
+                                </div>
+                                <div class="col-12 mt-5">
+                                    <button class="float-right btn btn-outline-primary text-red">Create</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+    {% for item in service %}
+        <div class="modal fade " id="{{ item.name|slugify }}{{ item.id }}" tabindex="-1"
+             role="dialog"
+             aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ item.name }}</h4>
+                        <button type="button" class="close"
+                                data-dismiss="modal"
+                                aria-hidden="true">
+                            <i class="fa fa-close"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card ">
+                            <div class="card-container">
+                                <div class="col-12">
+                                    <form action="{% url 'profile:serviceUpdate' %}"
+                                          method="post"
+                                          enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{ item.id }}" name="id">
+
+                                        <div class="col-12 mt-2">
+                                            <label for="id_name">Name</label>
+                                            <input type="text" name="name"
+                                                   class=" font-weight-bold mt-3 textinput textInput form-control"
+                                                   maxlength="50" required="" value="{{ item.name }}"
+                                                   id="id_name">
+                                        </div>
+
+                                        <div class="col-12 my-4">
+                                        <span><label for="id_image">Image</label>
+                                            {{ service_form.image }}</span>
+                                        </div>
+
+
+                                        <div class="col-12 mt-2">
+                                            <div id="div_id_description"
+                                                 class="form-group bmd-form-group">
+
+                                                <label for="id_description"
+                                                       class="requiredField bmd-label-static">
+                                                    Description<span
+                                                        class="asteriskField">*</span>
+                                                </label>
+                                                <textarea name="description"
+                                                          cols="100"
+                                                          rows="4"
+                                                          class=" textarea form-control"
+                                                          placeholder="just a little description with maximum characters of 500"
+                                                          maxlength="500"
+                                                          required=""
+                                                          id="id_description">{{ item.description }}</textarea>
+                                            </div>
+                                        </div>
+
+                                        <button class=" btn btn-outline-primary text-red">
+                                            Update
+                                        </button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  End Modal -->
+    {% endfor %}
+
+{% endblock %}

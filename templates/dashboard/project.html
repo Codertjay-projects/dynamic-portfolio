@@ -1,0 +1,185 @@
+{% extends 'dashboard/dashboard.html' %}
+{% load crispy_forms_filters %}
+
+
+{% block panel %}
+    <div class="content    ">
+        <div class="container mt-4">
+            <div class="row mt-4">
+
+                <div class="col-md-12" style="">
+                    <div class="card">
+                        <div class="card-header card-header-primary card-header-icon" style="">
+                            <div class="card-icon">
+                                <h4 class="card-title text-light" style="">Project</h4>
+                            </div>
+
+                        </div>
+                        <div class="card-body" style="">
+                            <div class="table-responsive">
+                                <table class="table table-shopping">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">Image</th>
+                                        <th>Name</th>
+                                        <th class="th-description">Description</th>
+                                        <th class="th-description">Delete</th>
+                                        <th class="th-description">Edit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in project %}
+                                        <tr>
+                                            <td>
+                                                <div class="img-container">
+                                                    {% if item.image %}
+                                                        <img src="{{ item.imageURL }}" alt="{{ item.name }}">
+
+                                                    {% endif %}
+                                                </div>
+                                            </td>
+                                            <td class="td-name">
+                                                {{ item.name }}
+                                            </td>
+
+                                            <td class="text-muted">
+                                                {{ item.description }}
+                                            </td>
+                                            <td class="td-actions">
+                                                <form action="{% url 'profile:projectDelete' %}" method="post"
+                                                      enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="id" value="{{ item.id }}">
+                                                    <button type="submit" rel="tooltip" data-placement="left" title=""
+                                                            class="btn btn-link text-danger"
+                                                            data-original-title="Delete">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            <td class="td-actions text-info">
+                                                <button class="btn btn-link text-secondary"
+                                                        data-placement="left"
+                                                        data-original-title="Edit"
+                                                        data-toggle="modal"
+                                                        data-target="#{{ item.id }}{{ item.name|slugify }}">
+                                                    Edit
+                                                    <div class="ripple-container"></div>
+                                                </button>
+
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row mt-4">
+
+                <div class="card">
+                    <div class="card-header card-header-primary card-header-text">
+                        <div class="card-text">
+                            <h4 class="card-title">
+                                Create Project</h4>
+                        </div>
+                    </div>
+                    <div class="card-container mt-2">
+                        <div class="col-12 ">
+                            <form action="{% url 'profile:projectCreate' %}" method="post"
+                                  enctype="multipart/form-data">
+                                {% csrf_token %}
+
+
+                                <div class="col-12 ">
+                                    {{ project_form.name|as_crispy_field }}
+                                </div>
+
+                                <div class="col-12   my-3">
+                                    {{ project_form.image }}
+                                </div>
+                                <div class="col-12 ">
+                                    {{ project_form.description|as_crispy_field }}
+                                </div>
+
+                                <button class="float-right btn btn-primary text-red">Create</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        {% for item in project %}
+            <!-- Classic Modal -->
+            <div class="modal fade" id="{{ item.id }}{{ item.name|slugify }}" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">{{ item.name }}</h4>
+                            <button type="button" class="close" data-dismiss="modal"
+                                    aria-hidden="true">
+                                <i class="fa fa-close"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                            <form action="{% url 'profile:projectUpdate' %}" method="post"
+                                  enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <input type="hidden" name="id" value="{{ item.id }}">
+                                    <div class="col-12">
+                                        <label for="id_name">Name</label>
+                                        <input type="text" name="name"
+                                               class="form-control" id="id_name"
+                                               maxlength="50"
+                                               value="{{ item.name }}">
+                                    </div>
+                                    <br>
+                                    <div class="col-12 my-4">
+                                        <span><label for="id_image">Image</label>
+                                            {{ project_form.image }}</span>
+                                    </div>
+                                    <br>
+                                    <hr>
+                                    <div class="col-12">
+                                        <div id="div_id_description" class="form-group bmd-form-group">
+                                            <label for="id_description" class="bmd-label-static">
+                                                Description
+                                            </label>
+                                            <div class="">
+                                                <textarea name="description" cols="100" rows="4"
+                                                          class="form-control    textarea form-control"
+                                                          placeholder="just a little description with maximum characters of 200"
+                                                          maxlength="200"
+                                                          id="id_description">{{ item.description }}</textarea>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary ">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!--  End Modal -->
+        {% endfor %}
+
+    </div>
+
+
+{% endblock %}

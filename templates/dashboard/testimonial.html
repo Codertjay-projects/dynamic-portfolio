@@ -1,0 +1,233 @@
+{% extends 'dashboard/dashboard.html' %}
+{% load crispy_forms_filters %}
+
+
+{% block panel %}
+
+    <div class="content ">
+
+        <div class="container">
+            <div class="row ">
+
+                <div class="col-md-12" style="">
+                    <div class="card">
+                        <div class="card-header card-header-primary card-header-icon" style="">
+                            <div class="card-icon">
+                                <h4 class="card-title text-light" style="">Testimonail</h4>
+                            </div>
+
+                        </div>
+                        <div class="card-body" style="">
+                            <div class="table-responsive">
+                                <table class="table table-shopping">
+                                    <thead>
+                                    <tr>
+                                        <th style="width:15% ">customer Image</th>
+                                        <th style="width:15% ">customer Name</th>
+                                        <th class="th-description" style="width:40% ">Details</th>
+                                        <th class="" style="width:10% ">Url</th>
+                                        <th class="" style="width:10% ">Delete</th>
+                                        <th class="" style="width:10% ">Edit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody style="">
+                                    {% for item in testimonial %}
+                                        <tr style="height: 5vh;">
+                                            <td>
+                                                <div class="img-container">
+                                                    {% if item.image %}
+                                                        <img src="{{ item.imageURL }}" alt="{{ item.name }}">
+                                                    {% endif %}
+                                                </div>
+                                            </td>
+                                            <td class="td-name">
+                                                {{ item.client_name }}
+                                            </td>
+
+                                            <td class="text-muted ml-0">
+                                                <div class="row">
+                                                    <div class="col-12  max-auto">
+                                                        {{ item.detail|truncatechars:500 }}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-muted">
+                                                <div class="row">
+                                                    <div class="col-8  max-auto">
+                                                        <a href="" target="_blank">
+                                                            {{ item.url|urlize }}
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+
+                                            <td class="td-actions">
+                                                <form action="{% url 'profile:testimonialDelete' %}" method="post">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="id" value="{{ item.id }}">
+                                                    <button type="submit" rel="tooltip" data-placement="left"
+                                                            title=""
+                                                            class="btn btn-link text-danger"
+                                                            data-original-title="Delete">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            <td class="td-actions text-info">
+                                                <button class="btn btn-link text-secondary"
+                                                        data-placement="left"
+                                                        data-original-title="Edit"
+                                                        data-toggle="modal"
+                                                        data-target="#{{ item.client_name|slugify }}{{ item.id }}">
+                                                    Edit
+                                                    <div class="ripple-container"></div>
+                                                </button>
+
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-12 mt-5 mb-5">
+                    <div class="card">
+                        <div class="card-header card-header-primary card-header-text">
+                            <div class="card-text">
+                                <h4 class="card-title">
+                                    Create Testimonial</h4>
+                            </div>
+                        </div>
+                        <div class="card-content m-4">
+                            <form action="{% url 'profile:testimonialCreate' %}" method="post"
+                                  enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-12 mt-3">
+                                        {{ testimonial_form.client_name|as_crispy_field }}
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        {{ testimonial_form.image }}
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        {{ testimonial_form.url|as_crispy_field }}
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        {{ testimonial_form.detail|as_crispy_field }}
+                                    </div>
+
+                                    <div class="col-12 mt-3">
+                                        <button class="btn btn-outline-primary float-right">Create</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    {% for test in testimonial %}
+        <div class="modal fade " id="{{ test.client_name|slugify }}{{ test.id }}" tabindex="-1"
+             role="dialog"
+             aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ test.client_name }}</h4>
+                        <button type="button" class="close"
+                                data-dismiss="modal"
+                                aria-hidden="true">
+                            <i class="fa fa-close"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card ">
+                            <div class="card-container">
+                                <div class="col-12">
+                                    <form action="{% url 'profile:testimonialUpdate' %}"
+                                          method="post"
+                                          enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{ test.id }}" name="id">
+
+                                        <div class="col-12 mt-2">
+                                            <label for="id_client_name">Name</label>
+                                            <input type="text" name="client_name" required=""
+                                                   class=" font-weight-bold mt-3 textinput textInput form-control"
+                                                   maxlength="50" value="{{ test.client_name }}"
+                                                   id="id_client_name">
+                                        </div>
+
+                                        <div class="col-12 my-4">
+                                        <span><label for="id_image">Image</label>
+                                            {{ testimonial_form.image }}</span>
+                                        </div>
+
+                                        <div class="col-12 mt-3">
+                                            <div id="div_id_url" class="form-group bmd-form-group">
+                                                <label for="id_url" class="requiredField bmd-label-static">
+                                                    Url<span class="asteriskField">*</span>
+                                                </label>
+                                                <div class="">
+                                                    <input type="url" name="url" value="{{ test.url }}"
+                                                           class="urlinput form-control"
+                                                           required="" id="id_url">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-12 mt-2">
+                                            <div id="div_id_description"
+                                                 class="form-group bmd-form-group">
+
+                                                <label for="id_detail"
+                                                       class="requiredField bmd-label-static">
+                                                    Description<span
+                                                        class="asteriskField">*</span>
+                                                </label>
+                                                <textarea name="detail"
+                                                          cols="100"
+                                                          rows="4"
+                                                          class=" textarea form-control"
+                                                          placeholder="just a little detail with maximum
+                                                          characters of 500"
+                                                          maxlength="200"
+                                                          required=""
+                                                          id="id_description">{{ test.detail }}</textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 mt-5">
+                                            <button class="float-right btn btn-outline-primary text-red">
+                                                Update
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  End Modal -->
+    {% endfor %}
+
+{% endblock %}

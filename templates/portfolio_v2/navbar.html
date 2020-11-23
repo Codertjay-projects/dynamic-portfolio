@@ -1,0 +1,68 @@
+<nav class="navbar navbar-dark   navbar-fixed-top ">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand secondary_color" href="#">Dynamic portfolio</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navigation-example">
+            <ul class="nav navbar-nav navbar-right ">
+                <li>
+                    <a href="#Home" >
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#About">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href="#Portfolio">
+                        Portfolio
+                    </a>
+                </li>
+                <li>
+                    <a href="#Blog">
+                        Blog
+                    </a>
+                </li>
+                <li>
+                    <a href="#Contact">
+                        Contact
+                    </a>
+                </li>
+                {% if request.user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'profile:dashboard' %}">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'account_logout' %}">
+                            Logout
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'account_login' %}">
+                            Login
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'account_signup' %}">
+                            Signup
+                        </a>
+                    </li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,76 @@
+{% load static %}
+
+
+<div class="header-3" id="Home">
+
+    {% comment %} the navbar{% endcomment %}
+    {% include 'portfolio_v2/navbar.html' %}
+    {% comment %} end_date  navbar{% endcomment %}
+
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div class="carousel slide" data-ride="carousel"
+             style="background-color: {{ layout.background_color }}!important;">
+
+            <!-- Indicators -->
+            <ol class=" carousel-indicators
+        ">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner  ">
+                <div class="item active">
+                    <div class="page-header "
+                         style="background-image: url({{ profile.profilePicsImageURL }});padding: 0px !important;margin-bottom: 0px !important;">
+                        <section class="my_background_color">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6 text-left">
+                                        <h1 class="title"
+                                            style="color:{{ layout.secondary_color }}"> {{ profile.user.last_name }}
+                                            - {{ profile.user.first_name }}</h1>
+                                        <h4 style="color:{{ layout.secondary_color }}">{{ profile.about|truncatechars:400 }}.</h4>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+                    </div>
+                </div>
+                <div class="item   ">
+                    <div class="page-header "
+                         style="background-image: url({{ profile.profilePicsImageURL }});padding: 0px !important;margin-bottom: 0px !important;">
+                        <section class="my_background_color">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6 text-left">
+                                        <h1 class="title"
+                                            style="color:{{ layout.secondary_color }}"> {{ profile.user.last_name }}
+                                            - {{ profile.user.first_name }}</h1>
+                                        <h4 style="color:{{ layout.secondary_color }}">{{ profile.about|truncatechars:400 }}.</h4>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <i class=" fa fa-arrow-left " style="color:{{ layout.primary_color }};"></i>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <i class="fa fa-arrow-right " style="color:{{ layout.primary_color }};"></i>
+            </a>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,125 @@
+{% extends 'dashboard/dashboard.html' %}
+{% load crispy_forms_utils %}
+{% load crispy_forms_filters %}
+
+
+{% block panel %}
+    <div class="content  mt-5">
+        <div class="container-fluid mt-0 pt-0">
+            {% comment %}
+primary_color
+secondary_color
+carousel_1_name
+carousel_1_description
+carousel_1_image
+carousel_2_name
+carousel_2_description
+carousel_2_image
+carousel_3_name
+carousel_3_image
+carousel_3_description
+{% endcomment %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="alert alert-warning">
+                        <div class="container">
+                            <div class="alert-icon">
+                                <i class="material-icons">warning</i>
+                            </div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="material-icons">remove</i></span>
+                            </button>
+                            <b>Note:</b> The carousel name and the content could be anything you wish to add it could be
+                            motivational quote  {{ layout.primary_color }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+
+                    <div class="card">
+                        <div class="card-header card-header-primary card-header-text">
+                            <div class="card-text">
+                                <h4 class="card-title">Update Layout</h4>
+                            </div>
+                        </div>
+                        <div class="card-content">
+
+                            <form action="{% url 'profile:layoutUpdate' %}" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            {{ layout_form.primary_color|as_crispy_field }}
+                                        </div>
+                                        <div class="col-6">
+                                            {{ layout_form.secondary_color|as_crispy_field }}
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <h3 class="font-weight-600  text-secondary font-italic">First Carousel</h3>
+                                    <div class="row">
+                                        <div class="col-12 mt-3">
+                                            {{ layout_form.carousel_1_name|as_crispy_field }}
+                                        </div>
+                                        <div class="col-12  mt-3">
+                                            {{ layout_form.carousel_1_image }}
+                                        </div>
+                                        <div class="col-12  mt-3">
+                                            {{ layout_form.carousel_1_description|as_crispy_field }}
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <h3 class="font-weight-600 text-secondary font-italic">Second Carousel</h3>
+                                    <div class="row">
+                                        <div class="col-12 mt-3">
+                                            {{ layout_form.carousel_2_name|as_crispy_field }}
+                                        </div>
+                                        <div class="col-12  mt-3">
+                                            {{ layout_form.carousel_2_image }}
+                                        </div>
+                                        <div class="col-12  mt-3">
+                                            {{ layout_form.carousel_2_description|as_crispy_field }}
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <h3 class="font-weight-600  text-secondary font-italic">Third Carousel</h3>
+                                    <div class="row">
+                                        <div class="col-12  mt-3">
+                                            {{ layout_form.carousel_3_name|as_crispy_field }}
+                                        </div>
+                                        <div class="col-12  mt-3">
+                                            {{ layout_form.carousel_3_image }}
+                                        </div>
+                                        <div class="col-12  mt-3">
+                                            {{ layout_form.carousel_3_description|as_crispy_field }}
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="float-right btn btn-outline-primary float-left ">Update</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock panel %}

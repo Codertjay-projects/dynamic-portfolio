@@ -1,0 +1,51 @@
+{% load static %}
+
+<!-- Sidebar -->
+<div class="fizo-left-sidebar" id="sidebar-wrapper"
+     style="background-color: {{ layout.primary_color }} !important;">
+    <div class="about-me">
+        <div class="img_in">
+            {% comment %} this is the users profile photo{% endcomment %}
+            <img class=" img-circle  ml-5 circular_image"
+                 style=" max-height: 50px !important;"
+                 src="{{ profile.logoImageURL }}" alt="">
+        </div>
+    </div>
+
+    <ul class="fizo-sidebar-menu layout-1">
+        <li><a href="#top-page">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#services">My Services</a></li>
+        <li><a href="#clients">My Clients</a></li>
+        <li><a href="#bolg">My Bolg</a></li>
+        <li><a href="#contact">Contact Me</a></li>
+        {% if request.user.isAuthenticated %}
+            <li><a href="{% url 'account_logout' %}">Logout</a></li>
+        {% else %}
+            <li><a href="{% url 'account_login' %}">Login</a></li>
+            <li><a href="{% url 'account_signup' %}">Sign up</a></li>
+        {% endif %}
+
+    </ul>
+
+</div>
+<!-- /#sidebar-wrapper -->
+
+
+<!-- Mobile Sidebar -->
+<div class="fizo-left-sidebar mobile " id="onpage-sidebar-mobile"
+     style="background-color: {{ layout.primary_color }} !important;">
+    <div class="logo">
+    </div>
+
+    <ul class="fizo-sidebar-menu layout-1">
+        <li><a href="#top-page">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#services">My Services</a></li>
+        <li><a href="#clients">My Clients</a></li>
+        <li><a href="#bolg">My Bolg</a></li>
+        <li><a href="#contact">Contact Me</a></li>
+    </ul>
+
+</div>
+<!-- /# Mobile Sidebar -->

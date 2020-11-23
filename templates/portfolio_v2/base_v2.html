@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>
+        the user
+    </title>
+    <meta name="author" content="Nile-Theme">
+    <meta name="robots" content="index follow">
+    <meta name="googlebot" content="index follow">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:800%7CPoppins:300i,300,400,500,600,700,400i,500%7CPlayfair+Display:400,700,900"
+          rel="stylesheet">
+
+    {% comment %} beginning the css{% endcomment %}
+    <link href="{% static 'portfolio_v1/assets/css/my_style.css' %}" rel="stylesheet">
+    {% include 'portfolio_v2/materiali_kit_css.html' %}
+    {% comment %} end_date of the css{% endcomment %}
+
+    <link type="text/css" rel="stylesheet" href="{% static 'lightbox/css/lightGallery.css' %}"/>
+
+
+    <style>
+        .my_background_color {
+            background-color: rgba({{ primary_color.primary_color_1 }},
+                                        {{ primary_color.primary_color_2 }},
+                                        {{ primary_color.primary_color_3 }}, 0.2);
+            padding-bottom: 0px !important;
+            margin-bottom: 0px !important;
+            height: 100%
+        }
+
+        .service_background {
+            background-color: rgba({{ primary_color.primary_color_1 }},
+                                        {{ primary_color.primary_color_2 }},
+                                        {{ primary_color.primary_color_3 }}, 0.3);
+        }
+
+        .contact_background {
+            background-color: rgba({{ primary_color.primary_color_1 }},
+                                        {{ primary_color.primary_color_2 }},
+                                        {{ primary_color.primary_color_3 }}, 0.4);
+        }
+
+        .secondary_color {
+            color: {{ layout.secondary_color }} !important;
+        }
+
+        .primary_color {
+            background-color: {{ layout.primary_color }} !important;
+        }
+
+        #progress {
+            min-height: 50vh;
+            /*this is for the overlay dark color for the back ground*/
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, .5)),
+            url({{profile.backgroundImageURL}}) center/cover no-repeat fixed;
+        }
+
+        .contact_background_image {
+            background-image: url( {{ profile.backgroundImageURL }});
+            background-size: contain;
+            background-color: {{ layout.secondary_color }} !important;
+            background-attachment: fixed
+        }
+
+    </style>
+</head>
+
+<body id="top-page">
+
+
+{% comment %} the header page {% endcomment %}
+{% include 'portfolio_v2/header.html' %}
+{% comment %} end_date of the header page{% endcomment %}
+
+{% comment %} thi{% endcomment %}
+
+
+{% comment %} the about page {% endcomment %}
+{% include 'portfolio_v2/about.html' %}
+{% comment %} end_date of the about page{% endcomment %}
+
+{% comment %} the skills page {% endcomment %}
+{% include 'portfolio_v2/services.html' %}
+{% comment %} end_date of the skills page{% endcomment %}
+
+{% comment %} the skills page {% endcomment %}
+{% include 'portfolio_v2/skills.html' %}
+{% comment %} end_date of the skills page{% endcomment %}
+
+{% comment %} the contact page {% endcomment %}
+{% include 'portfolio_v2/project.html' %}
+{% comment %} end_date of the contact page{% endcomment %}
+
+{% comment %} the contact page {% endcomment %}
+{% include 'portfolio_v2/testimonials.html' %}
+{% comment %} end_date of the contact page{% endcomment %}
+
+
+{% comment %} the contact page {% endcomment %}
+{% include 'portfolio_v2/blog.html'   with blog="{{ post }}" %}
+{% comment %} end_date of the contact page{% endcomment %}
+
+
+{% comment %} the contact page {% endcomment %}
+{% include 'portfolio_v2/contact.html' %}
+{% comment %} end_date of the contact page{% endcomment %}
+
+
+{% comment %} the footer page {% endcomment %}
+{% include 'portfolio_v2/footer.html' %}
+{% comment %} end_date of the footer page{% endcomment %}
+
+
+{% comment %} the javascript file{% endcomment %}
+{% include 'portfolio_v2/materiali_kit_js.html' %}
+{% comment %} end_date of the javascript file{% endcomment %}
+
+
+</body>
+
+</html>
