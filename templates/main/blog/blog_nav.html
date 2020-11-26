@@ -1,59 +1,74 @@
-<nav class="navbar navbar-dark navbar-absolute navbar-fixed" style="position: fixed !important;">
+<nav class="black_font navbar navbar-dark navbar-absolute navbar-fixed" style="position: fixed !important;">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#navigation-example">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+            <button type="button" class="black_font navbar-toggle" data-toggle="collapse"
+                    data-target="#navigation-example" style="background-color: black">
+                <span class="black_font sr-only">Toggle navigation</span>
+                <span class="black_font icon-bar"></span>
+                <span class="black_font icon-bar"></span>
+                <span class="black_font icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Dynamic Portfolio
+            <a class="navbar-brand font-weight-bold" href="{% url 'portfolio:home' %}">Dynamic Portfolio
                 <div class="ripple-container"></div>
             </a>
         </div>
 
-        <div class="collapse navbar-collapse" id="navigation-example">
-            <ul class="nav navbar-nav navbar-center">
+        <div class="float-xl-right  collapse navbar-collapse" id="navigation-example">
+            <ul class="black_font float-xl-right  nav navbar-nav navbar-center font-weight-bold">
                 <li>
-                    <a href="{% url 'blog:blog_list' %}">
+                    <a class="black_font" href="{% url 'blog:blog_list' %}">
                         Home
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'blog:blog_list' %}">
+                    <a class="black_font" href="{% url 'blog:blog_list' %}">
                         Blog
                     </a>
                 </li>
                 <li>
-                    <a href="{{ about_url }}">
+                    <a class="black_font" href="{% url 'portfolio:home' %}#about">
                         About Us
                     </a>
                 </li>
                 <li>
-                    <a href="{{ contact_url }}">
+                    <a class="black_font" href="{% url 'portfolio:home' %}#contact">
                         Contact Us
                     </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="{{ twitter_url }}">
+                    <a class="black_font" href="{{ twitter_url }}" target="_blank">
                         <i class="fa fa-twitter"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ facebook_url }}">
+                    <a class="black_font" href="{{ facebook_url }}" target="_blank">
                         <i class="fa fa-facebook-square"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ instagram_url }}">
+                    <a class="black_font" href="{{ instagram_url }}" target="_blank">
                         <i class="fa fa-instagram"></i>
                     </a>
                 </li>
             </ul>
+        </div>
+    </div>
+    <div class="">
+        <div class="container-fluid mt-5 pt-5">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert"
+                         style="margin-top: 10vh !important;">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 </nav>

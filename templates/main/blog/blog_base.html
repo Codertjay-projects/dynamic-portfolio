@@ -16,7 +16,7 @@
 
     <title>
         {% block  title %}
-            blog
+
         {% endblock title %}
     </title>
 
@@ -24,6 +24,7 @@
     <link href="{% static 'portfolio_v1/assets/css/my_style.css' %}" rel="stylesheet' %}"/>
     <link href="{% static 'portfolio_v1/assets/css/bootstrap.min.css' %}" rel="stylesheet' %}"/>
     {% include 'portfolio_v2/materiali_kit_css.html' %}
+
     {% block  head_extra %}
 
     {% endblock head_extra %}
@@ -35,9 +36,12 @@
 <body>
 {% include 'main/blog/blog_nav.html' %}
 
+
 {% block  content %}
 
 {% endblock content %}
+
+{% include 'main/footer.html' %}
 </body>
 
 

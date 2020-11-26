@@ -35,17 +35,18 @@
 
         <div class="col-8 mx-auto   ">
             <div class="card">
-                <form action="" method="post">
+                <form action="{% url 'user:contact_user' %}" method="post"  onsubmit="SubmitForm">
                     {% csrf_token %}
                     <div class="card-body   " style="color: {{ layout.secondary_color }}">
                         <div class=" remove_m_p ">
                             <div class="row">
+                                <input type="hidden" name="to_email" id="id_to_email" value="{{ profile.user.email }}">
                                 <div class="col-6 pl-2 ">{{ contact_user_form.contact_name|as_crispy_field }}</div>
                                 <div class="col-6 pl-2 ">{{ contact_user_form.contact_email|as_crispy_field }}</div>
                                 <div class="col-12 ">{{ contact_user_form.contact_subject|as_crispy_field }}</div>
                                 <div class="col-12 ">{{ contact_user_form.contact_message|as_crispy_field }}</div>
                                 <div class="col-12 ">
-                                    <button class="btn background_color">
+                                    <button class="btn background_color ">
                                         SEND MESSAGE
                                     </button>
                                 </div>

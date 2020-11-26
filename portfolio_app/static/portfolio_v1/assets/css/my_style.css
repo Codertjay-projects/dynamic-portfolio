@@ -14,6 +14,10 @@
     display: none;
 }
 
+.black_font {
+    color: black !important;
+}
+
 .row__poster {
     object-fit: contain;
     width: 100%;
@@ -86,9 +90,10 @@
     background-position: center;
 }
 
-body{
-    font-family: 'Tunga','serif';
+body {
+    font-family: 'Tunga', 'serif';
 }
+
 .my_nav_display {
     display: flex !important;
     justify-content: center;
@@ -111,8 +116,8 @@ body{
 
 .nav-clicked:hover {
     background-color: grey !important;
-   padding: 10px;
-  transition: transform 450ms;
+    padding: 10px;
+    transition: transform 450ms;
 }
 
 .nav-clicked:focus {
@@ -199,7 +204,7 @@ body{
     text-align: center;
     background-color: rgba(24, 23, 23, 0.5);
     height: 100vh;
-    color:white;
+    color: white;
 
 }
 
@@ -209,7 +214,7 @@ body{
     text-transform: uppercase;
     margin-bottom: 40px;
     letter-spacing: 5px;
-    color:white;
+    color: white;
 }
 
 .about-me-banner_dark h2 {
@@ -217,17 +222,18 @@ body{
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 40px;
-    color:white;
-}
-.about-me-banner_dark h1 h2 h3 h4 div{
     color: white;
 }
 
-.dark-about{
-    background-color: #343A40;
-    color:white;
+.about-me-banner_dark h1 h2 h3 h4 div {
+    color: white;
 }
 
-.dark-about  h1 h2 h3 h4 div section strong span li ul input  {
+.dark-about {
+    background-color: #343A40;
+    color: white;
+}
+
+.dark-about h1 h2 h3 h4 div section strong span li ul input {
     color: white !important;
 }

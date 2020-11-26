@@ -135,41 +135,7 @@ class Layout(models.Model):
     secondary_color = RGBColorField()
     background_color = models.CharField(choices=background_colors, max_length=10, default='light')
 
-    carousel_1_name = models.CharField(max_length=50)
-    carousel_1_description = models.TextField()
-    carousel_1_image = models.ImageField(upload_to='carousel', default='carousel/carousel_1.jpg')
 
-    carousel_2_name = models.CharField(max_length=50)
-    carousel_2_description = models.TextField()
-    carousel_2_image = models.ImageField(upload_to='carousel', default='carousel/carousel_2.jpg')
-
-    carousel_3_name = models.CharField(max_length=50)
-    carousel_3_image = models.ImageField(upload_to='carousel', default='carousel/carousel_3.jpg')
-    carousel_3_description = models.TextField()
-
-    @property
-    def carousel_1_imageURL(self):
-        try:
-            image = self.carousel_1_image.url
-        except:
-            image = ''
-        return image
-
-    @property
-    def carousel_2_imageURL(self):
-        try:
-            image = self.carousel_2_image.url
-        except:
-            image = ''
-        return image
-
-    @property
-    def carousel_3_imageURL(self):
-        try:
-            image = self.carousel_3_image.url
-        except:
-            image = ''
-        return image
 
 
 class Service(models.Model):

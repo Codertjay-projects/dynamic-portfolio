@@ -14,32 +14,38 @@
             <div class="col-12 col-md-6">
                 <!-- form starts -->
                 <div class="dtr-form">
-                    <form id="contactform" method="post" action="">
+                    <form id="contactform" method="post" action="{% url 'user:contact_user' %}"  onsubmit="SubmitForm">
+                        {% csrf_token %}
+
                         <input type="hidden" name="to_email" value="{{ profile.user.email }}" id="id_to_email">
                         <fieldset>
                             <div class="dtr-form-row dtr-form-row-2col">
                                 <p class="dtr-form-column">
-                                    <input  name="contact_name" id="id_contact_name" class="dark_background" type="text" placeholder="Name">
+                                    <input name="contact_name" id="id_contact_name" maxlength="200"
+                                           class="dark_background" type="text" placeholder="Name">
                                 </p>
                                 <p class="dtr-form-column">
-                                    <input     name="contact_email" class="required dark_background email" id="id_contact_email" type="text"
+                                    <input name="contact_email" maxlength="200" class="required dark_background email"
+                                           id="id_contact_email" type="text"
                                            placeholder="Email">
                                 </p>
                             </div>
                             <p>
-                                <input  class="dark_background"   name="contact_subject" maxlength="50" type="text" id="id_contact_subject"
+                                <input class="dark_background" name="contact_subject" maxlength="200" type="text"
+                                       id="id_contact_subject"
                                        placeholder="Subject">
                             </p>
                             <p class="antispam">Leave this empty: <br/>
-                                <input  class="dark_background"   name="url"/>
+                                <input class="dark_background" name="url"/>
                             </p>
                             <p>
-                                <textarea  class="dark_background"  rows="6" name="contact_message" maxlength="200" id="id_contact_message"
+                                <textarea class="dark_background" rows="6" name="contact_message" maxlength="200"
+                                          id="id_contact_message"
                                           class="required"
                                           placeholder="Message"></textarea>
                             </p>
                             <p class="text-center">
-                                <button class="dtr-btn btn-blue dtr-mt-minus30" type="submit">Send Now<i
+                                <button class="primary_color dtr-btn btn-blue dtr-mt-minus30" type="submit">Send Now<i
                                         class="icon-cursor dtr-ml-15"></i></button>
                             </p>
                             <div id="result"></div>
@@ -54,20 +60,23 @@
             <!-- column 2 starts -->
             <div class="col-12 col-md-6">
                 <div class="dtr-pl-30">
-                    <p class="d-flex align-items-center"><i
-                            class="icon-geo-alt dtr-mr-10 text-size-md color-blue"></i><span
-                            class="font-weight-500 color-dark">My Location</span></p>
-                    <p>{{ profile.get_country_display }} {{ profile.address }}</p>
+                    <p class="secondary_color_real d-flex align-items-center"><i
+                            class="secondary_color_real icon-geo-alt dtr-mr-10 text-size-md color-blue"></i><span
+                            class="secondary_color_real font-weight-500 color-dark">My Location</span></p>
+                    <p class="secondary_color_real">{{ profile.get_country_display }} {{ profile.address }}</p>
                     <div class="spacer-20"></div>
 
 
                     <!-- social starts -->
-                    <ul class="dtr-social dtr-social-list dtr-styled-social text-left dtr-mt-30">
-                        <li><a href="{{ profile.linkedin }}" class="dtr-social-button dtr-linkedin" target="_blank"
+                    <ul class="secondary_color_real dtr-social dtr-social-list dtr-styled-social text-left dtr-mt-30">
+                        <li><a href="{{ profile.linkedin }}" class="secondary_color_real dtr-social-button dtr-linkedin"
+                               target="_blank"
                                title="LinkedIn"><span>View profile</span></a></li>
-                        <li><a href="{{ profile.twitter }}" class="dtr-social-button dtr-twitter" target="_blank"
+                        <li><a href="{{ profile.twitter }}" class="secondary_color_real dtr-social-button dtr-twitter"
+                               target="_blank"
                                title="Twitter"><span>Tweet</span></a></li>
-                        <li><a href="{{ profile.instagram }}" class="dtr-social-button dtr-google" target="_blank"
+                        <li><a href="{{ profile.instagram }}" class="secondary_color_real dtr-social-button dtr-google"
+                               target="_blank"
                                title="Instagram"><span>Follow me</span></a></li>
                     </ul>
                     <!-- social ends -->

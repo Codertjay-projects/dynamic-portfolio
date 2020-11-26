@@ -130,39 +130,13 @@ class LayoutForm(forms.ModelForm):
                                              'type': "button",
                                              'data-toggle': "dropdown"
                                          }))
-    carousel_1_name = forms.CharField(max_length=50)
-    carousel_1_description = forms.Textarea()
-    carousel_1_image = forms.ImageField(required=False, widget=forms.FileInput(attrs={
-        'class': 'btn-rounded btn-sm   text-amber bg-primary  waves-light mx-auto col-7 ',
-
-    }))
-    carousel_2_name = forms.CharField(max_length=50)
-    carousel_2_description = forms.Textarea()
-    carousel_2_image = forms.ImageField(required=False, widget=forms.FileInput(attrs={
-        'class': ' btn-rounded btn-sm    text-amber bg-primary waves-effect  waves-light  mx-auto col-7 ',
-
-    }))
-    carousel_3_name = forms.CharField(max_length=50, required=False)
-    carousel_3_image = forms.ImageField(required=False, widget=forms.FileInput(attrs={
-        'class': ' btn-rounded btn-sm  text-amber bg-primary waves-effect  waves-light  mx-auto col-7 ',
-
-    }))
-    carousel_3_description = forms.Textarea()
 
     class Meta:
         model = Layout
         fields = [
             'primary_color',
             'secondary_color',
-            'carousel_1_name',
-            'carousel_1_description',
-            'carousel_1_image',
-            'carousel_2_name',
-            'carousel_2_description',
-            'carousel_2_image',
-            'carousel_3_name',
-            'carousel_3_image',
-            'carousel_3_description',
+            'background_color',
         ]
 
 

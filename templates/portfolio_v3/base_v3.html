@@ -71,11 +71,11 @@
 
         {% if layout.background_color == 'dark' %}
             .dark_background {
-                background-color: rgba(0, 0, 0, 0.75) !important;
+                background-color: rgba(0, 0, 0, 0.9) !important;
                 color: white !important;
             }
             .dark_background forall {
-                background-color: rgba(0, 0, 0, 0.75) !important;
+                background-color: rgba(0, 0, 0, 0.9) !important;
                 color: white !important;
             }
             .dark_background hamburger {
@@ -187,6 +187,8 @@
 
 <!-- Custom js -->
 <script src="{% static 'portfolio_v3/assets/js/custom.js' %}"></script>
+<link href="{% static 'main/js/my_script.js' %}" rel="stylesheet">
+
 <script>
 
     const test_count = "{{ testimonial.count }}"

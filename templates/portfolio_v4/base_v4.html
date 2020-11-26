@@ -66,6 +66,10 @@
             }
         {% endif %}
 
+    .secondary_color_real{
+           color: {{ layout.secondary_color }} !important;
+    }
+
     </style>
 
 </head>
@@ -179,5 +183,7 @@
 <script src="{% static 'portfolio_v4/assets/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'portfolio_v4/assets/js/plugins.js' %}"></script>
 <script src="{% static 'portfolio_v4/assets/js/custom.js' %}"></script>
+<link href="{% static 'main/js/my_script.js' %}" rel="stylesheet">
+
 </body>
 </html>

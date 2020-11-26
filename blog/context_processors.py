@@ -18,4 +18,7 @@ def add_variable_to_context(request):
         'latest_posts': latest_posts,
         'older_posts': older_posts,
         'about_website': about_website,
+        'instagram_url': 'https://instagram.com/',
+        'twitter_url': 'https://twitter.com/',
+        'facebook_url': 'https://instagram.com/',
     }

@@ -5,7 +5,7 @@
 {% block content %}
 
     <div class="page-header header-filter header-small" data-parallax="true"
-         style="background-image: url({% static 'portfolio_v2/assets/img/blog_post_background.jpg' %});">
+         style="background-image: url({% static 'main/image/blog_post_background.jpg' %});">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center">
@@ -35,8 +35,8 @@
         </div>
     </div>
 
-    <div class="main main-raised">
-        <div class="container">
+    <div class="main main-raised" >
+        <div class="container" >
 
             <div class="section">
 
@@ -56,10 +56,9 @@
                                             <a href="{% url 'blog:blog_detail' object.slug %}">
                                                 <img class="img img-raised" src="{{ object.imageURL }}"> </a>
                                             <div class="colored-shadow"
-                                                 style="background-image: url({% static 'portfolio_v2/&quot;assets/img/examples/card-blog4.jpg&quot;' %});
+                                                 style="background-image: url({{ object.imageURL }});
                                                          opacity: 0;">
                                             </div>
-
                                         </div>
                                     </div>
                                     <div class="col-md-7">
@@ -69,7 +68,7 @@
                                             <a href="{% url 'blog:blog_detail' object.slug %}">{{ object.title }}</a>
                                         </h3>
                                         <p class="card-description">
-                                            {{ object.get_markdown|truncatechars:50 }} <a
+                                            {{ object.get_markdown|truncatechars:200 }} <a class="btn btn-primary btn-sm btn-round"
                                                 href="{% url 'blog:blog_detail' object.slug %}"> Read More </a>
                                         </p>
                                         <p class="author">

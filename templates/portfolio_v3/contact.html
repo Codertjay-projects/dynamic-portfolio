@@ -33,42 +33,28 @@
 
             <div class="form-contact">
 
-                <form action="" method="post">
-                   {% comment %} <div class="col-12">
-                        {{ contact_name|as_crispy_field }}
-                    </div>
-                    <div class="col-12">
-                        {{ contact_email|as_crispy_field }}
-                    </div>
-                    <div class="col-12">
-                        {{ contact_subject|as_crispy_field }}
-                    </div>
-                    <div class="col-12">
-                        {{ contact_message|as_crispy_field }}
-                    </div>
-{% endcomment %}
-                    <div class="col-12">
-                        {{ contact_user_form|crispy }}
-                    </div>
+                <form action="{% url 'user:contact_user' %}" method="post"  onsubmit="SubmitForm">
+                    <input type="hidden" value="{{ profile.user.email }}" id="id_to_email" name="to_email">
 
-{% comment %}
-                    <input type="text" id="u_name" class="form-control" placeholder="Your name">
+                    <input type="email" id="id_contact_name" name="contact_name" class="form-control" maxlength="200"
+                           placeholder="Your name">
 
-                    <input type="email" id="u_email" class="form-control" placeholder="E-mail">
+                    <input type="text" id="id_contact_email" name="contact_email" class="form-control" maxlength="200"
+                           placeholder="E-mail">
 
-                    <input type="tel" id="u_phone" class="form-control" placeholder="Phone">
+                    <input type="text" id="id_contact_subject" name="contact_subject" class="form-control"
+                           maxlength="200"
+                           placeholder="Subject">
 
-                    <input type="url" id="u_website" class="form-control" placeholder="Your website">
 
-                    <textarea class="form-control" placeholder="Message"></textarea>
-{% endcomment %}
+                    <textarea class="form-control" id="id_contact_message" name="contact_message"
+                              placeholder="Message"></textarea>
 
                     <button class="btn send-message" type="submit">Send Message</button>
 
                 </form>
 
             </div>
-
             <!-- End Contact Form -->
 
         </div>

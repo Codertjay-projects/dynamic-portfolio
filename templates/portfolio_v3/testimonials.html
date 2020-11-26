@@ -33,15 +33,22 @@
                         {% for item in  testimonial %}
                             <div class="item">
                                 <div class="service">
+                                    <div class="row  " style="display: flex;padding:10px">
+                                        <div class="col-4">
+                                            <img src="{{ item.imageURL }}" alt="{{ item.name }}"
+                                                 style="height: 20vh;width:auto;border-radius: 10%">
+                                        </div>
+                                        <div class="col-6" style="text-align: right ">
+                                            <h2 class="float-right text-center secondary_color"
+                                                style="color: {{ layout.secondary_color }}">{{ item.client_name }}</h2>
+                                            <br>
+                                            <a href="{{ item.url }}"
+                                                    target="_blank">
+                                                <p
+                                                    class="text-muted text-left">{{ item.detail|truncatechars:200 }}</p></a>
+                                        </div>
 
-                                    <img src="{{ item.imageURL }}" alt="{{ item.name }}"
-                                         style="height: 20vh">
-                                    <h2 class="secondary_color"
-                                        style="color: {{ layout.secondary_color }}">{{ item.client_name }}</h2><span class=" float-right"><a
-                                        class="primary_color btn  float-right" href="{{ item.url }}" target="_blank">Link </a></span>
-
-                                    <p class="text-muted">{{ item.detail|truncatechars:200 }}</p>
-
+                                    </div>
                                 </div>
                             </div>
                         {% endfor %}
@@ -57,5 +64,3 @@
     <!-- End Container 2 -->
 
 </div>
-
-<hr class="background_image primary_color" style="line-height: 15px;background-attachment: fixed">

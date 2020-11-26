@@ -38,7 +38,8 @@
                                            class="btn btn-just-icon btn-simple ml-5  secondary_color">
                                             LinkedIn<i class="fa fa-linkedin-square"></i>
                                         </a>
-                                        <h4 class="info-title secondary_color">Give {{ profile.user.username }} a ring</h4>
+                                        <h4 class="info-title secondary_color">Give {{ profile.user.username }} a
+                                            ring</h4>
                                         <p class="font-weight-700 secondary_color"> {{ profile.user.first_name }} {{ profile.user.last_name }}<br>
                                             {{ profile.phone_number }}<br>
                                         </p>
@@ -50,7 +51,7 @@
                     </div>
                     <div class="col-md-5 col-md-offset-2">
                         <div class="card card-contact ">
-                            <form role="form" id="contact-form" method="post">
+                            <form role="form" action="{% url 'user:contact_user' %}" id="contact-form" onsubmit="SubmitForm" method="post">
 
                                 {% csrf_token %}
                                 <div class="header header-raised  text-center"
@@ -59,11 +60,14 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="row">
+                                        <input type="hidden" name="to_email" id="id_to_email"
+                                               value="{{ profile.user.email }}">
+
                                         <div class="col-md-6">
                                             <div class="form-group label-floating is-empty" id="div_id_contact_name">
                                                 <label class="control-label" for="id_contact_name"> Name</label>
                                                 <input type="text" name="contact_name" class="form-control"
-                                                       maxlength="50" required id="id_contact_name">
+                                                       maxlength="200" required id="id_contact_name">
                                                 <span class="material-input"></span></div>
                                         </div>
 
@@ -72,7 +76,7 @@
                                                  id="div_id_contact_email" for="id_contact_email">
                                                 <label class="control-label  requiredField"
                                                        id="div_id_contact_email">Email</label>
-                                                <input type="email" name="id_contact_email"
+                                                <input type="email" name="id_contact_email" maxlength="200"
                                                        class="form-control emailinput" required>
                                                 <span class="material-input"></span></div>
                                         </div>
@@ -83,7 +87,7 @@
 
                                                 <label class="control-label" for="id_contact_subject"> Name</label>
                                                 <input type="text" name="contact_subject" class="form-control"
-                                                       maxlength="50" required id="id_contact_subject">
+                                                       maxlength="200" required id="id_contact_subject">
                                                 <span class="material-input"></span></div>
                                         </div>
 

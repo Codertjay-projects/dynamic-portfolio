@@ -30,7 +30,7 @@ carousel_3_description
                                 <span aria-hidden="true"><i class="material-icons">remove</i></span>
                             </button>
                             <b>Note:</b> The carousel name and the content could be anything you wish to add it could be
-                            motivational quote  {{ layout.primary_color }}
+                            motivational quote {{ layout.primary_color }}
                         </div>
                     </div>
                 </div>
@@ -55,54 +55,15 @@ carousel_3_description
                                             {{ layout_form.secondary_color|as_crispy_field }}
                                         </div>
 
+
                                     </div>
                                 </div>
 
                                 <div class="col-12">
-                                    <h3 class="font-weight-600  text-secondary font-italic">First Carousel</h3>
+                                    <h3 class="font-weight-600  text-secondary font-italic">Choose background</h3>
                                     <div class="row">
                                         <div class="col-12 mt-3">
-                                            {{ layout_form.carousel_1_name|as_crispy_field }}
-                                        </div>
-                                        <div class="col-12  mt-3">
-                                            {{ layout_form.carousel_1_image }}
-                                        </div>
-                                        <div class="col-12  mt-3">
-                                            {{ layout_form.carousel_1_description|as_crispy_field }}
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                                <div class="col-12">
-                                    <h3 class="font-weight-600 text-secondary font-italic">Second Carousel</h3>
-                                    <div class="row">
-                                        <div class="col-12 mt-3">
-                                            {{ layout_form.carousel_2_name|as_crispy_field }}
-                                        </div>
-                                        <div class="col-12  mt-3">
-                                            {{ layout_form.carousel_2_image }}
-                                        </div>
-                                        <div class="col-12  mt-3">
-                                            {{ layout_form.carousel_2_description|as_crispy_field }}
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                                <div class="col-12">
-                                    <h3 class="font-weight-600  text-secondary font-italic">Third Carousel</h3>
-                                    <div class="row">
-                                        <div class="col-12  mt-3">
-                                            {{ layout_form.carousel_3_name|as_crispy_field }}
-                                        </div>
-                                        <div class="col-12  mt-3">
-                                            {{ layout_form.carousel_3_image }}
-                                        </div>
-                                        <div class="col-12  mt-3">
-                                            {{ layout_form.carousel_3_description|as_crispy_field }}
+                                            {{ layout_form.background_color|as_crispy_field }}
                                         </div>
 
                                     </div>
