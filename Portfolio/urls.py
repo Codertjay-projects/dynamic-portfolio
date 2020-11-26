@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.urls import path, include
 from blog.views import BlogCreateView
 
+
 urlpatterns = [
     path('administrator/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
@@ -11,7 +12,7 @@ urlpatterns = [
     path('user/', include('users.urls')),
     path('url/', include('single_url.urls')),
     path('blog/', include('blog.urls')),
-    path('', include('portfolio_app.urls')),
+    path('', include('portfolio_app.urls'),name='portfolio'),
 ]
 
 if settings.DEBUG:

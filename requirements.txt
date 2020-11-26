@@ -11,8 +11,10 @@ django-colorful==1.3
 django-countries==6.1.3
 django-crispy-forms==1.9.2
 django-fontawesome-5==1.0.18
+django-hosts==4.0
 django-markdown-deux==1.0.5
 django-pagedown==2.1.3
+django-subdomain==1.1
 django-subdomains==2.1.0
 django-svg-icons==0.1.2
 djangorestframework==3.12.1

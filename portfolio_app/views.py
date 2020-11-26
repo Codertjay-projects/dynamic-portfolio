@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http import Http404
 from django.shortcuts import render, redirect
 from django.conf import settings
 
@@ -12,6 +13,14 @@ from .forms import ProjectForm, ProjectItemsForm
 from PIL import ImageColor
 
 User = settings.AUTH_USER_MODEL
+
+def user_profile(request):
+    try:
+        # Retrieve the user account associated with the current subdomain.
+        user = User.objects.get(username=request.subdomain)
+    except User.DoesNotExist:
+        # No user matches the current subdomain, so return a generic 404.
+        raise Http404
 
 
 def my_portfolio(request, username):

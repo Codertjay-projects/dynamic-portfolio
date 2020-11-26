@@ -1,4 +1,3 @@
-
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -34,6 +33,10 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
 
+    # subdomains
+    # 'django_hosts',
+    # 'subdomains ',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -49,6 +52,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # 'django_hosts.middleware.HostsRequestMiddleware',
+
+    'subdomains.middleware.SubdomainURLRoutingMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,6 +63,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # 'django_hosts.middleware.HostsResponseMiddleware'
 ]
 
 ROOT_URLCONF = 'Portfolio.urls'
@@ -158,3 +167,23 @@ EMAIL_HOST_USER = 'favourtjai@gmail.com'
 EMAIL_HOST_PASSWORD = 'thankgod12'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+# ROOT_URLCONF = 'Portfolio.urls.portfolio'
+
+# ROOT_HOSTCONF = "portfolio.com"
+
+
+# This is the urlconf that will be used for any subdomain that is not
+# listed in ``SUBDOMAIN_URLCONFS``, or if the HTTP ``Host`` header does not
+# contain the correct domain.
+# If you're planning on using wildcard subdomains, this should correspond
+# to the urlconf that will be used for the wildcard subdomain. For example,
+# 'accountname.mysite.com' will load the ROOT_URLCONF, since it is not
+# defined in ``SUBDOMAIN_URLCONFS``.
+
+
+# A dictionary of urlconf module paths, keyed by their subdomain.
+# SUBDOMAIN_URLCONFS = {
+#     None: 'myproject.urls.frontend',  # no subdomain, e.g. ``example.com``
+#     'www': 'myproject.urls.frontend',
+# }
