@@ -1,12 +1,9 @@
-<div class="testimonials-2  remove_m_p {% if layout.background_color == 'light' %} my_light_section
-{% elif layout.background_color == 'dark' %} section-dark
-{% endif %}" {% comment %}style="height: 40vh !important;"{% endcomment %}>
+<div class="dark_background">
+<div class="dark_background testimonials-2  remove_m_p " {% comment %}style="height: 40vh !important;"{% endcomment %}>
 
     <div class="container">
         <h1 class="font-weight-bold  font-italic  title text-center"
-            style="{% if layout.background_color == 'light' %} color: {{ layout.secondary_color }}!important;
-            {% elif layout.background_color == 'dark' %} color: white;
-            {% endif %}">
+            style="">
             Testimonials</h1>
         <div class="owl-carousel owl-theme">
 
@@ -16,7 +13,8 @@
                     <div class="card card-testimonial card-plain remove_m_p">
                         <div class="card-avatar">
                             <a href="#pablo">
-                                <img class="img" src="{{ test.imageURL }}">
+                                <img class="img" src="{{ media_url }}{{ test.imageURL }}">
+{#                                <img class="img" src="http://www.localhost:8000/{{ test.imageURL }}">#}
                             </a>
                         </div>
                         <div class="card-content">
@@ -41,4 +39,5 @@
         </div>
 
     </div>
+</div>
 </div>

@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+from Portfolio.settings import DEFAULT_REDIRECT_URL
 from users.models import User
 # Create your models here.
 from django.conf import settings
@@ -112,6 +113,7 @@ class Testimonial(models.Model):
         except:
             image = ''
         return image
+
 
 
 class Resume(models.Model):

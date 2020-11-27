@@ -12,7 +12,7 @@ SECRET_KEY = '1py)l9&2-f%omx17p^e8m8sf1^dtr=5-9d4+178p#1c(f35m)%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -33,9 +33,10 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
 
+    # debug tool bar
+    'debug_toolbar',
     # subdomains
-    # 'django_hosts',
-    # 'subdomains ',
+    'django_hosts',
 
     'allauth',
     'allauth.account',
@@ -52,9 +53,11 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # 'django_hosts.middleware.HostsRequestMiddleware',
+    # for django host
+    'django_hosts.middleware.HostsRequestMiddleware',
 
-    'subdomains.middleware.SubdomainURLRoutingMiddleware',
+    # for subdomain
+    # 'subdomains.middleware.SubdomainURLRoutingMiddleware',
 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -64,10 +67,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    # 'django_hosts.middleware.HostsResponseMiddleware'
+    # for debug toolbar
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # for django host
+    'django_hosts.middleware.HostsResponseMiddleware'
 ]
-
-ROOT_URLCONF = 'Portfolio.urls'
 
 TEMPLATES = [
     {
@@ -133,33 +137,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-EMAIL_BACKEND = 'django.core.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD =config('EMAIL_HOST_PASSWORD')
-
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'portfolio_app/static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-SITE_ID = 1
 
+# for django allauth
+SITE_ID = 1
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 AUTH_USER_MODEL = 'users.User'
-
 login_url = '/accounts/login'
 LOGIN_REDIRECT_URL = '/'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+# for sending email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -168,22 +165,17 @@ EMAIL_HOST_PASSWORD = 'thankgod12'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-# ROOT_URLCONF = 'Portfolio.urls.portfolio'
+# this is for django host
+ROOT_URLCONF = 'Portfolio.urls'
+ROOT_HOSTCONF = "Portfolio.hosts"
+PARENT_HOST = '.localhost:8000'
+DEFAULT_HOST = "www"
 
-# ROOT_HOSTCONF = "portfolio.com"
+DEFAULT_REDIRECT_URL = "http://www.localhost:8000"
 
-
-# This is the urlconf that will be used for any subdomain that is not
-# listed in ``SUBDOMAIN_URLCONFS``, or if the HTTP ``Host`` header does not
-# contain the correct domain.
-# If you're planning on using wildcard subdomains, this should correspond
-# to the urlconf that will be used for the wildcard subdomain. For example,
-# 'accountname.mysite.com' will load the ROOT_URLCONF, since it is not
-# defined in ``SUBDOMAIN_URLCONFS``.
-
-
-# A dictionary of urlconf module paths, keyed by their subdomain.
-# SUBDOMAIN_URLCONFS = {
-#     None: 'myproject.urls.frontend',  # no subdomain, e.g. ``example.com``
-#     'www': 'myproject.urls.frontend',
-# }
+# for django debug toolbar
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]

@@ -30,13 +30,14 @@
             </div>
 
             <!-- Start Contact Form -->
-
             <div class="form-contact">
 
-                <form action="{% url 'user:contact_user' %}" method="post"  onsubmit="SubmitForm">
+                <form action="{% url 'user:contact_user' %}" method="post" onsubmit="SubmitForm(event)"
+                      class="submit-form">
+                    {% csrf_token %}
                     <input type="hidden" value="{{ profile.user.email }}" id="id_to_email" name="to_email">
 
-                    <input type="email" id="id_contact_name" name="contact_name" class="form-control" maxlength="200"
+                    <input type="text" id="id_contact_name" name="contact_name" class="form-control" maxlength="200"
                            placeholder="Your name">
 
                     <input type="text" id="id_contact_email" name="contact_email" class="form-control" maxlength="200"
@@ -50,9 +51,11 @@
                     <textarea class="form-control" id="id_contact_message" name="contact_message"
                               placeholder="Message"></textarea>
 
-                    <button class="btn send-message" type="submit">Send Message</button>
+                    <button class="submit-form btn send-message" type="submit">Send Message</button>
 
                 </form>
+
+                <button class=" btn send-message" type="submit" onclick="SubmitForm">Send Message</button>
 
             </div>
             <!-- End Contact Form -->

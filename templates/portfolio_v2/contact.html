@@ -1,17 +1,15 @@
+{% load hosts %}
 {% load static %}
 
 
-{% if profile %}
-    <div class="contactus-1  remove_m_p contact_background_image"
+<div class="dark_background">
+    <div class="dark_background contactus-1  remove_m_p contact_background_image"
          id="Contact">
-        <section class="contact_background">
+        <section class="dark_background contact_background">
             <div class="container">
                 <div class="row">
                     <div class="col-md-5">
                         <h2 class="title secondary_color">Get in Touch</h2>
-                        <h5 class="description secondary_color">You need more information? Check what other persons are
-                            saying about our
-                            product. They are very happy with their purchase.</h5>
                         <div class="info info-horizontal">
                             <div class="icon icon-primary">
                                 <i class="fa-search-location secondary_color"></i>
@@ -51,7 +49,8 @@
                     </div>
                     <div class="col-md-5 col-md-offset-2">
                         <div class="card card-contact ">
-                            <form role="form" action="{% url 'user:contact_user' %}" id="contact-form" onsubmit="SubmitForm" method="post">
+                            <form role="form" action="{%  host_url 'user:contact_user' host 'www' %}{% comment %}{% url 'user:contact_user' %}{% endcomment %}" id="contact-form"
+                                  onsubmit="SubmitForm" method="post">
 
                                 {% csrf_token %}
                                 <div class="header header-raised  text-center"
@@ -64,7 +63,8 @@
                                                value="{{ profile.user.email }}">
 
                                         <div class="col-md-6">
-                                            <div class="form-group label-floating is-empty" id="div_id_contact_name">
+                                            <div class="form-group label-floating is-empty"
+                                                 id="div_id_contact_name">
                                                 <label class="control-label" for="id_contact_name"> Name</label>
                                                 <input type="text" name="contact_name" class="form-control"
                                                        maxlength="200" required id="id_contact_name">
@@ -133,5 +133,5 @@
             </div>
         </section>
     </div>
-{% endif %}
+</div>
 

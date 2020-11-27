@@ -1,34 +1,35 @@
-<footer class="footer footer-big text-light my_footer_color " style="">
+{% load hosts %}
+<footer class="footer footer-big text-light dark_background " style="">
     <div class="container text-light">
 
         <div class="content ">
             <div class="row ">
-                <div class="col-md-4 my_footer_color">
+                <div class="col-md-4 ">
                     <h5>About Us</h5>
                     <p>{{ about_website }} </p>
                     <p>. </p>
                 </div>
 
-                <div class="col-md-4 my_footer_color">
+                <div class="col-md-4 ">
                     <h5>Social Feed</h5>
                     <div class="social-feed">
-                        <div class="feed-line my_footer_color">
-                            <a href="{{ twitter_url }}"  target="_blank"><i class="fa fa-twitter my_footer_color"></i></a>
-                            <p class="my_footer_color">How to handle ethical disagreements with your clients.</p>
+                        <div class="feed-line ">
+                            <a href="{{ twitter_url }}"  target="_blank"><i class="fa fa-twitter "></i></a>
+                            <p class="">How to handle ethical disagreements with your clients.</p>
                         </div>
-                        <div class="feed-line my_footer_color">
-                            <a href="{{ instagram_url }}"  target="_blank"> <i class="fa fa-twitter my_footer_color"></i></a>
+                        <div class="feed-line ">
+                            <a href="{{ instagram_url }}"  target="_blank"> <i class="fa fa-twitter "></i></a>
                             <p>The tangible benefits of designing at 1x pixel density.</p>
                         </div>
-                        <div class="feed-line my_footer_color">
-                            <a href="{{ facebook_url }}"  target="_blank"><i class="fa fa-facebook-square my_footer_color"></i></a>
+                        <div class="feed-line ">
+                            <a href="{{ facebook_url }}"  target="_blank"><i class="fa fa-facebook-square "></i></a>
                             <p>A collection of 25 stunning sites that you can use for inspiration.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 my_footer_color">
-                    <h5 class="my_footer_color">Instagram Feed</h5>
+                <div class="col-md-4 ">
+                    <h5 class="">Instagram Feed</h5>
                     <div class="gallery-feed">
                         <img src="assets/img/faces/card-profile6-square.jpg" class="img img-raised img-rounded" alt="">
                         <img src="assets/img/faces/christian.jpg" class="img img-raised img-rounded" alt="">
@@ -48,9 +49,9 @@
 
         <hr>
 
-        <ul class="pull-left my_footer_color">
+        <ul class="pull-left ">
             <li>
-                <a href="{% url 'blog:blog_list' %}">
+                <a href="{% host_url 'blog:blog_list' host 'www' %}{% comment %}{% url 'blog:blog_list' %}{% endcomment %}">
                     Blog
                 </a>
             </li>

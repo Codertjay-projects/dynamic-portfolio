@@ -1,15 +1,12 @@
-<div class=" m-5 {% if layout.background_color == 'light' %} section-white
-{% elif layout.background_color == 'dark' %} section-dark
-{% endif %}" id="About" style="width: 100%;min-height: 70vh">
+<div class="dark_background">
+<div class="dark_background  " id="About" style="width: 100%;min-height: 70vh">
 
-    <div class="container">
+    <div class="dark_background container">
         <div class="row">
             <div class="col-12 mt-5 mb-5">
-                <h1 class="text-light display-2 text-center mt-5
+                <h1 class=" text-light display-2 text-center mt-5
          font-weight-bolder"
-                    style="{% if layout.background_color == 'light' %} color: {{ layout.secondary_color }}!important;
-                    {% elif layout.background_color == 'dark' %} color: white;
-                    {% endif %}">
+                    style="">
                     About Me</h1>
             </div>
         </div>
@@ -31,10 +28,8 @@
                     <h2 class="font-weight-bold" style="{% if layout.background_color == 'light' %} color: {{ layout.secondary_color }}!important;
                                    {% elif layout.background_color == 'dark' %} color: white;
                                    {% endif %}">I am {{ profile.user.first_name }} {{ profile.user.last_name }}</h2>
-                    <h5 class=" text-muted"
-                        style="{% if layout.background_color == 'light' %} color: {{ layout.secondary_color }}!important;
-                        {% elif layout.background_color == 'dark' %} color: white;
-                        {% endif %}">{{ profile.about }}.
+                    <h5 class="dark_background text-muted"
+                        style="">{{ profile.about }}.
                     </h5>
                 </div>
             </div>
@@ -43,7 +38,4 @@
 
     </div>
 </div>
-{% if profile.background_color == 'light' %}
-<hr class="p-0" style="background-color: {{ layout.primary_color }} ;height: 3px;margin: 0px;padding: 0px">
-
-{% endif %}
+</div>

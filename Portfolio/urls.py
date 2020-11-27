@@ -2,17 +2,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from blog.views import BlogCreateView
+import debug_toolbar
 
 
 urlpatterns = [
     path('administrator/', admin.site.urls),
+    path('__debug__/', include(debug_toolbar.urls)),
     path('accounts/', include('allauth.urls')),
     path('profile/', include('_profile.urls')),
     path('user/', include('users.urls')),
     path('url/', include('single_url.urls')),
     path('blog/', include('blog.urls')),
-    path('', include('portfolio_app.urls'),name='portfolio'),
+    path('', include('portfolio_app.urls'), name='portfolio'),
 ]
 
 if settings.DEBUG:

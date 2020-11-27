@@ -1,4 +1,6 @@
 {% load static %}
+{% load fontawesome_5 %}
+
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -27,31 +29,12 @@
         .my_background_color {
             background-color: rgba({{ primary_color.primary_color_1 }},
                                         {{ primary_color.primary_color_2 }},
-                                        {{ primary_color.primary_color_3 }}, 0.2);
+                                        {{ primary_color.primary_color_3 }}, 0.6);
             padding-bottom: 0px !important;
             margin-bottom: 0px !important;
             height: 100%
         }
 
-        .service_background {
-            background-color: rgba({{ primary_color.primary_color_1 }},
-                                        {{ primary_color.primary_color_2 }},
-                                        {{ primary_color.primary_color_3 }}, 0.3);
-        }
-
-        .contact_background {
-            background-color: rgba({{ primary_color.primary_color_1 }},
-                                        {{ primary_color.primary_color_2 }},
-                                        {{ primary_color.primary_color_3 }}, 0.4);
-        }
-
-        .secondary_color {
-            color: {{ layout.secondary_color }} !important;
-        }
-
-        .primary_color {
-            background-color: {{ layout.primary_color }} !important;
-        }
 
         #progress {
             min-height: 50vh;
@@ -63,11 +46,46 @@
         .contact_background_image {
             background-image: url( {{ profile.backgroundImageURL }});
             background-size: contain;
-            background-color: {{ layout.secondary_color }} !important;
-            background-attachment: fixed
+        {#background-color: {{ layout.secondary_color }} !important;#} background-attachment: fixed
         }
 
     </style>
+
+    <style>
+        .primary_color {
+            background-color: {{ layout.primary_color }};
+        }
+
+        .background_image {
+            background-image: url("{{ profile.backgroundImageURL }}");
+        }
+
+        .secondary_color {
+            color: {{ layout.secondary_color }}
+        }
+
+        {% if layout.background_color == 'dark' %}
+            .dark_background {
+                background-color: rgba(0, 0, 0, 0.9) !important;
+                color: white !important;
+            }
+            .dark_background forall {
+                background-color: rgba(0, 0, 0, 0.9) !important;
+                color: white !important;
+            }
+            .dark_background hamburger {
+                background-color: white !important;
+                color: white !important;
+            }
+        {% else %}
+            .dark_background {
+                background-color: white;
+                color: black !important;
+            }
+        {% endif %}
+
+    </style>
+
 </head>
 
 <body id="top-page">

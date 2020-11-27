@@ -1,3 +1,4 @@
+{% load hosts %}
 <nav class="navbar navbar-dark   navbar-fixed-top ">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -14,7 +15,7 @@
         <div class="collapse navbar-collapse" id="navigation-example">
             <ul class="nav navbar-nav navbar-right ">
                 <li>
-                    <a href="#Home" >
+                    <a href="#Home">
                         Home
                     </a>
                 </li>
@@ -40,9 +41,11 @@
                 </li>
                 {% if request.user.is_authenticated %}
                     <li>
-                        <a href="{% url 'profile:dashboard' %}">
+                        <a href="{% host_url 'profile:dashboard' host 'www' %}">
                             Dashboard
-                        </a>
+                        </a>{% comment %}    <a href="{% url 'profile:dashboard' %}">
+                            Dashboard
+                        </a>{% endcomment %}
                     </li>
                     <li>
                         <a href="{% url 'account_logout' %}">
@@ -51,12 +54,12 @@
                     </li>
                 {% else %}
                     <li>
-                        <a href="{% url 'account_login' %}">
+                        <a href="{% host_url 'account_login' host 'www' %}">
                             Login
                         </a>
                     </li>
                     <li>
-                        <a href="{% url 'account_signup' %}">
+                        <a href="{% host_url 'account_signup' host 'www' %}">
                             Signup
                         </a>
                     </li>

@@ -14,6 +14,7 @@ from PIL import ImageColor
 
 User = settings.AUTH_USER_MODEL
 
+
 def user_profile(request):
     try:
         # Retrieve the user account associated with the current subdomain.
@@ -23,8 +24,9 @@ def user_profile(request):
         raise Http404
 
 
-def my_portfolio(request, username):
-    print('this is the username', username)
+def my_portfolio(request, username=None):
+    # print('this is the username', username)
+    # print('the requsest',request.get_raw_uri())
     if username:
         project = Project.objects.filter(user__username=username)
         project_items = ProjectItem.objects.filter(user__username=username)
