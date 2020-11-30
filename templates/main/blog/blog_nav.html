@@ -9,7 +9,8 @@
                 <span class="black_font icon-bar"></span>
                 <span class="black_font icon-bar"></span>
             </button>
-            <a class="navbar-brand font-weight-bold" href="{% url 'portfolio:home' %}">Dynamic Portfolio
+            <a class="navbar-brand font-weight-bold" href="{% url 'portfolio:home' %}"><strong>Dynamic
+                Portfolio</strong>
                 <div class="ripple-container"></div>
             </a>
         </div>
@@ -17,31 +18,33 @@
         <div class="float-xl-right  collapse navbar-collapse" id="navigation-example">
             <ul class="black_font float-xl-right  nav navbar-nav navbar-center font-weight-bold">
                 <li>
-                    <a class="black_font" href="{% url 'blog:blog_list' %}">
-                        Home
+                    <a class="black_font" href="{% url 'portfolio:home' %}">
+                        <strong>Home</strong>
                     </a>
                 </li>
                 <li>
                     <a class="black_font" href="{% url 'blog:blog_list' %}">
-                        Blog
+                        <strong>Blog</strong>
                     </a>
                 </li>
                 <li>
                     <a class="black_font" href="{% url 'portfolio:home' %}#about">
-                        About Us
+                        <strong>About Us</strong>
                     </a>
                 </li>
                 <li>
-                    <a class="black_font" href="{% url 'portfolio:home' %}#contact">
-                        Contact Us
+                    <a class="black_font" href="{% url 'single_url:contact' %}#contact">
+                        <strong>Contact Us</strong>
                     </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="black_font" href="{{ twitter_url }}" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                    </a>
+
+                        <a class="black_font" href="{{ twitter_url }}" target="_blank">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+
                 </li>
                 <li>
                     <a class="black_font" href="{{ facebook_url }}" target="_blank">

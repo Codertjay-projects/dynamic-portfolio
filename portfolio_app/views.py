@@ -1,7 +1,8 @@
 from django.contrib import messages
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.conf import settings
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
 
 from _profile.forms import LayoutForm, ProfileForm, TestimonialForm, SkillsForm
 from .models import Project, ProjectItem
@@ -11,23 +12,41 @@ from users.forms import ContactUserForm
 
 from .forms import ProjectForm, ProjectItemsForm
 from PIL import ImageColor
+from users.models import User
+from django.template import RequestContext
 
-User = settings.AUTH_USER_MODEL
-
-
-def user_profile(request):
-    try:
-        # Retrieve the user account associated with the current subdomain.
-        user = User.objects.get(username=request.subdomain)
-    except User.DoesNotExist:
-        # No user matches the current subdomain, so return a generic 404.
-        raise Http404
+DEFAULT_REDIRECT_URL = settings.DEFAULT_REDIRECT_URL
 
 
-def my_portfolio(request, username=None):
-    # print('this is the username', username)
-    # print('the requsest',request.get_raw_uri())
-    if username:
+def handler404(request, exception):
+    response = render(request, '404.html', context={})
+    response.status_code = 404
+    return response
+
+
+def handler500(request, exception):
+    response = render(request, '500.html', context={})
+    response.status_code = 500
+    return response
+
+
+def HomeView(request):
+    return render(request, 'main/blog/home_page.html')
+
+
+def contact_view(request):
+    return render(request, 'main/blog/contact.html')
+
+
+def about_view(request):
+    return render(request, 'main/blog/about.html')
+
+
+def my_portfolio(request, username):
+    print('the requsest get_raw_uri', request.get_raw_uri())
+    print('this is the username', username)
+    _username = User.objects.filter(username=username).first()
+    if _username:
         project = Project.objects.filter(user__username=username)
         project_items = ProjectItem.objects.filter(user__username=username)
         profile = Profile.objects.filter(user__username=username).first()
@@ -47,9 +66,12 @@ def my_portfolio(request, username=None):
             secondary_color_2 = secondary_color_nums[1]
             secondary_color_3 = secondary_color_nums[2]
             print('this is the project items', project_items)
+            host_url = f"{profile.user.username}{settings.PARENT_HOST}",
+
         except Exception:
             primary_color_nums = None
             secondary_color_nums = None
+            host_url = None
             primary_color_1 = None
             primary_color_2 = None
             primary_color_3 = None
@@ -57,9 +79,8 @@ def my_portfolio(request, username=None):
             secondary_color_2 = None
             secondary_color_3 = None
     else:
-        messages.error(request, 'There was an error we would get back to you ')
-        print('there is an error ')
-        return redirect('/')
+        messages.warning(request, "the site does not exist")
+        return HttpResponseRedirect(DEFAULT_REDIRECT_URL)
     context = {
         'project': project,
         'ProjectItem': project_items,
@@ -70,6 +91,8 @@ def my_portfolio(request, username=None):
         'post': post,
         'service': service,
         'resume': resume,
+        'media_url': DEFAULT_REDIRECT_URL,
+        'host_url': host_url,
         'primary_color': {
             'primary_color_1': primary_color_1,
             'primary_color_2': primary_color_2,
@@ -101,10 +124,8 @@ def my_portfolio(request, username=None):
         elif profile.portfolio_version == 'portfolio_v4':
             return render(request, 'portfolio_v4/base_v4.html', context)
         else:
-            return redirect('/')
+            messages.warning(request, "the site does not exist")
+            return HttpResponseRedirect(DEFAULT_REDIRECT_URL)
     else:
-        return redirect('/')
-
-
-def HomeView(request):
-    return render(request, 'main/blog/home_page.html')
+        messages.warning(request, "the site does not exist")
+        return HttpResponseRedirect(DEFAULT_REDIRECT_URL)

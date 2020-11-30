@@ -60,7 +60,7 @@
             background-attachment: fixed
         }
 
-        .secondary_color h1 h2 h3 h4 div section strong span li ul {
+        .secondary_color {
             color: {{ layout.secondary_color }} !important;
         }
 
@@ -158,14 +158,14 @@
 
 
         {% comment %} beginning of contact  {% endcomment %}
+        {% include 'portfolio_v1/blog.html' %}
+        {% comment %} end_date of contact {% endcomment %}
+
+        {% comment %} beginning of contact  {% endcomment %}
         {% include 'portfolio_v1/contact.html' %}
         {% comment %} end_date of contact {% endcomment %}
 
         <hr class="p-0" style="background-color: {{ layout.primary_color }} ;height: 3px;margin: 0px;padding: 0px">
-
-        {% comment %} beginning of contact  {% endcomment %}
-        {% include 'portfolio_v1/blog.html' %}
-        {% comment %} end_date of contact {% endcomment %}
 
         <!-- preloader -->
         <div class="nile-preloader">
@@ -201,6 +201,7 @@
 
 
 <script src="{% static 'portfolio_v1/assets/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'main/js/my_script.js' %}"></script>
 
 <script src="{% static 'portfolio_v1/assets/js/owl.carousel.min.js' %}"></script>
 
@@ -215,8 +216,6 @@
 <script src="{% static 'portfolio_v1/assets/js/wow.min.js' %}"></script>
 <script src="{% static 'portfolio_v1/assets/js/custom.js' %}"></script>
 <link href="{% static 'portfolio_v1/assets/js/my_script.js' %}" rel="stylesheet">
-
-<link href="{% static 'main/js/my_script.js' %}" rel="stylesheet">
 
 
 <!-- A jQuery plugin that adds cross-browser mouse wheel support. (Optional) -->

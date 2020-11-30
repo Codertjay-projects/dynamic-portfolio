@@ -25,7 +25,6 @@
                                         <th style="width:15% ">customer Image</th>
                                         <th style="width:15% ">customer Name</th>
                                         <th class="th-description" style="width:40% ">Details</th>
-                                        <th class="" style="width:10% ">Url</th>
                                         <th class="" style="width:10% ">Delete</th>
                                         <th class="" style="width:10% ">Edit</th>
                                     </tr>
@@ -41,22 +40,15 @@
                                                 </div>
                                             </td>
                                             <td class="td-name">
-                                                {{ item.client_name }}
+                                                <a href="{{ item.url }}">
+                                                    {{ item.client_name }}
+                                                </a>
                                             </td>
 
                                             <td class="text-muted ml-0">
                                                 <div class="row">
                                                     <div class="col-12  max-auto">
                                                         {{ item.detail|truncatechars:500 }}
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-muted">
-                                                <div class="row">
-                                                    <div class="col-8  max-auto">
-                                                        <a href="" target="_blank">
-                                                            {{ item.url|urlize }}
-                                                        </a>
                                                     </div>
                                                 </div>
                                             </td>

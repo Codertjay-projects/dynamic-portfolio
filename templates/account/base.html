@@ -31,23 +31,27 @@
 
 </head>
 <body class="bg-light text-dark " style="{color:white !important;}">
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-            {{ message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    {% endfor %}
-{% endif %}
 
 {% block  styles %}
 
 {% endblock styles %}
+{% include 'main/blog/blog_nav.html' %}
 
 <div class="header-filter "
-     style="background-image: url({% static  'portfolio_v2/assets/img/../../portfolio_app/static/main/image/blog_post_background.jpg' %});min-height: 120vh;padding-top: 10vh;">
+     style="background-image: url({% static  'main/image/blog_post_background.jpg' %});min-height: 120vh;padding-top: 15vh;">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show pt-5 mt-5" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+
+
     <div class="container m-5">
         <div class="row">
             <div class="col" style="margin-left: 20%; margin-right: 20%;">
@@ -58,6 +62,8 @@
         </div>
     </div>
 </div>
+{% include 'main/footer.html' %}
+
 
 <script src="{% static 'portfolio_v2/assets/js/jquery.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'portfolio_v2/assets/js/bootstrap.min.js' %}" type="text/javascript"></script>

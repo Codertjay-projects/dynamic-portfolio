@@ -46,14 +46,19 @@
         .contact_background_image {
             background-image: url( {{ profile.backgroundImageURL }});
             background-size: contain;
-        {#background-color: {{ layout.secondary_color }} !important;#} background-attachment: fixed
+            background-attachment: fixed
         }
 
     </style>
 
     <style>
-        .primary_color {
+        .primary_color_nav {
             background-color: {{ layout.primary_color }};
+            color: white;
+        }
+
+        .primary_color_nav text {
+            color: white !important;
         }
 
         .background_image {
@@ -77,10 +82,24 @@
                 background-color: white !important;
                 color: white !important;
             }
+            .dark_background_rgba {
+                background-color: rgba(21, 20, 20, 0.5);
+
+            }
+            .secondary_color_dark {
+                color: white !important;
+            }
         {% else %}
             .dark_background {
                 background-color: white;
                 color: black !important;
+            }
+            .dark_background_rgba {
+                background-color: rgba(255, 251, 251, 0.5);
+
+            }
+            .secondary_color_dark {
+                color: {{ layout.secondary_color }} !important;
             }
         {% endif %}
 
@@ -97,37 +116,37 @@
 
 {% comment %} thi{% endcomment %}
 
+<div class="main main-raised">
+    {% comment %} the about page {% endcomment %}
+    {% include 'portfolio_v2/about.html' %}
+    {% comment %} end_date of the about page{% endcomment %}
+    {% comment %} the skills page {% endcomment %}
+    {% include 'portfolio_v2/services.html' %}
+    {% comment %} end_date of the skills page{% endcomment %}
 
-{% comment %} the about page {% endcomment %}
-{% include 'portfolio_v2/about.html' %}
-{% comment %} end_date of the about page{% endcomment %}
+    {% comment %} the skills page {% endcomment %}
+    {% include 'portfolio_v2/skills.html' %}
+    {% comment %} end_date of the skills page{% endcomment %}
 
-{% comment %} the skills page {% endcomment %}
-{% include 'portfolio_v2/services.html' %}
-{% comment %} end_date of the skills page{% endcomment %}
+    {% comment %} the contact page {% endcomment %}
+    {% include 'portfolio_v2/project.html' %}
+    {% comment %} end_date of the contact page{% endcomment %}
 
-{% comment %} the skills page {% endcomment %}
-{% include 'portfolio_v2/skills.html' %}
-{% comment %} end_date of the skills page{% endcomment %}
-
-{% comment %} the contact page {% endcomment %}
-{% include 'portfolio_v2/project.html' %}
-{% comment %} end_date of the contact page{% endcomment %}
-
-{% comment %} the contact page {% endcomment %}
-{% include 'portfolio_v2/testimonials.html' %}
-{% comment %} end_date of the contact page{% endcomment %}
-
-
-{% comment %} the contact page {% endcomment %}
-{% include 'portfolio_v2/blog.html'   with blog="{{ post }}" %}
-{% comment %} end_date of the contact page{% endcomment %}
+    {% comment %} the contact page {% endcomment %}
+    {% include 'portfolio_v2/testimonials.html' %}
+    {% comment %} end_date of the contact page{% endcomment %}
 
 
-{% comment %} the contact page {% endcomment %}
-{% include 'portfolio_v2/contact.html' %}
-{% comment %} end_date of the contact page{% endcomment %}
+    {% comment %} the contact page {% endcomment %}
+    {% include 'portfolio_v2/blog.html'   with blog="{{ post }}" %}
+    {% comment %} end_date of the contact page{% endcomment %}
 
+
+    {% comment %} the contact page {% endcomment %}
+    {% include 'portfolio_v2/contact.html' %}
+    {% comment %} end_date of the contact page{% endcomment %}
+
+</div>
 
 {% comment %} the footer page {% endcomment %}
 {% include 'portfolio_v2/footer.html' %}
@@ -137,7 +156,7 @@
 {% comment %} the javascript file{% endcomment %}
 {% include 'portfolio_v2/materiali_kit_js.html' %}
 {% comment %} end_date of the javascript file{% endcomment %}
-<link href="{% static 'main/js/my_script.js' %}" rel="stylesheet">
+<script src="{% static 'main/js/my_script.js' %}" type="text/javascript"></script>
 
 
 </body>

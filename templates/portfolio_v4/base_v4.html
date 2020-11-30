@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
-    <title>Modak HTML Template</title>
+    <title>{{ profile.user.username }} portfolio</title>
     <meta name="author" content="tansh">
     <meta name="description" content="HTML Teamplate">
     <meta name="keywords" content="agency, personal, photography, one page">
@@ -66,9 +66,9 @@
             }
         {% endif %}
 
-    .secondary_color_real{
-           color: {{ layout.secondary_color }} !important;
-    }
+        .secondary_color_real {
+            color: {{ layout.secondary_color }} !important;
+        }
 
     </style>
 
@@ -133,13 +133,14 @@
         <!-- cta section starts
 ================================================== -->
         <section class="dark_background dtr-section parallax dtr-py-100"
-                 style="background-image: url({{ profile.backgroundImageURL}});">
+                 style="background-image: url({{ profile.backgroundImageURL }});">
             <div class="container">
 
                 <!--== row starts ==-->
                 <div class="row text-center">
                     <div class="col-12">
-                        <h3 class="secondary_color font-family-alt font-weight-700 color-dark">Want to work together!</h3>
+                        <h3 class="secondary_color font-family-alt font-weight-700 color-dark">Want to work
+                            together!</h3>
                         <p class="secondary_color color-dark text-size-md">I’m available for freelance work.</p>
                         <!-- link starts -->
                         <a href="#" class="secondary_color dtr-btn btn-white dtr-mt-30">Hire Me <i
@@ -183,7 +184,7 @@
 <script src="{% static 'portfolio_v4/assets/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'portfolio_v4/assets/js/plugins.js' %}"></script>
 <script src="{% static 'portfolio_v4/assets/js/custom.js' %}"></script>
-<link href="{% static 'main/js/my_script.js' %}" rel="stylesheet">
+<script src="{% static 'main/js/my_script.js' %}"></script>
 
 </body>
 </html>

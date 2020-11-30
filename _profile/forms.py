@@ -5,19 +5,26 @@ from django_countries.widgets import CountrySelectWidget
 from .models import Layout, Profile, Testimonial, Contact, Skills, skill_choices, portfolio_choices, Service, \
     background_colors, Resume
 from colorful.fields import RGBColorField
+from upload_validator import FileTypeValidator
 
 
 class ProfileForm(forms.ModelForm):
-    profile_pics = forms.ImageField(required=False, widget=forms.FileInput(attrs={
+    profile_pics = forms.ImageField(required=False, validators=[FileTypeValidator(
+        allowed_types=['image/*']
+    )], widget=forms.FileInput(attrs={
         'class': 'btn btn-rose btn-rounded btn-sm   waves-effect bg-info text-light waves-light picture-src    col-4  mx-auto  _profile_pics',
         'label': 'Profile Picture',
         # 'style':{'text-co'}
 
     }))
-    logo = forms.ImageField(required=False, label='', widget=forms.FileInput(attrs={
+    logo = forms.ImageField(required=False, label='', validators=[FileTypeValidator(
+        allowed_types=['image/*']
+    )], widget=forms.FileInput(attrs={
         'class': 'btn btn-azure btn-rounded btn-sm   waves-effect  bg-info text-light  waves-light col-4 mx-auto'
     }))
-    background_image = forms.ImageField(required=False, label='', widget=forms.FileInput(attrs={
+    background_image = forms.ImageField(required=False, label='', validators=[FileTypeValidator(
+        allowed_types=['image/*']
+    )], widget=forms.FileInput(attrs={
         'class': 'btn btn-purple btn-rounded btn-sm   waves-effect   bg-info text-light waves-light  mx-auto col-4 ',
 
     }))
@@ -145,7 +152,9 @@ class TestimonialForm(forms.ModelForm):
         'placeholder': ' The client name you worked with ',
         'class': ' form-control  ',
     }))
-    image = forms.ImageField(required=False, label='Image', widget=forms.FileInput(attrs={
+    image = forms.ImageField(required=False, label='Image',validators=[FileTypeValidator(
+        allowed_types=['image/*']
+    )], widget=forms.FileInput(attrs={
         'class': '  form-control  bg-primary  mx-auto  ',
 
     }))
@@ -228,7 +237,9 @@ class ServiceForm(forms.ModelForm):
         'placeholder': 'Subject ',
         'class': 'form-control  ',
     }))
-    image = forms.ImageField(required=True, widget=forms.FileInput(attrs={
+    image = forms.ImageField(required=True,validators=[FileTypeValidator(
+        allowed_types=['image/*']
+    )], widget=forms.FileInput(attrs={
         'class': 'btn btn-purple btn-rounded btn-sm mt-3  bg-primary  waves-effect  waves-light  mx-auto col-7 ',
     }))
     description = forms.CharField(max_length=200, required=True, widget=forms.Textarea(attrs={

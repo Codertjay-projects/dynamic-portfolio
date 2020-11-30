@@ -4,12 +4,12 @@ from django import forms
 
 class ContactUserForm(forms.Form):
     contact_name = forms.CharField(validators=[], label='', max_length=200, widget=forms.TextInput(attrs={
-        'placeholder': ' Your Name ',
+        'placeholder': '  Name ',
         'label': 'Name',
         'class': ' form-control     span',
     }))
-    contact_email = forms.EmailField(max_length=200,label='', widget=forms.EmailInput(attrs={
-        'placeholder': 'Your Email ',
+    contact_email = forms.EmailField(max_length=200, label='', widget=forms.EmailInput(attrs={
+        'placeholder': ' Email ',
         'class': 'form-control    span',
 
     }))
@@ -18,13 +18,14 @@ class ContactUserForm(forms.Form):
         'class': 'form-control   ',
     }))
     contact_message = forms.CharField(label='', widget=forms.Textarea(attrs={
-        'placeholder': ' Content ',
-        'class': 'md-textarea form-control    ',
-        'rows': '5',
-        'cols': '20',
+        'placeholder': ' Message ',
+        'class': ' ',
+        'cols': '40',
+        'style': 'min-height: 30px!important;height:20vh',
+        'rows': '10'
     }))
     to_email = forms.EmailField(widget=forms.HiddenInput(attrs={
-        'placeholder': 'Your Email ',
+        'placeholder': ' Email ',
         'class': 'form-control   d-none',
         'style': {'margin-bottom': '0rem'}
 
@@ -40,12 +41,12 @@ class ContactUserForm(forms.Form):
 
 class ContactAdminForm(forms.Form):
     contact_name = forms.CharField(validators=[], label='', max_length=50, widget=forms.TextInput(attrs={
-        'placeholder': ' Your Name ',
+        'placeholder': '  Name ',
         'label': 'Name',
         'class': ' form-control     span',
     }))
     contact_email = forms.EmailField(label='', widget=forms.EmailInput(attrs={
-        'placeholder': 'Your Email ',
+        'placeholder': ' Email ',
         'class': 'form-control    span',
 
     }))

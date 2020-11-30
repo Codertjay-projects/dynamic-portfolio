@@ -2,9 +2,9 @@
 <div class="dark_background testimonials-2  remove_m_p " {% comment %}style="height: 40vh !important;"{% endcomment %}>
 
     <div class="container">
-        <h1 class="font-weight-bold  font-italic  title text-center"
-            style="">
-            Testimonials</h1>
+        <h1 class="secondary_color_dark font-weight-bold  font-italic  title text-center"
+            style=""><strong>Testimonials</strong>
+            </h1>
         <div class="owl-carousel owl-theme">
 
             {% for test in testimonial %}
@@ -13,8 +13,7 @@
                     <div class="card card-testimonial card-plain remove_m_p">
                         <div class="card-avatar">
                             <a href="#pablo">
-                                <img class="img" src="{{ media_url }}{{ test.imageURL }}">
-{#                                <img class="img" src="http://www.localhost:8000/{{ test.imageURL }}">#}
+                                <img class="img" src="{{ test.imageURL }}">
                             </a>
                         </div>
                         <div class="card-content">

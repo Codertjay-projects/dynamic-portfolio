@@ -1,3 +1,4 @@
+{% load hosts %}
 <section id="contact" class="dark_background dtr-section dtr-py-100 bg-light-blue">
     <div class="container">
 
@@ -14,7 +15,7 @@
             <div class="col-12 col-md-6">
                 <!-- form starts -->
                 <div class="dtr-form">
-                    <form id="contactform" method="post" action="{% url 'user:contact_user' %}"  onsubmit="SubmitForm">
+                    <form id="contactform" method="post" action="{% host_url 'user:contact_user' host 'www' %}"  class="submit-form">
                         {% csrf_token %}
 
                         <input type="hidden" name="to_email" value="{{ profile.user.email }}" id="id_to_email">

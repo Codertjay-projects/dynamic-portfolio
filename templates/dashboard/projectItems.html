@@ -2,55 +2,6 @@
 {% load crispy_forms_filters %}
 {% load static %}
 
-{% block head_extra %}
-    <link type="text/css" rel="stylesheet" href="{% static 'lightbox/css/lightGallery.css' %}"/>
-
-    <style>
-        .container_image {
-            position: relative;
-        }
-
-        .image_middle {
-            opacity: 1;
-            display: block;
-            width: 100%;
-            height: auto;
-            transition: .5s ease;
-            backface-visibility: hidden;
-        }
-
-        .middle_image {
-            transition: .5s ease;
-            opacity: 0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        .container_image:hover .image_middle {
-            opacity: 0.3;
-        }
-
-        .container_image:hover .middle_image {
-            opacity: 1;
-        }
-
-        .text_color {
-            color: white;
-            font-size: 16px;
-            padding: 16px 32px;
-        }
-
-        .my_button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
-{% endblock %}
 
 
 {% block panel %}
@@ -104,21 +55,21 @@
 
                 </ul>
 
-
                 <div class="tab-content tab-space tab-subcategories">
                     <div class="tab-pane active show" id="Work" style="width: 90%;margin-left: 5%;margin-right: 5%;">
                         <div class="row">
 
 
                             <div class="demo-gallery dark mrb35">
-                                <ul id="captions" class="captions list-unstyled row">
+                                <ul id="lightgallery" class="list-unstyled row">
 
                                     {% for item in project_items %}
-                                        <li class="col-xs-6 col-sm-4 col-md-3 gallery-item" data-src="{{ item.imageURL }}"
+                                        <li class="col-xs-6 col-sm-6 col-md-4 gallery-item"
+                                            data-src="{{ item.imageURL }}"
                                             data-sub-html="<h4>{{ item.name }}</h4><p>
                                              {{ item.description }}</p>">
-                                                <img class="img-responsive" src="{{ item.imageURL }}"
-                                                     style="height: 30vh;width: 100%;">
+                                            <img class="img-responsive" src="{{ item.imageURL }}"
+                                                 style="height: 40vh;width: 100%;">
                                         </li>
                                     {% endfor %}
                                 </ul>
@@ -135,15 +86,15 @@
                              style="">
                             <div class="row">
                                 <div class="demo-gallery dark mrb35">
-                                    <ul id="captions" class="captions list-unstyled row">
+                                    <ul id="caption" class="list-unstyled row">
                                         {% for item in project_items.project.all %}
 
-                                            <li class="col-xs-6 col-sm-4 col-md-3">
+                                            <li class="col-xs-6 col-sm-6 col-md-4">
                                                 <div class="gallery-item"
                                                      data-src="{{ item.imageURL }}"
                                                      data-sub-html="<h4>{{ item.name }}</h4> <p>
                                                 {{ item.description }}
-                                                </p><button class='btn btn-primary btn-round'
+                                                </p><button class='btn btn-primary btn-round btn-sm'
                                                                     data-toggle='modal'
                                                                     data-target='#{{ item.name|slugify }}'
                                                                     type='button' >
@@ -151,23 +102,24 @@
                                                             </button>">
                                                     <img class=""
                                                          src="{{ item.imageURL }}"
-                                                         style="height: 30vh;width: 100%;">
+                                                         style="height: 40vh;width: 100%;">
                                                 </div>
-                                                <button class=" btn btn-primary btn-round my_button"
-                                                        data-toggle="modal"
-                                                        data-target="#{{ item.name|slugify }}_{{ item.id }}"
-                                                        type="button">
-                                                    Edit
-                                                </button>
-                                                <form action="{% url 'profile:projectItemDelete' %}" method="post">
-                                                    {% csrf_token %}
-                                                    <input type="hidden" value="{{ item.id }}" name="id">
-                                                    <button class=" btn btn-primary btn-round my_button"
-                                                            type="submit">
-                                                        Delete
+                                                <div class="row">
+                                                    <button class="btn btn-primary btn-round btn-sm my_button"
+                                                            data-toggle="modal"
+                                                            data-target="#{{ item.name|slugify }}_{{ item.id }}"
+                                                            type="button">
+                                                        Edit
                                                     </button>
-                                                </form>
-
+                                                    <form action="{% url 'profile:projectItemDelete' %}" method="post">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" value="{{ item.id }}" name="id">
+                                                        <button class=" btn btn-primary btn-round btn-sm my_button"
+                                                                type="submit">
+                                                            Delete
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </li>
 
                                         {% endfor %}
@@ -368,7 +320,4 @@
 
 
 
-{% block panelScript %}
-
-{% endblock %}
 

@@ -12,13 +12,6 @@ from portfolio_app.forms import ProjectForm, ProjectItemsForm
 from portfolio_app.models import ProjectItem, Project
 from users.forms import ContactUserForm
 
-from django.shortcuts import get_object_or_404
-from users.models import User
-
-
-def custom_fn(request, username):
-    print('this is the username', username)
-    request.viewing_user = get_object_or_404(User, username=username)
 
 
 # Todo: i would need to create a 404 page to redirect the user when he or she goes to a url or host
@@ -69,6 +62,7 @@ def my_portfolio(request, username):
         'service': service,
         'resume': resume,
         'media_url': DEFAULT_REDIRECT_URL,
+        'host_url': f"{profile.user.username}{settings.PARENT_HOST}",
         'primary_color': {
             'primary_color_1': primary_color_1,
             'primary_color_2': primary_color_2,

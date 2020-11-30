@@ -1,4 +1,6 @@
 from django import forms
+from upload_validator import FileTypeValidator
+
 from .models import Post, blogCategory
 
 from pagedown.widgets import PagedownWidget
@@ -14,7 +16,9 @@ class PostCreateForm(forms.ModelForm):
     slug = forms.SlugField(required=True,
                            max_length=50,
                            label='Slug')
-    image = forms.ImageField(required=True,
+    image = forms.ImageField(required=True, validators=[FileTypeValidator(
+        allowed_types=['image/*']
+    )],
                              widget=forms.FileInput(attrs={
                                  'class': '  waves-effect   bg-primary   ',
 

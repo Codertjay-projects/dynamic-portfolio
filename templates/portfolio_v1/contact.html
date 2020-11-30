@@ -1,3 +1,4 @@
+{% load hosts %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 {% load static %}
@@ -7,55 +8,65 @@
     <div class="container remove_m_p ">
 
 
-        <div class="row justify-content-center remove_m_p">
+        <div class="row justify-content-center align-content-center mx-auto remove_m_p">
 
             <div class="col-12 mt-4  primary-color">
-                <div class="sub-title contact_header">Making your Life Easier</div>
-                <h2 class="font-weight-bold ml-3">Contact <span><h5> {{ profile.user.username }}</h5></span></h2>
+                <div class="secondary_color sub-title contact_header"><strong>Making your Life Easier</strong>
+
+                    <h2 class="text-center secondary_color font-weight-bold ml-3"
+                        style="color: {{ layout.secondary_color }}">Contact
+                        <span><h5> {{ profile.user.first_name }}</h5></span></h2>
+                </div>
+
             </div>
-            <div class="col-lg-4 ">
-                <div class="fizo-icon-box layout-2 remove_m_p">
+            <div class="col-6 ">
+                <div class="secondary_color fizo-icon-box layout-2 remove_m_p " style="min-height: 102px!important;">
                     <div class="icon"><img src="{% static 'portfolio_v1/assets/icons/map-location.svg' %}" alt=" "
                                            class="contact_img">
                     </div>
-                    <h5>{{ profile.get_country_display }}</h5>
-                    <div class="dis">{{ profile.address }}</div>
+                    <h5 class="secondary_color">{{ profile.get_country_display }}</h5>
+                    <div class="secondary_color dis">{{ profile.address }}</div>
                 </div>
             </div>
 
-            <div class="col-lg-4">
-                <div class="fizo-icon-box layout-2 remove_m_p">
+            <div class="col-6">
+                <div class="fizo-icon-box layout-2 remove_m_p" style="min-height: 102px!important;">
                     <div class="icon"><img src="{% static 'portfolio_v1/assets/icons/24-hours.svg' %}" alt=" "
                                            class="contact_img"></div>
-                    <h3 class="font-weight-bold">call</h3>
-                    <h5>{{ profile.phone_number }}</h5>
+                    <h3 class="secondary_color font-weight-bold">call</h3>
+                    <h5 class="secondary_color">{{ profile.phone_number }}</h5>
                 </div>
             </div>
-        </div>
-
-        <div class="col-8 mx-auto   ">
-            <div class="card">
-                <form action="{% url 'user:contact_user' %}" method="post"  onsubmit="SubmitForm">
-                    {% csrf_token %}
-                    <div class="card-body   " style="color: {{ layout.secondary_color }}">
-                        <div class=" remove_m_p ">
-                            <div class="row">
-                                <input type="hidden" name="to_email" id="id_to_email" value="{{ profile.user.email }}">
-                                <div class="col-6 pl-2 ">{{ contact_user_form.contact_name|as_crispy_field }}</div>
-                                <div class="col-6 pl-2 ">{{ contact_user_form.contact_email|as_crispy_field }}</div>
-                                <div class="col-12 ">{{ contact_user_form.contact_subject|as_crispy_field }}</div>
-                                <div class="col-12 ">{{ contact_user_form.contact_message|as_crispy_field }}</div>
-                                <div class="col-12 ">
-                                    <button class="btn background_color ">
-                                        SEND MESSAGE
-                                    </button>
+            <div class="col-12 mx-auto   ">
+                <div class="card">
+                    <form action="{% host_url 'user:contact_user' host 'www' %}" method="post" id=""
+                          class="submit-form">
+                        {% csrf_token %}
+                        {{ csrf_input }}
+                        <div class="card-body   " style="color: {{ layout.secondary_color }}">
+                            <div class="card-content">
+                                <div class=" remove_m_p ">
+                                    <div class="row">
+                                        <input type="hidden" name="to_email" id="id_to_email"
+                                               value="{{ profile.user.email }}">
+                                        <input type="hidden" name="host_url" id="id_host_url" value="{{ host_url }}">
+                                        <div class="col-6 pl-2 ">{{ contact_user_form.contact_name|as_crispy_field }}</div>
+                                        <div class="col-6 pl-2 ">{{ contact_user_form.contact_email|as_crispy_field }}</div>
+                                        <div class="col-12 ">{{ contact_user_form.contact_subject|as_crispy_field }}</div>
+                                        <div class="col-12 ">{{ contact_user_form.contact_message|as_crispy_field }}</div>
+                                        <div class="col-12 ">
+                                            <button class="primary_color btn  ">
+                                                SEND MESSAGE
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                </form>
+                    </form>
+                </div>
             </div>
+
         </div>
 
 

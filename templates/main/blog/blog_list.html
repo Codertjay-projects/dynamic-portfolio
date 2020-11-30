@@ -35,8 +35,8 @@
         </div>
     </div>
 
-    <div class="main main-raised" >
-        <div class="container" >
+    <div class="main main-raised">
+        <div class="container">
 
             <div class="section">
 
@@ -51,24 +51,28 @@
                             <div class="card card-plain card-blog">
                                 <div class="row">
 
-                                    <div class="col-md-5">
+                                    <div class="col-md-5" style="max-width: 80% !important; ">
                                         <div class="card-image">
                                             <a href="{% url 'blog:blog_detail' object.slug %}">
-                                                <img class="img img-raised" src="{{ object.imageURL }}"> </a>
+                                                <img class="img img-raised" src="{{ object.imageURL }}"
+                                                     style="max-height: 30vh !important;">
+                                            </a>
                                             <div class="colored-shadow"
                                                  style="background-image: url({{ object.imageURL }});
-                                                         opacity: 0;">
+                                                         opacity: 0;max-width: 80% !important; ">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-7" style="max-width: 80%;">
                                         <a href="{% url 'blog:blog_detail' object.slug %}">
-                                            <h6 class="category text-info">{{ object.category.get_category_display }}</h6></a>
+                                            <h6 class="category text-info">{{ object.category.get_category_display }}</h6>
+                                        </a>
                                         <h3 class="card-title">
                                             <a href="{% url 'blog:blog_detail' object.slug %}">{{ object.title }}</a>
                                         </h3>
                                         <p class="card-description">
-                                            {{ object.get_markdown|truncatechars:200 }} <a class="btn btn-primary btn-sm btn-round"
+                                            {{ object.get_markdown|truncatechars:200 }} <a
+                                                class="btn btn-primary btn-sm btn-round"
                                                 href="{% url 'blog:blog_detail' object.slug %}"> Read More </a>
                                         </p>
                                         <p class="author">

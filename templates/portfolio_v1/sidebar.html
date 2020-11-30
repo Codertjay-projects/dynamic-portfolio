@@ -1,3 +1,4 @@
+{% load hosts %}
 {% load static %}
 
 <!-- Sidebar -->
@@ -19,11 +20,22 @@
         <li><a href="#clients">My Clients</a></li>
         <li><a href="#bolg">My Bolg</a></li>
         <li><a href="#contact">Contact Me</a></li>
-        {% if request.user.isAuthenticated %}
-            <li><a href="{% url 'account_logout' %}">Logout</a></li>
+        {% if profile.user.is_authenticated %}
+            <li><a href="{% host_url 'account_logout' host 'www' %}">
+                Logout
+            </a></li>
+            <li>
+                <a href="{% host_url 'profile:dashboard' host 'www' %}">
+                    Dashboard
+                </a>
+            </li>
         {% else %}
-            <li><a href="{% url 'account_login' %}">Login</a></li>
-            <li><a href="{% url 'account_signup' %}">Sign up</a></li>
+            <li><a href="{% host_url 'account_login' host 'www' %}">
+                Login
+            </a></li>
+            <li><a href="{% host_url 'account_signup' host 'www' %}">
+                Signup
+            </a></li>
         {% endif %}
 
     </ul>

@@ -1,7 +1,7 @@
 {% load static %}
 <section class="services_height "
          style="background-image: url('{{ profile.backgroundImageURL }}');background-attachment: fixed ">
-    <section class="service_background" style="height: auto;{% if layout.background_color == 'light' %}
+    <section class="service_background" style="min-height: 50vh;{% if layout.background_color == 'light' %}
         background-color: rgba(248,246,246,0.5);
     {% elif layout.background_color == 'dark' %} background-color: rgba(147,133,133,0.5);
     {% endif %}">

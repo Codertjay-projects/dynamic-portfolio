@@ -1,3 +1,4 @@
+{% load hosts %}
 <div id="wrapper" class="dark_background">
 
     <!-- Start Overlay Menu Click -->
@@ -36,6 +37,19 @@
                 <li><a href="#testimonial" class="secondary_color scroll-portfolio">testimonial</a></li>
                 <li><a href="#Blog" class="secondary_color scroll-my-blogs">blog</a></li>
                 <li><a href="#Contact" class="secondary_color scroll-contact">contact</a></li>
+                {% if profile.user.is_authenticated %}
+                    <li><a href="{% host_url 'account_login' host 'www' %}" class="secondary_color scroll-contact">Logout</a>
+                    </li>
+                    <li><a href="{% host_url 'profile:profileUpdate' host 'www' %}"
+                           class="secondary_color scroll-contact">Dashboard</a>
+                    </li>
+                {% else %}
+                    <li><a href="{% host_url 'account_login' host 'www' %}"
+                           class="secondary_color scroll-contact">Login</a>
+                    </li>
+                    <li><a href="{% host_url 'account_signup' host 'www' %}"
+                           class="secondary_color scroll-contact">Signup</a></li>
+                {% endif %}
 
                 <!-- End Menu List -->
 

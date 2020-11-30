@@ -10,9 +10,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '1py)l9&2-f%omx17p^e8m8sf1^dtr=5-9d4+178p#1c(f35m)%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+CSRF_COOKIE_DOMAIN = '.localhost:8000'
+
+if DEBUG == True:
+    ALLOWED_HOSTS = ['.localhost', 'localhost']
+
+else:
+    ALLOWED_HOSTS = ['']
 
 # Application definition
 
@@ -24,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third part packages
     'markdown_deux',
     'pagedown',
     'crispy_forms',
@@ -37,7 +45,8 @@ INSTALLED_APPS = [
     'debug_toolbar',
     # subdomains
     'django_hosts',
-
+    'corsheaders',
+    'upload_validator',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -56,11 +65,9 @@ MIDDLEWARE = [
     # for django host
     'django_hosts.middleware.HostsRequestMiddleware',
 
-    # for subdomain
-    # 'subdomains.middleware.SubdomainURLRoutingMiddleware',
-
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -69,6 +76,7 @@ MIDDLEWARE = [
 
     # for debug toolbar
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+
     # for django host
     'django_hosts.middleware.HostsResponseMiddleware'
 ]
@@ -153,6 +161,8 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 AUTH_USER_MODEL = 'users.User'
 login_url = '/accounts/login'
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+SIGNUP_REDIRECT_URL = '/profile/profileUpdate/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -160,8 +170,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'favourtjai@gmail.com'
-EMAIL_HOST_PASSWORD = 'thankgod12'
+EMAIL_HOST_USER = 'dynamicportfl@gmail.com'
+EMAIL_HOST_PASSWORD = 'wh0@m1dyn@m1cp0rtftl'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
@@ -178,4 +188,21 @@ INTERNAL_IPS = [
     # ...
     '127.0.0.1',
     # ...
+]
+
+handler404 = 'portfolio_app.views.handler404'
+handler500 = 'portfolio_app.views.handler500'
+
+CORS_ALLOWED_ORIGINS = [
+    'https://www.localhost:8000',
+    'https://.localhost:8000',
+    'http://codertjay.localhost:8000',
+]
+
+CORS_ALLOWED_REGEX = [
+    r"^http://\w+\.localhost\:8000$",
+    # for subdomain
+    r"^http://\w+\.example\.com$",
+    r"^http://\w+\.localhost:8000$",
+    r"^https://codertjay.localhost$",
 ]

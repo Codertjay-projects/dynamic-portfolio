@@ -117,7 +117,8 @@ body {
 .nav-clicked:hover {
     background-color: grey !important;
     padding: 10px;
-    transition: transform 450ms;
+    transition: transform 1000ms;
+    transition-delay: inherit;
 }
 
 .nav-clicked:focus {

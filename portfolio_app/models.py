@@ -1,4 +1,6 @@
 from django.db import models
+
+from Portfolio.settings import DEFAULT_REDIRECT_URL
 from users.models import User
 
 
@@ -11,7 +13,8 @@ class Project(models.Model):
     @property
     def imageURL(self):
         try:
-            image = self.image.url
+            image_ = self.image.url
+            image = DEFAULT_REDIRECT_URL + image_
         except:
             image = ''
         return image
@@ -26,12 +29,13 @@ class ProjectItem(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     image = models.ImageField(blank=True, null=True)
     description = models.CharField(max_length=100)
-    tag = models.CharField(max_length=10)
+    tag = models.CharField(max_length=10, blank=True, null=True)
 
     @property
     def imageURL(self):
         try:
-            image = self.image.url
+            image_ = self.image.url
+            image = DEFAULT_REDIRECT_URL + image_
         except:
             image = ''
         return image

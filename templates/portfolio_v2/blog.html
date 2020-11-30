@@ -5,10 +5,7 @@
             <div class="row">
 
                 <div class="col-10 offset-1 mx-auto">
-                    <h2 class="title text-center"
-                        style="{% if layout.background_color == 'light' %} color: {{ layout.secondary_color }}!important;
-                        {% elif layout.background_color == 'dark' %} color: white;
-                        {% endif %};"> Blogposts</h2>
+                    <h2 class="secondary_color_dark title text-center"> <strong>Blogposts</strong></h2>
                     <br>
                 </div>
                 <div class="row">
@@ -19,7 +16,7 @@
                                 <div class="card-image">
                                     <a href="#pablo">
                                         <img style="height: 159px ;!important;" class="img img-raised"
-                                             src="{{ media_url }}{{ item.imageURL }}">
+                                             src="{{ item.imageURL }}">
                                     </a>
                                     <div class="colored-shadow"
                                          style="background-image: url({{ item.imageURL }}); opacity: 1;"></div>

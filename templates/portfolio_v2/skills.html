@@ -4,7 +4,7 @@
             <!--title-->
             <div class="row text-center">
                 <div class="col" style="">
-                    <h1 class="display-4 text-uppercase  mb-0" style="">
+                    <h1 class="secondary_color_dark display-4 text-uppercase  mb-0" style="">
                         <strong>Skills</strong>
                     </h1>
                     <div class="title-underline bg-danger bg-dark"></div>
@@ -19,16 +19,19 @@
                         <!--progress bar single-->
                         <div class="" style="display: flex;justify-content: space-between">
 
-                            <h3 class="text-white ">
-                                {% if skill.icon %}
-                                    {{ skill.icon.as_html }}
-                                {% endif %}
-                                {{ skill.name }}</h3>
-                            <h3 class="text-white  "
-                                style="font-weight: bolder">{{ skill.percent }}%</h3>
+                            <h3 class="secondary_color text-white ">
+                                <strong>
+                                    {% if skill.icon %}
+                                        {{ skill.icon.as_html }}
+                                    {% endif %}
+                                    {{ skill.name }}
+                                </strong>
+                            </h3>
+                            <h3 class="secondary_color text-white  "
+                                style="font-weight: bolder">{{ skill.percent }}% </h3>
                         </div>
                         <div class="progress bg-secondary">
-                            <div class="progress-bar bg-primary" style="width: {{ skill.percent }}%;height: 3px"></div>
+                            <div class="primary_color progress-bar{% comment %} bg-primary{% endcomment %}" style="width: {{ skill.percent }}%;height: 4px"></div>
                         </div>
                         <!--end of progress bar single-->
                     </div>

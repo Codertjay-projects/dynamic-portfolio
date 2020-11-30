@@ -1,3 +1,4 @@
+{% load hosts %}
 <div id="blog" class="dark_background blog section-padding">
 
     <!-- Start Container 1 -->
@@ -53,7 +54,7 @@
                         <div class="blog-picture">
 
                             <img src="{{ item.imageURL }}"
-                                 style="width: 381px;height: 215px"
+                                 style="width: 100%;height: 215px"
                                  class="img-responsive" alt="picture blogs">
                             <!-- * img source -->
 
@@ -87,7 +88,7 @@
                             <!-- Start Read More Blog  -->
 
                             <div class="read-more-blog">
-                                <a href="{% url 'blog:blog_detail' item.slug %}"><span>read more</span></a>
+                                <a href="{% host_url 'blog:blog_detail' item.slug host 'www' %}"><span>read more</span></a>
                             </div>
 
                             <!-- End Read More Blog  -->
@@ -111,10 +112,11 @@
     <!-- End Container 2 -->
 
     <div class="container m-5 p-5">
-        <div class="row  m-5 p-5 mx-auto ">
+        <div class="row  m-5 p-5 mx-auto " style="text-align: center;margin-top: 10%;">
 
-            <a href="{% url 'blog:blog_list' %}" class="text-center text-capitalize font-weight-bold">
-                <button type="button" class="btn btn-primary">Read More</button>
+            <a href="{% host_url 'blog:blog_list' host 'www' %}" class="text-center text-capitalize font-weight-bold">
+                <button type="button" class="primary_color btn btn-lg text-light " style="color: white">Read More
+                </button>
             </a>
         </div>
     </div>

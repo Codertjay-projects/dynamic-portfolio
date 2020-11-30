@@ -5,7 +5,7 @@ from Portfolio.settings import DEFAULT_REDIRECT_URL
 from users.models import User
 # Create your models here.
 from django.conf import settings
-from django.db.models.signals import post_save, pre_save
+from django.db.models.signals import post_save
 from django_countries.fields import CountryField
 from fontawesome_5.fields import IconField
 from colorful.fields import RGBColorField
@@ -26,7 +26,6 @@ class Skills(models.Model):
     description = models.CharField(max_length=200)
     percent = models.PositiveIntegerField(default=75)
     icon = IconField(blank=True, null=True)
-
 
 
 portfolio_choices = (
@@ -69,7 +68,8 @@ class Profile(models.Model):
     @property
     def backgroundImageURL(self):
         try:
-            image = self.background_image.url
+            image_ = self.background_image.url
+            image = DEFAULT_REDIRECT_URL + image_
         except:
             image = ''
         return image
@@ -77,7 +77,8 @@ class Profile(models.Model):
     @property
     def profilePicsImageURL(self):
         try:
-            image = self.profile_pics.url
+            image_ = self.profile_pics.url
+            image = DEFAULT_REDIRECT_URL + image_
         except:
             image = ''
         return image
@@ -85,7 +86,8 @@ class Profile(models.Model):
     @property
     def logoImageURL(self):
         try:
-            image = self.logo.url
+            image_ = self.logo.url
+            image = DEFAULT_REDIRECT_URL + image_
         except:
             image = ''
         return image
@@ -109,11 +111,11 @@ class Testimonial(models.Model):
     @property
     def imageURL(self):
         try:
-            image = self.image.url
+            image_ = self.image.url
+            image = DEFAULT_REDIRECT_URL + image_
         except:
             image = ''
         return image
-
 
 
 class Resume(models.Model):
@@ -138,8 +140,6 @@ class Layout(models.Model):
     background_color = models.CharField(choices=background_colors, max_length=10, default='light')
 
 
-
-
 class Service(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
@@ -149,7 +149,8 @@ class Service(models.Model):
     @property
     def imageURL(self):
         try:
-            image = self.image.url
+            image_ = self.image.url
+            image = DEFAULT_REDIRECT_URL + image_
         except:
             image = ''
         return image

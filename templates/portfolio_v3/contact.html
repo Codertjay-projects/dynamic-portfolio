@@ -1,3 +1,4 @@
+{% load hosts %}
 {% load crispy_forms_filters %}
 <div id="contact" class="primary_color contact">
 
@@ -32,8 +33,7 @@
             <!-- Start Contact Form -->
             <div class="form-contact">
 
-                <form action="{% url 'user:contact_user' %}" method="post" onsubmit="SubmitForm(event)"
-                      class="submit-form">
+                <form action="{% host_url 'user:contact_user' host 'www' %}" method="post" class="submit-form">
                     {% csrf_token %}
                     <input type="hidden" value="{{ profile.user.email }}" id="id_to_email" name="to_email">
 
@@ -44,7 +44,7 @@
                            placeholder="E-mail">
 
                     <input type="text" id="id_contact_subject" name="contact_subject" class="form-control"
-                           maxlength="200"
+                           maxlength="200"  style="width: 98%"
                            placeholder="Subject">
 
 
@@ -55,7 +55,6 @@
 
                 </form>
 
-                <button class=" btn send-message" type="submit" onclick="SubmitForm">Send Message</button>
 
             </div>
             <!-- End Contact Form -->

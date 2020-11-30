@@ -1,41 +1,40 @@
 <div class="dark_background">
-<div class="dark_background  " id="About" style="width: 100%;min-height: 70vh">
+    <div class="dark_background  " id="About" style="width: 100%;min-height: 70vh">
 
-    <div class="dark_background container">
-        <div class="row">
-            <div class="col-12 mt-5 mb-5">
-                <h1 class=" text-light display-2 text-center mt-5
-         font-weight-bolder"
-                    style="">
-                    About Me</h1>
+        <div class="dark_background container">
+            <div class="row">
+                <div class="col-12 mt-5 mb-5">
+                    <h1 class="secondary_color_dark text-light display-2 text-center mt-5
+         font-weight-bolder">
+                        <strong>
+                            About Me</strong></h1>
+                </div>
             </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <div class="row mt-5">
+            <br>
+            <br>
+            <div class="row mt-5">
 
 
-            <div class="col-md-6">
-                <div class="card primary_color">
-                    <div class="card-image">
-                        <img class="img-fluid" src="{{ profile.profilePicsImageURL }}" alt="" style="height: auto;">
+                <div class="col-sm-6 col-md-4">
+                    <div class="card primary_color">
+                        <div class="card-image">
+                            <img class="img-fluid" src="{{ profile.profilePicsImageURL }}" alt="" style="height: auto;">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 p-4 ml-4">
-                <div class="card-content">
-                    <h2 class="font-weight-bold" style="{% if layout.background_color == 'light' %} color: {{ layout.secondary_color }}!important;
-                                   {% elif layout.background_color == 'dark' %} color: white;
-                                   {% endif %}">I am {{ profile.user.first_name }} {{ profile.user.last_name }}</h2>
-                    <h5 class="dark_background text-muted"
-                        style="">{{ profile.about }}.
-                    </h5>
+                <div class="col-md-6 p-4 ml-4">
+                    <div class="card-content">
+                        <h2 class="secondary_color_dark font-weight-bold"
+                            style=""><strong>I am {{ profile.user.first_name }} {{ profile.user.last_name }}</strong>
+                        </h2>
+                        <h5 class=" dark_background text-muted"
+                            style="">{{ profile.about }}.
+                        </h5>
+                    </div>
                 </div>
+
             </div>
 
         </div>
-
     </div>
-</div>
 </div>

@@ -1,3 +1,4 @@
+{% load hosts %}
 <div class="dark_background dtr-responsive-header fixed-top">
     <div class="container">
 
@@ -24,12 +25,12 @@
             <div class="dark_background dtr-header-left">
 
                 <!-- logo -->
-                <a class="logo-default dtr-scroll-link" href="#home"><img src="{{ profile.logoImageURL}}" alt="logo"
-                                                                          width="108" style="width: 108px;height: 25px"></a>
+                <a class="logo-default dtr-scroll-link" href="#home"><img src="{{ profile.logoImageURL }}" alt="logo"
+                                                                          width="108" style="width: 50px;height: 25px"></a>
 
                 <!-- logo on scroll -->
-                <a class="logo-alt dtr-scroll-link" href="#home"><img src="{{ profile.logoImageURL}}" alt="logo"
-                                                                      width="108" style="width: 108px;height: 25px"></a>
+                <a class="logo-alt dtr-scroll-link" href="#home"><img src="{{ profile.logoImageURL }}" alt="logo"
+                                                                      width="108" style="width: 50px;height: 25px"></a>
                 <!-- logo on scroll ends -->
 
             </div>
@@ -45,6 +46,25 @@
                         <li><a class="secondary_color nav-link" href="#portfolio">Works</a></li>
                         <li><a class="secondary_color nav-link" href="#blog">Blog</a></li>
                         <li><a class="secondary_color nav-link" href="#contact">Contact</a></li>
+                        {% if profile.user.is_authenticated %}
+                            <li><a class="secondary_color nav-link" href="{% host_url 'account_logout' host 'www' %}">
+                                Logout
+                            </a></li>
+                            <li>
+                                <a class="secondary_color nav-link"
+                                   href="{% host_url 'profile:dashboard' host 'www' %}">
+                                    Dashboard
+                                </a>
+                            </li>
+                        {% else %}
+                            <li><a class="secondary_color nav-link" href="{% host_url 'account_login' host 'www' %}">
+                                Login
+                            </a></li>
+                            <li><a class="secondary_color nav-link" href="{% host_url 'account_signup' host 'www' %}">
+                                Signup
+                            </a></li>
+                        {% endif %}
+
                     </ul>
                 </div>
             </div>

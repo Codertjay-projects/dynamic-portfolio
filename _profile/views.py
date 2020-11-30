@@ -20,6 +20,20 @@ from .forms import (LayoutForm,
                     SkillsForm,
                     ProfileForm, UserUpdateForm, ServiceForm, ResumeForm)
 
+import tweepy
+
+
+#
+# auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+# auth.set_access_token(access_token, access_token_secret)
+#
+# api = tweepy.API(auth)
+#
+# public_tweets = api.home_timeline()
+# for tweet in public_tweets:
+#     print(tweet.text)
+#
+
 
 @login_required
 def userDashboard(request, *args, **kwargs):
@@ -98,7 +112,8 @@ class UserNameUpdate(LoginRequiredMixin, View):
             user.first_name = u_form['first_name'].value()
             user.last_name = u_form['last_name'].value()
             user.email = u_form['email'].value()
-            user.save()
+            if u_form.is_valid():
+                user.save()
             messages.success(self.request, "Your account has being updated")
             if self.request.user.username == self.request.POST.get('the_user'):
                 print('the data', self.request.POST.get('the_user'))
@@ -348,11 +363,12 @@ def skill_update_view(request):
         print('this is the skill descrip', skill_form['description'].value())
         print('this is the skill percent', skill_form['percent'].value())
         skill.name = skill_form['name'].value()
-        if  skill_form['icon'].value() != None:
+        if skill_form['icon'].value() != None:
             skill.icon = skill_form['icon'].value()
         skill.description = skill_form['description'].value()
         skill.percent = skill_form['percent'].value()
-        skill.save()
+        if skill_form.is_valid():
+            skill.save()
         messages.success(request, f'{skill.name} has being updated ')
     else:
         messages.warning(request, f'There was an error updating the skill')
@@ -403,13 +419,15 @@ def project_update_view(request):
     if project:
         project.name = project_form['name'].value()
         if request.FILES.get('image') != None:
-            project.image = request.FILES.get('image')
+            project_form.image = request.FILES.get('image')
+            project.image = project_form.image
         project.description = project_form['description'].value()
-        project.save()
-        print('the image', project.image)
-        messages.success(request, f'{project.name} has being updated ')
-        return redirect('profile:projectCreate')
-    messages.warning(request, f'There was an error updating the project ')
+        if project_form.is_valid():
+            project.save()
+            print('the image', project.image)
+            messages.success(request, f'{project.name} has being updated ')
+            return redirect('profile:projectCreate')
+    messages.warning(request, f'{project_form.errors}')
     return redirect('profile:projectCreate')
 
 
@@ -424,10 +442,11 @@ def project_items_update_view(request):
             project_item.image = project_item_form['image'].value()
         project_item.description = project_item_form['description'].value()
         project_item.tag = project_item_form['tag'].value()
-        project_item.save()
-        messages.success(request, f'{project_item.name} has being updated ')
-        return redirect('profile:projectItemsCreate')
-    messages.warning(request, f'There was an error updating the item   ')
+        if project_item_form.is_valid():
+            project_item.save()
+            messages.success(request, f'{project_item.name} has being updated ')
+            return redirect('profile:projectItemsCreate')
+    messages.warning(request, f'{project_item_form.errors}')
     return redirect('profile:projectItemsCreate')
 
 

@@ -6,6 +6,7 @@ from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 from django.contrib.contenttypes.models import ContentType
 
+from Portfolio.settings import DEFAULT_REDIRECT_URL
 from comments.models import Comment
 from .utils import get_read_time
 from markdown_deux import markdown
@@ -62,7 +63,8 @@ class Post(models.Model):
     @property
     def imageURL(self):
         try:
-            image = self.image.url
+            image_ = self.image.url
+            image = DEFAULT_REDIRECT_URL + image_
         except:
             image = ''
         return image
