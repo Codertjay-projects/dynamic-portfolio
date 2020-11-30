@@ -51,7 +51,7 @@ class ContactUserView(APIView):
                     content,
                     settings.EMAIL_HOST_USER,
                     [to_email],
-                    fail_silently=False,
+                    fail_silently=True,
                 )
                 print('the message was sent')
                 messages.success(self.request, 'Your messsage has  being sent')
@@ -87,10 +87,10 @@ def contactAdminView(request):
                 content,
                 contact.contact_email,
                 [EMAIL_HOST_USER],
-                fail_silently=False,
+                fail_silently=True,
             )
             print('sent the message',content)
             messages.success(request, 'Your message has being sent we would be in touch with you later ')
-            return redirect('portfolio:home')
+            return redirect('single_url:contact')
     print('there was an error sending your message')
-    return redirect('portfolio:home')
+    return redirect('single_url:contact')

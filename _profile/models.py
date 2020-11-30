@@ -25,7 +25,7 @@ class Skills(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     percent = models.PositiveIntegerField(default=75)
-    icon = IconField(blank=True, null=True)
+    icon = IconField(blank=True,null=True)
 
 
 portfolio_choices = (
@@ -135,8 +135,8 @@ background_colors = (
 class Layout(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    primary_color = RGBColorField()
-    secondary_color = RGBColorField()
+    primary_color = RGBColorField(default='#FFFFFF')
+    secondary_color = RGBColorField(default='#000000')
     background_color = models.CharField(choices=background_colors, max_length=10, default='light')
 
 

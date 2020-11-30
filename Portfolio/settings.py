@@ -1,4 +1,5 @@
 import os
+from decouple import config, Csv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -7,19 +8,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1py)l9&2-f%omx17p^e8m8sf1^dtr=5-9d4+178p#1c(f35m)%'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
-
-CSRF_COOKIE_DOMAIN = '.localhost:8000'
+DEBUG = config('DEBUG', cast=bool)
 
 if DEBUG == True:
     ALLOWED_HOSTS = ['.localhost', 'localhost']
-
 else:
-    ALLOWED_HOSTS = ['']
+    ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Application definition
 
@@ -52,7 +50,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     '_profile',
-
     'blog',
     'project',
     'users',
@@ -104,12 +101,24 @@ WSGI_APPLICATION = 'Portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'HOST': config('DB_HOST'),
+            'PORT': '',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -166,14 +175,14 @@ SIGNUP_REDIRECT_URL = '/profile/profileUpdate/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+
 # for sending email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'dynamicportfl@gmail.com'
-EMAIL_HOST_PASSWORD = 'wh0@m1dyn@m1cp0rtftl'
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_HOST = config('EMAIL_HOST', default='localhost')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
 
 # this is for django host
 ROOT_URLCONF = 'Portfolio.urls'
@@ -193,16 +202,5 @@ INTERNAL_IPS = [
 handler404 = 'portfolio_app.views.handler404'
 handler500 = 'portfolio_app.views.handler500'
 
-CORS_ALLOWED_ORIGINS = [
-    'https://www.localhost:8000',
-    'https://.localhost:8000',
-    'http://codertjay.localhost:8000',
-]
-
-CORS_ALLOWED_REGEX = [
-    r"^http://\w+\.localhost\:8000$",
-    # for subdomain
-    r"^http://\w+\.example\.com$",
-    r"^http://\w+\.localhost:8000$",
-    r"^https://codertjay.localhost$",
-]
+CORS_ALLOWED_REGEX = config('CORS_ALLOWED_REGEX', cast=Csv())
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', cast=Csv())
