@@ -1,0 +1,170 @@
+/* --------- color Style ---------- */
+
+
+span.goll-highlight-texts{
+	color: #ff9800;
+	padding: 10px;
+}
+span.goll-highlight-text{
+	color: #ff9800;
+}
+
+.goll-button-solid{
+	background-color: #ff9800;
+}
+
+.goll-button-solid:hover{
+	
+}
+.goll-button-outline-light:hover{
+	background-color: #ff9800;
+}
+
+.goll-button-outline-dark:hover{
+	background-color: #ff9800;
+}
+
+.goll-button-outline-round-dark:hover{
+	background-color: #ff9800;
+}
+
+.goll-btn-round{
+	background-color: #ff9800;
+}
+
+.goll-btn-round:hover{
+	
+}
+
+.goll-button-outline-round:hover{
+	
+}
+
+.goll-blurb-icon-only i{
+	color: #ff9800;
+}
+
+.goll-blurb-icon-only h3{
+	color: #ff9800
+}
+
+.goll-blurb-round-icon:hover .goll-icon{
+	background-color: #ff9800;
+	
+}
+.goll-blurb-icon-left-square .goll-icon:hover {
+	background-color: #ff9800;
+}
+.goll-blurb-round-icon:hover h3{
+	color: #ff9800;
+}
+
+.goll-blurb-icon-left-square:hover .goll-blurb-text h3{
+	color: #ff9800;
+}
+
+.goll-blurb-icon-left-square:hover .goll-blurb-text h3:after{
+	background-color: #ff9800;
+}
+
+.goll-main-menu .navbar-nav li a:hover,
+.goll-main-menu .navbar-nav li.active a{
+    color: #ff9800;
+}
+
+.goll-slider .sp-selected-button {
+  background-color: #ff9800;
+  
+}
+
+.goll-member-details h3{
+	color: #ff9800;
+}
+#scrollUp:hover {
+	background-color: #ff9800;
+	}
+
+/* --------- Featured Work ---------- */
+.goll-port-work-details .goll-port-work-desc p a:hover{
+	color: #ff9800;
+}
+
+.goll-port-work-details .goll-port-work-desc h3{
+	color: #ff9800;
+}
+
+.goll-port-work-details .goll-port-work-desc .goll-like-btn a:hover{
+	color: #ff9800;
+}
+
+.goll-port-work-details .goll-port-work-desc .goll-like-btn a:hover i{
+	color: #ff9800;
+}
+
+/* --------- Portfolio Style -----------*/
+.goll-portfolio-filter-btn-group ul li a.selected{
+	background-color: #ff9800;
+}
+
+.goll-portfolio-item .goll-portfolio-details h3{
+	color: #ff9800;
+}
+
+.goll-portfolio-item .goll-portfolio-details p a:hover{
+	color: #ff9800;
+}
+
+.goll-portfolio-btn-wrapper a.goll-portfolio-btn:hover{
+	color: #ffffff;
+	background-color: #ff9800;
+	border: 2px solid transparent;
+}
+.goll-portfolio-details .goll-portfolio-meta-btn ul li:hover {
+	background-color: #ff9800;
+	
+}
+.goll-portfolio-filter-btn-group ul li a {
+	border: 1px solid #ff9800;
+	margin: 2px;
+    color: #333;
+}
+.goll-custom-sec-text ul li i{
+	color: #ff9800;
+}
+.goll-process-item:hover h3{
+	color: #ff9800;
+}
+.goll-pricing-plans .goll-pricing-titles {
+	background: #FF9800;
+	padding: 20px;
+}
+.goll-pricing-plans a.goll-signup-btn {
+	background-color: #ff9800;
+}
+
+.goll-pricing-plans a.goll-signup-btn:hover{
+	opacity: 0.6;
+}
+.owl-theme .owl-controls .owl-page span {
+  border: 1px solid #ff9800;
+}
+
+.owl-theme .owl-controls .owl-page.active span {
+  background-color: #ff9800;
+  
+}
+
+.goll-footer-social-info li:hover {
+	background-color: #ff9800;
+	
+}
+/* ------- Contact Style ------ */
+.goll-contact-section .goll-contact-form input[type="submit"] {
+	background-color: #ff9800;
+}
+.goll-contact-section .goll-contact-form input[type="submit"]:hover {
+	opacity: 0.6;
+}
+.goll-contact-section .goll-contact-address ul li i {
+	background-color: #ff9800;
+}
