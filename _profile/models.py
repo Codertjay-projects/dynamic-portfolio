@@ -32,7 +32,8 @@ portfolio_choices = (
     ('portfolio_v1', 'portfolio_v1'),
     ('portfolio_v2', 'portfolio_v2'),
     ('portfolio_v3', 'portfolio_v3'),
-    ('portfolio_v4', 'portfolio_v4')
+    ('portfolio_v4', 'portfolio_v4'),
+    ('portfolio_v5', 'portfolio_v5')
 )
 
 

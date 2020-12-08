@@ -45,11 +45,11 @@ span.goll-highlight-text{
 }
 
 .goll-blurb-icon-only h3{
-	color: #ff9800
+	/*color: #ff9800*/
 }
 
 .goll-blurb-round-icon:hover .goll-icon{
-	background-color: #ff9800;
+	/*background-color: #ff9800;*/
 	
 }
 .goll-blurb-icon-left-square .goll-icon:hover {
@@ -103,7 +103,7 @@ span.goll-highlight-text{
 
 /* --------- Portfolio Style -----------*/
 .goll-portfolio-filter-btn-group ul li a.selected{
-	background-color: #ff9800;
+	/*background-color: #ff9800;*/
 }
 
 .goll-portfolio-item .goll-portfolio-details h3{

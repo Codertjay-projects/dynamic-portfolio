@@ -194,9 +194,7 @@ DEFAULT_REDIRECT_URL = "http://www.localhost:8000"
 
 # for django debug toolbar
 INTERNAL_IPS = [
-    # ...
     '127.0.0.1',
-    # ...
 ]
 
 handler404 = 'portfolio_app.views.handler404'

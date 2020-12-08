@@ -1,0 +1,45 @@
+<section id="testimonials" class="dark_background bgc-two bgc-6 goll-testimonial-section">
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Section Header -->
+            <div class="col-md-12 col-sm-12 col-xs-12 goll-section-header wow fadeInDown">
+                <h2 class="secondary_color_dark">TESTI<span class="secondary_color">MONIAL</span></h2>
+                <div class="goll-section-divider"></div>
+            </div>
+            <!-- Section Header End -->
+
+        </div>
+    </div>
+
+    <div class="goll-parallax-overlay"></div>
+
+    <div class="goll-testimonial-wrapper wow bounceIn">
+        <div class="container">
+            <div class="row">
+
+
+                <!-- Testimonial Slider -->
+                <div id="goll-testimonial" class="owl-carousel goll-testimonial">
+
+                    {% for item in testimonial %}
+
+                        <!-- Slides -->
+                        <div class="goll-testimonial-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                            <img src="{{ item.imageURL }}" alt="">
+                            <p>{{ item.detail }}</p>
+                            <p class="goll-client-info">{{ item.client_name }}</p>
+                        </div>
+                        <!-- Slides End -->
+
+                    {% endfor %}
+
+
+                </div>
+                <!-- Testimonial Slider End -->
+
+            </div>
+        </div>
+    </div>
+</section>
