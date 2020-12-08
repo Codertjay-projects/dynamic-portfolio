@@ -1,3 +1,4 @@
+{% load hosts %}
 <section id="contact" class="dark_background bgc-one bgc-7 goll-section-wrapper goll-contact-section"
          data-stellar-background-ratio="0.5">
     <div class="goll-parallax-overlay"></div>
@@ -17,40 +18,36 @@
 
             <div class="goll-contact-details">
 
-                <!-- Address Area End -->
-                id_to_email
-                id_contact_name
-                id_contact_email
-                id_contact_subject
-                id_contact_message
+                <form id="contactform" method="post" action="{% host_url 'user:contact_user' host 'www' %}"
+                      class="submit-form">
+                    {% csrf_token %}
+                    <div class="col-md-12 col-sm-12 col-xs-12 goll-contact-form wow bounceInRight">
+                        <div id="contact-result"></div>
+                        <div id="contact-form">
+                            <input type="hidden" name="to_email" id="id_to_email" value="{{ profile.user.to_email }}">
 
+                            <div class="goll-input-name goll-input-fields">
+                                <input type="text" name="contact_name" id="id_contact_name" placeholder="Name">
+                            </div>
+                            <div class="goll-input-name goll-input-fields">
+                                <input type="text" name="contact_subject" id="id_contact_subject" placeholder="Subject">
+                            </div>
 
-                to_email
-                contact_name
-                contact_email
-                contact_subject
-                contact_message
-                <!-- Contact Form -->
-                <div class="col-md-12 col-sm-12 col-xs-12 goll-contact-form wow bounceInRight">
-                    <div id="contact-result"></div>
-                    <div id="contact-form">
-                        <input type="hidden" name="to_email" id="id_to_email" value="{{ profile.user.to_email }}">
-                        <div class="goll-input-name goll-input-fields">
-                            <input type="text" name="name" id="name" placeholder="Name">
+                            <div class="goll-input-email goll-input-fields">
+                                <input type="email" name="contact_email" id="id_contact_email" placeholder="Email">
+                            </div>
+
+                            <div class="goll-input-message goll-input-fields">
+                                <textarea name="contact_message" id="id_contact_message" cols="30" rows="10"
+                                          placeholder="Message"></textarea>
+                            </div>
+
+                            <input type="submit" value="SEND MESSAGE" id="submit-btn"
+                                   style="background-color: {{ layout.primary_color }}!important;">
                         </div>
-
-                        <div class="goll-input-email goll-input-fields">
-                            <input type="email" name="email" id="id_to_email" placeholder="Email">
-                        </div>
-
-                        <div class="goll-input-message goll-input-fields">
-                            <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
-                        </div>
-
-                        <input type="submit" value="SEND MESSAGE" id="submit-btn">
                     </div>
-                </div>
-                <!-- Contact Form End -->
+                    <!-- Contact Form End -->
+                </form>
 
             </div>
         </div>

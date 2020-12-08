@@ -4,25 +4,24 @@
 
             <!-- Section Header -->
             <div class="col-md-12 col-sm-12 col-xs-12 goll-section-header wow fadeInDown">
-                <h2 class="secondary_color_dark">FEATU<span class="goll-highlight-text">RES</span></h2>
+                <h2 class="secondary_color_dark">SERVI<span class="goll-highlight-text">CE</span></h2>
                 <div class="goll-section-divider"></div>
 
             </div>
             <!-- Section Header End -->
 
             <!-- What We Do -->
-            <div class="goll-what-we-do">
+            <div class="goll-what-we-do" style="align-items: center">
 
+                {% for item in service %}
                 <div class=" col-md-3 col-sm-3 col-xs-12 goll-blurb-round-icon wow bounceInRight" data-wow-delay=".5s">
                     <div class="background_hover color_hover secondary_color goll-icon">
-                        <i class="fa fa-css3"></i>
+                        <img src="{{ item.imageURL }}" alt="" style="height: 100px;width: 100px;border-radius: 50% ;">
                     </div>
-                    <div class="color_hover" style="font-size: 4px !important;">CSS3 TEMPLATE</div>
-                    <p class="color_hover ">Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Libero praesentium quam nulla, porro
-                        nemo.</p>
+                    <h4 class="color_hover" style="font-size: 14px !important;text-align: center">{{item.name}}</h4>
+                    <p class="color_hover ">{{item.description}}</p>
                 </div>
-
+                {% endfor %}
             </div>
             <!-- What We Do End -->
 
