@@ -1,0 +1,23 @@
+<section>
+
+    <div class="container">
+        <div class="row">
+            {% for item in post %}
+                <div class="col-md-6">
+                <div class="card" style="">
+                    <div class="card-image">
+                        <img src="{{ item.imageURL }}" alt="">
+                    </div>
+                    <div class="card-content">
+                        <h5 class="secondary_color">{{ item.get_markdown|truncatewords:10 }}</h5>
+                    </div>
+                </div>
+
+                </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+
+</section>

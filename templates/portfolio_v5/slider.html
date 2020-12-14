@@ -2,43 +2,39 @@
     <div class="sp-slides">
 
         <!-- Slides -->
+
         <div class="sp-slide goll-main-slides">
-            <div class="goll-img-overlay"></div>
+            <div class="goll-img-overlay"
+                 style="background-color: rgba({{ primary_color.primary_color_1 }},
+                         {{ primary_color.primary_color_2 }},{{ primary_color.primary_color_3 }},0.5)"></div>
 
             <img class="sp-image" src="{{ profile.profilePicsImageURL }}" alt="Slider 1"/>
 
-            <h1 class="sp-layer goll-slider-text-big"
-                data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1500"
-                data-hide-delay="200">
-                <span class="goll-highlight-texts"><img src="{{ profile.profilePicsImageURL }}"
-                                                        style="border-radius: 80%"></span>
-            </h1>
+            <div class="sp-layer goll-slider-text-big"
+                 style="display: flex;text-align: left"
+                 data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1000"
+                 data-hide-delay="100">
+                <span class="secondary_color ">
 
-            <p class="sp-layer"
-               data-position="center" data-vertical="15%" data-show-delay="2000" data-hide-delay="200"
-               data-show-transition="left" data-hide-transition="right">
-            <div style="font-size: 16px">{{ profile.user.first_name }} {{ profile.user.last_name }}</div>
-            {{ profile.motto }}
-            </p>
-        </div>
-        <!-- Slides End -->
-        <!-- Slides -->
-        <div class="sp-slide goll-main-slides">
-            <div class="goll-img-overlay"></div>
-            <img class="sp-image" src="{{ profile.backgroundImageURL }}" alt="Slider 2"/>
+                <h1 class="secondary_color"
+                    style="font-weight: bolder;"> I am {{ profile.user.last_name }} -  {{ profile.user.first_name }}
+                </h1>
+                    <br>
+                    <h5 class="font-weight-bold">
+                        Motto:{{ profile.motto|linebreaks }}
+                    </h5>
+                    <br>
+                    <h3 class="secondary_color">
+                        Follow me on :
+                        <i class="fa fa-linkedin "></i>
+                        <i class="fa fa-twitter "></i>
+                        <i class="fa fa-facebook "></i>
+                        <i class="fa fa-instagram "></i>
+                    </h3>
 
-            <h1 class="sp-layer goll-slider-text-big"
-                data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1500"
-                data-hide-delay="200">
-                <span class="goll-highlight-texts"><img src="{{ profile.backgroundImageURL }}"
-                                                        style="border-radius: 80%"></span>
-            </h1>
+                   </span>
+            </div>
 
-            <p class="sp-layer"
-               data-position="center" data-vertical="15%" data-show-delay="2000" data-hide-delay="200"
-               data-show-transition="left" data-hide-transition="right">
-                {{ profile.user.first_name }} {{ profile.user.last_name }}
-            </p>
         </div>
         <!-- Slides End -->
 

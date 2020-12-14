@@ -4,17 +4,19 @@
         <div class="row">
             <!-- Section Header -->
             <div class="col-md-12 col-sm-12 col-xs-12 goll-section-header wow fadeInDown">
-                <h2>ABOUT<span class="secondary_color">ME</span></h2>
-                <div class="goll-section-divider"></div>
+                <h2 class="secondary_color_dark">ABOUT<span class="secondary_color">ME</span></h2>
+                <div class=" primary_color goll-section-divider"></div>
+
             </div>
             <!-- Section Header End -->
 
             <div class="col-md-6 col-sm-6 col-xs-12 goll-custom-sec-img wow bounceInLeft">
-                <img src="{{ profile.profilePicsImageURL }}" alt="Custom Image">
+                <img src="{{ profile.profilePicsImageURL }}" alt="Custom Image"
+                     style="border-radius: 10%;box-shadow: rgba(0,0,0,0.44);">
             </div>
 
             <div class="col-md-6 col-sm-6 col-xs-12 goll-custom-sec-text wow bounceInRight">
-                <p>{{ profile.about }}!</p>
+                <p class="text-muted secondary_color">{{ profile.about|linebreaks }}!</p>
             </div>
         </div>
     </div>

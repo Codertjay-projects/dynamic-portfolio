@@ -50,8 +50,16 @@
             color: white;
         }
 
+        .goll-main-menu .navbar-nav li a:hover, .goll-main-menu .navbar-nav li.active a {
+            color: {{ layout.secondary_color }} !important ;;
+        }
+
         .primary_color_nav text {
             color: white !important;
+        }
+
+        .primary_color {
+            background-color: {{ layout.primary_color }} !important;
         }
 
         .background_image {
@@ -71,11 +79,16 @@
         }
 
 
-        .background_clicked :active {
+   {% comment %}     .background_clicked :active {
             background-color: {{ layout.primary_color }} !important;
         }
 
         .background_clicked :focus {
+            background-color: {{ layout.primary_color }} !important;
+        }{% endcomment %}
+
+        .goll-portfolio-filter-btn-group ul li a.selected {
+
             background-color: {{ layout.primary_color }} !important;
         }
 
@@ -120,7 +133,7 @@
 <body>
 <!-- Preloader -->
 <div class=" preloader" style="background-color: {{ layout.primary_color }}">
-    <div class="status" style="border-radius: 50%"></div>
+    <div class="status" style="border-radius: 50%;"></div>
 </div>
 
 
@@ -168,6 +181,10 @@
 {% include 'portfolio_v5/testimonial.html' %}
 {% comment %}<!-- Testimonial End -->{% endcomment %}
 
+
+{% comment %} blog section{% endcomment %}
+{% include 'portfolio_v5/blog.html' %}
+{% comment %}end  blog section{% endcomment %}
 
 <!-- =============================
             Contact Section
