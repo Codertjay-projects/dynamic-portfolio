@@ -1,4 +1,4 @@
-<section class="dark_background slider-pro goll-slider" id="goll-slider">
+<section class="dark_background slider-pro {% comment %}goll-slider{% endcomment %}" id="goll-slider">
     <div class="sp-slides">
 
         <!-- Slides -->
@@ -11,25 +11,25 @@
             <img class="sp-image" src="{{ profile.profilePicsImageURL }}" alt="Slider 1"/>
 
             <div class="sp-layer goll-slider-text-big"
-                 style="display: flex;text-align: left"
+                 style="display: flex;text-align: left;opacity: unset;visibility: visible !important; "
                  data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1000"
-                 data-hide-delay="100">
-                <span class="secondary_color ">
+                 data-hide-delay="10000">
+                <span class="secondary_color " >
 
                 <h1 class="secondary_color"
                     style="font-weight: bolder;"> I am {{ profile.user.last_name }} -  {{ profile.user.first_name }}
                 </h1>
                     <br>
-                    <h5 class="font-weight-bold">
+                    <h5 class="font-weight-bold ">
                         Motto:{{ profile.motto|linebreaks }}
                     </h5>
                     <br>
                     <h3 class="secondary_color">
                         Follow me on :
-                        <i class="fa fa-linkedin "></i>
-                        <i class="fa fa-twitter "></i>
-                        <i class="fa fa-facebook "></i>
-                        <i class="fa fa-instagram "></i>
+                        <a href="{{ profile.linkedin }}"><i class="fa fa-linkedin "></i></a>
+                       <a href="{{ profile.twitter }}"> <i class="fa fa-twitter "></i></a>
+                        <a href="{{ profile.facebook }}"><i class="fa fa-facebook "></i></a>
+                        <a href="{{ profile.instagram }}"><i class="fa fa-instagram "></i></a>
                     </h3>
 
                    </span>
@@ -40,3 +40,6 @@
 
     </div>
 </section>
+
+
+

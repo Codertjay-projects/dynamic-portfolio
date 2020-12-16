@@ -1,88 +1,35 @@
 {% load hosts %}
-<footer id="dtr-footer">
+<footer class="dark_background bgc-7 foot">
+    <div class="container">
+        <div class="row">
 
-    <!--== copyright starts ==-->
-    <div class="dtr-copyright">
-        <div class="container text-light">
+            <div class="col-md-4 text-left ">
+                <h5>About Us</h5>
+                <p>{{ about_website }} </p>
+            </div>
 
-            <div class="content ">
-                <div class="row ">
-                    <div class="col-md-4 ">
-                        <h5>About Us</h5>
-                        <p>{{ about_website }} </p>
-                    </div>
+            <div class="col-md-8">
+                <div class="goll-footer-content">
 
-                    <div class="col-md-4 ">
-                        <h5>Social Feed</h5>
-                        <div class="social-feed">
-                            <div class="feed-line ">
-                                <a href="{{ twitter_url }}" target="_blank"><i class="fa fa-twitter "></i></a>
-                                <p class="">How to handle ethical disagreements with your clients.</p>
-                            </div>
-                            <div class="feed-line ">
-                                <a href="{{ instagram_url }}" target="_blank"> <i class="fa fa-twitter "></i></a>
-                                <p>The tangible benefits of designing at 1x pixel density.</p>
-                            </div>
-                            <div class="feed-line ">
-                                <a href="{{ facebook_url }}" target="_blank"><i class="fa fa-facebook-square "></i></a>
-                                <p>A collection of 25 stunning sites that you can use for inspiration.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <ul class="secondary_color goll-footer-social-info">
+                        <li>
+                            <a href="{% host_url 'blog:blog_list' %}"><i class="fa fa-blogger"></i></a>
+                        </li>````````````
+                        <li>
+                            <a href="{{ facebook_url }}"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="{{ twitter_url }}"><i class="fa fa-twitter"></i></a>
+                        </li>
 
-                    <div class="col-md-4 ">
-                        <h5 class="">Instagram Feed</h5>
-                        <div class="gallery-feed">
-                            <img src="assets/img/faces/card-profile6-square.jpg" class="img img-raised img-rounded"
-                                 alt="">
-                            <img src="assets/img/faces/christian.jpg" class="img img-raised img-rounded" alt="">
-                            <img src="assets/img/faces/card-profile4-square.jpg" class="img img-raised img-rounded"
-                                 alt="">
-                            <img src="assets/img/faces/card-profile1-square.jpg" class="img img-raised img-rounded"
-                                 alt="">
+                        <li>
+                            <a href="{{ linkedin_url }}"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
 
-                            <img src="assets/img/faces/marc.jpg" class="img img-raised img-rounded" alt="">
-                            <img src="assets/img/faces/kendall.jpg" class="img img-raised img-rounded" alt="">
-                            <img src="assets/img/faces/card-profile5-square.jpg" class="img img-raised img-rounded"
-                                 alt="">
-                            <img src="assets/img/faces/card-profile2-square.jpg" class="img img-raised img-rounded"
-                                 alt="">
-                        </div>
-
-                    </div>
                 </div>
             </div>
 
-
-            <hr>
-
-            <ul class="pull-left ">
-                <li>
-                    <a href="
-
-                            {% host_url 'blog:blog_list' host 'www' %}{% comment %}{% url 'blog:blog_list' %}{% endcomment %}">
-                        Blog
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Discover
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Payment
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Contact Us
-                    </a>
-                </li>
-            </ul>
-
         </div>
     </div>
-    <!--== copyright ends ==-->
-
 </footer>

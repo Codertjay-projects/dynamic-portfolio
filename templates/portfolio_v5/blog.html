@@ -1,21 +1,43 @@
-<section>
+{% load hosts %}
+<section class="dark_background " id="blog">
 
     <div class="container">
         <div class="row">
+            <!-- Section Header -->
+            <div class="col-md-12 col-sm-12 col-xs-12 goll-section-header wow fadeInDown">
+                <h2 class="secondary_color_dark">PO<span class="secondary_color">ST</span></h2>
+                <div class=" primary_color goll-section-divider"></div>
+
+            </div>
+            <!-- Section Header End -->
+
             {% for item in post %}
                 <div class="col-md-6">
-                <div class="card" style="">
-                    <div class="card-image">
-                        <img src="{{ item.imageURL }}" alt="">
+                    <div class="card shadow-lg "
+                         style="width: auto;max-width: 400px;height: 30%;border-color:{{ layout.primary_color }};border-top-style:dot-dash;
+                                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+                                 overflow: hidden;
+                                 ">
+                        <div class="card-image">
+                            <img src="{{ item.imageURL }}" alt=""
+                                 style="width: 100%;height: 30%;max-height: 300px;">
+                        </div>
+                        <div class="card-content"
+                             style=" border-color:{{ layout.primary_color }};border-style:ridge">
+                            <h4 class=" text-muted">{{ item.title }}</h4>
+                            <h5 class="secondary_color">{{ item.get_markdown|truncatewords:10 }}</h5>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <h5 class="secondary_color">{{ item.get_markdown|truncatewords:10 }}</h5>
-                    </div>
-                </div>
 
                 </div>
             {% endfor %}
 
+            <div class="col-12 text-center">
+                <a href="{% host_url 'blog:blog_list' host 'www' %}" class=" mt-5 pt-5">
+                    <button class="primary_color btn-outline text-light" style="color:white;padding: 12px "> View More
+                    </button>
+                </a>
+            </div>
 
         </div>
     </div>

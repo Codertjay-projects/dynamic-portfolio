@@ -1,4 +1,6 @@
 {% load static %}
+{% load fontawesome_5 %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Title -->
-    <title>Classic - One Page Portfolio Template</title>
+    <title>{{ profile.user.username }}- Portfolio</title>
 
     <!-- Favicon Ico -->
     <link rel="shortcut icon" href="images/favicon.ico">
@@ -17,6 +19,7 @@
     ================================== -->
 
     <!-- Normalize And Bootstrap -->
+    {% fontawesome_5_static %}
     <link rel="stylesheet" href="{% static 'portfolio_v5/css/normalize.css' %}">
     <link rel="stylesheet" href="{% static 'portfolio_v5/css/bootstrap.min.css' %}">
 
@@ -79,13 +82,13 @@
         }
 
 
-   {% comment %}     .background_clicked :active {
-            background-color: {{ layout.primary_color }} !important;
-        }
+        {% comment %}     .background_clicked :active {
+                 background-color: {{ layout.primary_color }} !important;
+             }
 
-        .background_clicked :focus {
-            background-color: {{ layout.primary_color }} !important;
-        }{% endcomment %}
+             .background_clicked :focus {
+                 background-color: {{ layout.primary_color }} !important;
+             }{% endcomment %}
 
         .goll-portfolio-filter-btn-group ul li a.selected {
 
@@ -126,6 +129,9 @@
             }
         {% endif %}
 
+        .sp-arrows {
+            display: none !important;
+        }
     </style>
 
 </head>
@@ -160,6 +166,10 @@
 {% comment %} skill section{% endcomment %}
 {% include 'portfolio_v5/skills.html' %}
 {% comment %}end of skill section{% endcomment %}
+
+{% comment %} resume section {% endcomment %}
+{% include 'portfolio_v5/resume.html' %}
+{% comment %} end  resume section {% endcomment %}
 
 
 {% comment %} services section{% endcomment %}

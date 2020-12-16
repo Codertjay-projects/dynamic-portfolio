@@ -1,24 +1,35 @@
-<footer class="dark_background bgc-7 foot">
+{% load hosts %}
+<footer class="primary_color bgc-7 foot">
     <div class="container">
         <div class="row">
-            <div class="goll-footer-content">
 
-                <ul class="goll-footer-social-info">
-                    <li>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                    </li>
-                </ul>
-
+            <div class="col-md-4 text-left ">
+                <h3 >About Us</h3>
+                <p>{{ about_website }} </p>
             </div>
+
+            <div class="col-md-8">
+                <div class="goll-footer-content">
+
+                    <ul class="secondary_color goll-footer-social-info">
+                        <li>
+                            <a href="{% host_url 'blog:blog_list' %}"><i class="fa fa-blogger"></i></a>
+                        </li>
+                        <li>
+                            <a href="{{ facebook_url }}"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="{{ twitter_url }}"><i class="fa fa-twitter"></i></a>
+                        </li>
+
+                        <li>
+                            <a href="{{ linkedin_url }}"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
         </div>
     </div>
 </footer>

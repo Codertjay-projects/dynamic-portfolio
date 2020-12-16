@@ -1,0 +1,87 @@
+<section class="dark_background" id="skill">
+
+    <!-- Start My skills -->
+
+    <div class="dark_background skills-section">
+
+        <!-- Start Container 1 -->
+
+        <div class="dark_background container-fluid">
+
+            <div class="row">
+
+                <!-- Start Box - Skills -->
+
+                <div class="dark_background col-xs-12 col-sm-6 col-md-6 col-lg-6 box-skills">
+
+                    <!-- Start Titles Of Section My Skills -->
+
+                    <div class="contents-titles-section">
+
+                        <h2 class="wow slideInDown section-title" data-wow-duration="2s"><span
+                                class="secondary_color color-me">My</span> skills</h2>
+                        <hr class="line-title-left">
+
+                    </div>
+
+                    <!-- End Titles Of Section My Skills -->
+
+                    <!-- Start Box Progress 1 -->
+
+                    {% for item in skills %}
+                        <div class="progress-contents">
+
+
+                            <h3 class="secondary_color" style="color: {{ layout.secondary_color }}">
+                                {% if item.icon %}
+                                {{ item.icon.as_html }}
+                            {% endif %} {{ item.name }}</h3>
+                            <p>
+                                {{ item.description|truncatechars:50 }}
+                            </p>
+                            <span class="percent">{{ item.percent }}%</span>
+
+                            <div class="primary_color progress">
+
+                                <div class="primary_color progress-bar percent-progress-bar-one" role="progressbar"
+                                     aria-valuenow="{{ item.percent }}"
+                                     aria-valuemin="0" aria-valuemax="100"
+                                     style="background-color: {{ layout.primary_color }}">
+
+                                    <span class="sr-only">{{ item.percent }}% Complete</span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                    <!-- End Box Progress 1 -->
+
+
+                </div>
+
+                <!-- End Box - Skills -->
+
+                <!-- Start Box - Skills Picture -->
+                <div class="dark_background col-xs-12 col-sm-6 col-md-6 col-lg-6 box-skills-img">
+                    <img src="{{ profile.backgroundImageURL }}"
+                         class="img-responsive" style="width: 632px;min-height: 50%"
+                         alt="img  skills">
+                    <!-- * img source -->
+                </div>
+
+                <!-- Start Box - Skills Picture -->
+
+            </div>
+
+        </div>
+
+        <!-- End Container 1 -->
+
+    </div>
+
+    <!-- End My skills -->
+
+
+</section>

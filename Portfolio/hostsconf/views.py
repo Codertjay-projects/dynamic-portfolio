@@ -13,7 +13,6 @@ from portfolio_app.models import ProjectItem, Project
 from users.forms import ContactUserForm
 
 
-
 # Todo: i would need to create a 404 page to redirect the user when he or she goes to a url or host
 #  that does not exist
 def my_portfolio(request, username):
@@ -39,6 +38,7 @@ def my_portfolio(request, username):
             secondary_color_2 = secondary_color_nums[1]
             secondary_color_3 = secondary_color_nums[2]
             print('this is the project items', project_items)
+            host_url = f"{profile.user.username}{settings.PARENT_HOST}"
         except Exception:
             primary_color_nums = None
             secondary_color_nums = None
@@ -48,6 +48,7 @@ def my_portfolio(request, username):
             secondary_color_1 = None
             secondary_color_2 = None
             secondary_color_3 = None
+            host_url = None
     else:
         # messages.warning(request, "the site does not exist")
         return HttpResponseRedirect(DEFAULT_REDIRECT_URL)
@@ -62,7 +63,7 @@ def my_portfolio(request, username):
         'service': service,
         'resume': resume,
         'media_url': DEFAULT_REDIRECT_URL,
-        'host_url': f"{profile.user.username}{settings.PARENT_HOST}",
+        'host_url': host_url,
         'primary_color': {
             'primary_color_1': primary_color_1,
             'primary_color_2': primary_color_2,
