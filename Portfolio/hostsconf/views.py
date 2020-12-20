@@ -50,7 +50,10 @@ def my_portfolio(request, username):
             secondary_color_3 = None
             host_url = None
     else:
-        # messages.warning(request, "the site does not exist")
+        try:
+            messages.warning(request, "the site does not exist")
+        except Exception as a:
+            print(a)
         return HttpResponseRedirect(DEFAULT_REDIRECT_URL)
     context = {
         'project': project,
@@ -97,8 +100,14 @@ def my_portfolio(request, username):
         elif profile.portfolio_version == 'portfolio_v5':
             return render(request, 'portfolio_v5/base_v5.html', context)
         else:
-            # messages.warning(request, "the site does not exist")
+            try:
+                messages.warning(request, "the site does not exist")
+            except Exception as a:
+                print(a)
             return HttpResponseRedirect(DEFAULT_REDIRECT_URL)
     else:
-        # messages.warning(request, "the site does not exist")
+        try:
+            messages.warning(request, "the site does not exist")
+        except Exception as a:
+            print(a)
         return HttpResponseRedirect(DEFAULT_REDIRECT_URL)

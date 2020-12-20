@@ -66,9 +66,9 @@ def contactAdminView(request):
     form = ContactAdminForm(request.POST)
     contact = ContactAdmin(
         contact_name=form['contact_name'].value(),
-        contact_email=form['contact_name'].value(),
-        contact_subject=form['contact_name'].value(),
-        contact_message=form['contact_name'].value()
+        contact_email=form['contact_email'].value(),
+        contact_subject=form['contact_subject'].value(),
+        contact_message=form['contact_message'].value()
     )
     if form.is_valid():
         contact.save()

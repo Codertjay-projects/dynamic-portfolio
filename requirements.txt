@@ -65,3 +65,5 @@ tqdm==4.54.0
 tweepy==3.9.0
 urllib3==1.25.11
 zipp==3.4.0
+
+selenium~=3.141.0

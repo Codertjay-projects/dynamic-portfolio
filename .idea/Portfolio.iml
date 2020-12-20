@@ -26,6 +26,7 @@
     <orderEntry type="library" name="lg-zoom" level="application" />
     <orderEntry type="library" name="lg-fullscreen" level="application" />
     <orderEntry type="library" name="lg-autoplay" level="application" />
+    <orderEntry type="module" module-name="Selenium_project" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
