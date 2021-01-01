@@ -40,11 +40,11 @@
             min-height: 50vh;
             /*this is for the overlay dark color for the back ground*/
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, .5)),
-            url({{profile.backgroundImageURL}}) center/cover no-repeat fixed;
+            url({{layout.backgroundImageURL}}) center/cover no-repeat fixed;
         }
 
         .contact_background_image {
-            background-image: url( {{ profile.backgroundImageURL }});
+            background-image: url( {{ layout.backgroundImageURL }});
             background-size: contain;
             background-attachment: fixed
         }
@@ -62,7 +62,7 @@
         }
 
         .background_image {
-            background-image: url("{{ profile.backgroundImageURL }}");
+            background-image: url("{{ layout.backgroundImageURL }}");
         }
 
         .secondary_color {

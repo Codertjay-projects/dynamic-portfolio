@@ -54,7 +54,7 @@
 
     <style>
         .skill_background {
-            background-image: url( {{ profile.backgroundImageURL }});
+            background-image: url( {{ layout.backgroundImageURL }});
             background-size: contain;
             background-color: {{ layout.secondary_color }} !important;
             background-attachment: fixed
@@ -69,7 +69,7 @@
         }
 
         .main_top_background {
-            background-image: url({{ profile.profilePicsImageURL }});
+            background-image: url({{ layout.profilePicsImageURL }});
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
@@ -79,7 +79,7 @@
     </style>
 </head>
 
-<body id="top-page" style="width: auto">
+<body id="top-page"   style=" font-family: 'ui-sans-serif','serif';width: auto;">
 
 <!-- Wrapper -->
 <div id="one-page" class="fizo-one-page">
@@ -188,7 +188,7 @@
     <header class="mobile-header background-main-color"
             style="background-color: {{ layout.primary_color }} !important;">
         <div class="logo">
-            <a href="#"><img src="{{ profile.profilePicsImageURL }}"
+            <a href="#"><img src="{{ layout.profilePicsImageURL }}"
                              class="icon" style="border-radius: 50%;
                               height: 50px !important;"
                              alt=""></a>

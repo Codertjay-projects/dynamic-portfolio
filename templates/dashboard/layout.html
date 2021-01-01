@@ -48,6 +48,16 @@ carousel_3_description
                                 {% csrf_token %}
                                 <div class="col-12">
                                     <div class="row">
+                                        <div class="col-12 mt-3">
+                                            <h4 class="font-weight-600  text-secondary font-italic"><strong>Choose
+                                                background</strong>
+                                            </h4> {{ layout_form.background_color|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="col-12">
+                                    <div class="row">
                                         <div class="col-6">
                                             {{ layout_form.primary_color|as_crispy_field }}
                                         </div>
@@ -60,12 +70,88 @@ carousel_3_description
                                 </div>
 
                                 <div class="col-12">
-                                    <h3 class="font-weight-600  text-secondary font-italic">Choose background</h3>
                                     <div class="row">
-                                        <div class="col-12 mt-3">
-                                            {{ layout_form.background_color|as_crispy_field }}
-                                        </div>
+                                        {% comment %} the profile logo{% endcomment %}
+                                        <div class=" col-sm-12 col-md-4 mx-auto">
+                                            <div class="row">
+                                                <div class="col-md-8 ">
+                                                    <div class="picture-container">
 
+                                                        <div class="card bg-primary">
+                                                            <div class="card-header  text-light">
+                                                                Profile
+                                                            </div>
+                                                            <div class="card-image bg-primary">
+                                                                <div class="picture">
+                                                                    <img src="{{ layout.profilePicsImageURL }}"
+                                                                         class="picture-src  profilePicturePreview"
+                                                                         id=profilePicturePreview" title=""
+                                                                         style="width:  30px;object-fit: contain">
+                                                                </div>
+                                                                <div class="">
+                                                                    {{ layout_form.profile_pics }}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% comment %} end_date of profile logo{% endcomment %}
+
+                                        {% comment %} the profile logo{% endcomment %}
+                                        <div class=" col-sm-12 col-md-4 mx-auto ">
+                                            <div class="row">
+                                                <div class="col-md-8 ">
+                                                    <div class="picture-container">
+                                                        <div class="card bg-primary">
+                                                            <div class="card-header text-light">
+                                                                Logo
+                                                            </div>
+                                                            <div class="card-image">
+                                                                <div class="picture">
+                                                                    <img src="{{ layout.logoImageURL }}"
+                                                                         class="picture-src  logoPicturePreview"
+                                                                         id=logoPicturePreview" title=""
+                                                                         style="width: 30px;object-fit: contain">
+                                                                </div>
+                                                                <div class="">
+                                                                    {{ layout_form.logo }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% comment %} end_date of layout logo{% endcomment %}
+
+                                        {% comment %} the background {% endcomment %}
+                                        <div class=" col-sm-12 col-md-4 mx-auto bg-light">
+                                            <div class="row">
+                                                <div class="col-md-8 ">
+                                                    <div class="picture-container ">
+
+                                                        <div class="card  bg-primary">
+                                                            <div class="card-header  text-light">
+                                                                Background
+                                                            </div>
+                                                            <div class="card-image">
+                                                                <div class="picture">
+                                                                    <img src="{{ layout.backgroundImageURL }}"
+                                                                         class="picture-src  backgroundImagePreview"
+                                                                         id=backgroundImagePreview" title=""
+                                                                         style="width: 30px;object-fit: contain">
+                                                                </div>
+                                                                <div class="">
+                                                                    {{ layout_form.background_image }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% comment %} end_date of background{% endcomment %}
                                     </div>
                                 </div>
 

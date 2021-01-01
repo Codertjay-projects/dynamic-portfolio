@@ -9,34 +9,15 @@ from upload_validator import FileTypeValidator
 
 
 class ProfileForm(forms.ModelForm):
-    profile_pics = forms.ImageField(required=False, validators=[FileTypeValidator(
-        allowed_types=['image/*']
-    )], widget=forms.FileInput(attrs={
-        'class': 'btn btn-rose btn-rounded btn-sm   waves-effect bg-info text-light waves-light picture-src    col-4  mx-auto  _profile_pics',
-        'label': 'Profile Picture',
-        # 'style':{'text-co'}
-
-    }))
-    logo = forms.ImageField(required=False, label='', validators=[FileTypeValidator(
-        allowed_types=['image/*']
-    )], widget=forms.FileInput(attrs={
-        'class': 'btn btn-azure btn-rounded btn-sm   waves-effect  bg-info text-light  waves-light col-4 mx-auto'
-    }))
-    background_image = forms.ImageField(required=False, label='', validators=[FileTypeValidator(
-        allowed_types=['image/*']
-    )], widget=forms.FileInput(attrs={
-        'class': 'btn btn-purple btn-rounded btn-sm   waves-effect   bg-info text-light waves-light  mx-auto col-4 ',
-
-    }))
-
     motto = forms.CharField(required=False, max_length=100, widget=forms.TextInput(attrs={
         'class': 'form-control   col-12',
     }))
     country = CountryField(blank_label='(select country)', blank=True).formfield(widget=CountrySelectWidget(attrs={
-        'class': 'form-control  dropdown-toggle btn btn-primary btn-round btn-block ',
+        'class': 'form-control  dropdown-toggle bg-primary  ',
         'type': "button",
         'data-toggle': "dropdown",
         "form_show_labels": False,
+        'style': ' max-width: 70%;color:white;'
     }))
     phone_number = forms.IntegerField(required=False, widget=forms.NumberInput(attrs={
         'class': 'form-control    ',
@@ -62,9 +43,11 @@ class ProfileForm(forms.ModelForm):
     }))
     portfolio_version = forms.ChoiceField(choices=portfolio_choices, required=False,
                                           widget=forms.Select(attrs={
-                                              'class': 'form-control  dropdown-toggle btn btn-primary btn-round btn-block ',
+                                              'class': 'form-control  dropdown-toggle btn btn-primary  btn-block ',
                                               'type': "button",
-                                              'data-toggle': "dropdown"
+                                              'data-toggle': "dropdown",
+                                              'style': 'max-width: 50%;'
+
                                           }))
     facebook = forms.URLField(required=False, widget=forms.URLInput(attrs={
         'class': 'form-control    ',
@@ -86,9 +69,6 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = [
-            'profile_pics',
-            'logo',
-            'background_image',
             'motto',
             'country',
             'phone_number',
@@ -133,10 +113,31 @@ class LayoutForm(forms.ModelForm):
     secondary_color = RGBColorField()
     background_color = forms.ChoiceField(choices=background_colors, required=False,
                                          widget=forms.Select(attrs={
-                                             'class': 'form-control  dropdown-toggle btn btn-primary btn-round btn-block ',
+                                             'class': 'form-control  dropdown-toggle btn btn-primary  btn-block ',
                                              'type': "button",
-                                             'data-toggle': "dropdown"
+                                             'data-toggle': "dropdown",
+                                             'style': 'max-width: 80%'
                                          }))
+    profile_pics = forms.ImageField(required=False, validators=[FileTypeValidator(
+        allowed_types=['image/*']
+    )], widget=forms.FileInput(attrs={
+        'class': ' waves-effect  text-light waves-light picture-src    col-4  mx-auto  _profile_pics',
+        'label': 'Profile Picture',
+        'style': 'background-color: #E0A0E4'
+    }))
+    logo = forms.ImageField(required=False, label='', validators=[FileTypeValidator(
+        allowed_types=['image/*']
+    )], widget=forms.FileInput(attrs={
+        'class': ' waves-effect   text-light  waves-light col-4 mx-auto',
+        'style': 'background-color: #E0A0E4'
+    }))
+    background_image = forms.ImageField(required=False, label='', validators=[FileTypeValidator(
+        allowed_types=['image/*']
+    )], widget=forms.FileInput(attrs={
+        'class': '  waves-effect    text-light waves-light  mx-auto col-4 ',
+        'style': 'background-color: #E0A0E4'
+
+    }))
 
     class Meta:
         model = Layout
@@ -144,6 +145,9 @@ class LayoutForm(forms.ModelForm):
             'primary_color',
             'secondary_color',
             'background_color',
+            'profile_pics',
+            'logo',
+            'background_image',
         ]
 
 
@@ -152,7 +156,7 @@ class TestimonialForm(forms.ModelForm):
         'placeholder': ' The client name you worked with ',
         'class': ' form-control  ',
     }))
-    image = forms.ImageField(required=False, label='Image',validators=[FileTypeValidator(
+    image = forms.ImageField(required=False, label='Image', validators=[FileTypeValidator(
         allowed_types=['image/*']
     )], widget=forms.FileInput(attrs={
         'class': '  form-control  bg-primary  mx-auto  ',
@@ -237,10 +241,10 @@ class ServiceForm(forms.ModelForm):
         'placeholder': 'Subject ',
         'class': 'form-control  ',
     }))
-    image = forms.ImageField(required=True,validators=[FileTypeValidator(
+    image = forms.ImageField(required=True, validators=[FileTypeValidator(
         allowed_types=['image/*']
     )], widget=forms.FileInput(attrs={
-        'class': 'btn btn-purple btn-rounded btn-sm mt-3  bg-primary  waves-effect  waves-light  mx-auto col-7 ',
+        'class': 'btn btn-purple ed btn-sm mt-3  bg-primary  waves-effect  waves-light  mx-auto col-7 ',
     }))
     description = forms.CharField(max_length=200, required=True, widget=forms.Textarea(attrs={
         'placeholder': ' Content of 200 characters',

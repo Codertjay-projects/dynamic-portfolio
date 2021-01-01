@@ -25,7 +25,7 @@ class Skills(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     percent = models.PositiveIntegerField(default=75)
-    icon = IconField(blank=True,null=True)
+    icon = IconField(blank=True, null=True)
 
 
 portfolio_choices = (
@@ -39,10 +39,6 @@ portfolio_choices = (
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    profile_pics = models.ImageField(upload_to='profile_pics', default='profile_pics/profile_pics.jpg')
-    logo = models.ImageField(blank=True, null=True)
-    background_image = models.ImageField(upload_to='background_image',
-                                         default='profile/backgroundImage.jpg')
 
     motto = models.CharField(blank=True, null=True, max_length=100)
     main_skill = models.CharField(blank=True, null=True, max_length=100)
@@ -65,6 +61,23 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} '
+
+
+background_colors = (
+    ('dark', 'dark'),
+    ('light', 'light')
+)
+
+
+class Layout(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_pics = models.ImageField(upload_to='profile_pics', default='profile_pics/profile_pics.jpg')
+    logo = models.ImageField(blank=True, null=True)
+    background_image = models.ImageField(upload_to='background_image',
+                                         default='profile/backgroundImage.jpg')
+    background_color = models.CharField(choices=background_colors, max_length=10, default='light')
+    primary_color = RGBColorField(default='#100F0F')
+    secondary_color = RGBColorField(default='#838FF')
 
     @property
     def backgroundImageURL(self):
@@ -125,20 +138,6 @@ class Resume(models.Model):
     start_date = models.CharField(max_length=10)
     end_date = models.CharField(max_length=10)
     detail = models.CharField(max_length=200)
-
-
-background_colors = (
-    ('dark', 'dark'),
-    ('light', 'light')
-)
-
-
-class Layout(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    primary_color = RGBColorField(default='#FFFFFF')
-    secondary_color = RGBColorField(default='#000000')
-    background_color = models.CharField(choices=background_colors, max_length=10, default='light')
 
 
 class Service(models.Model):

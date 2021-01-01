@@ -52,7 +52,6 @@ def userDashboard(request, *args, **kwargs):
         'testimonial_form': TestimonialForm,
         'skills_form': SkillsForm,
     }
-    print('thue prifle pics', request.user.profile.profilePicsImageURL)
     return render(request, 'dashboard/dashboard.html', context)
 
 
