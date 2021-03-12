@@ -1,6 +1,9 @@
 {% extends 'dashboard/dashboard.html' %}
 {% load crispy_forms_filters %}
 
+{% block skill_update %}
+active
+{% endblock %}
 
 {% block panel %}
 
@@ -104,9 +107,6 @@
 
 
                                 <div class="col-12 mt-2">
-                                    <h5 class="text-warning">Note you can download the svg icons here <a href="#"><i
-                                            class="fa fa-link fa-2x"></i></a>
-                                    </h5>
                                     {{ skill_form.icon }}
                                 </div>
 
@@ -120,7 +120,7 @@
                                     {{ skill_form.description|as_crispy_field }}
                                 </div>
                                 <div class="col-12 mt-5">
-                                    <button class="float-right btn btn-outline-primary text-red">Create</button>
+                                    <button class="float-right btn btn-primary px-5">Create</button>
                                 </div>
                             </form>
                         </div>

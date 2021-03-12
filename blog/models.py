@@ -11,7 +11,6 @@ from comments.models import Comment
 from .utils import get_read_time
 from markdown_deux import markdown
 from django.contrib.auth import settings
-
 blogCategory = (
     ('ED', 'Education'),
     ('EN', 'Entertainment'),
@@ -40,7 +39,7 @@ class Post(models.Model):
     user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, blank=True, null=True)
     slug = models.SlugField(unique=True)
-    description = models.TextField(blank=True, null=True)
+    description = models.TextField()
     image = models.ImageField(upload_to='post', blank=True, null=True)
     category = models.CharField(choices=blogCategory, max_length=3, blank=True, null=True)
     view_count = models.IntegerField(default=0)

@@ -2,107 +2,111 @@
 {% load crispy_forms_filters %}
 {% load static %}
 
+{% block item_update %}
+    active
+{% endblock %}
 
+{% block style %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'magnificpopup/css/magnific-popup.css' %}">
+
+
+{% endblock %}
 
 {% block panel %}
     <div class="content">
 
 
-        <div class="container">
+    <div class="container">
 
-            <div class="page-categories" style="">
+        <div class="page-categories" style="">
+            {% if project_items.count > 0 %}
+                <h3 class="title text-center font-weight-bold">ALL projects</h3>
+            {% else %}
+                <h3 class="title text-center font-weight-bold">You dont have a project</h3>
+            {% endif %}
+            <br>
+            <ul class="nav nav-pills nav-pills-warning nav-pills-icons justify-content-center" role="tablist"
+                style="">
+
                 {% if project_items.count > 0 %}
-                    <h3 class="title text-center font-weight-bold">ALL projects</h3>
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#Work" role="tablist" style="">
+                            <i class="material-icons" style="">Show all</i>
+                        </a>
+                    </li>
                 {% else %}
-                    <h3 class="title text-center font-weight-bold">You dont have a project</h3>
-                {% endif %}
-                <br>
-                <ul class="nav nav-pills nav-pills-warning nav-pills-icons justify-content-center" role="tablist"
-                    style="">
-
-                    {% if project_items.count > 0 %}
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#Work" role="tablist" style="">
-                                <i class="material-icons" style="">Show all</i>
-                            </a>
-                        </li>
-                    {% else %}
-                        <div class="col-12">
-                            <div class="alert alert-warning">
-                                <div class="container">
-                                    <div class="alert-icon">
-                                        <i class="material-icons">warning</i>
-                                    </div>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true"><i class="fa fa-close"></i></span>
-                                    </button>
-                                    <b>Note:</b> You have to go and create a project
+                    <div class="col-12">
+                        <div class="alert alert-warning">
+                            <div class="container">
+                                <div class="alert-icon">
+                                    <i class="material-icons">warning</i>
                                 </div>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                                </button>
+                                <b>Note:</b> You have to go and create a project
                             </div>
                         </div>
-                    {% endif %}
-
-
-                    {% for item in project %}
-
-                        <li class="nav-item">
-                            <a class="nav-link  show" data-toggle="tab" href="#{{ item.name|slugify }}"
-                               role="tablist" style="">
-                                <i class="material-icons" style="">{{ item.name }}</i>
-                            </a>
-                        </li>
-                    {% endfor %}
-
-                </ul>
-
-                <div class="tab-content tab-space tab-subcategories">
-                    <div class="tab-pane active show" id="Work" style="width: 90%;margin-left: 5%;margin-right: 5%;">
-                        <div class="row">
-
-
-                            <div class="demo-gallery dark mrb35">
-                                <ul id="lightgallery" class="list-unstyled row">
-
-                                    {% for item in project_items %}
-                                        <li class="col-xs-6 col-sm-6 col-md-4 gallery-item"
-                                            data-src="{{ item.imageURL }}"
-                                            data-sub-html="<h4>{{ item.name }}</h4><p>
-                                             {{ item.description }}</p>">
-                                            <img class="img-responsive" src="{{ item.imageURL }}"
-                                                 style="height: 40vh;width: 100%;">
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-
-
-                        </div>
-
                     </div>
+                {% endif %}
 
-                    {% for project_items in project %}
 
-                        <div class="tab-pane   {{ project_items.name|slugify }}  " id="{{ project_items.name|slugify }}"
-                             style="">
+                {% for item in project %}
+
+                    <li class="nav-item">
+                        <a class="nav-link  show" data-toggle="tab" href="#{{ item.name|slugify }}{{ item.id }}"
+                           role="tablist" style="">
+                            <i class="material-icons" style="">{{ item.name }}</i>
+                        </a>
+                    </li>
+                {% endfor %}
+
+            </ul>
+
+            <div class="tab-content tab-space tab-subcategories">
+                <div class="tab-pane active show " id="Work"
+                     style="width: 90%;margin-left: 5%;margin-right: 5%;">
+                    <div class="container">
+                        <div class="popup-gallery">
+
                             <div class="row">
-                                <div class="demo-gallery dark mrb35">
-                                    <ul id="caption" class="list-unstyled row">
-                                        {% for item in project_items.project.all %}
-
-                                            <li class="col-xs-6 col-sm-6 col-md-4">
-                                                <div class="gallery-item"
-                                                     data-src="{{ item.imageURL }}"
-                                                     data-sub-html="<h4>{{ item.name }}</h4> <p>
-                                                {{ item.description }}
-                                                </p><button class='btn btn-primary btn-round btn-sm'
-                                                                    data-toggle='modal'
-                                                                    data-target='#{{ item.name|slugify }}'
-                                                                    type='button' >
-                                                                Edit
-                                                            </button>">
-                                                    <img class=""
+                                {% for item in project_items %}
+                                    <div class="col-md-4">
+                                        <div class="resources-item">
+                                            <div class="resources-category-image">
+                                                <a href="{{ item.imageURL }}"
+                                                   title="{{ item.name }} -- {{ item.description }}">
+                                                    <img alt=""
                                                          src="{{ item.imageURL }}"
-                                                         style="height: 40vh;width: 100%;">
+                                                         style="height: 40vh;width: 100%;"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                {% for project_items in project %}
+                    <div class="tab-pane   {{ project_items.name|slugify }}{{ project_items.id }}"
+                         id="{{ project_items.name|slugify }}{{ project_items.id }}"
+                         style="">
+                        <div class="container">
+                            <div class="popup-gallery">
+                                <div class="row">
+                                    {% for item in project_items.project.all %}
+                                        <div class="col-md-4">
+                                            <div class="resources-item">
+                                                <div class="resources-category-image">
+                                                    <a href="{{ item.imageURL }}"
+                                                       title="{{ item.name }} -- {{ item.description }}">
+                                                        <img class=""
+                                                             src="{{ item.imageURL }}"
+                                                             style="height: 40vh;width: 100%;"></a>
                                                 </div>
                                                 <div class="row">
                                                     <button class="btn btn-primary btn-round btn-sm my_button"
@@ -111,7 +115,8 @@
                                                             type="button">
                                                         Edit
                                                     </button>
-                                                    <form action="{% url 'profile:projectItemDelete' %}" method="post">
+                                                    <form action="{% url 'profile:projectItemDelete' %}"
+                                                          method="post">
                                                         {% csrf_token %}
                                                         <input type="hidden" value="{{ item.id }}" name="id">
                                                         <button class=" btn btn-primary btn-round btn-sm my_button"
@@ -120,78 +125,75 @@
                                                         </button>
                                                     </form>
                                                 </div>
-                                            </li>
-
-                                        {% endfor %}
-                                    </ul>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
                                 </div>
                             </div>
-
-                        </div>
-
-                    {% endfor %}
-                </div>
-            </div>
-
-            {% if project.count > 0 %}
-                <div class="row">
-                    <div class="card">
-                        <div class="card-header card-header-primary card-header-text">
-                            <div class="card-text">
-                                <h4 class="card-title">
-                                    Create Item</h4>
-                            </div>
-                        </div>
-                        <div class="card-container">
-                            <div class="col-12">
-                                <form action="{% url 'profile:projectItemsCreate' %}" method="post"
-                                      enctype="multipart/form-data">
-                                    {% csrf_token %}
-
-
-                                    <div class="col-12 mt-2">
-                                        {{ project_items_form.name|as_crispy_field }}
-                                    </div>
-
-
-                                    <div class="col-md-12">
-                                        <label class="required" for="id_project">Project:</label>
-                                        <select name="project" class="form-control" required="" id="id_project"
-                                                style="">
-                                            {% for foo in project %}
-                                                <option value="{{ foo.id }}">{{ foo.name }}</option>
-                                            {% endfor %}
-                                        </select>
-
-                                    </div>
-
-
-                                    <div class="col-6   mt-2">
-                                        {{ project_items_form.image }}
-                                    </div>
-
-                                    <div class="col-6  mt-2">
-                                        {{ project_items_form.tag|as_crispy_field }}
-                                    </div>
-
-                                    <div class="col-12 mt-2">
-                                        {{ project_items_form.description|as_crispy_field }}
-                                    </div>
-
-                                    <button class=" btn btn-primary text-red">Create</button>
-                                </form>
-                            </div>
-
                         </div>
                     </div>
-
-                </div>
-
-            {% endif %}
+                {% endfor %}
 
 
+
+
+                {% if project.count > 0 %}
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-header card-header-primary card-header-text">
+                                <div class="card-text">
+                                    <h4 class="card-title">
+                                        Create Item</h4>
+                                </div>
+                            </div>
+                            <div class="card-container">
+                                <div class="col-12">
+                                    <form action="{% url 'profile:projectItemsCreate' %}" method="post"
+                                          enctype="multipart/form-data">
+                                        {% csrf_token %}
+
+
+                                        <div class="col-12 mt-2">
+                                            {{ project_items_form.name|as_crispy_field }}
+                                        </div>
+
+
+                                        <div class="col-md-12">
+                                            <label class="required" for="id_project">Project:</label>
+                                            <select name="project" class="form-control" required="" id="id_project"
+                                                    style="">
+                                                {% for foo in project %}
+                                                    <option value="{{ foo.id }}">{{ foo.name }}</option>
+                                                {% endfor %}
+                                            </select>
+
+                                        </div>
+
+                                        <div class="col-6  mt-2">
+                                            {{ project_items_form.image }}
+                                        </div>
+
+                                        <div class="col-12 mt-2">
+                                            {{ project_items_form.description|as_crispy_field }}
+                                        </div>
+
+                                        <button class=" btn btn-primary text-red">Create</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+
+            </div>
         </div>
     </div>
+
+
 
     {% for item in project_items %}
 
@@ -254,24 +256,6 @@
                                                 {{ project_items_form.image }}
                                             </div>
 
-                                            <div class="col-6  mt-2">
-                                                <label for="id_tag"
-                                                       class="requiredField bmd-label-static">
-                                                    Tag<span
-                                                        class="asteriskField">*</span>
-                                                </label>
-                                                <div class="">
-                                                    <input type="text"
-                                                           name="tag"
-                                                           class="form-control   textInput  form-control"
-                                                           placeholder="just a tag maximum length of 10"
-                                                           maxlength="10"
-                                                           value="{{ item.tag }}"
-                                                           required=""
-                                                           id="id_tag">
-
-                                                </div>
-                                            </div>
 
                                             <div class="col-12 mt-2">
                                                 <div id="div_id_description"
@@ -318,6 +302,12 @@
 
 {% endblock %}
 
+{% block script %}
+    <script type="text/javascript" src="{% static 'magnificpopup/js/jquery.min.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'magnificpopup/js/jquery.magnific-popup.js' %}"></script>
+    <script type="text/javascript" src="{% static 'magnificpopup/js/magnific-popup.js' %}"></script>
 
+{% endblock %}
 
 

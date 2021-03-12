@@ -1,0 +1,182 @@
+{% load static %}
+{% load fontawesome_5 %}
+<!doctype html>
+<html lang="en">
+<head>
+    {% fontawesome_5_static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>{{ profile.user.username|capfirst }} Portfolio</title>
+    <meta name="author" content="tansh">
+    <meta name="description" content="HTML Teamplate">
+    <meta name="keywords" content="agency, personal, photography, one page">
+
+    <!-- FAVICON FILES -->
+    <link href="{% static 'portfolio/portfolio_v1/assets/images/icons/apple-touch-icon-144-precomposed.png' %}"
+          rel="apple-touch-icon" sizes="144x144">
+    <link href="{% static 'portfolio/portfolio_v1/assets/images/icons/apple-touch-icon-120-precomposed.png' %}"
+          rel="apple-touch-icon" sizes="120x120">
+    <link href="{% static 'portfolio/portfolio_v1/assets/images/icons/apple-touch-icon-76-precomposed.png' %}"
+          rel="apple-touch-icon" sizes="76x76">
+    <link href="{% static 'portfolio/portfolio_v1/assets/images/icons/favicon.png" rel="shortcut icon' %}">
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="{% static 'portfolio/portfolio_v1/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/portfolio_v1/assets/fonts/iconfonts.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/portfolio_v1/assets/css/plugins.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/portfolio_v1/assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/portfolio_v1/assets/css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/portfolio_v1/assets/css/color.css' %}">
+    <style>
+
+        .background_image {
+            background-image: url("{{ layout.backgroundImageURL }}");
+        }
+
+        {% if  layout.background_color == 'dark' %}
+            * {
+                color: white !important;
+            }
+            * {
+                background-color: #212020 !important;
+            }
+            .bg-light-blue {
+                background-color: #212020 !important;
+            }
+            input {
+                background-color: white !important;
+                color: #212020 !important;
+            }
+            textarea {
+                background-color: white !important;
+                color: #212020 !important;
+            }
+            .btn-white {
+                background-color: #11204d !important;;
+            }
+            .dtr-portfolio-hover-content {
+                background-color: transparent !important;
+            }
+
+
+        {% endif %}
+
+    </style>
+
+</head>
+<body>
+<div id="dtr-wrapper" class="clearfix">
+
+    <!-- preloader starts -->
+    <div class="dtr-preloader">
+        <div class="dtr-preloader-inner">
+            <div class="dtr-preloader-img"></div>
+        </div>
+    </div>
+    <!-- preloader ends -->
+
+    <!-- Small Devices Header
+============================================= -->
+    {% include 'portfolio/portfolio_v1/header.html' %}
+    <!-- header ends
+================================================== -->
+
+    <!-- == main content area starts == -->
+    <div id="dtr-main-content">
+
+        <!-- hero section starts
+================================================== -->
+        {% include 'portfolio/portfolio_v1/home_page.html' %}
+        <!-- hero section ends
+================================================== -->
+
+        <!-- about section starts
+================================================== -->
+        {% include 'portfolio/portfolio_v1/about.html' %}
+        <!-- about section ends
+================================================== -->
+
+        <!-- services section starts
+================================================== -->
+        {% include 'portfolio/portfolio_v1/services.html' %}
+
+        <!-- services section ends
+================================================== -->
+
+        <!-- testimonial section starts
+================================================== -->
+        {% include 'portfolio/portfolio_v1/testimonial.html' %}
+        <!-- testimonial section ends
+================================================== -->
+
+        <!-- portfolio section starts
+================================================== -->
+        {% include 'portfolio/portfolio_v1/project.html' %}
+        <!-- portfolio section ends
+================================================== -->
+
+        <!-- timeline section starts
+================================================== -->
+        {% include 'portfolio/portfolio_v1/resume.html' %}
+        <!-- timeline section ends
+================================================== -->
+
+        <!-- cta section starts
+================================================== -->
+        <section class=" dtr-section parallax dtr-py-100"
+                 style="background-image: url({{ layout.backgroundImageURL }});">
+            <div class="container">
+
+                <!--== row starts ==-->
+                <div class="row text-center">
+                    <div class="col-12">
+                        <h3 class=" font-family-alt font-weight-700 color-dark">Want to work
+                            together!</h3>
+                        <p class=" color-dark text-size-md">I’m available for freelance work.</p>
+                        <!-- link starts -->
+                        <a href="#" class=" dtr-btn btn-white dtr-mt-30">Hire Me <i
+                                class="icon-chevron-compact-right"></i></a>
+                        <!-- link ends -->
+                    </div>
+                </div>
+                <!--== row ends ==-->
+
+            </div>
+        </section>
+        <!-- cta section ends
+================================================== -->
+
+        <!-- blog section starts
+================================================== -->
+        {% include 'portfolio/portfolio_v1/blog.html' %}
+        <!-- blog section ends
+================================================== -->
+
+        <!-- contact section starts
+================================================== -->
+        {% include 'portfolio/portfolio_v1/contact.html' %}
+        <!-- contact section ends
+================================================== -->
+
+        <!-- footer section starts
+================================================== -->
+        {% include 'portfolio/portfolio_v1/footer.html' %}
+        <!-- footer section ends
+================================================== -->
+
+    </div>
+    <!-- == main content area ends == -->
+
+</div>
+<!-- #dtr-wrapper ends -->
+
+<!-- JS FILES -->
+<script src="{% static 'portfolio/portfolio_v1/assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'portfolio/portfolio_v1/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'portfolio/portfolio_v1/assets/js/plugins.js' %}"></script>
+<script src="{% static 'portfolio/portfolio_v1/assets/js/custom.js' %}"></script>
+<script src="{% static 'portfolio/contact_js/contact.js' %}"></script>
+
+</body>
+</html>

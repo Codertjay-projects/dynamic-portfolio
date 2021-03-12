@@ -1,0 +1,58 @@
+{% load static %}
+{% load hosts %}
+<div id="blog-block" class="latest-news-block pd-t-170 pd-b-170">
+    <div class="container container-1200 ml-b-30">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-title text-center">
+                    <h2 class="title-main">
+                        06 <span>Latest News</span>
+                    </h2>
+                    <!-- /.title-main -->
+                    <p class="sub-title">We work with you, Not for you</p>
+                </div>
+                <!-- /.section-title -->
+            </div>
+            <!-- /.col-lg-8 -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row latest-news-list gutters-30">
+            {% for item in post %}
+
+                <div class="col-lg-4 col-md-6">
+                    <article class="post post-grid">
+                        <figure class="post-thumb">
+                            <a href="{% host_url 'blog:blog_detail' item.slug host 'www' %}">
+                                <img src="{{ item.imageURL }}"
+                                     alt="Blog Image"/>
+                                {% comment %}  <img src="{% static 'portfolio/portfolio_v2/assets/images/blog/grid/1.jpg' %}"
+                                     alt="Blog Image"/>{% endcomment %}
+                            </a>
+                        </figure>
+                        <!-- /.post-thumb -->
+                        <div class="post-details">
+                            <div class="entry-meta">
+                                <div class="entry-date">{{ item.published_date|time }}</div>
+                                <!--./ entry-date -->
+                                <div class="entry-category">
+                                    <a class="cat" href="#">{{ item.get_category_display }}</a>
+                                </div>
+                                <!--./ entry-category -->
+                            </div>
+                            <!-- /.entry-meta -->
+                            <h2 class="entry-title">
+                                <a href="{% host_url 'blog:blog_detail' item.slug host 'www' %}">{{ item.title }}.</a>
+                            </h2>
+                            <!-- /.entry-title -->
+                        </div>
+                        <!-- /.post-details -->
+                    </article>
+                    <!-- /.post -->
+                </div>
+            {% endfor %}
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>

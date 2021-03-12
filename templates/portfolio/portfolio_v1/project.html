@@ -1,0 +1,49 @@
+{% load static %}
+<section id="portfolio" class="dark_background dtr-section dtr-py-100">
+    <div class="container">
+
+        <!-- heading starts -->
+        <div class="dtr-styled-heading heading-center">
+            <h2 class="">Some Inspiration</h2>
+        </div>
+        <!-- heading ends -->
+
+        <!-- portfolio filter starts -->
+        <ul class="dtr-filter-nav clearfix">
+            <li><a class=" dtr-filter-all active" data-filter="*" href="#">All Work</a></li>
+
+            {% for item in project %}
+                <li><a data-filter=".filter-{{ item.name|slugify }}{{ item.id }}" class="" href="#">{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+        <!-- portfolio filter ends -->
+
+        <!-- portfolio grid starts -->
+        <div class="dtr-portfolio-grid dtr-portfolio-grid-3col dtr-portfolio-style-1 dtr-rounded-img clearfix">
+
+            {% for item in ProjectItem %}
+
+                <!-- portfolio item 1 starts -->
+                <div class=" dtr-portfolio-item isotope-item filter-{{ item.project.name|slugify }}{{ item.project.id }} all">
+                    <div class="dtr-portfolio-content"><img
+                            src="{{ item.imageURL }}" alt="image">
+                        <div class=" dtr-portfolio-overlay">
+                            <a class=" media-zoom  popup-gallery"
+                                 href="{{ item.imageURL }}">
+
+                            </a>
+                            <div class=" dtr-portfolio-hover-content">
+                                <h4 class=" dtr-portfolio-heading">{{ item.name }}</h4>
+                                <p class="">{{ item.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- portfolio item 1 ends -->
+            {% endfor %}
+
+        </div>
+        <!-- portfolio grid ends -->
+
+    </div>
+</section>

@@ -3,24 +3,20 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import DeleteView
 from django.views.generic.base import View
 
 from portfolio_app.forms import ProjectForm, ProjectItemsForm
-from portfolio_app.models import Project, ProjectItem
+from portfolio_app.forms import (
+    TestimonialForm,
+    SkillsForm,
+    ServiceForm, ResumeForm)
+from portfolio_app.models import Project, ProjectItem, Skills, Service, Resume, Testimonial
 from users.models import User
-from .models import (Layout,
-                     Profile,
-                     Testimonial,
-                     Contact,
-                     Skills, Service, Resume)
-
 from .forms import (LayoutForm,
-                    TestimonialForm,
-                    SkillsForm,
-                    ProfileForm, UserUpdateForm, ServiceForm, ResumeForm)
-
-import tweepy
+                    ProfileForm, UserUpdateForm)
+from .models import (Layout,
+                     Profile, PortfolioTemplate,
+                     )
 
 
 #
@@ -137,9 +133,11 @@ class UserLayoutUpdate(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
         instance = get_object_or_404(Layout, user=self.request.user)
         layout_form = LayoutForm(self.request.FILES or None, instance=instance)
+        portfolio_template = PortfolioTemplate.objects.all()
         context = {
             'layout': instance,
             'layout_form': layout_form,
+            'portfolio_template': portfolio_template,
         }
         return render(self.request, 'dashboard/layout.html', context)
 
@@ -417,8 +415,8 @@ def project_update_view(request):
     project = Project.objects.filter(id=request.POST.get('id'), user=request.user).first()
     if project:
         project.name = project_form['name'].value()
-        if request.FILES.get('image') != None:
-            project_form.image = request.FILES.get('image')
+        if request.POST.get('image') != None:
+            project_form.image = request.POST.get('image')
             project.image = project_form.image
         project.description = project_form['description'].value()
         if project_form.is_valid():
@@ -437,7 +435,7 @@ def project_items_update_view(request):
     project_item = ProjectItem.objects.filter(id=request.POST.get('id'), user=request.user).first()
     if project_item:
         project_item.name = project_item_form['name'].value()
-        if request.FILES.get('image') != None:
+        if request.POST.get('image') != None:
             project_item.image = project_item_form['image'].value()
         project_item.description = project_item_form['description'].value()
         project_item.tag = project_item_form['tag'].value()

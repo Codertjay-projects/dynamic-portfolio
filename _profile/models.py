@@ -1,40 +1,36 @@
+from colorful.fields import RGBColorField
+# Create your models here.
+from django.conf import settings
 from django.db import models
+from django.db.models.signals import post_save
 from django.urls import reverse
+from django_countries.fields import CountryField
 
 from Portfolio.settings import DEFAULT_REDIRECT_URL
 from users.models import User
-# Create your models here.
-from django.conf import settings
-from django.db.models.signals import post_save
-from django_countries.fields import CountryField
-from fontawesome_5.fields import IconField
-from colorful.fields import RGBColorField
 
-skill_choices = (
-    ('Meeting_and_Listening', 'Meeting & Listening'),
-    ('UI/UX_Design', 'UI/UX Design'),
-    ('PhotoShop', 'PhotoShop'),
-    ('Branding_and_identity', 'Branding & identity'),
-    ('Branding_and_identity', 'Branding & identity'),
-    ('Technical_Support', 'Technical Support'),
+TagChoice = (
+    ('Graphics', 'Graphics'),
+    ('Web development', 'Web development'),
+    ('UI/Ux', 'UI/Ux'),
 )
 
 
-class Skills(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
-    description = models.CharField(max_length=200)
-    percent = models.PositiveIntegerField(default=75)
-    icon = IconField(blank=True, null=True)
+class PortfolioTemplate(models.Model):
+    name = models.CharField(max_length=20)
+    portfolio_version = models.CharField(max_length=30)
+    tag = models.CharField(max_length=20, choices=TagChoice)
+    image = models.ImageField(upload_to='home_page/portfolio_tag')
+    price = models.IntegerField(default=0)
+    paid = models.BooleanField(default=True)
 
-
-portfolio_choices = (
-    ('portfolio_v1', 'portfolio_v1'),
-    ('portfolio_v2', 'portfolio_v2'),
-    ('portfolio_v3', 'portfolio_v3'),
-    ('portfolio_v4', 'portfolio_v4'),
-    ('portfolio_v5', 'portfolio_v5')
-)
+    @property
+    def imageURL(self):
+        try:
+            image = self.image.url
+        except:
+            image = None
+        return image
 
 
 class Profile(models.Model):
@@ -53,8 +49,6 @@ class Profile(models.Model):
     instagram = models.URLField(blank=True, null=True)
     facebook = models.URLField(blank=True, null=True)
     about = models.TextField(blank=True, null=True, max_length=1000)
-
-    portfolio_version = models.CharField(max_length=20, choices=portfolio_choices, default='portfolio_v1')
 
     def get_portfolio_absolute_url(self):
         return reverse('portfolio:portfolio', kwargs={'username': self.user.username})
@@ -78,6 +72,7 @@ class Layout(models.Model):
     background_color = models.CharField(choices=background_colors, max_length=10, default='light')
     primary_color = RGBColorField(default='#100F0F')
     secondary_color = RGBColorField(default='#838FF')
+    portfolio_version = models.OneToOneField(PortfolioTemplate, on_delete=models.CASCADE, blank=True, null=True)
 
     @property
     def backgroundImageURL(self):
@@ -112,48 +107,6 @@ class Contact(models.Model):
     email = models.EmailField()
     subject = models.CharField(max_length=50)
     description = models.TextField()
-
-
-class Testimonial(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    client_name = models.CharField(max_length=50)
-    image = models.ImageField()
-    url = models.URLField(blank=True, null=True)
-    detail = models.CharField(max_length=200)
-
-    @property
-    def imageURL(self):
-        try:
-            image_ = self.image.url
-            image = DEFAULT_REDIRECT_URL + image_
-        except:
-            image = ''
-        return image
-
-
-class Resume(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
-    start_date = models.CharField(max_length=10)
-    end_date = models.CharField(max_length=10)
-    detail = models.CharField(max_length=200)
-
-
-class Service(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
-    image = models.ImageField()
-    description = models.CharField(max_length=200)
-
-    @property
-    def imageURL(self):
-        try:
-            image_ = self.image.url
-            image = DEFAULT_REDIRECT_URL + image_
-        except:
-            image = ''
-        return image
 
 
 def post_save_user_profile_create(sender, instance, created, *args, **kwargs):

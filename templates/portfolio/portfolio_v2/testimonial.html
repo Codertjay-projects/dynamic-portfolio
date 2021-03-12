@@ -1,0 +1,54 @@
+{% load static %}
+<div id="testimonial-block" class="testimonial-block pd-t-170">
+    <div class="container container-1200">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-title text-center">
+                    <h2 class="title-main">
+                        04 <span>Testimonial</span>
+                    </h2>
+                    <!-- /.title-main -->
+                    <p class="sub-title">We work with you, Not for you</p>
+                </div>
+                <!-- /.section-title -->
+            </div>
+            <!-- /.col-lg-8 -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row justify-content-center">
+            <div class="col-lg-11">
+                <!-- Testimonial Slider -->
+                <div class="owl-carousel testimonial-slider carousel-nav-circle carousel-nav-center">
+                    {% for item in testimonial %}
+
+                        <div class="testimonial-item">
+                            <div class="client-area">
+                                <div class="client-thumb">
+                                    <img src="{{ item.imageURL }}"
+                                         alt="Daniel Watson"/>
+                                </div>
+                                <!-- /.client-thumb -->
+                                <div class=" client-info">
+                                    <h4 class="client-name">{{ item.client_name }}</h4>
+
+                                </div>
+                                <!-- /.client-info -->
+                            </div>
+                            <div class="details">
+                                <p>
+                                    {{ item.detail }}
+                                </p>
+                            </div>
+                            <!-- /.details -->
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>

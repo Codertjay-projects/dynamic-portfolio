@@ -1,19 +1,18 @@
-from django.contrib import messages
-from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import render, redirect
-from django.conf import settings
-from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
-
-from _profile.forms import LayoutForm, ProfileForm, TestimonialForm, SkillsForm
-from .models import Project, ProjectItem
-from _profile.models import Testimonial, Skills, Profile, Layout, Service, Resume
-from blog.models import Post
-from users.forms import ContactUserForm
-
-from .forms import ProjectForm, ProjectItemsForm
 from PIL import ImageColor
+from django.conf import settings
+from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+
+from _profile.forms import LayoutForm, ProfileForm
+from _profile.models import Profile, Layout
+from blog.models import Post
+from portfolio_app.forms import TestimonialForm, SkillsForm
+from portfolio_app.models import Testimonial, Skills, Service, Resume
+from users.forms import ContactUserForm
 from users.models import User
-from django.template import RequestContext
+from .forms import ProjectForm, ProjectItemsForm
+from .models import Project, ProjectItem
 
 DEFAULT_REDIRECT_URL = settings.DEFAULT_REDIRECT_URL
 
@@ -28,18 +27,6 @@ def handler500(request, exception):
     response = render(request, '500.html', context={})
     response.status_code = 500
     return response
-
-
-def HomeView(request):
-    return render(request, 'main/blog/home_page.html')
-
-
-def contact_view(request):
-    return render(request, 'main/blog/contact.html')
-
-
-def about_view(request):
-    return render(request, 'main/blog/about.html')
 
 
 def my_portfolio(request, username):
@@ -67,6 +54,7 @@ def my_portfolio(request, username):
             secondary_color_3 = secondary_color_nums[2]
             print('this is the project items', project_items)
             host_url = f"{profile.user.username}{settings.PARENT_HOST}",
+
 
         except Exception:
             primary_color_nums = None
@@ -112,22 +100,33 @@ def my_portfolio(request, username):
         'skills_form': SkillsForm(),
         'Project_form': ProjectForm(),
         'Project_items_form': ProjectItemsForm(),
+        'domain': DEFAULT_REDIRECT_URL,
 
     }
+    print(DEFAULT_REDIRECT_URL)
     if profile:
-        if profile.portfolio_version == 'portfolio_v1':
-            return render(request, 'portfolio_v1/base_v1.html', context)
-        elif profile.portfolio_version == 'portfolio_v2':
-            return render(request, 'portfolio_v2/base_v2.html', context)
-        elif profile.portfolio_version == 'portfolio_v3':
-            return render(request, 'portfolio_v3/base_v3.html', context)
-        elif profile.portfolio_version == 'portfolio_v4':
-            return render(request, 'portfolio_v4/base_v4.html', context)
-        elif profile.portfolio_version == 'portfolio_v5':
-            return render(request, 'portfolio_v5/base_v5.html', context)
-        else:
-            messages.warning(request, "the site does not exist")
-            return HttpResponseRedirect(DEFAULT_REDIRECT_URL)
+        try:
+            return render(request,
+                          f'portfolio/{layout.portfolio_version.portfolio_version}/{layout.portfolio_version.portfolio_version}.html',
+                          context)
+        except:
+            print('except', layout.portfolio_version.portfolio_version)
+            return render(request, 'portfolio/portfolio_v1/portfolio_v1.html', context)
     else:
         messages.warning(request, "the site does not exist")
         return HttpResponseRedirect(DEFAULT_REDIRECT_URL)
+
+
+"""
+        if layout.portfolio_version == 'portfolio_v1':
+            return render(request, 'portfolio/portfolio_v1/base_v1.html', context)
+        elif layout.portfolio_version == 'portfolio_v2':
+            return render(request, 'portfolio/portfolio_v2/base_v2.html', context)
+        elif layout.portfolio_version == 'portfolio_v3':
+            return render(request, 'portfolio_v3/base_v3.html', context)
+        elif layout.portfolio_version == 'portfolio_v4':
+            return render(request, 'portfolio_v4/base_v4.html', context)
+        else:
+            messages.warning(request, "the site does not exist")
+            return HttpResponseRedirect(DEFAULT_REDIRECT_URL)
+"""

@@ -4,16 +4,19 @@ from django.contrib import admin
 from django.urls import path, include
 import debug_toolbar
 
+from portfolio_app.views import my_portfolio
 
 urlpatterns = [
     path('administrator/', admin.site.urls),
     path('__debug__/', include(debug_toolbar.urls)),
     path('accounts/', include('allauth.urls')),
-    path('profile/', include('_profile.urls')),
+    path('dashboard/', include('_profile.urls')),
     path('user/', include('users.urls')),
-    path('url/', include('single_url.urls')),
     path('blog/', include('blog.urls')),
-    path('', include('portfolio_app.urls'), name='portfolio'),
+    path('payment/', include('membership.urls')),
+    path('', include('home_page.urls')),
+    path('#/', include('portfolio_app.urls')),
+
 ]
 
 if settings.DEBUG:

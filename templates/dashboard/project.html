@@ -1,6 +1,9 @@
 {% extends 'dashboard/dashboard.html' %}
 {% load crispy_forms_filters %}
 
+{% block project_update %}
+    active
+{% endblock %}
 
 {% block panel %}
     <div class="content    ">
@@ -93,19 +96,15 @@
                             <form action="{% url 'profile:projectCreate' %}" method="post"
                                   enctype="multipart/form-data">
                                 {% csrf_token %}
-
-
                                 <div class="col-12 ">
                                     {{ project_form.name|as_crispy_field }}
                                 </div>
-
                                 <div class="col-12   my-3">
                                     {{ project_form.image }}
                                 </div>
                                 <div class="col-12 ">
                                     {{ project_form.description|as_crispy_field }}
                                 </div>
-
                                 <button class="float-right btn btn-primary text-red">Create</button>
                             </form>
                         </div>
@@ -150,7 +149,7 @@
                                     <br>
                                     <div class="col-12 my-4">
                                         <span><label for="id_image">Image</label>
-                                            {{ project_form.image }}</span>
+                                          {{project_form.image}}</span>
                                     </div>
 
                                     <br>

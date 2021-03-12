@@ -32,3 +32,5 @@ class ContactAdmin(models.Model):
     contact_email = models.EmailField(max_length=200)
     contact_subject = models.CharField(max_length=200)
     contact_message = models.TextField()
+
+

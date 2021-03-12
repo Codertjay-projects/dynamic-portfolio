@@ -1,0 +1,86 @@
+{% extends 'Homepage/home_base.html' %}
+{% load static %}
+<!-- Breadcrumbs -->
+
+
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="breadcrumbs" style="background-image:url('{% static 'HomePage/img/breadcrumbs-bg.jpg' %}')">
+        <div class="container">
+            <div class="row">
+                <!-- Breadcrumbs-Content -->
+                <div class="col-lg-7 col-md-7 col-12">
+                    <div class="breadcrumbs-content">
+                        <h2>Payment</h2>
+                        <p>Pay to get the best service we provide.</p>
+                    </div>
+                </div>
+                <!-- Breadcrumbs-Menu -->
+                <div class="col-lg-5 col-md-5 col-12">
+                    <div class="breadcrumbs-menu">
+                        <ul>
+                            <li><a href="{% url 'home_page:home' %}">Home</a><i class="fa fa-angle-double-right"></i>
+                            </li>
+                            <li class="active"><a href="#">payment</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumbs -->
+
+    <!-- Service Area -->
+    <section class="service-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12">
+                    <div class="section-title">
+                        <h6>Make Payment</h6>
+                        <div class="line-bot"></div>
+                        <p>List of services we render.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mx-auto align-content-center">
+                    <form action="#" method="POST" class="align-self-center">
+                        <script
+                                src="https://js.paystack.co/v1/inline.js"
+                                data-key="{{ paystack_public_key }}"
+                                data-email="customer@email.com"
+                                data-plan="{{ membership_type. }}"
+                                data-ref=<UNIQUE TRANSACTION REFERENCE>
+                        </script>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Service Area -->
+
+
+{% endblock %}
+
+{% block script %}
+    {% comment %} <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>{% endcomment %}
+    <script src="https://js.paystack.co/v1/paystack.js"></script>
+    <script>
+        // Initialize paystack object
+        var paystack;
+        Paystack.init ({
+            form: "paystack-card-form" , // Form ID
+            access_code: 'd5gtr5gnex'   // You should programmatically pass the access
+                                        // code via Ajax or a server variable. Note that
+                                        // the access code can only be used once.
+        }).then (function (returnedObj) {
+            paystack = returnedObj;
+        }).catch (function (error) {
+            console.log ("There was an error loading Paystack" , error);
+        });
+    </script>
+{% endblock %}

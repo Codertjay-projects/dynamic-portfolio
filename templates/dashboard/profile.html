@@ -1,6 +1,9 @@
 {% extends 'dashboard/dashboard.html' %}
 {% load crispy_forms_filters %}
 
+{% block profile_update %}
+    active
+{% endblock %}
 
 {% block panel %}
 
@@ -20,102 +23,109 @@
                             <form action="{% url 'profile:profileUpdate' %}" enctype="multipart/form-data"
                                   method="post">
                                 {% csrf_token %}
+                                <div class="col-12">
+                                    <div class="card ">
+                                    </div>
+                                    <div class="card-body ">
+                                        <ul class="nav nav-pills nav-pills-primary" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link   active show" data-toggle="tab" href="#link1"
+                                                   role="tablist">
+                                                    Contact
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#link2" role="tablist">
+                                                    Info
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content tab-space">
+
+                                            <div class="tab-pane  active show" id="link1">
+                                                <div class="row">
+                                                    {% comment %} beginning of phone number {% endcomment %}
+                                                    <div class="col-sm-12 col-md-6 mx-auto ">
+                                                        {{ profile_form.phone_number|as_crispy_field }}
+                                                    </div>
+                                                    {% comment %} end_date of phone number{% endcomment %}
+                                                    {% comment %} beginning of website {% endcomment %}
+                                                    <div class="col-sm-12 col-md-6 mx-auto">
+                                                        {{ profile_form.website|as_crispy_field }}
+                                                    </div>
+                                                    {% comment %} end_date of website{% endcomment %}
+
+                                                    {% comment %} beginning of linkedin {% endcomment %}
+                                                    <div class="col-sm-12 col-md-6 mx-auto">
+                                                        {{ profile_form.linkedin|as_crispy_field }}
+                                                    </div>
+
+                                                    {% comment %} beginning of twitter{% endcomment %}
+                                                    <div class="col-sm-12 col-md-6 mx-auto">
+                                                        {{ profile_form.twitter|as_crispy_field }}
+                                                    </div>
+                                                    {% comment %} end_date of twitter{% endcomment %}
 
 
-                                <div class="row ">
+                                                    {% comment %} beginning of instagram{% endcomment %}
+                                                    <div class="col-sm-12 col-md-6 mx-auto">
+                                                        {{ profile_form.instagram|as_crispy_field }}
+                                                    </div>
+                                                    {% comment %} end_date of instagram{% endcomment %}
 
-                                    {% comment %} the country{% endcomment %}
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <label class="col-md-3 col-form-label">Country</label>
-                                            <div class="col-md-9">
-                                                <div class="form-group has-default bmd-form-group" style="background: none; border-radius: 0px; width: 50%;">
-                                                    {{ profile_form.country|as_crispy_field }}
+
+                                                    {% comment %} beginning of facebook{% endcomment %}
+                                                    <div class="col-sm-12 col-md-6 mx-auto">
+                                                        {{ profile_form.facebook|as_crispy_field }}
+                                                    </div>
+                                                    {% comment %} end_date of facebook{% endcomment %}
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="link2">
+                                                <div class="row ">
+                                                    {% comment %} the country{% endcomment %}
+                                                    <div class="col-12 ">
+                                                        <div class="row d-flex ">
+                                                            <label for="id_country">Country</label>
+                                                            <span class="col-12">
+                                                                {{ profile_form.country|as_crispy_field }}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    {% comment %} end_date of country {% endcomment %}
+                                                    {% comment %} beginning of motto{% endcomment %}
+                                                    <div class="col-12 pb-2">
+                                                        {{ profile_form.motto|as_crispy_field }}
+                                                    </div>
+                                                    {% comment %} end_date of motto {% endcomment %}
+
+
+                                                    {% comment %} beginning of address {% endcomment %}
+
+                                                    <div class="col-12 pb-2">
+                                                        {{ profile_form.address|as_crispy_field }}
+                                                    </div>
+                                                    {% comment %} end_date of address {% endcomment %}
+
+                                                    {% comment %} beginning of about {% endcomment %}
+
+                                                    <div class="col-12 pb-2">
+                                                        {{ profile_form.about|as_crispy_field }}
+                                                    </div>
+                                                    {% comment %} end_date of about {% endcomment %}
+
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    {% comment %} end_date of country {% endcomment %}
-
-
-                                    {% comment %} beginning of version{% endcomment %}
-                                    <div class="col-12 mx-auto ">
-                                        <div class="row">
-                                            <label class="col-md-3 col-form-label">Portfolio version</label>
-                                            <div class="col-md-9">
-                                                <div class="form-group has-default bmd-form-group">
-                                                    {{ profile_form.portfolio_version|as_crispy_field }}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {% comment %} end_date of version {% endcomment %}
-
-
-                                    {% comment %} beginning of phone number {% endcomment %}
-                                    <div class="col-sm-12 col-md-6 mx-auto ">
-                                        {{ profile_form.phone_number|as_crispy_field }}
-                                    </div>
-                                    {% comment %} end_date of phone number{% endcomment %}
-
-
-                                    {% comment %} beginning of website {% endcomment %}
-                                    <div class="col-sm-12 col-md-6 mx-auto">
-                                        {{ profile_form.website|as_crispy_field }}
-                                    </div>
-                                    {% comment %} end_date of website{% endcomment %}
-
-                                    {% comment %} beginning of linkedin {% endcomment %}
-                                    <div class="col-sm-12 col-md-6 mx-auto">
-                                        {{ profile_form.linkedin|as_crispy_field }}
-                                    </div>
-
-                                    {% comment %} beginning of twitter{% endcomment %}
-                                    <div class="col-sm-12 col-md-6 mx-auto">
-                                        {{ profile_form.twitter|as_crispy_field }}
-                                    </div>
-                                    {% comment %} end_date of twitter{% endcomment %}
-
-
-                                    {% comment %} beginning of instagram{% endcomment %}
-                                    <div class="col-sm-12 col-md-6 mx-auto">
-                                        {{ profile_form.instagram|as_crispy_field }}
-                                    </div>
-                                    {% comment %} end_date of instagram{% endcomment %}
-
-
-                                    {% comment %} beginning of facebook{% endcomment %}
-                                    <div class="col-sm-12 col-md-6 mx-auto">
-                                        {{ profile_form.facebook|as_crispy_field }}
-                                    </div>
-                                    {% comment %} end_date of facebook{% endcomment %}
-
-                                    {% comment %} beginning of motto{% endcomment %}
-
-                                    <div class="col-12">
-                                        {{ profile_form.motto|as_crispy_field }}
-                                    </div>
-                                    {% comment %} end_date of motto {% endcomment %}
-
-
-                                    {% comment %} beginning of address {% endcomment %}
-
-                                    <div class="col-12">
-                                        {{ profile_form.address|as_crispy_field }}
-                                    </div>
-                                    {% comment %} end_date of address {% endcomment %}
-
-                                    {% comment %} beginning of about {% endcomment %}
-
-                                    <div class="col-12">
-                                        {{ profile_form.about|as_crispy_field }}
-                                    </div>
-                                    {% comment %} end_date of about {% endcomment %}
-
-                                    <div class="col-12">
-                                        <button class="float-right btn   btn-outline-primary">Update</button>
-                                    </div>
-
                                 </div>
+                                <div class="col-12">
+                                    <button class="float-right btn btn-primary px-5">
+                                        Update
+                                    </button>
+                                </div>
+
                             </form>
                         </div>
                     </div>

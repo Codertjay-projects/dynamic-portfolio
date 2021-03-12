@@ -5,7 +5,6 @@ from .models import Post, blogCategory
 
 from pagedown.widgets import PagedownWidget
 
-
 class PostCreateForm(forms.ModelForm):
     title = forms.CharField(required=True, max_length=200, label='Title',
                             widget=forms.TextInput(attrs={
@@ -35,7 +34,6 @@ class PostCreateForm(forms.ModelForm):
                                      'type': "button",
                                      'data-toggle': "dropdown"
                                  }))
-    description = forms.CharField(widget=PagedownWidget())
 
     class Meta:
         model = Post

@@ -1,71 +1,143 @@
 {% load i18n %}
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="author" content="Nile-Theme">
-    <meta name="robots" content="index follow">
-    <meta name="googlebot" content="index follow">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Muli:800%7CPoppins:300i,300,400,500,600,700,400i,500%7CPlayfair+Display:400,700,900"
-          rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+    <link href="images/favicon.png" rel="icon"/>
+    <meta name="description" content="Login and Register Form Html Template">
+    <meta name="author" content="harnishdesign.net">
 
+    <!-- Web Fonts
+    ========================= -->
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900'
+          type='text/css'>
+
+    <!-- Stylesheet
+    ========================= -->
+    <link rel="stylesheet" type="text/css" href="{% static 'Account/vendor/bootstrap/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'Account/vendor/font-awesome/css/all.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'Account/css/stylesheet.css' %}"/>
+    <!-- Colors Css -->
+    <link id="color-switcher" type="text/css" rel="stylesheet" href="#"/>
     <title>
         {% block  title %}
-            {{ request.user.username }}-profile
+
         {% endblock title %}
     </title>
 
-    {# the styles #}
-    <link href="{% static 'portfolio_v1/assets/css/my_style.css' %}" rel="stylesheet' %}"/>
-    <link href="{% static 'portfolio_v1/assets/css/bootstrap.min.css' %}" rel="stylesheet' %}"/>
-    {% include 'portfolio_v2/materiali_kit_css.html' %}
+    <style>
+        .card {
+            background-color: black !important;
+            color: white !important;
+        }
 
-    {% block  head_extra %}
+        .card-title {
+            color: white;
+        }
 
-    {% endblock head_extra %}
+    </style>
 
 </head>
-<body class="bg-light text-dark " style="{color:white !important;}">
+<body>
 
-{% block  styles %}
+<!-- Preloader -->
+<div class="preloader preloader-dark">
+    <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- Preloader End -->
 
-{% endblock styles %}
-{% include 'main/blog/blog_nav.html' %}
+<div id="main-wrapper" class="oxyy-login-register " style="background-color: #9c27b0 !important;">
+    <div class="container">
+        <div class="row no-gutters min-vh-100 py-5">
+            <!-- Welcome Text
+            ========================= -->
+            <div class="col-lg-7 shadow-lg">
+                <div class="hero-wrap d-flex align-items-center rounded-lg rounded-right-0 h-100">
+                    <div class="hero-mask opacity-9 " style="background-color: #9c27b0 !important;"></div>
+                    <div class="hero-bg hero-bg-scroll"
+                         style="background-image:url('{% static 'Account/images/login-bg.jpg' %}');"></div>
+                    <div class="hero-content mx-auto w-100 h-100 d-flex flex-column">
+                        <div class="row no-gutters">
+                            <div class="col-10 col-lg-10 mx-auto">
+                                <div class="logo mt-5 mb-5 mb-lg-0"><a href="{% url 'home_page:home' %}"
+                                                                       title="{{ website_name }}" style="font-size: 50px">{{ website_name }}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row no-gutters my-auto">
+                            <div class="col-10 col-lg-10 mx-auto">
+                                <h1 class="text-11 text-white mb-3">Welcome To <span
+                                        class="text-capitalize">{{ website_name }}</span>!</h1>
+                                <p class="text-5 text-white line-height-4 mb-4">Create your personal portfolio for your
+                                    business .</p>
+                                {% comment %}   <a class="btn btn-dark rounded-pill shadow-none video-btn py-1 px-3 d-inline-flex align-items-center mb-5"
+                                   href="#" data-src="https://www.youtube.com/embed/7e90gBu4pas" data-toggle="modal"
+                                   data-target="#videoModal"><span class="mr-2 text-7"><i
+                                        class="fas fa-play-circle"></i></span>Watch demo</a>{% endcomment %}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Welcome Text End -->
 
-<div class="header-filter "
-     style="background-image: url({% static  'main/image/blog_post_background.jpg' %});min-height: 120vh;padding-top: 15vh;">
+            <!-- Forgot password Form
+            ========================= -->
+            <div class="col-lg-5 shadow-lg d-flex align-items-center rounded-lg rounded-left-0 bg-dark">
+                <div class="container my-auto py-5">
+                    <div class="row">
 
+                        <div class="col-11 col-lg-10 mx-auto">
+                            {% block  content %}
 
-    <div class="container m-5" style="padding-top: 10vh">
-        <div class="row">
-            <div class="col" style="margin-left: 20%; margin-right: 20%;">
-                {% block  content %}
+                            {% endblock content %}
+                        </div>
 
-                {% endblock content %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Forgot password Form End -->
+    </div>
+</div>
+{% comment %}
+
+<!-- Video Modal
+========================= -->
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content bg-transparent border-0">
+            <button type="button" class="close text-white opacity-10 ml-auto mr-n3 font-weight-400" data-dismiss="modal"
+                    aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="modal-body p-0">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" id="video" allow="autoplay"></iframe>
+                </div>
             </div>
         </div>
     </div>
 </div>
-{% include 'main/footer.html' %}
+<!-- Video Modal end -->
+{% endcomment %}
 
 
-<script src="{% static 'portfolio_v2/assets/js/jquery.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'portfolio_v2/assets/js/bootstrap.min.js' %}" type="text/javascript"></script>
+<!-- Script -->
+<script src="{% static 'Account/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'Account/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-{% comment %} the javascript file{% endcomment %}
-{% include 'portfolio_v2/materiali_kit_js.html' %}
-{% comment %} end_date of the javascript file{% endcomment %}
-
+<script src="{% static 'Account/js/theme.js' %}"></script>
 {% block scripts %}
 
 {% endblock scripts %}
 
 </body>
 </html>
-

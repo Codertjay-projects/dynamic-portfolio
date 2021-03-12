@@ -21,7 +21,7 @@ from users.models import User
 class BlogListView(ListView):
     model = Post
     queryset = Post.objects.all()
-    template_name = 'main/blog/blog_list.html'
+    template_name = 'HomePage/blog/blog.html'
 
     def get_queryset(self):
         query = self.request.GET.get('q')
@@ -40,8 +40,7 @@ class BlogListView(ListView):
 
 class BlogUserListView(ListView):
     model = Post
-    template_name = 'main/blog/blog_list.html'
-    context_object_name = 'object_list'
+    template_name = 'HomePage/blog/blog.html'
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
@@ -49,7 +48,7 @@ class BlogUserListView(ListView):
 
 
 class BlogDetailView(DetailView):
-    template_name = 'main/blog/blog_detail.html'
+    template_name = 'HomePage/blog/blog-single.html'
     model = Post
     context_object_name = 'post'
 
@@ -72,7 +71,7 @@ class BlogCreateView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
         form = PostCreateForm()
         post = Post.objects.filter(user=self.request.user)
-        return render(self.request, 'main/blog/blog_create.html', {'form': form, 'post': post})
+        return render(self.request, 'dashboard/blog_create.html', {'form': form, 'post': post})
 
     def post(self, *args, **kwargs):
         form = PostCreateForm(self.request.POST, self.request.FILES or None)
@@ -82,7 +81,7 @@ class BlogCreateView(LoginRequiredMixin, View):
             instance = form.save(commit=False)
             instance.user = self.request.user
             instance.save()
-            messages.success(self.request, 'blog post have being created')
+            messages.success(self.request, 'Article was successfully created ')
             return HttpResponseRedirect(instance.get_absolute_url())
 
         elif not form.is_valid():
@@ -101,17 +100,17 @@ def update_post_view(request, slug=None):
         print(instance.slug)
         instance.save()
         print('updating the post', request.POST, '\n', instance.user)
-        messages.success(request, 'The form is  valid')
+        messages.success(request, 'Successfully updated article')
         return HttpResponseRedirect(instance.get_absolute_url())
     else:
         messages.warning(request, 'The form isn\'t valid')
 
-    return render(request, 'main/blog/blog_update.html', {'form': form, 'post': instance})
+    return render(request, 'HomePage/blog/blog_update.html', {'form': form, 'post': instance})
 
 
 class DeletePostView(DeleteView):
     model = Post
-    template_name = 'main/blog/post_delete.html'
+    template_name = 'HomePage/blog/post_delete.html'
     success_url = '/blog/'
 
 

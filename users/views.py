@@ -30,7 +30,7 @@ class ContactUserView(APIView):
             return Response(status=HTTP_400_BAD_REQUEST)
         if form.is_valid():
             print('the form was valid')
-            template = get_template('main/contact.txt')
+            template = get_template('EmailTemplates/contact.txt')
             contact = ContactUser(contact_name=form['contact_name'].value(),
                                   contact_email=form['contact_email'].value(),
                                   contact_subject=form['contact_subject'].value(),
@@ -60,37 +60,3 @@ class ContactUserView(APIView):
         print('the message was not sent')
         messages.warning(self.request, 'There was an error sending your message')
         return Response(status=HTTP_400_BAD_REQUEST)
-
-
-def contactAdminView(request):
-    form = ContactAdminForm(request.POST)
-    contact = ContactAdmin(
-        contact_name=form['contact_name'].value(),
-        contact_email=form['contact_email'].value(),
-        contact_subject=form['contact_subject'].value(),
-        contact_message=form['contact_message'].value()
-    )
-    if form.is_valid():
-        contact.save()
-        template = get_template('main/contact_admin.txt')
-        context = {
-            'contact_name': contact.contact_name,
-            'contact_email': contact.contact_email,
-            'contact_subject': contact.contact_subject,
-            'contact_message': contact.contact_message
-        }
-        print('the for is valid')
-        content = template.render(context)
-        if context:
-            send_mail(
-                contact.contact_subject,
-                content,
-                contact.contact_email,
-                [EMAIL_HOST_USER],
-                fail_silently=True,
-            )
-            print('sent the message',content)
-            messages.success(request, 'Your message has being sent we would be in touch with you later ')
-            return redirect('single_url:contact')
-    print('there was an error sending your message')
-    return redirect('single_url:contact')

@@ -1,0 +1,40 @@
+{% load static %}
+<div id="service-block" class="services-block pd-t-170">
+    <div class="container container-1200">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-title text-center">
+                    <h2 class="title-main">
+                        01 <span>Services</span>
+                    </h2>
+                    <!-- /.title-main -->
+                    <p class="sub-title">We work with you, Not for you</p>
+                </div>
+                <!-- /.section-title -->
+            </div>
+            <!-- /.col-lg-8 -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row services-items-list gutters-30">
+            {% for item in service %}
+
+                <div class="col-lg-4 col-md-6">
+                    <a class="service-item" href="#">
+                        <div class="service-icon">
+                            <img src="{{ item.imageURL }}"
+                                 alt="Icon"/>
+                        </div>
+                        <!-- /.service-icon -->
+                        <h3 class=" title">{{ item.name|title }}</h3>
+                    </a>
+                    <!-- /.service-item -->
+                </div>
+            {% endfor %}
+
+
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>

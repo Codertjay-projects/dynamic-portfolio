@@ -1,0 +1,54 @@
+{% load hosts %}
+{% load static %}
+<section id="blog" class="dark_background dtr-section dtr-py-100">
+    <div class="container">
+
+        <!-- heading starts -->
+        <div class="dtr-styled-heading heading-center">
+            <h2 class="">From The Blog</h2>
+        </div>
+        <!-- heading ends -->
+
+        <!--== row starts ==-->
+        <div class="row dtr-mt-50">
+
+            {% for item in post %}
+
+                <!-- column 1 starts -->
+                <div class="col-12 col-md-4">
+
+                    <!-- blog item 1 starts -->
+                    <div class="dtr-blog-item">
+                        <!-- image -->
+                        <div class="dtr-post-img"><img src="{{ item.imageURL }}" alt="image"><span
+                                class="  dtr-category bg-blue color-white" style="color: white!important;">{{ item.get_category_display }}</span>
+                        </div>
+                        <div class="dtr-post-content">
+                            <ul class=" dtr-blog-meta color-grey">
+                                <li>{{ item.published_date }}</li>
+                                <li>by {{ item.user.username }}</li>
+                            </ul>
+                            <h5 class="">{{ item.title }}</h5>
+                            <a href="{% host_url 'blog:blog_detail' item.slug host 'www' %}"
+                               class=" dtr-read-more">Continue Reading</a>
+                        </div>
+                    </div>
+                    <!-- blog item 1 ends -->
+
+                </div>
+                <!-- column 1 ends -->
+
+            {% endfor %}
+
+
+        </div>
+        <div class="row mt-5 pt-5">
+            <div class="col-5 col-sm-offset-3 mx-auto">
+                <a href="{% host_url 'blog:blog_list' host 'www' %}"
+                   class="  dtr-btn btn-blue dtr-mt-30">View more</a>
+            </div>
+        </div>
+        <!--== row starts ==-->
+
+    </div>
+</section>

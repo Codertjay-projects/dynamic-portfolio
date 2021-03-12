@@ -1,11 +1,10 @@
+from colorful.fields import RGBColorField
 from django import forms
-from users.models import User
 from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
-from .models import Layout, Profile, Testimonial, Contact, Skills, skill_choices, portfolio_choices, Service, \
-    background_colors, Resume
-from colorful.fields import RGBColorField
 from upload_validator import FileTypeValidator
+
+from .models import Layout, Profile, background_colors
 
 
 class ProfileForm(forms.ModelForm):
@@ -41,14 +40,6 @@ class ProfileForm(forms.ModelForm):
         'class': 'form-control   ',
         'label': 'Instagram'
     }))
-    portfolio_version = forms.ChoiceField(choices=portfolio_choices, required=False,
-                                          widget=forms.Select(attrs={
-                                              'class': 'form-control  dropdown-toggle btn btn-primary  btn-block ',
-                                              'type': "button",
-                                              'data-toggle': "dropdown",
-                                              'style': 'max-width: 50%;'
-
-                                          }))
     facebook = forms.URLField(required=False, widget=forms.URLInput(attrs={
         'class': 'form-control    ',
         'label': 'facebook',
@@ -72,7 +63,6 @@ class ProfileForm(forms.ModelForm):
             'motto',
             'country',
             'phone_number',
-            'portfolio_version',
             'website',
             'linkedin',
             'twitter',
@@ -121,23 +111,32 @@ class LayoutForm(forms.ModelForm):
     profile_pics = forms.ImageField(required=False, validators=[FileTypeValidator(
         allowed_types=['image/*']
     )], widget=forms.FileInput(attrs={
-        'class': ' waves-effect  text-light waves-light picture-src    col-4  mx-auto  _profile_pics',
+        'class': ' waves-effect  text-light waves-light picture-src   mx-auto  _profile_pics',
         'label': 'Profile Picture',
         'style': 'background-color: #E0A0E4'
     }))
     logo = forms.ImageField(required=False, label='', validators=[FileTypeValidator(
         allowed_types=['image/*']
     )], widget=forms.FileInput(attrs={
-        'class': ' waves-effect   text-light  waves-light col-4 mx-auto',
+        'class': ' waves-effect   text-light  waves-light  mx-auto',
         'style': 'background-color: #E0A0E4'
     }))
     background_image = forms.ImageField(required=False, label='', validators=[FileTypeValidator(
         allowed_types=['image/*']
     )], widget=forms.FileInput(attrs={
-        'class': '  waves-effect    text-light waves-light  mx-auto col-4 ',
+        'class': '  waves-effect    text-light waves-light  mx-auto  ',
         'style': 'background-color: #E0A0E4'
 
     }))
+
+    # portfolio_version = forms.ChoiceField(choices=portfolio_choices, required=False,
+    #                                       widget=forms.Select(attrs={
+    #                                           'class': 'form-control  dropdown-toggle btn btn-primary  btn-block ',
+    #                                           'type': "button",
+    #                                           'data-toggle': "dropdown",
+    #                                           'style': 'max-width: 50%;'
+    #
+    #                                       }))
 
     class Meta:
         model = Layout
@@ -148,62 +147,7 @@ class LayoutForm(forms.ModelForm):
             'profile_pics',
             'logo',
             'background_image',
-        ]
-
-
-class TestimonialForm(forms.ModelForm):
-    client_name = forms.CharField(max_length=50, label='Client Name', widget=forms.TextInput(attrs={
-        'placeholder': ' The client name you worked with ',
-        'class': ' form-control  ',
-    }))
-    image = forms.ImageField(required=False, label='Image', validators=[FileTypeValidator(
-        allowed_types=['image/*']
-    )], widget=forms.FileInput(attrs={
-        'class': '  form-control  bg-primary  mx-auto  ',
-
-    }))
-    url = forms.URLField(label='Link', widget=forms.URLInput(attrs={
-        'class': ' form-control  ',
-        'placeholder': 'Any link to the client or project'
-    }))
-    detail = forms.CharField(max_length=500, label='Detail', widget=forms.TextInput(attrs={
-        'class': ' font-weight-bold mt-3 form-control',
-        'cols': ' 10',
-        'rows': '4',
-    }))
-
-    class Meta:
-        model = Testimonial
-        fields = [
-            'client_name',
-            'image',
-            'url',
-            'detail',
-        ]
-
-
-class SkillsForm(forms.ModelForm):
-    name = forms.CharField(max_length=15, label='Skill Name', widget=forms.TextInput(attrs={
-        'class': ' font-weight-bold mt-3'
-    }))
-    description = forms.CharField(max_length=200, label='Skill Description', widget=forms.TextInput(attrs={
-        'class': ' font-weight-bold mt-3',
-        'cols': ' 10',
-        'rows': '4',
-    }))
-    percent = forms.IntegerField(required=False, max_value=100, min_value=1, widget=forms.NumberInput(attrs={
-        'class': ' font-weight-bold mt-3',
-        'placeholder': 'maximum number of 100 and minimum of 1',
-        'maxlength': "100",
-    }))
-
-    class Meta:
-        model = Skills
-        fields = [
-            'name',
-            'percent',
-            'description',
-            'icon',
+            'portfolio_version'
         ]
 
 
@@ -234,48 +178,3 @@ class ContactForm(forms.Form):
         if email_passed != email_req:
             return forms.ValidationError("Not a valig email pls try again")
         return email_passed
-
-
-class ServiceForm(forms.ModelForm):
-    name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={
-        'placeholder': 'Subject ',
-        'class': 'form-control  ',
-    }))
-    image = forms.ImageField(required=True, validators=[FileTypeValidator(
-        allowed_types=['image/*']
-    )], widget=forms.FileInput(attrs={
-        'class': 'btn btn-purple ed btn-sm mt-3  bg-primary  waves-effect  waves-light  mx-auto col-7 ',
-    }))
-    description = forms.CharField(max_length=200, required=True, widget=forms.Textarea(attrs={
-        'placeholder': ' Content of 200 characters',
-        'class': 'md-textarea form-control  ',
-        'rows': '5',
-        'cols': '20'
-    }))
-
-    class Meta:
-        model = Service
-        fields = [
-            'name',
-            'image',
-            'description',
-        ]
-
-
-class ResumeForm(forms.ModelForm):
-    name = forms.CharField(max_length=50)
-    start_date = forms.CharField()
-    end_date = forms.CharField(required=False)
-    detail = forms.CharField(max_length=200, required=True, widget=forms.Textarea(attrs={
-        'placeholder': ' Content ',
-        'class': 'md-textarea form-control  ',
-        'rows': '5',
-        'cols': '20'
-    }))
-
-    class Meta:
-        model = Resume
-        fields = ['name',
-                  'start_date',
-                  'end_date',
-                  'detail']

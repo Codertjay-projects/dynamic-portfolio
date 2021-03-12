@@ -1,0 +1,116 @@
+{% load static %}
+{% load hosts %}
+<footer id="contact-block" class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="contact-block">
+                    <div class="section-title">
+                        <h2 class="title-main">
+                            07 <span>Contact</span>
+                        </h2>
+                        <!-- /.title-main -->
+                        <p class="sub-title">Don’t Hesitate To Contact With Us</p>
+                    </div>
+                    <!-- /.section-title -->
+
+
+                    <div class="contact-form-area">
+                        <form id="" class="contact-form" method="post"
+                              action="{% host_url 'user:contact_user' host 'www' %}" >
+                            {% csrf_token %}
+                            <input type="hidden" name="to_email" id="to_email" value="{{ profile.user.email }}">
+                            <div class="row gx-4">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <input id="contact_name" name="contact_name" type="text" class="form-control"
+                                               placeholder="Your Name*">
+                                    </div>
+                                </div>
+                                <!--./ col-lg-6-->
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <input class="form-control" id="contact_email" name="contact_email" type="email"
+                                               placeholder="Your Email*">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input class="form-control" id="contact_subject" name="contact_subject"
+                                               type="text"
+                                               placeholder="Your subject*">
+                                    </div>
+                                </div>
+                                <!--./ col-lg-6 -->
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <textarea id="contact_message" name="contact_message" class="form-control"
+                                                  rows="4"
+                                                  placeholder="Anything that we can help you?"></textarea>
+                                    </div>
+                                </div>
+                                <!-- /.col-12 -->
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Send Me</button>
+                                </div>
+                                <!--./ col-lg-6 -->
+                            </div>
+                            <!-- /.row -->
+                        </form>
+                        <!-- /.contact-form -->
+                    </div>
+                    <!-- /.contact-form-area -->
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="footer-content-wrapper">
+                    <div class="footer-widget-area">
+                        <div class="row">
+                            <!--~~~~~ Start Widget Links ~~~~~-->
+                            <div class="col-lg-6 col-md-6">
+                                <aside class="widget widget_links">
+                                    <h2 class="widget-title"><span>Quick Link</span></h2>
+                                    <div class="widget-content">
+                                        <ul>
+                                            <li><a href="#">Portfolio</a></li>
+                                            <li><a href="#">About</a></li>
+                                            <li><a href="#">Services</a></li>
+                                            <li><a href="{% host_url 'blog:blog_list' host 'www' %}">Blogs</a></li>
+                                        </ul>
+                                    </div>
+                                </aside>
+                            </div>
+                            <!--~./ end links widget ~-->
+                            <!--~~~~~ Start Widget Links ~~~~~-->
+                            <div class="col-lg-6 col-md-6">
+                                <aside class="widget widget_contact">
+                                    <div class="widget-content">
+                                        <div class="single-contact-info">
+                                            <div class="icon">
+                                                <i class="fas fa-envelope"></i>
+                                            </div>
+                                            <p><a href="mailto:{{ profile.user.email }}">{{ profile.user.email }}</a>
+                                            </p>
+                                        </div>
+                                        <!-- /.single-contact-info -->
+                                        <div class="single-contact-info">
+                                            <div class="icon">
+                                                <i class="fa fa-phone-square"></i>
+                                            </div>
+                                            <p>{{ profile.phone_number }}</p>
+                                        </div>
+                                        <!-- /.single-contact-info -->
+                                    </div>
+                                </aside>
+                            </div>
+                            <!--~./ end links widget ~-->
+                        </div>
+                    </div>
+                    <!--~./ end footer widgets area ~-->
+
+                    <!--~./ end copyright text ~-->
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -2,38 +2,26 @@
 {% load crispy_forms_utils %}
 {% load crispy_forms_filters %}
 
+{% block style %}
+    <style>
+        #id_background_color {
+        {#max-width: 80% !important;#}
+        }
 
+        input {
+            width: 100%;
+        }
+    </style>
+{% endblock %}
+{% block layout_update %}
+    active
+{% endblock %}
 {% block panel %}
     <div class="content  mt-5">
-        <div class="container-fluid mt-0 pt-0">
-            {% comment %}
-primary_color
-secondary_color
-carousel_1_name
-carousel_1_description
-carousel_1_image
-carousel_2_name
-carousel_2_description
-carousel_2_image
-carousel_3_name
-carousel_3_image
-carousel_3_description
-{% endcomment %}
+        <div class="container-fluid mt-0 pt-4">
+
             <div class="row">
-                <div class="col-12">
-                    <div class="alert alert-warning">
-                        <div class="container">
-                            <div class="alert-icon">
-                                <i class="material-icons">warning</i>
-                            </div>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true"><i class="material-icons">remove</i></span>
-                            </button>
-                            <b>Note:</b> The carousel name and the content could be anything you wish to add it could be
-                            motivational quote {{ layout.primary_color }}
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-12">
 
                     <div class="card">
@@ -43,122 +31,214 @@ carousel_3_description
                             </div>
                         </div>
                         <div class="card-content">
-
                             <form action="{% url 'profile:layoutUpdate' %}" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
-                                <div class="col-12">
-                                    <div class="row">
-                                        <div class="col-12 mt-3">
-                                            <h4 class="font-weight-600  text-secondary font-italic"><strong>Choose
-                                                background</strong>
-                                            </h4> {{ layout_form.background_color|as_crispy_field }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="col-12">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            {{ layout_form.primary_color|as_crispy_field }}
-                                        </div>
-                                        <div class="col-6">
-                                            {{ layout_form.secondary_color|as_crispy_field }}
-                                        </div>
 
-
-                                    </div>
-                                </div>
+                                <input type="hidden" name="portfolio_version" id="id_portfolio_version"
+                                       value="{{ layout.portfolio_version.id }}">
 
                                 <div class="col-12">
-                                    <div class="row">
-                                        {% comment %} the profile logo{% endcomment %}
-                                        <div class=" col-sm-12 col-md-4 mx-auto">
+                                    <div class="card ">
+
+                                        <div class="card-body ">
                                             <div class="row">
+                                                <div class="col-md-4">
+                                                    <ul class="nav nav-pills nav-pills-primary flex-column"
+                                                        role="tablist">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-toggle="tab" href="#link4"
+                                                               role="tablist">
+                                                                Color
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active show" data-toggle="tab"
+                                                               href="#link5" role="tablist">
+                                                                Image
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" data-toggle="tab" href="#link6"
+                                                               role="tablist">
+                                                                Template
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                                 <div class="col-md-8 ">
-                                                    <div class="picture-container">
-
-                                                        <div class="card bg-primary">
-                                                            <div class="card-header  text-light">
-                                                                Profile
-                                                            </div>
-                                                            <div class="card-image bg-primary">
-                                                                <div class="picture">
-                                                                    <img src="{{ layout.profilePicsImageURL }}"
-                                                                         class="picture-src  profilePicturePreview"
-                                                                         id=profilePicturePreview" title=""
-                                                                         style="width:  30px;object-fit: contain">
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane" id="link4">
+                                                            <div class="row">
+                                                                <div class="col-12 col-md-8 mt-3 mb-5">
+                                                                    <label for="id_background_color">Choose
+                                                                        background</label>
+                                                                    {{ layout_form.background_color|as_crispy_field }}
                                                                 </div>
-                                                                <div class="">
-                                                                    {{ layout_form.profile_pics }}</div>
+                                                                <div class="col-12">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            {{ layout_form.primary_color|as_crispy_field }}
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            {{ layout_form.secondary_color|as_crispy_field }}
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane active show" id="link5">
+                                                            <div class="row">
+                                                                <div class="col-12">
+                                                                    <div class="row">
+                                                                        {% comment %} the profile logo{% endcomment %}
+                                                                        <div class=" col-sm-8 col-md-4 mx-auto">
+                                                                            <div class="row">
+                                                                                <div class="col-md-8 ">
+                                                                                    <div class="picture-container">
+
+                                                                                        <div class="card bg-primary">
+                                                                                            <div class="card-header  text-light">
+                                                                                                Profile
+                                                                                            </div>
+                                                                                            <div class="card-image bg-primary">
+                                                                                                <div class="picture">
+                                                                                                    <img src="{{ layout.profilePicsImageURL }}"
+                                                                                                         class="picture-src  profilePicturePreview"
+                                                                                                         id=profilePicturePreview"
+                                                                                                         title=""
+                                                                                                         style="width: 100%;height: 15vh;object-fit: contain">
+                                                                                                </div>
+                                                                                                <div class="">
+                                                                                                    {{ layout_form.profile_pics }}</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        {% comment %} end_date of profile logo{% endcomment %}
+
+                                                                        {% comment %} the profile logo{% endcomment %}
+                                                                        <div class=" col-sm-7 col-md-4 mx-auto ">
+                                                                            <div class="row">
+                                                                                <div class="col-md-8 ">
+                                                                                    <div class="picture-container">
+                                                                                        <div class="card bg-primary">
+                                                                                            <div class="card-header text-light">
+                                                                                                Logo
+                                                                                            </div>
+                                                                                            <div class="card-image">
+                                                                                                <div class="picture">
+                                                                                                    <img src="{{ layout.logoImageURL }}"
+                                                                                                         class="picture-src  logoPicturePreview"
+                                                                                                         id=logoPicturePreview"
+                                                                                                         title=""
+                                                                                                         style="width: 100%;height: 15vh;object-fit: contain">
+                                                                                                </div>
+                                                                                                <div class="">
+                                                                                                    {{ layout_form.logo }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        {% comment %} end_date of layout logo{% endcomment %}
+
+                                                                        {% comment %} the background {% endcomment %}
+                                                                        <div class=" col-sm-8 col-md-4 mx-auto bg-light">
+                                                                            <div class="row">
+                                                                                <div class="col-md-8 ">
+                                                                                    <div class="picture-container ">
+
+                                                                                        <div class="card  bg-primary">
+                                                                                            <div class="card-header  text-light">
+                                                                                                Background
+                                                                                            </div>
+                                                                                            <div class="card-image">
+                                                                                                <div class="picture">
+                                                                                                    <img src="{{ layout.backgroundImageURL }}"
+                                                                                                         class="picture-src  backgroundImagePreview"
+                                                                                                         id=backgroundImagePreview"
+                                                                                                         title=""
+                                                                                                         style="width: 100%;height: 15vh;object-fit: contain">
+                                                                                                </div>
+                                                                                                <div class="">
+                                                                                                    {{ layout_form.background_image }}
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        {% comment %} end_date of background{% endcomment %}
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="link6">
+                                                            <div class="col-12 mx-auto ">
+
+                                                                <div class="row">
+                                                                    {% for item in portfolio_template %}
+                                                                        <div class="col-md-6 mb-sm-5 pb-sm-5 col-sm-8 portfolio_remove_bg mx-auto {{ item.id }}portfolio
+                                                                        {% if item.id == layout.portfolio_version.id %}
+                                                                        bg-primary
+                                                                        {% endif %}  "
+                                                                             id=""
+                                                                             onclick="portfolio_version({{ item.id }})">
+                                                                            <div class="card card-product"
+                                                                                 data-count="4">
+                                                                                <div class="card-header card-header-image"
+                                                                                     data-header-animation="true">
+                                                                                    <a href="#">
+                                                                                        <img class="img"
+                                                                                             src="{{ item.imageURL }}"
+                                                                                             style="height: 20vh!important;">
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="card-body">
+                                                                                    <div class="card-actions text-center">
+
+                                                                                        <button type="button"
+                                                                                                class="btn btn-danger btn-link"
+                                                                                                rel="tooltip"
+                                                                                                data-placement="bottom"
+                                                                                                title=""
+                                                                                                data-original-title="Choose">
+                                                                                            <i class="material-icons">Choose</i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <h4 class="card-title">
+                                                                                        <strong>{{ item.name }}</strong>
+                                                                                    </h4>
+                                                                                </div>
+                                                                                <div class="card-footer">
+                                                                                    <div class="price">
+                                                                                        <strong>${{ item.price }}</strong>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    {% endfor %}
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        {% comment %} end_date of profile logo{% endcomment %}
-
-                                        {% comment %} the profile logo{% endcomment %}
-                                        <div class=" col-sm-12 col-md-4 mx-auto ">
-                                            <div class="row">
-                                                <div class="col-md-8 ">
-                                                    <div class="picture-container">
-                                                        <div class="card bg-primary">
-                                                            <div class="card-header text-light">
-                                                                Logo
-                                                            </div>
-                                                            <div class="card-image">
-                                                                <div class="picture">
-                                                                    <img src="{{ layout.logoImageURL }}"
-                                                                         class="picture-src  logoPicturePreview"
-                                                                         id=logoPicturePreview" title=""
-                                                                         style="width: 30px;object-fit: contain">
-                                                                </div>
-                                                                <div class="">
-                                                                    {{ layout_form.logo }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {% comment %} end_date of layout logo{% endcomment %}
-
-                                        {% comment %} the background {% endcomment %}
-                                        <div class=" col-sm-12 col-md-4 mx-auto bg-light">
-                                            <div class="row">
-                                                <div class="col-md-8 ">
-                                                    <div class="picture-container ">
-
-                                                        <div class="card  bg-primary">
-                                                            <div class="card-header  text-light">
-                                                                Background
-                                                            </div>
-                                                            <div class="card-image">
-                                                                <div class="picture">
-                                                                    <img src="{{ layout.backgroundImageURL }}"
-                                                                         class="picture-src  backgroundImagePreview"
-                                                                         id=backgroundImagePreview" title=""
-                                                                         style="width: 30px;object-fit: contain">
-                                                                </div>
-                                                                <div class="">
-                                                                    {{ layout_form.background_image }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {% comment %} end_date of background{% endcomment %}
                                     </div>
                                 </div>
 
-                                <div class="col-12">
-                                    <button class="float-right btn btn-outline-primary float-left ">Update</button>
-                                </div>
 
+                                <div class="col-12">
+                                    <button class="float-right btn btn-primary float-left px-5 ">Update</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -170,3 +250,40 @@ carousel_3_description
 
     </div>
 {% endblock panel %}
+
+
+
+{% block script %}
+    <script>
+        function portfolio_version (id) {
+            let els = document.querySelectorAll ('.portfolio_remove_bg')
+            for (var i = 0; i < els.length; i++) {
+                els[i].classList.remove ('bg-primary')
+            }
+
+            document.getElementsByClassName (`${id}portfolio`)[0].classList.add ('bg-primary')
+            console.log (`#${id}portfolio`)
+            document.getElementById (`id_portfolio_version`).value = id
+            console.log (document.getElementById (`id_portfolio_version`).value)
+
+
+        }
+    </script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 import debug_toolbar
 from django.urls import path, include
-from .views import my_portfolio
+from portfolio_app.views import my_portfolio
 
 app_name = 'wildcard'
 urlpatterns = [

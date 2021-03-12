@@ -1,0 +1,86 @@
+{% load static %}
+<div id="about-block" class="about-us-block pd-t-170">
+    <div class="container container-1200">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-title text-center">
+                    <h2 class="title-main">
+                        02 <span>About</span>
+                    </h2>
+                    <!-- /.title-main -->
+                    <p class="sub-title">We work with you, Not for you</p>
+                </div>
+                <!-- /.section-title -->
+            </div>
+            <!-- /.col-lg-8 -->
+        </div>
+        <!-- /.row -->
+
+
+        <div class="row align-items-center flex-column-reverse flex-lg-row mrb-55">
+            <div class="col-lg-6">
+                <div class="about-content">
+                    <h3 class="heading">About Me</h3>
+                    <p class="description">{{ profile.about }}</p>
+
+                </div>
+                <!-- /.about-content -->
+            </div>
+            <!-- /.col-lg-6 -->
+            <div class=" col-lg-6">
+                <div class="mock-up-thumb">  {% comment %}  {% static 'portfolio/portfolio_v2/assets/images/about/about.png' %}{% endcomment %}
+                    <img src="{{ layout.profilePicsImageURL }}" class="align-self-center"
+                         alt="About Mock" style="height: 454px;object-fit: contain;min-width: 400px;
+                          border-radius: 30%;"/>
+                </div>
+                <!-- /.mock-up-block -->
+            </div>
+            <!-- /.col-lg-6 -->
+        </div>
+        <!-- /.row -->
+
+        <div class=" row">
+
+            <div class="col-md-8 col-lg-8">
+                <div class="skill-with-social">
+                    <div class="skill-list">
+                        <h3 class="heading">My Skills</h3>
+                        {% for item  in skills %}
+                            <div class="single-skill">
+                                <h3 class="skill-title">
+                                    {% if item.icon %}
+                                        {{ item.icon.as_html }}
+                                    {% endif %}
+                                    {{ item.name|capfirst }}</h3>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: {{ item.percent }}%">
+                                        <span>{{ item.percent }}%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+
+
+                        <!-- /.single-skill -->
+
+                    </div>
+                    <!-- /.skill-list -->
+
+                    <div class="social-status">
+                        <h3 class="heading">Follow Me</h3>
+                        <div class="social-profile-list">
+                            <a href="{{ profile.linkedin_url }}"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ profile.facebook_url }}"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ profile.twitter_url }}"><i class="fab fa-twitter"></i></a>
+                            <a href="{{ profile.linkedin_url }}"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <!-- /.social-status -->
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</div>

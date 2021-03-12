@@ -12,15 +12,11 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = True
 
-if DEBUG == True:
-    ALLOWED_HOSTS = ['.localhost', 'localhost']
-else:
-    ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,11 +46,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     '_profile',
+    'home_page',
     'blog',
-    'project',
     'users',
     'portfolio_app',
-    'single_url',
+    'membership',
 
 ]
 
@@ -90,7 +86,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'blog.context_processors.add_variable_to_context',
+                'home_page.context_processors.add_variable_to_context',
             ],
         },
     },
@@ -112,12 +108,13 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': config('DB_NAME'),
-            'USER': config('DB_USER'),
-            'PASSWORD': config('DB_PASSWORD'),
-            'HOST': config('DB_HOST'),
+            'NAME': 'dynamicportfoliodb',
+            'USER': 'codertjay',
+            'PASSWORD': 'whoamithankgod12dynamicportfolioDB',
+            'HOST': 'localhost',
             'PORT': '',
         }
+
     }
 
 # Password validation
@@ -157,8 +154,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'portfolio_app/static')
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # for django allauth
@@ -175,7 +172,6 @@ SIGNUP_REDIRECT_URL = '/profile/profileUpdate/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-
 # for sending email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
@@ -187,10 +183,16 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
 # this is for django host
 ROOT_URLCONF = 'Portfolio.urls'
 ROOT_HOSTCONF = "Portfolio.hosts"
-PARENT_HOST = '.localhost:8000'
-DEFAULT_HOST = "www"
 
-DEFAULT_REDIRECT_URL = "http://www.localhost:8000"
+if DEBUG:
+    PARENT_HOST = '.localhost:8000'
+    DEFAULT_HOST = "www"
+    DEFAULT_REDIRECT_URL = "http://www.localhost:8000"
+
+else:
+    PARENT_HOST = '104.131.111.54:8000'
+    DEFAULT_HOST = "www"
+    DEFAULT_REDIRECT_URL = "http://104.131.111.54:8000"
 
 # for django debug toolbar
 INTERNAL_IPS = [
@@ -201,4 +203,14 @@ handler404 = 'portfolio_app.views.handler404'
 handler500 = 'portfolio_app.views.handler500'
 
 CORS_ALLOWED_REGEX = config('CORS_ALLOWED_REGEX', cast=Csv())
+
 CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', cast=Csv())
+
+SKIP_PREFLIGHT_CHECK = True
+
+if DEBUG:
+    PAYSTACK_LIVE_KEY = "sk_test_ecd835dfbf1a13ca89b9910b920d33d33cdc1a55"
+    PAYSTACK_PUBLIC_KEY = "pk_test_618bff50aea7529c52c85adc073a7955fa3c7da1"
+else:
+    PAYSTACK_LIVE_KEY = "sk_live_7cb2319f4adfbe77b09fd0ef50134c69a2a26761"
+    PAYSTACK_PUBLIC_KEY = "pk_live_52c351e9226e7f70fd7913da05159b87bea83522"

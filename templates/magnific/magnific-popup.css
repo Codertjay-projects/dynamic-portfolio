@@ -1,0 +1,122 @@
+/* ==================================
+  # Photos Index Page
+================================== */
+.resources-item {
+  -webkit-user-select: auto;
+  background: #f6f6f6;
+  cursor: pointer;
+  margin: 30px 0;
+  padding: 7px 7px 20px;
+  text-align: center;
+}
+.resources-item .resources-category-image {
+  height: 200px;
+  overflow: hidden;
+}
+.resources-description h4 {
+  font-size: 22px;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-family: "open sans condensed", sans-serif;
+}
+.resources-item .resources-description p {
+  margin-top: 20px;
+  font-size: 13px;
+}
+.photos-page.filter-bar {
+  margin-top: 100px;
+}
+.input-group #table_filter.form-control {
+  border-radius: 0;
+  border-color: #ccc;
+  line-height: 20px;
+}
+.selectize-dropdown [data-selectable], 
+.selectize-dropdown .optgroup-header {
+  background-color: #fff;
+}
+.photos-page.filter-bar input#table_filter {
+  height: 45px;
+  border-radius: 0;
+  line-height: 22px;
+  border-color: #ccc;
+}
+.input-group-btn #searchBtn {
+  height: 45px;
+  padding: 0 16px;
+  font-size: 1.4rem;
+  background-color: #00bff3;
+  color: #fff;
+}
+.form-group .selectize-input {
+  height: 45px !important;
+  border-radius: 0;
+}
+.form-group .selectize-input .item {
+  line-height: 26px;
+}
+.photos-bottom-section ul.pagination {
+  float: right;
+}
+.photos-bottom-section #pagingTotal.news-results {
+  margin-top: 0;
+  text-align: center;
+}
+.photos-bottom-section .news-filter {
+  margin-top: 5px;
+}
+.photos-blue-border {
+  margin-top: 30px;
+}
+.photos-bottom-section {
+  margin-bottom: 80px;
+}
+.pagination>li:last-child>a, 
+.pagination>li:last-child>span {
+  border-radius: 0;
+}
+.selectize-input.items {
+  border-radius: 0;
+}
+/* ==================================
+  # Detail
+================================== */
+.photos_filter {
+  margin-top: 30px;
+  padding-left: 30px;
+}
+.gallery-intro p {
+  padding-bottom: 20px;
+}
+
+/* ==================================
+  # Media Queries
+================================== */
+@media screen and (max-width: 1200px) {
+  .resources-item .resources-description p {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .resources-category-image img {
+    width: 100%;
+  }
+  .resources-item .resources-description p {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .resources-item .resources-category-image {
+    height: 200px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .news-filter .items {
+    text-align: left;
+  }
+  #pagingTotal p {
+    padding-top: 0;
+  }
+}

@@ -11,9 +11,9 @@
             <h4 class="card-title">{% trans "Sign Out" %}</h4>
 
 
-            <p>{% trans 'Are you sure you want to sign out?' %}</p>
+            <p style="color: white">{% trans 'Are you sure you want to sign out?' %}</p>
         </div>
-        <div class="card-content">
+        <div class="card-content ">
             <form method="post" action="{% url 'account_logout' %}">
                 {% csrf_token %}
                 {% if redirect_field_value %}
@@ -23,7 +23,7 @@
             </form>
             <a href="{% url 'portfolio:portfolio'  request.user.username %}" class="btn btn-outline-primary">View
                 portfolio</a>
-            <a href="{% url 'portfolio:home' %}" class="btn btn-outline-primary">Home page</a>
+            <a href="{% url 'home_page:home' %}" class="btn btn-outline-primary">Home page</a>
         </div>
     </div>
 {% endblock %}
