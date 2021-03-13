@@ -65,7 +65,7 @@
                             </ul>
                         </div>
                         <div class="pricing-bottom">
-                            <a href="{% url 'membership:payment_done' Standard.membership_type %}"
+                            <a href="{% url 'membership:payment' Standard.membership_type %}"
                                class="theme-btn primary"><i class="fa fa-shopping-cart"></i>Order
                                 now</a>
                         </div>
@@ -99,7 +99,7 @@
                             </ul>
                         </div>
                         <div class="pricing-bottom">
-                            <a href="{% url 'membership:payment_done' Premium.membership_type %}"
+                            <a href="{% url 'membership:payment' Premium.membership_type %}"
                                class="theme-btn primary"><i class="fa fa-shopping-cart"></i>Order
                                 now</a>
                         </div>
@@ -132,7 +132,7 @@
                         </div>
                         <div class="pricing-bottom">
                             {% comment %} Todo add pricing url {% endcomment %}
-                            <a href="{% url 'membership:payment_done' Professional.membership_type %}"
+                            <a href="{% url 'membership:payment' Professional.membership_type %}"
                                class="theme-btn primary"><i class="fa fa-shopping-cart"></i>Order
                                 now</a>
                         </div>

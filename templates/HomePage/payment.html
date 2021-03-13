@@ -47,17 +47,46 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 mx-auto align-content-center">
-                    <form action="#" method="POST" class="align-self-center">
-                        <script
-                                src="https://js.paystack.co/v1/inline.js"
-                                data-key="{{ paystack_public_key }}"
-                                data-email="customer@email.com"
-                                data-plan="{{ membership_type. }}"
-                                data-ref=<UNIQUE TRANSACTION REFERENCE>
-                        </script>
-                    </form>
+                <div class="col-12 mx-auto align-content-center justify-content-center">
+                    <div class="single-pricing active">
+                        <div class="pricing-head">
+                            <h4>{{ membership_type.membership_type }}</h4>
+                            <div class="sticker">
+                                <span>Best plan</span>
+                            </div>
+                        </div>
+                        <div class="pricing-middle">
+                            <div class="circle-box">
+                                <div class="price">
+                                    <h2>${{ membership_type.price }}</h2>
+                                    <p>Monthly</p>
+                                </div>
+                            </div>
+                            <ul class="price-list">
+                                <li>Social Media Marketing</li>
+                                <li>3.100 Keywords</li>
+                                <li>One Way Link Building</li>
+                                <li>10 Free Optimization</li>
+                                <li>5 Press Releases</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-bottom">
+                            <form action="{% url 'membership:payment_done' %}" method="POST" class="align-self-center">
+                                {% csrf_token %}
+                                <script
+                                        src="https://js.paystack.co/v1/inline.js"
+                                        data-key="{{ paystack_public_key }}"
+                                        data-email="{{ request.user.email }}"
+                                        data-first_name="{{ request.user.first_name }}"
+                                        data-last_name="{{ request.user.last_name }}"
+                                        data-currency="USD"
+                                        data-plan="{{ membership_type.membership_plan_id }}">
+                                </script>
+                            </form>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -66,21 +95,30 @@
 
 {% endblock %}
 
-{% block script %}
-    {% comment %} <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>{% endcomment %}
-    <script src="https://js.paystack.co/v1/paystack.js"></script>
+{% block script %}{% comment %}
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script>
-        // Initialize paystack object
-        var paystack;
-        Paystack.init ({
-            form: "paystack-card-form" , // Form ID
-            access_code: 'd5gtr5gnex'   // You should programmatically pass the access
-                                        // code via Ajax or a server variable. Note that
-                                        // the access code can only be used once.
-        }).then (function (returnedObj) {
-            paystack = returnedObj;
-        }).catch (function (error) {
-            console.log ("There was an error loading Paystack" , error);
-        });
-    </script>
+        function payWithPaystack () {
+            var handler = PaystackPop.setup ({
+                key: '{{paystack_public_key}}' ,
+                email: '{{request.user.email}}' ,
+                plan: {{ membership_type.membership_plan_id }} ,
+                currency: "NGN" ,
+                metadata: {
+                    custom_fields: [
+                        {
+                            display_name: "{{request.user.username}}" ,
+                        }
+                    ]
+                } ,
+                callback: function (response) {
+                    alert ('success. transaction ref is ' + response.reference);
+                } ,
+                onClose: function () {
+                    alert ('window closed');
+                }
+            });
+            handler.openIframe ();
+        }
+    </script>{% endcomment %}
 {% endblock %}

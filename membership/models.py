@@ -1,10 +1,13 @@
 from django.conf import settings
 from django.db import models
-
 # Create your models here.
 from django.db.models.signals import post_save
+from paystackapi.paystack import Paystack
 
 from users.models import User
+
+paystack_secret_key = settings.PAYSTACK_LIVE_KEY
+paystack = Paystack(secret_key=paystack_secret_key)
 
 MembershipType = (
     ('Free', 'Free'),
@@ -22,24 +25,56 @@ class MembershipManager(models.Manager):
             return membership.first()
         return None
 
+    def get_membership_plan_id(self, membership_plan_id):
+        membership = self.filter(membership_plan_id=membership_plan_id)
+        print('membership manager', membership)
+        if membership:
+            return membership.first()
+        return None
+
 
 class Membership(models.Model):
     name = models.CharField(max_length=20)
     membership_type = models.CharField(choices=MembershipType, default='Free', max_length=50)
     membership_plan_id = models.CharField(max_length=40)
-    price = models.IntegerField()
-    discount = models.IntegerField()
     info = models.TextField()
     objects = MembershipManager()
 
     def __str__(self):
         return self.membership_type
 
+    @property
+    def interval(self):
+        return paystack.plan.get(self.membership_plan_id)['data']['interval']
+
+    @property
+    def price(self):
+        membership_price = 0
+        try:
+            print('paystack price', paystack.plan.get(self.membership_plan_id)['data']['amount'])
+            membership_price = paystack.plan.get(self.membership_plan_id)['data']['amount'] / 100
+            print(membership_price)
+        except:
+            membership_price = 0
+        return membership_price
+
+    @property
+    def discount(self):
+        discount_price = 0
+        try:
+            print('paystack price', paystack.plan.get(self.membership_plan_id)['data']['amount'])
+            discount_price = paystack.plan.get(self.membership_plan_id)['data']['amount'] / 90
+            print(discount_price)
+        except:
+            discount_price = 0
+        return discount_price
+
 
 class UserMembershipSubscription(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     membership = models.ForeignKey(Membership, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
+    customer_code = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return f'{self.user.first_name} -- {self.user.last_name} -- {self.membership.membership_type}'

@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import payment_view
+from .views import payment_view,payment_done
 
 app_name = 'membership'
 urlpatterns = [
     path('#/<str:payment_type>/', payment_view, name='payment'),
+    path('#/#/payment_done/', payment_done, name='payment_done'),
 ]
