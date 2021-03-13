@@ -1,14 +1,19 @@
+from datetime import datetime, timedelta
+
 from django.conf import settings
 from django.db import models
 # Create your models here.
 from django.db.models.signals import post_save
 from paystackapi.paystack import Paystack
+from paystackapi.transaction import Transaction
 
 from users.models import User
 
 paystack_secret_key = settings.PAYSTACK_LIVE_KEY
 paystack = Paystack(secret_key=paystack_secret_key)
+from paystackapi.customer import Customer
 
+# response = Customer.create(first_name='first_name', last_name='last_name', email='codertjay@gmail.com', phone='phone')
 MembershipType = (
     ('Free', 'Free'),
     ('Standard', 'Standard'),
@@ -74,10 +79,42 @@ class UserMembershipSubscription(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     membership = models.ForeignKey(Membership, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
-    customer_code = models.CharField(max_length=50, blank=True, null=True)
+    customer_code = models.CharField(max_length=100, blank=True, null=True)
+    customer_id = models.CharField(max_length=100, blank=True, null=True)
+    customer_reference = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return f'{self.user.first_name} -- {self.user.last_name} -- {self.membership.membership_type}'
+
+    @property
+    def created_data(self):
+        time = None
+        try:
+            reference = self.customer_reference
+            response = Transaction.verify(reference=reference)
+            time = response['data']['plan']['paidAt']
+        except:
+            time = None
+        return time
+
+    @property
+    def expiration_date(self):
+        time = None
+        try:
+            reference = self.customer_reference
+            response = Transaction.verify(reference=reference)
+            time = response['data']['plan']['paidAt']
+            interval = response['data']['plan_object']['interval']
+            if interval == 'annually':
+                expired_time = timedelta(12 * 30)
+            elif interval == 'quaterly':
+                expired_time = timedelta(6 * 30)
+            elif interval == 'monthly':
+                expired_time = timedelta(1 * 30)
+            time += expired_time
+        except:
+            time = None
+        return time
 
 
 def post_save_user_membership_subscription_create(sender, instance, created, *args, **kwargs):

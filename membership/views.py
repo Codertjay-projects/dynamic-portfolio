@@ -16,6 +16,10 @@ paystack = Paystack(secret_key=paystack_secret_key)
 def payment_view(request, payment_type=None):
     print(payment_type)
     membership = Membership.objects.get_membership_type(payment_type)
+    user_membership = UserMembershipSubscription.objects.filter(user=request.user).first()
+    if user_membership.membership.membership_type != 'Free':
+        messages.success(request, 'Your current subscription is still active')
+        return redirect('profile:dashboard')
     if membership:
         return render(request, 'HomePage/payment.html', {'membership_type': membership})
     else:
@@ -31,17 +35,24 @@ def payment_done(request):
     if reference:
         response = Transaction.verify(reference=reference)
         if response['data']['status'] == 'success':
+            print(response['data']['customer']['id'])
+
             customer_code = response['data']['customer']['customer_code']
+            customer_id = response['data']['customer']['id']
             plan_code = response['data']['plan_object']['plan_code']
             membership_subscription = UserMembershipSubscription.objects.filter(user=request.user).first()
             membership = Membership.objects.get_membership_plan_id(plan_code)
             if membership_subscription and membership:
                 membership_subscription.customer_code = customer_code
+                if not membership_subscription.customer_id:
+                    membership_subscription.customer_id = customer_id
+                if not membership_subscription.customer_reference:
+                    membership_subscription.customer_reference = reference
                 membership_subscription.membership = membership
                 membership_subscription.save()
                 membership_name = response['data']['plan_object']['name']
                 messages.success(request,
-                                 f'Your payment was successful you now have access top {membership_name} plan ')
+                                 f'Your payment was successful you now have access to {membership_name} plan ')
                 return render(request, 'HomePage/payment_done.html')
     messages.error(request, 'There was an error performing your request ')
     return redirect('home_page:home')
