@@ -18,15 +18,17 @@
                 <div class="col-lg-7 col-md-7 col-12">
                     <div class="breadcrumbs-content">
                         <h2>Payment Successful</h2>
-                        <p>You have successful for .</p>
+                        <p>You have successfully made payment
+                            for {{ membership_subscription.membership.membership_type }} membership.</p>
                     </div>
                 </div>
                 <!-- Breadcrumbs-Menu -->
                 <div class="col-lg-5 col-md-5 col-12">
                     <div class="breadcrumbs-menu">
                         <ul>
-                            <li><a href="index.html">Home</a><i class="fa fa-angle-double-right"></i></li>
-                            <li class="active"><a href="#">Mail Success</a></li>
+                            <li><a href="{% url 'home_page:home' %}">Home</a><i class="fa fa-angle-double-right"></i>
+                            </li>
+                            <li class="active"><a href="#">Payment Successful</a></li>
                         </ul>
                     </div>
                 </div>
@@ -36,12 +38,12 @@
     <!-- End Breadcrumbs -->
 
     <!-- Start Mail Success-->
-    <section class="success page">
+    <section class="success page" style="padding: 50px ">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="mail">
-                        <h2>Payment Send <span>Successfully!</span></h2>
+                        <h2>Payment was <span>Successful</span></h2>
                         <p>We have received your payment, You now have access to all contents on our website .
                             Please wait. Thank you :)</p>
                         <a class="theme-btn" href="{% url 'profile:dashboard' %}"><i class="fa fa-long-arrow-left"></i>Go
@@ -54,6 +56,7 @@
     <!--/ End Mail Success -->
 {% endblock %}
 
+{% comment %}
 
 {'status': True, 'message': 'Verification successful',
 
@@ -69,7 +72,9 @@ t_number': None, 'receiver_bank': None},
 '', 'metadata': None, 'risk_action': 'default', 'international_format_phone': None},
 
 'plan': 'PLN_g8i2xsu4xuyqs5m', 'split': {}, 'order_id': None, 'paidAt': '2021-03-12T19:55:10.000Z', '
-createdAt': '2021-03-12T19:54:50.000Z', 'requested_amount': 10000000, 'pos_transaction_data': None, 'transaction_date': '2021-03-12T19:54:50.000Z', 'plan_object':
+createdAt': '2021-03-12T19:54:50.000Z', 'requested_amount': 10000000,
+'pos_transaction_data': None, 'transaction_date':
+'2021-03-12T19:54:50.000Z', 'plan_object':
 
 {'id': 104254, 'name':
 'Professional', 'plan_code': 'PLN_g8i2xsu4xuyqs5m', 'description': 'professional plan', 'amount': 10000000, 'interval': 'annually', 'send_invoices': True, 'send_sms': True, 'currency': '
@@ -95,3 +100,4 @@ NGN'}, 'subaccount': {}}
 tomer_code': 'CUS_l31zbhczbxgqadb', 'risk_action': 'default', 'id': 41032986, 'createdAt': '2021-03-12T19:38:47.000Z', 'updatedAt': '2021-03-13T19:17:30.000Z'}, {'integration': 591175, '
 first_name': '', 'last_name': '', 'email': 'customer@email.com', 'phone': '', 'metadata': None, 'domain': 'test', 'customer_code': 'CUS_qmjpnxtxdpi5pwf', 'risk_action': 'default', 'id':
 41032722, 'createdAt': '2021-03-12T19:33:14.000Z', 'updatedAt': '2021-03-12T19:33:14.000Z'}], 'meta': {'total': 3, 'skipped': 0, 'perPage': 50, 'page': 1, 'pageCount': 1}}
+{% endcomment %}

@@ -6,12 +6,14 @@ from django.db import models
 from django.db.models.signals import post_save
 from paystackapi.paystack import Paystack
 from paystackapi.transaction import Transaction
+from dateutil.relativedelta import relativedelta
 
+from membership.utils import datetime_from_reference
 from users.models import User
 
 paystack_secret_key = settings.PAYSTACK_LIVE_KEY
 paystack = Paystack(secret_key=paystack_secret_key)
-from paystackapi.customer import Customer
+# from paystackapi.customer import Customer
 
 # response = Customer.create(first_name='first_name', last_name='last_name', email='codertjay@gmail.com', phone='phone')
 MembershipType = (
@@ -92,29 +94,29 @@ class UserMembershipSubscription(models.Model):
         try:
             reference = self.customer_reference
             response = Transaction.verify(reference=reference)
-            time = response['data']['plan']['paidAt']
+            time = datetime_from_reference(response)
         except:
-            time = None
+            time = datetime.now()
         return time
 
     @property
     def expiration_date(self):
-        time = None
+        paid_at = None
         try:
             reference = self.customer_reference
             response = Transaction.verify(reference=reference)
-            time = response['data']['plan']['paidAt']
+            paid_at = datetime_from_reference(response)
             interval = response['data']['plan_object']['interval']
             if interval == 'annually':
-                expired_time = timedelta(12 * 30)
+                expired_time = relativedelta(months=12)
             elif interval == 'quaterly':
-                expired_time = timedelta(6 * 30)
+                expired_time = relativedelta(months=6)
             elif interval == 'monthly':
-                expired_time = timedelta(1 * 30)
-            time += expired_time
+                expired_time = relativedelta(months=1)
+            paid_at += expired_time
         except:
-            time = None
-        return time
+            paid_at = datetime.now()
+        return paid_at
 
 
 def post_save_user_membership_subscription_create(sender, instance, created, *args, **kwargs):
