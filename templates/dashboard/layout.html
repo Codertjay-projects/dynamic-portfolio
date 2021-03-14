@@ -219,7 +219,11 @@
                                                                                 </div>
                                                                                 <div class="card-footer">
                                                                                     <div class="price">
-                                                                                        <strong>${{ item.price }}</strong>
+                                                                                        {% if item.paid %}
+                                                                                            <strong>Paid</strong>
+                                                                                        {% else %}
+                                                                                            <strong>Free</strong>
+                                                                                        {% endif %}
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

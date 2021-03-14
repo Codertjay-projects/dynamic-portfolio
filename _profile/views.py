@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.base import View
 
+from membership.models import UserMembershipSubscription
 from portfolio_app.forms import ProjectForm, ProjectItemsForm
 from portfolio_app.forms import (
     TestimonialForm,
@@ -19,16 +20,12 @@ from .models import (Layout,
                      )
 
 
-#
-# auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-# auth.set_access_token(access_token, access_token_secret)
-#
-# api = tweepy.API(auth)
-#
-# public_tweets = api.home_timeline()
-# for tweet in public_tweets:
-#     print(tweet.text)
-#
+def get_user_subscription(request):
+    user_membsership = UserMembershipSubscription.objects.filter(user=request.user).first()
+    if user_membsership:
+        return user_membsership
+    else:
+        return None
 
 
 @login_required
@@ -145,15 +142,26 @@ class UserLayoutUpdate(LoginRequiredMixin, View):
         l_form = LayoutForm(self.request.POST,
                             self.request.FILES,
                             instance=self.request.user.layout)
-        print('this is the post files', self.request.FILES)
         if l_form.is_valid():
-            l_form.save()
-            print('the form was valid')
-            messages.success(self.request, f'Your account has been updated')
-            if self.request.user.username == self.request.POST.get('the_user'):
-                print('the data', self.request.POST.get('the_user'))
-                return HttpResponseRedirect(self.request.user.profile.get_portfolio_absolute_url())
-            return redirect('profile:layoutUpdate')
+            print('the portfolio version', l_form.cleaned_data['portfolio_version'].paid)
+            porfolio_type = l_form.cleaned_data['portfolio_version']
+            user_subscription = get_user_subscription(self.request)
+            if user_subscription:
+                if user_subscription.membership.membership_type != 'Free':
+                    l_form.save()
+                elif not porfolio_type.paid:
+                    l_form.save()
+                elif porfolio_type.paid == 'False' and user_subscription.membership.membership_type == 'Free':
+                    l_form.save()
+                else:
+                    l_form.save(commit=False)
+                    l_form.portfolio_version = self.request.user.layout.portfolio_version
+                    l_form.save()
+                # this is used only when updating layout from the user portfolio
+                if self.request.user.username == self.request.POST.get('the_user'):
+                    return HttpResponseRedirect(self.request.user.profile.get_portfolio_absolute_url())
+                messages.success(self.request, f'Layout has been updated')
+                return redirect('profile:layoutUpdate')
         messages.warning(self.request, f'{l_form.errors}')
         return redirect('profile:layoutUpdate')
 

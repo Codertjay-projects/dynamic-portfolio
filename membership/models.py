@@ -77,6 +77,12 @@ class Membership(models.Model):
         return discount_price
 
 
+class UserMembershipSubscriptionManager(models.Manager):
+
+    def get_user_subscription(self):
+        pass
+
+
 class UserMembershipSubscription(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     membership = models.ForeignKey(Membership, on_delete=models.CASCADE)
@@ -84,6 +90,7 @@ class UserMembershipSubscription(models.Model):
     customer_code = models.CharField(max_length=100, blank=True, null=True)
     customer_id = models.CharField(max_length=100, blank=True, null=True)
     customer_reference = models.CharField(max_length=100, blank=True, null=True)
+    objects = UserMembershipSubscriptionManager()
 
     def __str__(self):
         return f'{self.user.first_name} -- {self.user.last_name} -- {self.membership.membership_type}'
