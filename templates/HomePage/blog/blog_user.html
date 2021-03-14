@@ -17,7 +17,7 @@
                 <div class="col-lg-7 col-md-7 col-12">
                     <div class="breadcrumbs-content">
                         <h2>Blog Area</h2>
-                        <p>List of articles from {{ website_name }} and blogger's</p>
+                        <p>List of articles from {{ user.first_name }} {{ user.last_name }}</p>
                     </div>
                 </div>
                 <!-- Breadcrumbs-Menu -->
@@ -59,8 +59,7 @@
                                                 <p>{{ item.user.first_name }}</p>
                                             </div>
                                             <div class="single-meta">
-                                                <p><i class="fa fa-comments"></i>
-                                                    <span>{{ item.comments.count }} comments</span>
+                                                <p><i class="fa fa-comments"></i> <span>{{ item.comments.count }} comments</span>
                                                 </p>
                                             </div>
                                             <div class="single-meta">
@@ -120,6 +119,10 @@
         </div>
     </section>
     <!-- End Blog Archive -->
+
+{% endblock %}
+
+{% block script %}
 
 {% endblock %}
 

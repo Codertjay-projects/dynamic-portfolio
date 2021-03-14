@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
@@ -22,9 +23,11 @@ class BlogListView(ListView):
     model = Post
     queryset = Post.objects.all()
     template_name = 'HomePage/blog/blog.html'
+    paginate_by = 2
 
     def get_queryset(self):
         query = self.request.GET.get('q')
+        username = self.request.GET.get('username')
         post = Post.objects.all()
         if query:
             object_list = post.filter(
@@ -33,18 +36,30 @@ class BlogListView(ListView):
                 Q(user__username__icontains=query) |
                 Q(title__icontains=query)
             ).distinct()
+        elif username:
+            object_list = post.filter(user__username__icontains=username)
         else:
             object_list = Post.objects.all()
         return object_list
 
 
-class BlogUserListView(ListView):
-    model = Post
-    template_name = 'HomePage/blog/blog.html'
+def blog_user_list_view(request, username=None):
+    if username:
+        user = get_object_or_404(User, username=username)
+        if user:
+            page = request.GET.get('page', 1)
 
-    def get_queryset(self):
-        user = get_object_or_404(User, username=self.kwargs.get('username'))
-        return Post.objects.filter(user=user)
+            post = Post.objects.filter(user=user)
+            paginator = Paginator(post, 10)
+            try:
+                post = paginator.page(page)
+            except PageNotAnInteger:
+                post = paginator.page(1)
+            except EmptyPage:
+                post = paginator.page(paginator.num_pages)
+            return render(request, 'HomePage/blog/blog_user.html', {'post': post, 'user': user})
+    else:
+        return redirect('blog:blog_list')
 
 
 class BlogDetailView(DetailView):

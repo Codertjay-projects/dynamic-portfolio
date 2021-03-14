@@ -11,6 +11,7 @@ from comments.models import Comment
 from .utils import get_read_time
 from markdown_deux import markdown
 from django.contrib.auth import settings
+
 blogCategory = (
     ('ED', 'Education'),
     ('EN', 'Entertainment'),

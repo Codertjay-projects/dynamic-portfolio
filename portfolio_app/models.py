@@ -30,6 +30,8 @@ class ProjectItem(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     image = models.ImageField(blank=True, null=True)
     description = models.CharField(max_length=100)
+    instagram = models.BooleanField(default=False)
+    twitter = models.BooleanField(default=False)
 
     @property
     def imageURL(self):
@@ -86,7 +88,6 @@ class Service(models.Model):
         return image
 
 
-
 skill_choices = (
     ('Meeting_and_Listening', 'Meeting & Listening'),
     ('UI/UX_Design', 'UI/UX Design'),
@@ -103,5 +104,3 @@ class Skills(models.Model):
     description = models.CharField(max_length=200)
     percent = models.PositiveIntegerField(default=75)
     icon = IconField(blank=True, null=True)
-
-

@@ -4,12 +4,13 @@ from .views import (BlogListView,
                     update_post_view,
                     DeletePostView,
                     create_comment,
-                    BlogCreateView
+                    BlogCreateView, blog_user_list_view
                     )
 
 app_name = 'blog'
 urlpatterns = [
     path('', BlogListView.as_view(), name='blog_list'),
+    path('#/<str:username>/', blog_user_list_view, name='blog_user_list'),
     path('#/article_create/', BlogCreateView.as_view(), name='blog_create'),
     path('<str:slug>/', BlogDetailView.as_view(), name='blog_detail'),
     path('<str:slug>/create_comment/', create_comment, name='blog_comment'),

@@ -3,13 +3,12 @@ from .models import HomePageService, HomePageTestimonial
 from _profile.models import PortfolioTemplate, TagChoice
 from membership.models import Membership
 from django.conf import settings
+from blog.models import blogCategory
 
 paystack_public_key = settings.PAYSTACK_PUBLIC_KEY
 
+
 def add_variable_to_context(request):
-    latest_posts = Post.objects.all()
-
-
     Free = Membership.objects.get_membership_type(membership_type='Free')
     Standard = Membership.objects.get_membership_type(membership_type='Standard')
     Premium = Membership.objects.get_membership_type(membership_type='Premium')
@@ -17,11 +16,13 @@ def add_variable_to_context(request):
     service = HomePageService.objects.all()
     testimonial = HomePageTestimonial.objects.all()
     portfolio_template = PortfolioTemplate.objects.all()
+
     older_posts = Post.objects.all().order_by('-id')
+    latest_posts = Post.objects.all()
+
     if Post.objects.count() > 3:
-        latest_posts = Post.objects.all()[3]
-    if Post.objects.count() > 3:
-        older_posts = Post.objects.all()[3].order_by(-id)
+        older_posts = Post.objects.all().order_by('-id')[3]
+        # latest_posts = Post.objects.all()[3]
     about_website = "Dynamic portfolio is all about crating portfolio " \
                     "website for individual with low or no cost We love the web and care deeply for how users interact with a digital product. We power " \
                     "" \
@@ -47,4 +48,5 @@ def add_variable_to_context(request):
         'Premium': Premium,
         'Professional': Professional,
         'paystack_public_key': paystack_public_key,
+        'blogCategory': blogCategory,
     }

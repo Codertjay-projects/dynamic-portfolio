@@ -176,7 +176,20 @@
                                         <div class="col-12 mt-2">
                                             {{ project_items_form.description|as_crispy_field }}
                                         </div>
-
+                                        <div class="col-12 mt-2">
+                                            <h3 class="text-center text-capitalize"><strong>Post on twitter or
+                                                Instagram</strong></h3>
+                                            <div class="d-flex text-center justify-content-center align-content-center">
+                                                <div class="text-center mr-5">
+                                                    <label for="id_twitter"><strong>Twitter</strong></label>
+                                                    {{ project_items_form.twitter }}
+                                                </div>
+                                                <div class="text-center ml-5">
+                                                    <label for="id_twitter"><strong>Instagram</strong></label>
+                                                    {{ project_items_form.instagram }}
+                                                </div>
+                                            </div>
+                                        </div>
                                         <button class=" btn btn-primary text-red">Create</button>
                                     </form>
                                 </div>

@@ -1,5 +1,5 @@
 from django import forms
-from .models import ProjectItem, Project, Testimonial, Service, Resume,Skills
+from .models import ProjectItem, Project, Testimonial, Service, Resume, Skills
 from upload_validator import FileTypeValidator
 
 
@@ -25,6 +25,7 @@ class ProjectForm(forms.ModelForm):
             'name',
             'image',
             'description',
+
         ]
 
 
@@ -52,6 +53,8 @@ class ProjectItemsForm(forms.ModelForm):
             'name',
             'image',
             'description',
+            'instagram',
+            'twitter',
         ]
 
 

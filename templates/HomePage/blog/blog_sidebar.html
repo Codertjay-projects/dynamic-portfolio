@@ -33,21 +33,20 @@
         <div class="widget categories-widget">
             <h5 class="widget-title">Categories</h5>
             <ul>
-                <li><a href="#">Business<span>26</span></a></li>
-                <li><a href="#">Consultant<span>26</span></a></li>
-                <li><a href="#">Creative<span>26</span></a></li>
-                <li><a href="#">UI/UX<span>26</span></a></li>
-                <li><a href="#">Technology<span>26</span></a></li>
+                {% for item in blogCategory %}
+                    <li><a href="{% url 'blog:blog_list' %}?q={{ item|first }}">{{ item|last }}<span></span></a></li>
+                {% endfor %}
+
             </ul>
         </div>
         <!-- Social Icon Widget -->
         <div class="widget socail-widget">
             <h4 class="widget-title">Never Miss News</h4>
             <ul>
-                <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="{{ facebook_url }}"><i class="fa fa-facebook-f"></i></a></li>
+                <li><a href="{{ twitter_url }}"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="{{ dribble_url }}"><i class="fa fa-dribbble"></i></a></li>
+                <li><a href="{{ linkedin_url }}"><i class="fa fa-linkedin"></i></a></li>
             </ul>
         </div>
 
@@ -58,3 +57,4 @@
     </div>
     <!-- End Blog Sidebar -->
 </div>
+
