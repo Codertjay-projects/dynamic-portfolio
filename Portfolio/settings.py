@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'users',
     'portfolio_app',
     'membership',
+    'dashboard',
 
 ]
 

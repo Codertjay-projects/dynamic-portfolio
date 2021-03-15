@@ -12,14 +12,11 @@ class PostCreateForm(forms.ModelForm):
                                 'label': 'Title',
 
                             }))
-    slug = forms.SlugField(required=True,
-                           max_length=50,
-                           label='Slug')
     image = forms.ImageField(required=True, validators=[FileTypeValidator(
         allowed_types=['image/*']
     )],
                              widget=forms.FileInput(attrs={
-                                 'class': '  waves-effect   bg-primary   ',
+                                 'class': '  waves-effect    ',
 
                              }))
 
@@ -34,11 +31,11 @@ class PostCreateForm(forms.ModelForm):
                                      'type': "button",
                                      'data-toggle': "dropdown"
                                  }))
+    description = forms.CharField(widget=PagedownWidget())
 
     class Meta:
         model = Post
         fields = ['title'
-            , 'slug'
             , 'category'
             , 'description'
             , 'image'

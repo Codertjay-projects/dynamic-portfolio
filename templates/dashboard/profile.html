@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <div class="card-content m-3">
-                            <form action="{% url 'profile:profileUpdate' %}" enctype="multipart/form-data"
+                            <form action="{% url 'dashboard:profileUpdate' %}" enctype="multipart/form-data"
                                   method="post">
                                 {% csrf_token %}
                                 <div class="col-12">

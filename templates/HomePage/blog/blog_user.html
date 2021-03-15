@@ -41,11 +41,11 @@
             <div class="row">
                 <div class="col-lg-8 col-12">
                     <div class="row">
-                        {% for item in post_list %}
+                        {% for item in post %}
 
                             <div class="col-lg-6 col-md-6 col-12">
                                 <!-- Single Blog -->
-                                <div class="single-blog">
+                                <div class="single-blog" style="height: 50vh">
                                     <div class="blog-img">
                                         <img src="{{ item.imageURL }}" alt="#">
                                         <span class="date">{{ item.timestamp|date }}</span>
@@ -78,25 +78,25 @@
                         <div class="col-12">
                             <!-- Start Pagination -->
                             <div class="bonik-pagination-main">
-                                {% if is_paginated %}
+                                {% if post.paginator %}
                                     <ul class="bonik-pagination">
-                                        {% if page_obj.has_previous %}
-                                            <li class="prev"><a href="?page={{ page_obj.previous_page_number }}"><i
+                                        {% if post.has_previous %}
+                                            <li class="prev"><a href="?page={{ post.previous_page_number }}"><i
                                                     class="fa fa-long-arrow-left"></i></a></li>
                                         {% else %}
                                             <li class="prev disabled"><a href="#"><i
                                                     class="fa fa-long-arrow-left"></i></a></li>
                                         {% endif %}
-                                        {% for i in paginator.page_range %}
-                                            {% if page_obj.number == i %}
+                                        {% for i in post.paginator.page_range %}
+                                            {% if post.number == i %}
                                                 <li class="active"><a href="#">{{ i }}</a></li>
                                             {% else %}
                                                 <li class="active"><a href="?page={{ i }}">{{ i }}</a>
                                                 </li>
                                             {% endif %}
                                         {% endfor %}
-                                        {% if page_obj.has_next %}
-                                            <li class="next"><a href="?page={{ page_obj.next_page_number }}"><i
+                                        {% if post.has_next %}
+                                            <li class="next"><a href="?page={{ post.next_page_number }}"><i
                                                     class="fa fa-long-arrow-right"></i></a></li>
                                         {% else %}
                                             <li class="next"><a href="#"><i

@@ -23,7 +23,7 @@ class BlogListView(ListView):
     model = Post
     queryset = Post.objects.all()
     template_name = 'HomePage/blog/blog.html'
-    paginate_by = 2
+    paginate_by = 10
 
     def get_queryset(self):
         query = self.request.GET.get('q')
@@ -50,7 +50,7 @@ def blog_user_list_view(request, username=None):
             page = request.GET.get('page', 1)
 
             post = Post.objects.filter(user=user)
-            paginator = Paginator(post, 10)
+            paginator = Paginator(post, 2)
             try:
                 post = paginator.page(page)
             except PageNotAnInteger:
@@ -101,7 +101,7 @@ class BlogCreateView(LoginRequiredMixin, View):
 
         elif not form.is_valid():
             messages.error(self.request, 'invalid form data')
-        return redirect('single_url:blog_create')
+        return redirect('blog:blog_create')
 
 
 @login_required

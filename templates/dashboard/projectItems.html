@@ -115,7 +115,7 @@
                                                             type="button">
                                                         Edit
                                                     </button>
-                                                    <form action="{% url 'profile:projectItemDelete' %}"
+                                                    <form action="{% url 'dashboard:projectItemDelete' %}"
                                                           method="post">
                                                         {% csrf_token %}
                                                         <input type="hidden" value="{{ item.id }}" name="id">
@@ -148,7 +148,7 @@
                             </div>
                             <div class="card-container">
                                 <div class="col-12">
-                                    <form action="{% url 'profile:projectItemsCreate' %}" method="post"
+                                    <form action="{% url 'dashboard:projectItemsCreate' %}" method="post"
                                           enctype="multipart/form-data">
                                         {% csrf_token %}
 
@@ -231,7 +231,7 @@
                             <div class="card ">
                                 <div class="card-container">
                                     <div class="col-12">
-                                        <form action="{% url 'profile:projectItemUpdate' %}"
+                                        <form action="{% url 'dashboard:projectItemUpdate' %}"
                                               method="post"
                                               enctype="multipart/form-data">
                                             {% csrf_token %}

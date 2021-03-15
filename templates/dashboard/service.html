@@ -50,7 +50,7 @@ active
                                                 {{ item.description }}
                                             </td>
                                             <td class="td-actions">
-                                                <form action="{% url 'profile:serviceDelete' %}" method="post">
+                                                <form action="{% url 'dashboard:serviceDelete' %}" method="post">
                                                     {% csrf_token %}
                                                     <input type="hidden" name="id" value="{{ item.id }}">
                                                     <button type="submit" rel="tooltip" data-placement="left"
@@ -94,7 +94,7 @@ active
                     </div>
                     <div class="card-container">
                         <div class="col-12">
-                            <form action="{% url 'profile:serviceCreate' %}" method="post"
+                            <form action="{% url 'dashboard:serviceCreate' %}" method="post"
                                   enctype="multipart/form-data">
                                 {% csrf_token %}
 
@@ -146,7 +146,7 @@ active
                         <div class="card ">
                             <div class="card-container">
                                 <div class="col-12">
-                                    <form action="{% url 'profile:serviceUpdate' %}"
+                                    <form action="{% url 'dashboard:serviceUpdate' %}"
                                           method="post"
                                           enctype="multipart/form-data">
                                         {% csrf_token %}

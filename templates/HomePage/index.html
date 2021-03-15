@@ -20,10 +20,11 @@
                         <div class="col-lg-7 col-md-8 col-12">
                             <div class="hero-content">
                                 <h1 class="text-capitalize">The Best Solutions to Start Your Own Business</h1>
-                                <p class="text-capitalize">Create your portfolio now for free with our free plans and become a website owner</p>
+                                <p class="text-capitalize">Create your portfolio now for free with our free plans and
+                                    become a website owner</p>
                                 <!-- Slider Button -->
                                 <div class="button">
-                                    <a href="{% url 'profile:dashboard' %}" class="theme-btn">Get Started</a>
+                                    <a href="{% url 'dashboard:dashboard' %}" class="theme-btn">Get Started</a>
                                     <div class="video-main">
                                         <!-- Promo-Video -->
                                         <div class="promo-video">
@@ -51,10 +52,11 @@
                         <div class="col-lg-7 col-md-8 col-12">
                             <div class="hero-content">
                                 <h1 class="text-capitalize">The best place to start your business</h1>
-                                <p class="text-capitalize">We provide SEO (Search Engine Optimisation) for your website</p>
+                                <p class="text-capitalize">We provide SEO (Search Engine Optimisation) for your
+                                    website</p>
                                 <!-- Slider Button -->
                                 <div class="button">
-                                    <a href="{% url 'profile:dashboard' %}" class="theme-btn">Get Started</a>
+                                    <a href="{% url 'dashboard:dashboard' %}" class="theme-btn">Get Started</a>
                                     <div class="video-main">
                                         <!-- Promo-Video -->
                                         <div class="promo-video">
@@ -85,7 +87,7 @@
                                 <p class="text-capitalize">Get your own website and choose from our templates</p>
                                 <!-- Slider Button -->
                                 <div class="button">
-                                    <a href="{% url 'profile:dashboard' %}" class="theme-btn">Get Started</a>
+                                    <a href="{% url 'dashboard:dashboard' %}" class="theme-btn">Get Started</a>
                                     <div class="video-main">
                                         <!-- Promo-Video -->
                                         <div class="promo-video">
@@ -127,7 +129,7 @@
                 <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12">
                     <div class="section-title">
                         <h6>Template</h6>
-                        <h3>  Templates</h3>
+                        <h3> Templates</h3>
                         <div class="line-bot"></div>
                         <p>Checkout some of our great templates and get started by creating your own website.</p>
                     </div>
@@ -198,7 +200,7 @@
                     <div class="cta-content">
                         <h3>Build your Perfect Website Now!</h3>
                         <p>If you want to create a new website for your business, do not hesitate to contact us today.
-                            We have have  provided all types of services on the website.</p>
+                            We have have provided all types of services on the website.</p>
                         <div class="cta-button">
                             <a href="{% url 'home_page:contact' %}" class="theme-btn">Get started</a>
                         </div>
@@ -249,7 +251,7 @@
                                 </div>
                                 <!-- End Single count -->
                             </div>
-                          {% comment %}  <div class="col-lg-3 col-md-3 col-12">
+                            {% comment %}  <div class="col-lg-3 col-md-3 col-12">
                                 <!-- Single count -->
                                 <div class="single-count last">
                                     <i class="fa fa-headphones"></i>
@@ -287,13 +289,18 @@
                     <div class="blog-slider">
                         {% for post in latest_posts %}
                             <!-- Single Blog -->
-                            <div class="single-blog">
+
+                            <div class="single-blog" style="height: 40vh">
+
                                 <div class="blog-img">
-                                    <img src="{{ post.imageURL }}" alt="#">
-                                    <span class="date">{{ post.timestamp|date }}</span>
+                                    <a href="{% url 'blog:blog_detail' post.slug %}">
+                                        <img src="{{ post.imageURL }}" alt="#" width="510" height="380">
+                                        <span class="date">{{ post.timestamp|date }}</span> </a>
                                 </div>
+
                                 <div class="blog-body">
-                                    <h3><a href="{% url 'blog:blog_detail' post.slug %}">{{ post.title|title }}</a></h3>
+                                    <h3><a href="{% url 'blog:blog_detail' post.slug %}">{{ post.title|title }}</a>
+                                    </h3>
                                     <div class="blog-meta">
                                         <div class="single-meta">
                                             <img src="{{ post.user.layout.profilePicsImageURL }}" alt="">
@@ -309,6 +316,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <!-- End Single Blog -->
                         {% endfor %}
                     </div>

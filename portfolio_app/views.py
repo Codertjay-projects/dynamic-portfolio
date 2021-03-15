@@ -3,16 +3,15 @@ from django.conf import settings
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-
 from _profile.forms import LayoutForm, ProfileForm
 from _profile.models import Profile, Layout
 from blog.models import Post
-from portfolio_app.forms import TestimonialForm, SkillsForm
-from portfolio_app.models import Testimonial, Skills, Service, Resume
+from dashboard.forms import TestimonialForm, SkillsForm
+from dashboard.models import Testimonial, Skills, Service, Resume
 from users.forms import ContactUserForm
 from users.models import User
-from .forms import ProjectForm, ProjectItemsForm
-from .models import Project, ProjectItem
+from dashboard.forms import ProjectForm, ProjectItemsForm
+from dashboard.models import Project, ProjectItem
 
 DEFAULT_REDIRECT_URL = settings.DEFAULT_REDIRECT_URL
 
