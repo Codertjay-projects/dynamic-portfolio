@@ -50,7 +50,7 @@ def blog_user_list_view(request, username=None):
             page = request.GET.get('page', 1)
 
             post = Post.objects.filter(user=user)
-            paginator = Paginator(post, 2)
+            paginator = Paginator(post, 10)
             try:
                 post = paginator.page(page)
             except PageNotAnInteger:
