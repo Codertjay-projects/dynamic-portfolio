@@ -36,3 +36,10 @@ class HomePageTestimonial(models.Model):
     def __str__(self):
         return self.name
 
+
+class SubscribeUser(models.Model):
+    email = models.EmailField()
+
+
+    def __str__(self):
+        return self.email

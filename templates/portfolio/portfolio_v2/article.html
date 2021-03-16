@@ -25,7 +25,7 @@
                         <figure class="post-thumb">
                             <a href="{% host_url 'blog:blog_detail' item.slug host 'www' %}">
                                 <img src="{{ item.imageURL }}"
-                                     alt="Blog Image"/>
+                                     alt="Blog Image" style="height: 30vh"/>
                                 {% comment %}  <img src="{% static 'portfolio/portfolio_v2/assets/images/blog/grid/1.jpg' %}"
                                      alt="Blog Image"/>{% endcomment %}
                             </a>
@@ -41,7 +41,7 @@
                                 <!--./ entry-category -->
                             </div>
                             <!-- /.entry-meta -->
-                            <h2 class="entry-title">
+                            <h2 class="entry-title text-capitalize">
                                 <a href="{% host_url 'blog:blog_detail' item.slug host 'www' %}">{{ item.title }}.</a>
                             </h2>
                             <!-- /.entry-title -->
@@ -51,6 +51,14 @@
                     <!-- /.post -->
                 </div>
             {% endfor %}
+        </div>
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="{% host_url 'blog:blog_user_list' profile.user.username host 'www' %}">
+                    <button class="btn-primary">More</button>
+                </a>
+            </div>
         </div>
         <!-- /.row -->
     </div>

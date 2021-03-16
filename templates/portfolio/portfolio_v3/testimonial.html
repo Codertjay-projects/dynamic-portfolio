@@ -1,0 +1,46 @@
+{% load static %}
+<section class="testimonials">
+    <div class="section-overlay">
+        <!-- Container Starts -->
+        <div class="container">
+            <!-- Main Heading Starts -->
+            <div class="text-center top-text">
+                <h1><span>Happy</span> Customers</h1>
+                <h4>Testimonials</h4>
+            </div>
+            <!-- Main Heading Starts -->
+            <!-- Blockquotes Starts -->
+            <div id="quote-carousel" class="carousel slide" data-ride="carousel">
+                <!-- Wrapper For Sliders Starts -->
+                <!-- Indicators Starts -->
+                <ol class="carousel-indicators mx-auto">
+                    <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                    {% for item in testimonial %}
+                        <li data-target="#quote-carousel" data-slide-to="{{ item.id }}"></li>
+                    {% endfor %}
+
+                </ol>
+                <!-- Indicators Ends -->
+                <div class="carousel-inner">
+                    <!-- Quote #1 Starts -->
+                    {% for item in testimonial %}
+
+                        <div class="carousel-item active">
+                            <blockquote>
+                                <img class="rounded-circle img-fluid" src="{{ item.imageURL }}" alt="client">
+                                <p>{{ item.detail }}</p>
+                                <h5>{{ item.client_name }}</h5>
+                            </blockquote>
+                        </div>
+                    {% endfor %}
+
+                    <!-- Quote #1 Ends -->
+
+                </div>
+                <!-- Wrapper For Sliders Ends -->
+            </div>
+            <!-- Blockquotes Ends -->
+        </div>
+        <!-- Container Ends -->
+    </div>
+</section>

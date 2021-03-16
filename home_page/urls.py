@@ -1,9 +1,11 @@
 from django.urls import path
-from .views import HomePageView, ServiceView,FaqView,AboutView,TestimonialView,ContactView,PricingView
+from .views import HomePageView, ServiceView, FaqView, AboutView, TestimonialView, ContactView, PricingView, \
+    subscribe_user
 
 app_name = 'home_page'
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
+    path('#/subscribe/', subscribe_user, name='subscribe'),
     path('#/service/', ServiceView.as_view(), name='service'),
     path('#/faq/', FaqView.as_view(), name='faq'),
     path('#/about/', AboutView.as_view(), name='about'),

@@ -186,9 +186,10 @@
                     <h2>Subscribe & stay updated</h2>
                     <p>Get the latest news from {{ website_name }}.</p>
                 </div>
-                <form class="form-main">
+                <form action="{% url 'home_page:subscribe' %}" class="form-main" method="post">
+                    {% csrf_token %}
                     <div class="form-group">
-                        <input type="email" name="Email" placeholder="Your email adress" required="required">
+                        <input type="email" name="email" placeholder="Your email adress" required="required">
                         <button type="submit" class="theme-btn">Subscribe Now</button>
                     </div>
                 </form>
@@ -210,7 +211,9 @@
                     <div class="single-widget footer-about">
                         <div class="footer-logo">
                             <a class="logo" href="#">
-                                <img src="{% static 'HomePage/img/footer-logo.png' %}" alt="#">
+                                {% comment %} Todo create logo for website{% endcomment %}
+                               <h2 style="color: white">{{ website_name }}</h2>
+                                {% comment %}<img src="{% static 'HomePage/img/footer-logo.png' %}" alt="#">{% endcomment %}
                             </a>
                         </div>
                         <div class="about-description">

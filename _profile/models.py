@@ -32,6 +32,9 @@ class PortfolioTemplate(models.Model):
             image = None
         return image
 
+    def __str__(self):
+        return f"{self.name} -- {self.paid}"
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
@@ -54,7 +57,7 @@ class Profile(models.Model):
         return reverse('portfolio:portfolio', kwargs={'username': self.user.username})
 
     def __str__(self):
-        return f'{self.user.username} '
+        return f'{self.user.username} -  {self.user.first_name} - {self.user.last_name} '
 
 
 background_colors = (
@@ -100,6 +103,9 @@ class Layout(models.Model):
         except:
             image = ''
         return image
+
+    def __str__(self):
+        return f"{self.user.username} -- {self.portfolio_version} -- {self.portfolio_version.portfolio_version}"
 
 
 class Contact(models.Model):

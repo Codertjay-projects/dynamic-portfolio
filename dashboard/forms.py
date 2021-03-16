@@ -41,7 +41,7 @@ class ProjectItemsForm(forms.ModelForm):
         'class': ''
     }))
 
-    description = forms.CharField(required=True, max_length=200, label='Description', widget=forms.Textarea(attrs={
+    description = forms.CharField(required=True, max_length=100, label='Description', widget=forms.Textarea(attrs={
         'class': 'form-control   ',
         'cols': '100',
         'placeholder': 'just a little description with maximum characters of 50',

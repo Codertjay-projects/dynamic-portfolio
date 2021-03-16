@@ -1,0 +1,41 @@
+{% load static %}
+<section id="services" class="services">
+    <!-- Container Starts -->
+    <div class="container">
+        <!-- Main Heading Starts -->
+        <div class="text-center top-text">
+            <h1><span>Our</span> Services</h1>
+            <h4>What We Doing</h4>
+        </div>
+        <!-- Main Heading Starts -->
+        <!-- Divider Starts -->
+        <div class="divider text-center">
+            <span class="outer-line"></span>
+            <span class="fa fa-cogs" aria-hidden="true"></span>
+            <span class="outer-line"></span>
+        </div>
+        <!-- Divider Ends -->
+        <!-- Services Starts -->
+        <div class="row services-box">
+            <!-- Service Item Starts -->
+            {% for item in service %}
+                <div class="col-lg-4 col-md-12 col-sm-12 services-box-item" style="background-image: {{ item.imageURL }}">
+                    <!-- Service Item Cover Starts -->
+                    <span class="services-box-item-cover " data-headline="{{ item.name }}"
+                          style="background-image: {{ item.imageURL }}"></span>
+                    <!-- Service Item Cover Ends -->
+                    <!-- Service Item Content Starts -->
+                    <div class="services-box-item-content {% comment %}fa fa-leaf{% endcomment %}"
+                         style="background-image: {{ item.imageURL }}">
+                        <h2>{{ item.name }}</h2>
+                        <p>{{ item.description }}.</p>
+                    </div>
+                    <!-- Service Item Content Ends -->
+                </div>
+            {% endfor %}
+            <!-- Service Item Ends -->
+
+        </div>
+        <!-- Services Ends -->
+    </div>
+</section>

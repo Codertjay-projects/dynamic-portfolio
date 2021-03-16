@@ -1,14 +1,14 @@
+from django.contrib import messages
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
-
 # Create your views here.
 from django.template.loader import get_template
 from django.views.generic.base import View
 
 from Portfolio.settings import EMAIL_HOST_USER
+from home_page.forms import SubscribeForm
 from users.forms import ContactAdminForm
 from users.models import ContactAdmin
-from django.contrib import messages
 
 
 class HomePageView(View):
@@ -62,7 +62,7 @@ class ContactView(View):
         )
         if form.is_valid():
             contact.save()
-            template = get_template('main/../templates/EmailTemplates/contact_admin.txt')
+            template = get_template('EmailTemplates/contact_admin.txt')
             context = {
                 'contact_name': contact.contact_name,
                 'contact_email': contact.contact_email,
@@ -84,3 +84,13 @@ class ContactView(View):
                 return redirect('home_page:contact')
         print('there was an error sending your message')
         return redirect('home_page:contact')
+
+
+def subscribe_user(request):
+    form = SubscribeForm(request.POST)
+    if form.is_valid():
+        form.save()
+        messages.success(request, 'Successfully Subscribed to our mailing list ')
+    else:
+        messages.info(request, 'There was an error subscribing to our mailing list ')
+    return redirect('home_page:home')

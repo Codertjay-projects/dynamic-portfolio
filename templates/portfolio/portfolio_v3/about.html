@@ -1,0 +1,39 @@
+{% load static %}
+
+<section id="about" class="about">
+    <!-- Container Starts -->
+    <div class="container">
+        <!-- Main Heading Starts -->
+        <div class="text-center top-text">
+            <h1><span>About</span> Us</h1>
+            <h4>Who We Are</h4>
+        </div>
+        <!-- Main Heading Ends -->
+        <!-- Divider Starts -->
+        <div class="divider text-center">
+            <span class="outer-line"></span>
+            <span class="fa fa-user" aria-hidden="true"></span>
+            <span class="outer-line"></span>
+        </div>
+        <!-- Divider Ends -->
+        <!-- About Content Starts -->
+        <div class="row about-content">
+            <div class="col-sm-12 col-md-12 col-lg-6 about-left-side">
+                <h3 class="title-about"><strong>{{ profile.user.first_name }} {{ profile.user.last_name }}</strong></h3>
+                <hr>
+                <p>{{ profile.about|linebreaks }}. </p>
+                <!-- Tabs Heading Starts -->
+
+                <!-- Tabs Content Ends -->
+                <a class="custom-button scroll-to-target" href="#portfolio">Our Portfolio</a>
+            </div>
+            <div class="col-md-12 col-lg-6 about-right">
+                <div class="about-right-side">
+                    <img class="img-fluid" src="{{ layout.profilePicsImageURL }}" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- About Content Ends -->
+    </div>
+    <!-- Container Ends -->
+</section>

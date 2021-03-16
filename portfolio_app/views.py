@@ -42,6 +42,9 @@ def my_portfolio(request, username):
         service = Service.objects.filter(user__username=username)
         resume = Resume.objects.filter(user__username=username)
         post = Post.objects.filter(user__username=username)
+        if post.count() >= 6:
+            post_ = Post.objects.filter(user__username=username)
+        print('this is the post', post_)
         try:
             primary_color_nums = ImageColor.getrgb(layout.primary_color)
             secondary_color_nums = ImageColor.getrgb(layout.secondary_color)

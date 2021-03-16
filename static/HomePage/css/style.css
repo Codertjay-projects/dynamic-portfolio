@@ -56,15 +56,15 @@ Version: 1.0.0
 .topbar .topbar-address ul li a i {
 	margin-right: 10px;
 	font-size: 16px;
-	color: #9c27b0;
+	color: #28B463;
 }
 /*======================================
 	End Topbar CSS
-========================================*/ 
+========================================*/
 
 /*======================================
 	Header CSS
-========================================*/ 
+========================================*/
 .header {
 	background: #fff;
 	z-index: 200;
@@ -73,7 +73,7 @@ Version: 1.0.0
 }
 .header .header-inner-top{
 	position:relative;
-}  
+}
 .header .header-inner {
 	z-index: 999999;
 	width: 100%;
@@ -107,7 +107,7 @@ Version: 1.0.0
     position: relative;
 }
 .header .nav-item .navigation li.active a {
-	color: #9c27b0;
+	color: #28B463;
 }
 .header .navigation li:last-child{
 	margin-right:0px;
@@ -126,11 +126,11 @@ Version: 1.0.0
 	left: 0;
 	width: 0;
 	height: 2px;
-	background: #9c27b0;
+	background: #28B463;
 	transition:all 0.3s ease;
 }
 .header .navigation li a:hover{
-	color: #9c27b0;
+	color: #28B463;
 }
 .header .navigation li.active a:before,
 .header .navigation li:hover a:before{
@@ -153,7 +153,7 @@ Version: 1.0.0
 	transition: all 0.3s ease;
 	transform: translateY(50px);
 	box-shadow: 1px 3px 5px #00000030;
-	border-top: 2px solid #9c27b0;
+	border-top: 2px solid #28B463;
 }
 .header .nav-menu li:hover .sub-menu{
 	opacity:1;
@@ -182,7 +182,7 @@ Version: 1.0.0
 }
 .header .nav-menu li .sub-menu li a:hover {
     color: #fff;
-    background: #9c27b0;
+    background: #28B463;
     padding: 7px 15px;
 }
 .header .navigation li a i {
@@ -225,11 +225,11 @@ Version: 1.0.0
 }
 /*======================================
 	End Header CSS
-========================================*/  
+========================================*/
 
 /*======================================
 	Hero Area CSS
-========================================*/ 
+========================================*/
 .hero-area {
 	width: 100%;
 	position: relative;
@@ -255,7 +255,7 @@ Version: 1.0.0
     color: #fff;
     letter-spacing: 10px;
     font-size: 18px;
-    background: #9c27b0;
+    background: #28B463;
     padding: 5px 17px;
     font-weight: 600;
     border-radius: 3px;
@@ -278,7 +278,7 @@ Version: 1.0.0
     margin-top: 50px;
 }
 .hero-area .hero-content .theme-btn:hover {
-	color: #9c27b0;
+	color: #28B463;
 }
 /* Video Popup */
 .hero-area .video-main {
@@ -299,7 +299,7 @@ Version: 1.0.0
 	bottom: -30px;
 	z-index: -1;
 	border: none;
-	background: #9c27b0;
+	background: #28b363;
 }
 .hero-area .promo-video .waves-block .wave-1 {
     -webkit-animation-delay: 0s;
@@ -321,14 +321,14 @@ Version: 1.0.0
 	border: none;
 	border-radius: 100%;
 	background: #fff;
-	color: #9c27b0;
+	color: #28B463;
 	display: inline-block;
 	z-index: 999;
 	padding: 0;
 	padding-left: 2px;
 }
 .hero-area .video-main .video:hover{
-	background: #9c27b0;
+	background: #28B463;
 	color: #fff;
 }
 
@@ -361,7 +361,7 @@ Version: 1.0.0
 }
 .hero-area .owl-theme .owl-dots .owl-dot span {
 	background: #fff;
-	border: 2px solid #9c27b0;
+	border: 2px solid #28B463;
 	width: 14px;
 	height: 14px;
 	margin: 0;
@@ -369,7 +369,7 @@ Version: 1.0.0
 }
 .hero-area .owl-theme .owl-dots .owl-dot:hover span,
 .hero-area .owl-theme .owl-dots .owl-dot.active span{
-	background:#9c27b0;
+	background:#28B463;
 }
 /* Hero Animations */
 .hero-area .owl-item.active span{
@@ -386,11 +386,11 @@ Version: 1.0.0
 }
 /*======================================
 	End Hero Area CSS
-========================================*/ 
+========================================*/
 
 /*======================================
 	About Area CSS
-========================================*/ 
+========================================*/
 .about-area {
 	padding: 100px 0px;
 	background: #26313C;
@@ -402,7 +402,7 @@ Version: 1.0.0
 	content: "";
 	width: 400px;
 	height: 100%;
-	background: #9c27b0;
+	background: #28B463;
 	top: 0;
 }
 .about-img{
@@ -469,7 +469,7 @@ Version: 1.0.0
 }
 .about-content h2 b {
 	font-weight: 600;
-	color: #9c27b0;
+	color: #28B463;
 	font-style: italic;
 	font-size: 50px;
 }
@@ -520,11 +520,11 @@ Version: 1.0.0
 }
 /*======================================
 	End About Area CSS
-========================================*/ 
+========================================*/
 
 /*======================================
 	Services CSS
-========================================*/ 
+========================================*/
 .service-area {
 	padding: 100px 0px;
 }
@@ -550,14 +550,14 @@ Version: 1.0.0
 	content: "";
 	width: 0;
 	height: 2px;
-	background: #9c27b0;
+	background: #28B463;
 	top: 17px;
 	transition: all 0.4s ease;
 	left: 35px;
 }
 .single-service:hover .number h6{
 	border-radius:50px;
-}  
+}
 .single-service:hover .number::before{
 	width: 345px;
 }
@@ -570,8 +570,8 @@ Version: 1.0.0
 	height: 35px;
 	line-height: 35px;
 	transition: all 0.8s ease;
-	border: 1px solid #9c27b0;
-	color: #9c27b0;
+	border: 1px solid #28B463;
+	color: #28B463;
 }
 .single-service .service-img {
 	border-radius: 100%;
@@ -590,7 +590,7 @@ Version: 1.0.0
 	position: relative;
 }
 .single-service:hover .service-img{
-	border-color:#9c27b0;
+	border-color:#28B463;
 }
  .single-service .service-img img {
 	border-radius: 50%;
@@ -599,7 +599,7 @@ Version: 1.0.0
 	font-size: 20px;
 	position: absolute;
 	bottom: 0;
-	color: #9c27b0;
+	color: #28B463;
 	width: 50px;
 	height: 50px;
 	background: #fff;
@@ -621,7 +621,7 @@ Version: 1.0.0
 	margin-bottom: 12px;
 }
 .single-service .service-content h4:hover{
-	color:#9c27b0;
+	color:#28B463;
 }
 .single-service .service-content p {
 	line-height: 22px;
@@ -631,7 +631,7 @@ Version: 1.0.0
 }
 .single-service .service-bottom a {
 	font-size: 13px;
-	background: #9c27b0;
+	background: #28B463;
 	width: 35px;
 	height: 35px;
 	color: #fff;
@@ -645,18 +645,18 @@ Version: 1.0.0
 }
 /* Service Archive */
 .service-area.archive{
-	
+
 }
 .service-area.archive .single-service{
 	margin-top:30px;
 }
 /*======================================
 	End Services CSS
-========================================*/ 
+========================================*/
 
 /*======================================
     Portfolio CSS
-========================================*/ 
+========================================*/
 .portfolio-area {
 	padding: 100px 0px;
 	background: #F7F7F7;
@@ -696,16 +696,16 @@ Version: 1.0.0
 	margin-left: -10px;
 }
 .project-nav li.active {
-	background: #9c27b0;
+	background: #28B463;
 	color: #fff;
 	position: relative;
 }
-.portfolio-area .project-nav li:hover{ 
-	background: #9c27b0;
+.portfolio-area .project-nav li:hover{
+	background: #28B463;
     color: #fff;
 }
 .project-nav li.active{
-    background: #9c27b0;
+    background: #28B463;
     color: #fff;
 }
 .project-nav li:last-child{
@@ -777,7 +777,7 @@ Version: 1.0.0
 	font-weight: 700;
 }
 .portfolio-content h4 a:hover{
-	color:#9c27b0;
+	color:#28B463;
 }
 .portfolio-content p {
 	font-size: 16px;
@@ -787,7 +787,7 @@ Version: 1.0.0
 .portfolio-single:hover .portfolio-content{
 	visibility:visible;
 	opacity:1;
-} 
+}
 .portfolio-single .p-button {
 	position: absolute;
 	bottom: 30px;
@@ -800,7 +800,7 @@ Version: 1.0.0
 	transform: translateX(-100%);
 	width: 50px;
 	height: 50px;
-	background: #9c27b0;
+	background: #28B463;
 	line-height: 50px;
 	text-align: center;
 	border-radius: 100px;
@@ -818,7 +818,7 @@ Version: 1.0.0
 	color:#26313C;
 }
 
-/* Portfolio Single CSS */ 
+/* Portfolio Single CSS */
 .portfolio-single-detail {
 	padding: 70px 0px 100px;
 }
@@ -859,14 +859,14 @@ Version: 1.0.0
 	border-bottom: 1px solid #0000001a;
 	padding-bottom: 15px;
 	margin-bottom: 15px;
-	color: #d25fe7;
+	color: #23B563;
 }
 .project-info li {
     margin-bottom: 15px;
 }
 .project-info li i {
     margin-right: 10px;
-    color: #d25fe7;
+    color: #23B563;
 }
 .project-info li:last-child{
 	margin:0;
@@ -887,7 +887,7 @@ Version: 1.0.0
 	background: #f5f5f5;
 }
 .project-download li:hover{
-	background: #d25fe7;
+	background: #23b563;
 	color: #fff;
 }
 .project-download li:hover a,
@@ -909,11 +909,11 @@ Version: 1.0.0
 }
 /*======================================
     End Portfolio CSS
-========================================*/ 
+========================================*/
 
 /*======================================
 	Team CSS
-========================================*/ 
+========================================*/
 .team-area {
 	padding: 100px 0;
 }
@@ -951,7 +951,7 @@ Version: 1.0.0
 }
 .single-team .team-bottom {
 	position: absolute;
-	background: #9c27b0cf;
+	background: #28B463cf;
 	border-radius: 0px 0px 5px 5px;
 	padding: 18px 0px;
 	transition: all 0.4s ease;
@@ -972,7 +972,7 @@ Version: 1.0.0
 .single-team:hover .team-social{
 	opacity:1;
 	visibility:visible;
-} 
+}
 .single-team .team-content{
 	transition: all 0.4s ease;
 	-webkit-transition: all 0.4s ease;
@@ -988,7 +988,7 @@ Version: 1.0.0
 	color: #fff;
 }
 .single-team .team-social {
-	background: #9c27b0A3;
+	background: #28B463A3;
 	border-radius: 0px 0px 5px 5px;
 	padding: 29px 0px;
 	transition: all 0.4s ease;
@@ -1032,11 +1032,11 @@ Version: 1.0.0
 }
 /*======================================
 	End Team CSS
-========================================*/ 
+========================================*/
 
 /*======================================
 	Testimonials CSS
-========================================*/ 
+========================================*/
 .testimonial-area .section-title {
 	text-align: left;
 	padding-left: 50px;
@@ -1050,7 +1050,7 @@ Version: 1.0.0
 	display: inline-block;
 	width: 50px;
 	height: 2px;
-	background: #9c27b0;
+	background: #28B463;
 	position: relative;
 }
 .testimonial-area .line-bot::before {
@@ -1084,7 +1084,7 @@ Version: 1.0.0
 	width: 150px;
 	height: 150px;
 	border-radius: 100%;
-	border: 5px solid #9c27b0;
+	border: 5px solid #28B463;
 	padding: 3px;
 	display: inline-block;
 }
@@ -1122,7 +1122,7 @@ Version: 1.0.0
 	color: #fff;
 }
 .testimonial-social li a:hover{
-	color:#9c27b0;
+	color:#28B463;
 }
 .testimonial-right {
 	margin-top: 44px;
@@ -1170,7 +1170,7 @@ Version: 1.0.0
 }
 .testimonial-area .owl-carousel .owl-controls .owl-dot.active span,
 .testimonial-area .owl-carousel .owl-controls .owl-dot:hover span {
-	background: #9c27b0;
+	background: #28B463;
 	border: 2px solid #fff;
 }
 /*======================================
@@ -1179,7 +1179,7 @@ Version: 1.0.0
 
 /*======================================
 	Pricing CSS
-========================================*/ 
+========================================*/
 .pricing-area {
     padding: 100px 0px;
     background: #fff;
@@ -1199,8 +1199,8 @@ Version: 1.0.0
 	transform:scale(1.1);
 }
 .single-pricing:hover .pricing-bottom .theme-btn{
-	background: #9c27b0;
-} 
+	background: #28B463;
+}
 .pricing-area .single-pricing.active {
 	transform: scale(1.1);
 	z-index: 5555;
@@ -1218,14 +1218,14 @@ Version: 1.0.0
 	font-weight: 600;
 }
 .pricing-area .single-pricing.active .pricing-head {
-	background: #9c27b0;
+	background: #28B463;
 }
 .pricing-area .single-pricing.active .pricing-head h4 {
 	color: #fff;
 }
 .single-pricing:hover .pricing-bottom .theme-btn,
 .single-pricing.active .pricing-bottom .theme-btn {
-	background: #9c27b0;
+	background: #28B463;
 	-webkit-transition: all 0.4s ease;
 	-moz-transition: all 0.4s ease;
 	transition: all 0.4s ease;
@@ -1236,7 +1236,7 @@ Version: 1.0.0
     text-align: center;
     background: #26313C;
     padding: 20px 0px;
-} 
+}
 .pricing-area .single-pricing .pricing-head h4 {
 	font-size: 20px;
 	font-weight: 700;
@@ -1290,11 +1290,11 @@ Version: 1.0.0
 }
 /*======================================
 	End Pricing CSS
-========================================*/ 
+========================================*/
 
 /*======================================
 	CTA CSS
-========================================*/ 
+========================================*/
 .cta-section {
 	padding: 80px 0px 155px 0px;
 	position: relative;
@@ -1322,11 +1322,11 @@ Version: 1.0.0
 }
 /*======================================
 	End CTA CSS
-========================================*/ 
+========================================*/
 
 /*======================================
 	Fun Fact CSS
-========================================*/ 
+========================================*/
 .fun-fact {
 	transform: translateY(-75px);
 	margin-bottom: -75px;
@@ -1351,7 +1351,7 @@ Version: 1.0.0
 	font-size: 25px;
 	width: 50px;
 	height: 50px;
-	background: #9c27b0;
+	background: #28B463;
 	color: #f9f9f9;
 	text-align: center;
 	line-height: 50px;
@@ -1386,11 +1386,11 @@ Version: 1.0.0
 }
 /*======================================
 	End Fun Fact CSS
-========================================*/ 
+========================================*/
 
 /*======================================
 	Blog Area CSS
-========================================*/ 
+========================================*/
 .blog-area {
 	padding: 100px 0;
 }
@@ -1434,7 +1434,7 @@ Version: 1.0.0
 	font-size: 15px;
 	font-weight: 500;
 	line-height: 30px;
-	background: #9c27b0;
+	background: #28B463;
 }
 .single-blog .blog-body {
 	position: absolute;
@@ -1456,7 +1456,7 @@ Version: 1.0.0
 	font-weight: 600;
 }
 .single-blog .blog-body h3 a:hover{
-	color:#9c27b0;
+	color:#28B463;
 }
 .single-blog .blog-meta {
 	margin-top: 15px;
@@ -1501,7 +1501,7 @@ Version: 1.0.0
     width: 50px;
     height: 60px;
     line-height: 60px;
-    background: #9c27b0;
+    background: #28B463;
     color: #fff;
     position: absolute;
     margin: 0;
@@ -1553,7 +1553,7 @@ Version: 1.0.0
 }
 .blog-title-meta .blog-meta span i {
 	margin-right: 5px;
-	color: #9c27b0;
+	color: #28B463;
 }
 .blog-title-meta .blog-meta span a {
 	color: #666;
@@ -1623,7 +1623,7 @@ Version: 1.0.0
     -moz-transition: all 0.4s ease;
 }
 .blog-post-tag .post-tag li a:hover{
-	background:#9c27b0;
+	background:#28B463;
 	color:#fff;
 }
 .blog-post-tag .blog-share {
@@ -1645,7 +1645,7 @@ Version: 1.0.0
     background: #f5f5f5;
 }
 .blog-post-tag .blog-share li a:hover{
-	background:#9c27b0;
+	background:#28B463;
 	border: 1px solid transparent;
 	color:#fff;
 }
@@ -1658,7 +1658,7 @@ Version: 1.0.0
 .prev-next-btn ul li {
 	display: inline-block;
 	margin-right: 10px;
-	background: #9c27b0;
+	background: #28B463;
 	padding: 7px 15px;
 	color: #fff;
 	transition: all 0.4s ease;
@@ -1693,7 +1693,7 @@ Version: 1.0.0
 }
 .post-author-box .author img {
 	border-radius: 100%;
-	border: 5px solid #9c27b0;
+	border: 5px solid #28B463;
 	padding: 4px;
 	background: #fff;
 }
@@ -1721,7 +1721,7 @@ Version: 1.0.0
 	color: #fff;
 }
 .post-author-box .author-social li a:hover{
-	color:#9c27b0;
+	color:#28B463;
 }
 .bottom-title h2 {
 	font-size: 20px;
@@ -1749,7 +1749,7 @@ Version: 1.0.0
 .single-comments .head img {
 	border-radius: 100%;
 	padding: 5px;
-	border: 2px solid #9c27b0;
+	border: 2px solid #28B463;
 	width: 80px;
 	height: 80px;
 }
@@ -1763,7 +1763,7 @@ Version: 1.0.0
 .single-comments .body .meta {
 	font-size: 13px;
 	margin-left: 5px;
-	color: #9c27b0;
+	color: #28B463;
 	font-weight: 500;
 }
 .single-comments .body p {
@@ -1785,7 +1785,7 @@ Version: 1.0.0
 	cursor: pointer;
 }
 .single-comments .body .reply:hover{
-	background:#9c27b0;
+	background:#28B463;
 	color:#fff;
 }
 .single-comments .body .reply a {
@@ -1799,11 +1799,11 @@ Version: 1.0.0
 	border-top: 1px solid #cccccca6;
 }
 .comment-list .head img {
-	border: 2px solid #9c27b0;
+	border: 2px solid #28B463;
 }
 .single-comments .comment-list .meta{
-	color:#9c27b0;
-} 
+	color:#28B463;
+}
 
 /* Comments Form */
 .blog-c-form .bottom-title h2 {
@@ -1824,7 +1824,7 @@ Version: 1.0.0
 	margin: 0 0 25px;
 }
 .blog-c-form label span {
-	color: #9c27b0;
+	color: #28B463;
 	font-weight: 600;
 	position: relative;
 	margin-right: 5px;
@@ -1834,7 +1834,7 @@ Version: 1.0.0
 	height: 42px;
 	padding-left: 10px;
 	font-weight: 400;
-	border-radius: 0px;	
+	border-radius: 0px;
 	border: 1px solid #f5f5f5;
 	background: #f5f5f5;
 }
@@ -1853,7 +1853,7 @@ Version: 1.0.0
 }
 .blog-c-form .form-group input:hover,
 .blog-c-form .form-group textarea:hover{
-	border-color:#9c27b0;
+	border-color:#28B463;
 }
 .blog-c-form .form-group input:hover,
 .blog-c-form .form-group input:focus,
@@ -1881,7 +1881,7 @@ Version: 1.0.0
 	height: 0;
 	border-style: solid;
 	border-width: 0 60px 60px 0;
-	border-color: transparent #9c27b0 transparent transparent;
+	border-color: transparent #28B463 transparent transparent;
 	right: 0;
 	top: 0;
 }
@@ -1900,7 +1900,7 @@ Version: 1.0.0
 	bottom: -2px;
 	height: 3px;
 	width: 70px;
-	background-color: #9c27b0;
+	background-color: #28B463;
 	content: '';
 }
 .widget-search form {
@@ -1923,7 +1923,7 @@ Version: 1.0.0
 	width: 60px;
 	height: 100%;
 	z-index: 1;
-	background-color: #9c27b0;
+	background-color: #28B463;
 	font-size: 14px;
 	-webkit-transition: all 0.3s ease-out 0s;
 	transition: all 0.3s ease-out 0s;
@@ -1958,7 +1958,7 @@ Version: 1.0.0
 	color: #555;
 }
 .popular-feeds .feed-desc h6 a:hover{
-	color: #9c27b0;
+	color: #28B463;
 }
 .popular-feeds .feed-desc .time {
 	font-size: 14px;
@@ -1966,7 +1966,7 @@ Version: 1.0.0
 }
 .popular-feeds .feed-desc .time i {
 	margin-right: 5px;
-	color: #9c27b0;
+	color: #28B463;
 }
 .popular-feeds .feed-desc ul li {
   margin-bottom: 10px;
@@ -1999,7 +1999,7 @@ Version: 1.0.0
 	transition: all 0.3s ease-out 0s;
 }
 .categories-widget ul li a:hover {
-  background-color: #9c27b0;
+  background-color: #28B463;
   color:#fff;
 }
 
@@ -2009,7 +2009,7 @@ Version: 1.0.0
 }
 .socail-widget ul li {
 	font-size: 12px;
-	position: relative; 
+	position: relative;
 	display: inline-block;
 	margin-right: 10px;
 }
@@ -2030,7 +2030,7 @@ Version: 1.0.0
     display: block;
 }
 .socail-widget ul li a:hover {
-	background-color: #9c27b0;
+	background-color: #28B463;
 	color:#fff;
 }
 .socail-widget ul li a {
@@ -2055,7 +2055,7 @@ Version: 1.0.0
     display: block;
 }
 .popular-tag-widget ul li a:hover {
-	background-color: #9c27b0;
+	background-color: #28B463;
 	color:#fff;
 }
 /* Blog Archive */
@@ -2067,11 +2067,11 @@ Version: 1.0.0
 }
 /*======================================
 	End Blog Area CSS
-========================================*/ 
+========================================*/
 
 /*======================================
 	Contact Area CSS
-========================================*/ 
+========================================*/
 .contact-area {
 	padding: 110px 0px;
 	background: #F7F7F7;
@@ -2095,7 +2095,7 @@ Version: 1.0.0
 	padding-right: 50px;
 }
 .contact-area .top-content h3 span {
-	color: #9c27b0;
+	color: #28B463;
 	font-size: 18px;
 	font-weight: 600;
 	margin-bottom: 10px;
@@ -2162,7 +2162,7 @@ Version: 1.0.0
 	margin-bottom:20px;
 }
 .success .mail h2 span {
-	color: #9c27b0;
+	color: #28B463;
 }
 .success .mail p {
 	padding-right: 100px;
@@ -2175,11 +2175,11 @@ Version: 1.0.0
 }
 /*======================================
 	End Contact Area CSS
-========================================*/ 
+========================================*/
 
 /*======================================
 	Client Area CSS
-========================================*/ 
+========================================*/
 .client-area {
     padding: 60px 0px;
 }
@@ -2208,7 +2208,7 @@ Version: 1.0.0
 	margin: 0;
 	text-align: center;
 	border-radius: 0px;
-	background: #9c27b0;
+	background: #28B463;
 	color: #fff;
 	-webkit-transition: all 0.4s ease;
 	-moz-transition: all 0.4s ease;
@@ -2236,17 +2236,17 @@ Version: 1.0.0
 }
 .client-area:hover .owl-carousel .owl-prev{
 	left:-70px;
-} 
+}
 .client-area:hover .owl-carousel .owl-next{
 	right:-70px;
 }
 /*======================================
 	End Client Area CSS
-========================================*/ 
+========================================*/
 
 /*======================================
 	Faq Area CSS
-========================================*/ 
+========================================*/
 .faq-box-area {
 	padding: 100px 0;
 	background: #f7f7f7;
@@ -2265,7 +2265,7 @@ Version: 1.0.0
 	margin-top: 30px;
 }
 .single-faq-box.active{
-	background: #9c27b0;
+	background: #28B463;
 }
 .single-faq-box.active i {
 	border: 1px solid #ffffff75;
@@ -2276,7 +2276,7 @@ Version: 1.0.0
 }
 .single-faq-box i {
 	font-size: 25px;
-	color: #9c27b0;
+	color: #28B463;
 	width: 50px;
 	height: 50px;
 	border: 1px solid #00000047;
@@ -2284,7 +2284,7 @@ Version: 1.0.0
 	border-radius: 100%;
 }
 .single-faq-box:hover{
-	background: #9c27b0;
+	background: #28B463;
 }
 .single-faq-box:hover i{
 	color:#fff;
@@ -2340,7 +2340,7 @@ Version: 1.0.0
 	display: block;
 	font-weight: 500;
 	padding: 18px 25px;
-	background: #9c27b0;
+	background: #28B463;
 	border-radius: 0px;
 }
 .faq-inner .faq-title a::before {
@@ -2435,11 +2435,11 @@ Version: 1.0.0
 }
 /*======================================
 	End Faq Area CSS
-========================================*/ 
+========================================*/
 
 /*======================================
 	404 CSS
-========================================*/ 
+========================================*/
 .error-page {
     padding: 100px 0px;
 }
@@ -2455,7 +2455,7 @@ Version: 1.0.0
 	font-size: 70px;
 	-webkit-animation: tada 1.5s ease infinite;
 	animation: tada 1.5s ease infinite;
-	color: #9c27b0;
+	color: #28B463;
 }
 .error-inner h2 {
     margin-bottom: 10px;
@@ -2468,7 +2468,7 @@ Version: 1.0.0
 }
 /*======================================
 	End 404 CSS
-========================================*/ 
+========================================*/
 
 /*===========================
 	Theme Others CSS
@@ -2507,7 +2507,7 @@ Version: 1.0.0
 	content: "";
 	width: 70px;
 	height: 2px;
-	background: #9c27b0;
+	background: #28B463;
 	bottom: -2px;
 }
 .breadcrumbs-content h2::after {
@@ -2542,7 +2542,7 @@ Version: 1.0.0
 }
 .breadcrumbs-menu li.active a,
 .breadcrumbs-menu li a:hover{
-	color:#9c27b0;
+	color:#28B463;
 }
 .breadcrumbs-menu li i{
 	padding-left: 10px;
@@ -2587,8 +2587,8 @@ Version: 1.0.0
 	-webkit-box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.10);
 	-moz-box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.10);
 	box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.10);
-} 
-.bonik-pagination li.prev a, 
+}
+.bonik-pagination li.prev a,
 .bonik-pagination li.next a {
 	font-size: 15px;
 	text-align:center;
@@ -2596,7 +2596,7 @@ Version: 1.0.0
 .bonik-pagination li.active a,
  .bonik-pagination li:hover a {
 	color: #fff !important;
-	background: #9c27b0;
+	background: #28B463;
 }
 /* Subscribe */
 .subscribe-area {
@@ -2714,7 +2714,7 @@ Version: 1.0.0
 	border-right-width: 7px;
 	border-left-color: transparent;
 	border-right: 0;
-	border-left-color: #9c27b0;
+	border-left-color: #28B463;
 	-webkit-transition:all 0.4s ease;
 	-moz-transition:all 0.4s ease;
 	transition:all 0.4s ease;
@@ -2722,7 +2722,7 @@ Version: 1.0.0
 .f-contact-box .box-icon i {
 	font-size: 20px;
 	color: #fff;
-	background: #9c27b0;
+	background: #28B463;
 	width: 40px;
 	height: 40px;
 	line-height: 40px;
@@ -2754,11 +2754,11 @@ Version: 1.0.0
 	color: #ccc;
 }
 .f-links li a:hover i{
-	color:#9c27b0;
+	color:#28B463;
 	margin-right: 10px;
 }
 .f-links li a:hover{
-	color:#9c27b0;
+	color:#28B463;
 }
 .f-links li a i {
 	margin-right: 5px;
@@ -2800,7 +2800,7 @@ Version: 1.0.0
 	transition:all 0.4s ease;
 }
 .widget-post .post-content h4:hover a{
-	color:#9c27b0;
+	color:#28B463;
 }
 .widget-post .post-date {
 	font-size: 13px;
@@ -2808,7 +2808,7 @@ Version: 1.0.0
 }
 .widget-post .post-date i {
 	margin-right: 5px;
-	color: #9c27b0;
+	color: #28B463;
 }
 .contact-bottom li {
 	margin-bottom: 10px;
@@ -2819,7 +2819,7 @@ Version: 1.0.0
 .contact-bottom li a i {
     width: 25px;
     height: 25px;
-    background: #9c27b0;
+    background: #28B463;
     line-height: 25px;
     text-align: center;
     border-radius: 5px;
@@ -2868,7 +2868,7 @@ Version: 1.0.0
 	color: #fff;
 }
 .copyright .copyright-text p a:hover{
-	color:#9c27b0;
+	color:#28B463;
 }
 /*===========================
 	End Footer Area CSS

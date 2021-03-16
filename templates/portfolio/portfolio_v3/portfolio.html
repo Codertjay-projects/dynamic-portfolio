@@ -1,0 +1,59 @@
+{% load static %}
+<section id="portfolio" class="portfolio">
+    <!-- Container Starts -->
+    <div class="container">
+        <!-- Main Heading Starts -->
+        <div class="text-center top-text">
+            <h1><span>Our</span> Portfolio</h1>
+            <h4>Our latest Works</h4>
+        </div>
+        <!-- Main Heading Starts -->
+        <!-- Divider Starts -->
+        <div class="divider text-center">
+            <span class="outer-line"></span>
+            <span class="fa fa-image" aria-hidden="true"></span>
+            <span class="outer-line"></span>
+        </div>
+        <!-- Divider Ends -->
+        <!-- Filter Wrapper Starts -->
+        <nav>
+            <ul class="simplefilter nav nav-pills d-block">
+                <!-- Filter Wrapper Items Starts -->
+                <li class="active" data-filter="all"><i class="fa fa-reorder"></i> All Projects</li>
+                {% for item in project %}
+                    <li data-filter="{{ item.id }}">{{ item.name }}</li>
+                {% endfor %}
+                <!-- Filter Wrapper Items Ends -->
+            </ul>
+        </nav>
+        <!-- Filter Wrapper Ends -->
+        <div>
+            <div class="filtr-container">
+                {% for item in ProjectItem %}
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 filtr-item" data-category="{{ item.project.id }}">
+                        <div class="magnific-popup-gallery">
+                            <!-- Thumbnail Starts -->
+                            <figure class="thumbnail thumbnail__portfolio">
+                                <a class="image-wrap" href="{{ item.imageURL }}"
+                                   data-gal="magnific-pop-up[image]" title="Image project">
+                                    <img class="img-fluid"
+                                         src="{{ item.imageURL }}"
+                                         alt="Image Project"/><span
+                                        class="zoom-icon"></span></a>
+                            </figure>
+                            <!-- Thumbnail Ends -->
+                            <!-- Caption Starts -->
+                            <div class="caption">
+                                <h3 class="text-capitalize">{{ item.name }}</h3>
+                                <p>{{ item.description }}</p>
+                            </div>
+                            <!-- Caption Ends -->
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <!-- Container Ends -->
+</section>

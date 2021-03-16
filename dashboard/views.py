@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -147,16 +149,17 @@ class UserLayoutUpdate(LoginRequiredMixin, View):
             porfolio_type = l_form.cleaned_data['portfolio_version']
             user_subscription = get_user_subscription(self.request)
             if user_subscription:
-                if user_subscription.membership.membership_type != 'Free':
+                if user_subscription.membership.membership_type != 'Free' and user_subscription.expiration_date > datetime.now():
                     l_form.save()
-                elif not porfolio_type.paid:
-                    l_form.save()
-                elif porfolio_type.paid == 'False' and user_subscription.membership.membership_type == 'Free':
+                elif porfolio_type.paid == 'False':
                     l_form.save()
                 else:
                     l_form.save(commit=False)
                     l_form.portfolio_version = self.request.user.layout.portfolio_version
                     l_form.save()
+                    messages.info(self.request,
+                                  'You dont have access to this template you have to become a premium member ')
+                    return redirect('home_page:price')
                 # this is used only when updating layout from the user portfolio
                 if self.request.user.username == self.request.POST.get('the_user'):
                     return HttpResponseRedirect(self.request.user.profile.get_portfolio_absolute_url())
@@ -297,7 +300,7 @@ class ProjectView(LoginRequiredMixin, View):
                 print('the data', self.request.POST.get('the_user'))
                 messages.success(self.request, f'{form.name} added to {form.project}')
                 return HttpResponseRedirect(self.request.user.profile.get_portfolio_absolute_url())
-            return redirect('dashboard:profileUpdate')
+            return redirect('dashboard:projectCreate')
         messages.warning(self.request, f'{project_form.errors}')
         return redirect('dashboard:projectCreate')
 
