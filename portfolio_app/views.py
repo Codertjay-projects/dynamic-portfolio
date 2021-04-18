@@ -1,6 +1,7 @@
 from PIL import ImageColor
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from _profile.forms import LayoutForm, ProfileForm
@@ -26,7 +27,6 @@ def handler500(request, exception):
     response = render(request, '500.html', context={})
     response.status_code = 500
     return response
-
 
 def my_portfolio(request, username):
     print('the requsest get_raw_uri', request.get_raw_uri())
