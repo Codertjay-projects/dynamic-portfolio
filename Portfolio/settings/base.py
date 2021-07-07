@@ -1,59 +1,13 @@
 import os
 from decouple import config, Csv
+from .installed import INSTALLED_APPS
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname( os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Quick-start_date development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-
-DEBUG = True
-
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-
-# Application definition
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-
-    # third part packages
-    'markdown_deux',
-    'pagedown',
-    'crispy_forms',
-    'fontawesome_5',
-    'colorful',
-    'comments',
-    'django.contrib.sites',
-    'rest_framework',
-
-    # debug tool bar
-    'debug_toolbar',
-    # subdomains
-    'django_hosts',
-    'corsheaders',
-    'upload_validator',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-
-    '_profile',
-    'home_page',
-    'blog',
-    'users',
-    'portfolio_app',
-    'membership',
-    'dashboard',
-
-]
 
 MIDDLEWARE = [
     # for django host
@@ -74,7 +28,7 @@ MIDDLEWARE = [
     # for django host
     'django_hosts.middleware.HostsResponseMiddleware'
 ]
-
+INSTALLED_APPS = INSTALLED_APPS
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -94,29 +48,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Portfolio.wsgi.application'
-
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'dynamicportfoliodb',
-            'USER': 'codertjay',
-            'PASSWORD': 'whoamithankgod12dynamicportfolioDB',
-            'HOST': 'localhost',
-            'PORT': '',
-        }
-
-    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -185,21 +116,6 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
 ROOT_URLCONF = 'Portfolio.urls'
 ROOT_HOSTCONF = "Portfolio.hosts"
 
-if DEBUG:
-    PARENT_HOST = '.localhost:8000'
-    DEFAULT_HOST = "www"
-    DEFAULT_REDIRECT_URL = "http://www.localhost:8000"
-
-else:
-    PARENT_HOST = '104.131.111.54:8000'
-    DEFAULT_HOST = "www"
-    DEFAULT_REDIRECT_URL = "http://104.131.111.54:8000"
-
-# for django debug toolbar
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
-
 handler404 = 'portfolio_app.views.handler404'
 handler500 = 'portfolio_app.views.handler500'
 
@@ -208,11 +124,3 @@ CORS_ALLOWED_REGEX = config('CORS_ALLOWED_REGEX', cast=Csv())
 CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', cast=Csv())
 
 SKIP_PREFLIGHT_CHECK = True
-
-if DEBUG:
-    PAYSTACK_LIVE_KEY = "sk_test_ecd835dfbf1a13ca89b9910b920d33d33cdc1a55"
-    PAYSTACK_PUBLIC_KEY = "pk_test_618bff50aea7529c52c85adc073a7955fa3c7da1"
-else:
-    PAYSTACK_LIVE_KEY = "sk_live_7cb2319f4adfbe77b09fd0ef50134c69a2a26761"
-    PAYSTACK_PUBLIC_KEY = "pk_live_52c351e9226e7f70fd7913da05159b87bea83522"
-
