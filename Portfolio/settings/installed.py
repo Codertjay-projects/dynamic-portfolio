@@ -8,6 +8,12 @@ LOCAL_APPS = [
     'portfolio_app',
     'membership',
     'dashboard',
+    'skill',
+    'resume',
+    'project',
+    'service',
+    'testimonial',
+
 
 ]
 THIRD_PARTY_APPS = [
@@ -22,8 +28,6 @@ THIRD_PARTY_APPS = [
     'django.contrib.sites',
     'rest_framework',
 
-    # debug tool bar
-    'debug_toolbar',
     # subdomains
     'django_hosts',
     'corsheaders',

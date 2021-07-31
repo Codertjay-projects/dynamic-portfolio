@@ -22,11 +22,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    # for debug toolbar
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-
-    # for django host
-    'django_hosts.middleware.HostsResponseMiddleware'
 ]
 INSTALLED_APPS = INSTALLED_APPS
 TEMPLATES = [

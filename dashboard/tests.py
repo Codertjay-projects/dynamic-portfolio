@@ -1,13 +1,12 @@
 from datetime import datetime
 
-from django.test import TestCase, Client
-from rest_framework.test import APIClient
-
-from .models import Layout, Resume, Profile, Skills, Testimonial, Service
-from users.models import ContactUser, ContactAdmin
 from django.contrib.auth import get_user_model
-from blog.models import Post
+from django.test import TestCase, Client
 from selenium import webdriver
+
+from _profile.models import Profile, Layout
+from blog.models import Post
+from .models import Resume, Skills, Testimonial, Service
 
 User = get_user_model()
 ss = webdriver.Edge()

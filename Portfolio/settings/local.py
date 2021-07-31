@@ -19,7 +19,7 @@ INTERNAL_IPS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'portfolio',
+        'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'thankgod12',
         'HOST': 'localhost',

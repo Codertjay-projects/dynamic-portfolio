@@ -7,44 +7,16 @@ from django.urls import reverse
 from django_countries.fields import CountryField
 
 from Portfolio.settings import DEFAULT_REDIRECT_URL
+from portfolio_app.models import PortfolioTemplate
 from users.models import User
-
-TagChoice = (
-    ('Graphics', 'Graphics'),
-    ('Web development', 'Web development'),
-    ('UI/Ux', 'UI/Ux'),
-)
-
-
-class PortfolioTemplate(models.Model):
-    name = models.CharField(max_length=20)
-    portfolio_version = models.CharField(max_length=30)
-    tag = models.CharField(max_length=20, choices=TagChoice)
-    image = models.ImageField(upload_to='home_page/portfolio_tag')
-    price = models.IntegerField(default=0)
-    paid = models.BooleanField(default=True)
-
-    @property
-    def imageURL(self):
-        try:
-            image = self.image.url
-        except:
-            image = None
-        return image
-
-    def __str__(self):
-        return f"{self.name} -- {self.paid}"
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-
     motto = models.CharField(blank=True, null=True, max_length=100)
     main_skill = models.CharField(blank=True, null=True, max_length=100)
-
     country = CountryField(multiple=False)
     address = models.CharField(max_length=200, blank=True, null=True)
-
     phone_number = models.IntegerField(blank=True, null=True)
     website = models.URLField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)
@@ -106,13 +78,6 @@ class Layout(models.Model):
 
     def __str__(self):
         return f"{self.user.username} -- {self.portfolio_version} -- {self.portfolio_version.portfolio_version}"
-
-
-class Contact(models.Model):
-    name = models.CharField(max_length=50)
-    email = models.EmailField()
-    subject = models.CharField(max_length=50)
-    description = models.TextField()
 
 
 def post_save_user_profile_create(sender, instance, created, *args, **kwargs):

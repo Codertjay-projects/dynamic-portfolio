@@ -7,12 +7,16 @@ from django.shortcuts import render
 from _profile.forms import LayoutForm, ProfileForm
 from _profile.models import Profile, Layout
 from blog.models import Post
-from dashboard.forms import TestimonialForm, SkillsForm
-from dashboard.models import Testimonial, Skills, Service, Resume
+from project.forms import ProjectForm, ProjectItemsForm
+from project.models import Project, ProjectItem
+from resume.models import Resume
+from service.models import Service
+from skill.forms import SkillsForm
+from skill.models import Skills
+from testimonial.forms import TestimonialForm
+from testimonial.models import Testimonial
 from users.forms import ContactUserForm
 from users.models import User
-from dashboard.forms import ProjectForm, ProjectItemsForm
-from dashboard.models import Project, ProjectItem
 
 DEFAULT_REDIRECT_URL = settings.DEFAULT_REDIRECT_URL
 
@@ -43,8 +47,8 @@ def my_portfolio(request, username):
         resume = Resume.objects.filter(user__username=username)
         post = Post.objects.filter(user__username=username)
         if post.count() >= 6:
-            post_ = Post.objects.filter(user__username=username)
-        print('this is the post', post_)
+            post = Post.objects.filter(user__username=username)
+        print('this is the post', post)
         try:
             primary_color_nums = ImageColor.getrgb(layout.primary_color)
             secondary_color_nums = ImageColor.getrgb(layout.secondary_color)
@@ -119,16 +123,3 @@ def my_portfolio(request, username):
         return HttpResponseRedirect(DEFAULT_REDIRECT_URL)
 
 
-"""
-        if layout.portfolio_version == 'portfolio_v1':
-            return render(request, 'portfolio/portfolio_v1/base_v1.html', context)
-        elif layout.portfolio_version == 'portfolio_v2':
-            return render(request, 'portfolio/portfolio_v2/base_v2.html', context)
-        elif layout.portfolio_version == 'portfolio_v3':
-            return render(request, 'portfolio_v3/base_v3.html', context)
-        elif layout.portfolio_version == 'portfolio_v4':
-            return render(request, 'portfolio_v4/base_v4.html', context)
-        else:
-            messages.warning(request, "the site does not exist")
-            return HttpResponseRedirect(DEFAULT_REDIRECT_URL)
-"""
