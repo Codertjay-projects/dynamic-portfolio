@@ -8,14 +8,14 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 from skill.forms import SkillsForm
-from skill.models import Skills
+from skill.models import Skill
 
 
 class UserSkillCreate(LoginRequiredMixin, View):
 
     def get(self, *args, **kwargs):
         skill_form = SkillsForm()
-        skills = Skills.objects.filter(user=self.request.user)
+        skills = Skill.objects.filter(user=self.request.user)
         context = {
             'skills': skills,
             'skill_form': skill_form,
@@ -43,7 +43,7 @@ class UserSkillCreate(LoginRequiredMixin, View):
 def skill_update_view(request):
     skill_form = SkillsForm(request.POST, request.FILES)
     print('the psot files', request.POST)
-    skill = Skills.objects.filter(id=request.POST.get('id'), user=request.user).first()
+    skill = Skill.objects.filter(id=request.POST.get('id'), user=request.user).first()
     if skill:
         print('this is the skill name', skill_form['name'].value())
         print('this is the skill descrip', skill_form['description'].value())
@@ -66,7 +66,7 @@ def skill_delete_view(request):
     form = request.POST.get('id')
     print('fotm', form)
     if form:
-        skill = Skills.objects.filter(id=form, user=request.user).first()
+        skill = Skill.objects.filter(id=form, user=request.user).first()
         if skill:
             skill.delete()
             messages.success(request, 'the item has being deleted')

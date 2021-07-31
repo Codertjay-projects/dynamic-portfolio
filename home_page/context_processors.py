@@ -1,6 +1,6 @@
 from blog.models import Post
+from portfolio_app.models import TagChoice, PortfolioTemplate
 from .models import HomePageService, HomePageTestimonial
-from _profile.models import PortfolioTemplate, TagChoice
 from membership.models import Membership
 from django.conf import settings
 from blog.models import blogCategory

@@ -15,7 +15,7 @@ skill_choices = (
 )
 
 
-class Skills(models.Model):
+class Skill(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)

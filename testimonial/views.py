@@ -13,7 +13,6 @@ from testimonial.models import Testimonial
 @login_required()
 def testimonial_delete_view(request):
     form = request.POST.get('id')
-    print('fotm', form)
     if form:
         skill = Testimonial.objects.filter(id=form, user=request.user).first()
         if skill:

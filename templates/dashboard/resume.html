@@ -59,7 +59,7 @@ active
 
 
                                             <td class="td-actions">
-                                                <form action="{% url 'dashboard:resumeDelete' %}" method="post">
+                                                <form action="{% url 'resume:resumeDelete' %}" method="post">
                                                     {% csrf_token %}
                                                     <input type="hidden" name="id" value="{{ item.id }}">
                                                     <button type="submit" rel="tooltip" data-placement="left"
@@ -103,7 +103,7 @@ active
                     </div>
                     <div class="card-container">
                         <div class="col-12">
-                            <form action="{% url 'dashboard:resumeCreate' %}" method="post"
+                            <form action="{% url 'resume:resumeCreate' %}" method="post"
                                   enctype="multipart/form-data">
                                 {% csrf_token %}
 

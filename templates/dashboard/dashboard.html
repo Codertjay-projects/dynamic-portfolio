@@ -1,3 +1,4 @@
+{% load fontawesome_5 %}
 {% load static %}
 {% load fontawesome_5 %}
 <!DOCTYPE html>
@@ -71,7 +72,7 @@
                     <div class="collapse show" id="pagesExamples">
                         <ul class="nav">
                             <li class="nav-item {% block user_update %} {% endblock %} ">
-                                <a class="nav-link" href="{% url 'dashboard:userUpdate' %}">
+                                <a class="nav-link" href="{% url 'profile:userUpdate' %}">
                                     <span class="tim-note"> Name </span>
                                 </a>
                             </li>
@@ -83,7 +84,7 @@
                     <div class="collapse show" id="pagesExamples">
                         <ul class="nav">
                             <li class="nav-item  {% block profile_update %} {% endblock %}">
-                                <a class="nav-link " href="{% url 'dashboard:profileUpdate' %}">
+                                <a class="nav-link " href="{% url 'profile:profileUpdate' %}">
                                     <span class="tim-note"> Profile </span>
                                 </a>
                             </li>
@@ -97,7 +98,7 @@
                     <div class="collapse show" id="pagesExamples">
                         <ul class="nav">
                             <li class="nav-item {% block layout_update %} {% endblock %}">
-                                <a class="nav-link" href="{% url 'dashboard:layoutUpdate' %}">
+                                <a class="nav-link" href="{% url 'profile:layoutUpdate' %}">
                                     <span class="tim-note"> Layout </span>
                                 </a>
                             </li>
@@ -110,7 +111,7 @@
                     <div class="collapse show" id="pagesExamples">
                         <ul class="nav">
                             <li class="nav-item {% block testimonial_update %} {% endblock %}">
-                                <a class="nav-link" href="{% url 'dashboard:testimonialCreate' %}">
+                                <a class="nav-link" href="{% url 'testimonial:testimonialCreate' %}">
                                     <span class="tim-note"> Testimonial </span>
                                 </a>
                             </li>
@@ -123,7 +124,7 @@
                     <div class="collapse show" id="pagesExamples">
                         <ul class="nav">
                             <li class="nav-item {% block skill_update %} {% endblock %} ">
-                                <a class="nav-link" href="{% url 'dashboard:skillCreate' %}">
+                                <a class="nav-link" href="{% url 'skill:skillCreate' %}">
                                     <span class="tim-note"> Skill </span>
                                 </a>
                             </li>
@@ -136,7 +137,7 @@
                     <div class="collapse show" id="pagesExamples">
                         <ul class="nav">
                             <li class="nav-item {% block service_update %} {% endblock %}">
-                                <a class="nav-link" href="{% url 'dashboard:serviceCreate' %}">
+                                <a class="nav-link" href="{% url 'service:serviceCreate' %}">
                                     <span class="tim-note"> Service </span>
                                 </a>
                             </li>
@@ -149,7 +150,7 @@
                     <div class="collapse show" id="pagesExamples">
                         <ul class="nav">
                             <li class="nav-item {% block resume_update %} {% endblock %}">
-                                <a class="nav-link" href="{% url 'dashboard:resumeCreate' %}">
+                                <a class="nav-link" href="{% url 'resume:resumeCreate' %}">
                                     <span class="tim-note"> Resume </span>
                                 </a>
                             </li>
@@ -163,7 +164,7 @@
                     <div class="collapse show" id="pagesExamples">
                         <ul class="nav">
                             <li class="nav-item {% block project_update %} {% endblock %}">
-                                <a class="nav-link" href="{% url 'dashboard:projectCreate' %}">
+                                <a class="nav-link" href="{% url 'project:projectCreate' %}">
                                     <span class="tim-note"> Project </span>
                                 </a>
                             </li>
@@ -176,7 +177,7 @@
                     <div class="collapse show" id="pagesExamples">
                         <ul class="nav">
                             <li class="nav-item {% block item_update %} {% endblock %}">
-                                <a class="nav-link" href="{% url 'dashboard:projectItemsCreate' %}">
+                                <a class="nav-link" href="{% url 'project:projectItemsCreate' %}">
                                     <span class="tim-note"> Item </span>
                                 </a>
                             </li>

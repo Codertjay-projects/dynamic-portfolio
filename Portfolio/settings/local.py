@@ -18,14 +18,11 @@ INTERNAL_IPS = [
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'thankgod12',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME':  'db.sqlite3',
     }
 }
+
 
 PAYSTACK_LIVE_KEY = config('PAYSTACK_DEBUG_LIVE_KEY', default='')
 PAYSTACK_PUBLIC_KEY = config('PAYSTACK_DEBUG_PUBLIC_KEY', default='')

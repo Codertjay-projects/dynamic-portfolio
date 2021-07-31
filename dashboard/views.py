@@ -6,7 +6,7 @@ from _profile.forms import (LayoutForm,
 from _profile.models import (Layout,
                              Profile, )
 from skill.forms import SkillsForm
-from skill.models import Skills
+from skill.models import Skill
 from testimonial.forms import TestimonialForm
 from testimonial.models import Testimonial
 
@@ -16,7 +16,7 @@ def userDashboard(request, *args, **kwargs):
     layout = Layout.objects.filter(user=request.user)
     profile = Profile.objects.filter(user=request.user)
     testimonial = Testimonial.objects.filter(user=request.user)
-    skills = Skills.objects.filter(user=request.user)
+    skills = Skill.objects.filter(user=request.user)
     context = {
         'layout': layout,
         'profile': profile,

@@ -58,7 +58,7 @@ active
 
 
                                             <td class="td-actions">
-                                                <form action="{% url 'dashboard:testimonialDelete' %}" method="post">
+                                                <form action="{% url 'testimonial:testimonialDelete' %}" method="post">
                                                     {% csrf_token %}
                                                     <input type="hidden" name="id" value="{{ item.id }}">
                                                     <button type="submit" rel="tooltip" data-placement="left"
@@ -101,7 +101,7 @@ active
                             </div>
                         </div>
                         <div class="card-content m-4">
-                            <form action="{% url 'dashboard:testimonialCreate' %}" method="post"
+                            <form action="{% url 'testimonial:testimonialCreate' %}" method="post"
                                   enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="row">

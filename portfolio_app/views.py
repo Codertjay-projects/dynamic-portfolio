@@ -12,7 +12,7 @@ from project.models import Project, ProjectItem
 from resume.models import Resume
 from service.models import Service
 from skill.forms import SkillsForm
-from skill.models import Skills
+from skill.models import Skill
 from testimonial.forms import TestimonialForm
 from testimonial.models import Testimonial
 from users.forms import ContactUserForm
@@ -40,7 +40,7 @@ def my_portfolio(request, username):
         project = Project.objects.filter(user__username=username)
         project_items = ProjectItem.objects.filter(user__username=username)
         profile = Profile.objects.filter(user__username=username).first()
-        skills = Skills.objects.filter(user__username=username)
+        skills = Skill.objects.filter(user__username=username)
         testimonial = Testimonial.objects.filter(user__username=username)
         layout = Layout.objects.filter(user__username=username).first()
         service = Service.objects.filter(user__username=username)

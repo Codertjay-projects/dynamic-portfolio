@@ -2,7 +2,7 @@ from django.urls import path
 
 from service.views import UserServiceCreate, services_update_view, service_delete_view
 
-app_name = ''
+app_name = 'service'
 urlpatterns = [
 
     path('serviceCreate/', UserServiceCreate.as_view(), name='serviceCreate'),

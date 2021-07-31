@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Skills
+from .models import Skill
 
 
 class SkillsForm(forms.ModelForm):
@@ -19,7 +19,7 @@ class SkillsForm(forms.ModelForm):
     }))
 
     class Meta:
-        model = Skills
+        model = Skill
         fields = [
             'name',
             'percent',

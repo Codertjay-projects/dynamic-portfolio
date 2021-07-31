@@ -3,7 +3,7 @@ from django.urls import path
 from project.views import project_items_update_view, project_update_view, project_item_delete_view, project_delete_view, \
     ProjectView, ProjectItemsView
 
-app_name = ''
+app_name = 'project'
 urlpatterns = [
     path('projectItemUpdate/', project_items_update_view, name='projectItemUpdate'),
     path('projectUpdate/', project_update_view, name='projectUpdate'),

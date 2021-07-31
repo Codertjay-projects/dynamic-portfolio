@@ -115,7 +115,7 @@ class UserLayoutUpdate(LoginRequiredMixin, View):
                             self.request.FILES,
                             instance=self.request.user.layout)
         if l_form.is_valid():
-            print('the portfolio version', l_form.cleaned_data['portfolio_version'].paid)
+            print('the portfolio version', l_form.cleaned_data['portfolio_version'])
             porfolio_type = l_form.cleaned_data['portfolio_version']
             user_subscription = get_user_subscription(self.request)
             if user_subscription:
@@ -136,5 +136,5 @@ class UserLayoutUpdate(LoginRequiredMixin, View):
                 messages.success(self.request, f'Layout has been updated')
                 return redirect('dashboard:layoutUpdate')
         messages.warning(self.request, f'{l_form.errors}')
-        return redirect('dashboard:layoutUpdate')
+        return redirect('profile:layoutUpdate')
 

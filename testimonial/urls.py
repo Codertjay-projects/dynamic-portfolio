@@ -2,7 +2,7 @@ from django.urls import path
 
 from testimonial.views import testimonail_update_view, testimonial_delete_view, UserTestimonialCreate
 
-app_name = ''
+app_name = 'testimonial'
 urlpatterns = [
 
     path('testimonialUpdate/', testimonail_update_view, name='testimonialUpdate'),

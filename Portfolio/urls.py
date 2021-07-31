@@ -5,6 +5,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path('', include('_profile.urls')),
     path('', include('skill.urls')),
     path('', include('service.urls')),
     path('', include('resume.urls')),

@@ -4,7 +4,7 @@ from .views import (UserProfileUpdate,
                     UserLayoutUpdate,
                     UserNameUpdate)
 
-app_name = 'dashboard'
+app_name = 'profile'
 
 urlpatterns = [
 

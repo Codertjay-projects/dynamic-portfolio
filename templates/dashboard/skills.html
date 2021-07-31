@@ -54,7 +54,7 @@ active
                                                 {{ item.description }}
                                             </td>
                                             <td class="td-actions">
-                                                <form action="{% url 'dashboard:skillDelete' %}" method="post">
+                                                <form action="{% url 'skill:skillDelete' %}" method="post">
                                                     {% csrf_token %}
                                                     <input type="hidden" name="id" value="{{ item.id }}">
                                                     <button type="submit" rel="tooltip" data-placement="left"
@@ -98,7 +98,7 @@ active
                     </div>
                     <div class="card-container">
                         <div class="col-12">
-                            <form action="{% url 'dashboard:skillCreate' %}" method="post" enctype="multipart/form-data">
+                            <form action="{% url 'skill:skillCreate' %}" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
 
                                 <div class="col-12 mt-2">
@@ -154,7 +154,7 @@ active
                         <div class="card ">
                             <div class="card-container">
                                 <div class="col-12">
-                                    <form action="{% url 'dashboard:skillUpdate' %}"
+                                    <form action="{% url 'skill:skillUpdate' %}"
                                           method="post"
                                           enctype="multipart/form-data">
                                         {% csrf_token %}
