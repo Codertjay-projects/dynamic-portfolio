@@ -77,7 +77,10 @@ class Layout(models.Model):
         return image
 
     def __str__(self):
-        return f"{self.user.username} -- {self.portfolio_version} -- {self.portfolio_version.portfolio_version}"
+        try:
+            return f"{self.user.username} -- {self.portfolio_version} -- {self.portfolio_version.portfolio_version}"
+        except:
+            return f"{self.user.username}"
 
 
 def post_save_user_profile_create(sender, instance, created, *args, **kwargs):
