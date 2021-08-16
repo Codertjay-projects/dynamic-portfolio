@@ -38,7 +38,7 @@ Requires core.js and SelectBox.js.
             const title_available = quickElement('h2', selector_available, interpolate(gettext('Available %s') + ' ', [field_name]));
             quickElement(
                 'span', title_available, '',
-                'class', 'help help-tooltip help-image',
+                'class', 'help help-tooltip help-icon',
                 'title', interpolate(
                     gettext(
                         'This is the list of available %s. You may choose some by ' +
@@ -56,7 +56,7 @@ Requires core.js and SelectBox.js.
 
             quickElement(
                 'span', search_filter_label, '',
-                'class', 'help-tooltip search-label-image',
+                'class', 'help-tooltip search-label-icon',
                 'title', interpolate(gettext("Type into this box to filter down the list of available %s."), [field_name])
             );
 
@@ -83,7 +83,7 @@ Requires core.js and SelectBox.js.
             const title_chosen = quickElement('h2', selector_chosen, interpolate(gettext('Chosen %s') + ' ', [field_name]));
             quickElement(
                 'span', title_chosen, '',
-                'class', 'help help-tooltip help-image',
+                'class', 'help help-tooltip help-icon',
                 'title', interpolate(
                     gettext(
                         'This is the list of chosen %s. You may remove some by ' +
@@ -171,7 +171,7 @@ Requires core.js and SelectBox.js.
                 j_to_box.style.height = height + 'px';
             }
 
-            // Initial image refresh
+            // Initial icon refresh
             SelectFilter.refresh_icons(field_id);
         },
         any_selected: function(field) {

@@ -141,7 +141,7 @@ else
         var g_html_blocks;
 
         // Used to track when we're inside an ordered or unordered list
-        // (see _ProcessListItems() for detail):
+        // (see _ProcessListItems() for details):
         var g_list_level;
         
         OPTIONS = OPTIONS || {};
@@ -374,25 +374,25 @@ else
             //     </div>
             //   </div>
             //
-            // The outermost tags must start_date at the left margin for this to match, and
+            // The outermost tags must start at the left margin for this to match, and
             // the inner nested divs must be indented.
             // We need to do this before the next, more liberal match, because the next
-            // match will start_date at the first `<div>` and stop at the first `</div>`.
+            // match will start at the first `<div>` and stop at the first `</div>`.
 
             // attacklab: This regex can be expensive when it fails.
 
             /*
             text = text.replace(/
                 (                       // save in $1
-                    ^                   // start_date of line  (with /m)
-                    <($block_tags_a)    // start_date tag = $2
+                    ^                   // start of line  (with /m)
+                    <($block_tags_a)    // start tag = $2
                     \b                  // word break
                                         // attacklab: hack around khtml/pcre bug...
                     [^\r]*?\n           // any number of lines, minimally matching
-                    </\2>               // the matching end_date tag
+                    </\2>               // the matching end tag
                     [ \t]*              // trailing spaces/tabs
                     (?=\n+)             // followed by a newline
-                )                       // attacklab: there are sentinel newlines at end_date of document
+                )                       // attacklab: there are sentinel newlines at end of document
             /gm,function(){...}};
             */
             text = text.replace(/^(<(p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)\b[^\r]*?\n<\/\2>[ \t]*(?=\n+))/gm, hashMatch);
@@ -404,15 +404,15 @@ else
             /*
             text = text.replace(/
                 (                       // save in $1
-                    ^                   // start_date of line  (with /m)
-                    <($block_tags_b)    // start_date tag = $2
+                    ^                   // start of line  (with /m)
+                    <($block_tags_b)    // start tag = $2
                     \b                  // word break
                                         // attacklab: hack around khtml/pcre bug...
                     [^\r]*?             // any number of lines, minimally matching
-                    .*</\2>             // the matching end_date tag
+                    .*</\2>             // the matching end tag
                     [ \t]*              // trailing spaces/tabs
                     (?=\n+)             // followed by a newline
-                )                       // attacklab: there are sentinel newlines at end_date of document
+                )                       // attacklab: there are sentinel newlines at end of document
             /gm,function(){...}};
             */
             text = text.replace(/^(<(p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math)\b[^\r]*?.*<\/\2>[ \t]*(?=\n+)\n)/gm, hashMatch);
@@ -425,10 +425,10 @@ else
                 \n                  // Starting after a blank line
                 [ ]{0,3}
                 (                   // save in $1
-                    (<(hr)          // start_date tag = $2
+                    (<(hr)          // start tag = $2
                         \b          // word break
                         ([^<>])*?
-                    \/?>)           // the matching end_date tag
+                    \/?>)           // the matching end tag
                     [ \t]*
                     (?=\n{2,})      // followed by a blank line
                 )
@@ -933,7 +933,7 @@ else
                     result = result.replace(/\s+$/, "");
                     var opening = "<" + list_type;
                     if (first_number && first_number !== 1)
-                        opening += " start_date=\"" + first_number + "\"";
+                        opening += " start=\"" + first_number + "\"";
                     result = opening + ">" + result + "</" + list_type + ">\n";
                     return result;
                 });
@@ -952,7 +952,7 @@ else
                     var result = _ProcessListItems(list, list_type);
                     var opening = "<" + list_type;
                     if (first_number && first_number !== 1)
-                        opening += " start_date=\"" + first_number + "\"";
+                        opening += " start=\"" + first_number + "\"";
 
                     result = runup + opening + ">\n" + result + "</" + list_type + ">\n";
                     return result;
@@ -989,10 +989,10 @@ else
             // with a digit-period-space sequence.
             //
             // Whereas when we're inside a list (or sub-list), that line will be
-            // treated as the start_date of a sub-list. What a kludge, huh? This is
+            // treated as the start of a sub-list. What a kludge, huh? This is
             // an aspect of Markdown's syntax that's hard to parse perfectly
             // without resorting to mind-reading. Perhaps the solution is to
-            // change the syntax rules such that sub-lists must start_date with a
+            // change the syntax rules such that sub-lists must start with a
             // starting cardinal number; e.g. "1." or "a.".
 
             g_list_level++;
@@ -1063,7 +1063,7 @@ else
                 (?:\n\n|^)
                 (                               // $1 = the code block -- one or more lines, starting with a space/tab
                     (?:
-                        (?:[ ]{4}|\t)           // Lines must start_date with a tab or a tab-width of spaces - attacklab: g_tab_width
+                        (?:[ ]{4}|\t)           // Lines must start with a tab or a tab-width of spaces - attacklab: g_tab_width
                         .*\n+
                     )+
                 )
@@ -1191,7 +1191,7 @@ else
             
             // (^|[\W_])           Start with a non-letter or beginning of string. Store in \1.
             // (?:(?!\1)|(?=^))    Either the next character is *not* the same as the previous,
-            //                     or we started at the end_date of the string (in which case the previous
+            //                     or we started at the end of the string (in which case the previous
             //                     group had zero width, so we're still there). Because the next
             //                     character is the marker, this means that if there are e.g. multiple
             //                     underscores in a row, we can only match the left-most ones (which
@@ -1199,15 +1199,15 @@ else
             // (\*|_)              The marker character itself, asterisk or underscore. Store in \2.
             // \2                  The marker again, since bold needs two.
             // (?=\S)              The first bolded character cannot be a space.
-            // ([^\r]*?\S)         The actual bolded string. At least one character, and it cannot *end_date*
+            // ([^\r]*?\S)         The actual bolded string. At least one character, and it cannot *end*
             //                     with a space either. Note that like in many other places, [^\r] is
             //                     just a workaround for JS' lack of single-line regexes; it's equivalent
             //                     to a . in an /s regex, because the string cannot contain any \r (they
             //                     are removed in the normalizing step).
-            // \2\2                The marker character, twice -- end_date of bold.
+            // \2\2                The marker character, twice -- end of bold.
             // (?!\2)              Not followed by another marker character (ensuring that we match the
             //                     rightmost two in a longer row)...
-            // (?=[\W_]|$)         ...but by any other non-word character or the end_date of string.
+            // (?=[\W_]|$)         ...but by any other non-word character or the end of string.
             text = text.replace(/(^|[\W_])(?:(?!\1)|(?=^))(\*|_)\2(?=\S)([^\r]*?\S)\2\2(?!\2)(?=[\W_]|$)/g,
             "$1<strong>$3</strong>");
 
@@ -1229,7 +1229,7 @@ else
             // <strong> must go first:
             // (?=[^\r][*_]|[*_])               Optimization only, to find potentially relevant text portions faster. Minimally slower in Chrome, but much faster in IE.
             // (                                Store in \1. This is the last character before the delimiter
-            //     ^                            Either we're at the start_date of the string (i.e. there is no last character)...
+            //     ^                            Either we're at the start of the string (i.e. there is no last character)...
             //     |                            ... or we allow one of the following:
             //     (?=                          (lookahead; we're not capturing this, just listing legal possibilities)
             //         \W__                     If the delimiter is __, then this last character must be non-word non-underscore (extra-word emphasis only)
@@ -1272,7 +1272,7 @@ else
             // now <em>:
             // (?=[^\r][*_]|[*_])               Optimization, see above.
             // (                                Store in \1. This is the last character before the delimiter
-            //     ^                            Either we're at the start_date of the string (i.e. there is no last character)...
+            //     ^                            Either we're at the start of the string (i.e. there is no last character)...
             //     |                            ... or we allow one of the following:
             //     (?=                          (lookahead; we're not capturing this, just listing legal possibilities)
             //         \W_                      If the delimiter is _, then this last character must be non-word non-underscore (extra-word emphasis only)
@@ -1322,7 +1322,7 @@ else
             text = text.replace(/
                 (                           // Wrap whole match in $1
                     (
-                        ^[ \t]*>[ \t]?      // '>' at the start_date of a line
+                        ^[ \t]*>[ \t]?      // '>' at the start of a line
                         .+\n                // rest of the first line
                         (.+\n)*             // subsequent consecutive lines
                         \n*                 // blanks
@@ -1618,6 +1618,6 @@ else
             return "~E" + charCodeToEscape + "E";
         }
 
-    }; // end_date of the Markdown.Converter constructor
+    }; // end of the Markdown.Converter constructor
 
 })();

@@ -104,7 +104,7 @@
             DateTimeShortcuts.clockInputs[num] = inp;
             DateTimeShortcuts.dismissClockFunc[num] = function() { DateTimeShortcuts.dismissClock(num); return true; };
 
-            // Shortcut links (clock image and "Now" link)
+            // Shortcut links (clock icon and "Now" link)
             const shortcuts_span = document.createElement('span');
             shortcuts_span.className = DateTimeShortcuts.shortCutsClass;
             inp.parentNode.insertBefore(shortcuts_span, inp.nextSibling);
@@ -127,7 +127,7 @@
 
             quickElement(
                 'span', clock_link, '',
-                'class', 'clock-image',
+                'class', 'clock-icon',
                 'title', gettext('Choose a Time')
             );
             shortcuts_span.appendChild(document.createTextNode('\u00A0'));
@@ -232,7 +232,7 @@
             DateTimeShortcuts.calendarInputs[num] = inp;
             DateTimeShortcuts.dismissCalendarFunc[num] = function() { DateTimeShortcuts.dismissCalendar(num); return true; };
 
-            // Shortcut links (calendar image and "Today" link)
+            // Shortcut links (calendar icon and "Today" link)
             const shortcuts_span = document.createElement('span');
             shortcuts_span.className = DateTimeShortcuts.shortCutsClass;
             inp.parentNode.insertBefore(shortcuts_span, inp.nextSibling);
@@ -254,7 +254,7 @@
             });
             quickElement(
                 'span', cal_link, '',
-                'class', 'date-image',
+                'class', 'date-icon',
                 'title', gettext('Choose a Date')
             );
             shortcuts_span.appendChild(document.createTextNode('\u00A0'));

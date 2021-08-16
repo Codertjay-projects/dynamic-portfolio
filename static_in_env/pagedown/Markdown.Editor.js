@@ -118,7 +118,7 @@
                                                   * its own image insertion dialog, this hook should return true, and the callback should be called with the chosen
                                                   * image url (or null if the user cancelled). If this hook returns false, the default dialog will be used.
                                                   */
-        hooks.addNoop("imageConvertedToLink");  // called with no arguments if an image was converted
+        hooks.addNoop("imageConvertedToLink");  // called with no arguments if an image was converted 
         hooks.addFalse("insertLinkDialog");     /* called with one parameter: a callback to be called with the URL.
                                                  * works identical to insertImageDialog (see above)
                                                  */
@@ -164,8 +164,8 @@
     // after: contains all the text in the input box AFTER the selection.
     function Chunks() { }
 
-    // startRegex: a regular expression to find the start_date tag
-    // endRegex: a regular expresssion to find the end_date tag
+    // startRegex: a regular expression to find the start tag
+    // endRegex: a regular expresssion to find the end tag
     Chunks.prototype.findTags = function (startRegex, endRegex) {
 
         var chunkObj = this;
@@ -290,7 +290,7 @@
         }
     };
 
-    // end_date of Chunks
+    // end of Chunks
 
     // A collection of the important regions on the page.
     // Cached so we don't have to keep traversing the DOM.
@@ -367,7 +367,7 @@
     // using pre + regex + post as the expression.
     // Used in a few functions where we have a base
     // expression and we want to pre- or append some
-    // conditions to it (e.g. adding "$" to the end_date).
+    // conditions to it (e.g. adding "$" to the end).
     // The flags are unchanged.
     //
     // regex is a RegExp, pre and post are strings.
@@ -689,7 +689,7 @@
         init();
     }
 
-    // end_date of UndoManager
+    // end of UndoManager
 
     // The input textarea state/contents.
     // This is used to implement undo/redo by the undo manager.
@@ -1821,7 +1821,7 @@
         }
         else {
             
-            // We're moving start_date and end_date tag back into the selection, since (as we're in the else block) we're not
+            // We're moving start and end tag back into the selection, since (as we're in the else block) we're not
             // *removing* a link, but *adding* one, so whatever findTags() found is now back to being part of the
             // link text. linkEnteredCallback takes care of escaping any brackets.
             chunk.selection = chunk.startTag + chunk.selection + chunk.endTag;
@@ -1848,14 +1848,14 @@
                     // )
                     //
                     // In other words, a non-escaped bracket. These have to be escaped now to make sure they
-                    // don't count as the end_date of the link or similar.
+                    // don't count as the end of the link or similar.
                     // Note that the actual bracket has to be a lookahead, because (in case of to subsequent brackets),
                     // the bracket in one match may be the "not a backslash" character in the next match, so it
                     // should not be consumed by the first match.
                     // The "prepend a space and finally remove it" steps makes sure there is a "not a backslash" at the
-                    // start_date of the string, so this also works if the selection begins with a bracket. We cannot solve
+                    // start of the string, so this also works if the selection begins with a bracket. We cannot solve
                     // this by anchoring with ^, because in the case that the selection starts with two brackets, this
-                    // would mean a zero-width match at the start_date. Since zero-width matches advance the string position,
+                    // would mean a zero-width match at the start. Since zero-width matches advance the string position,
                     // the first bracket could then not act as the "not a backslash" for the second.
                     chunk.selection = (" " + chunk.selection).replace(/([^\\](?:\\\\)*)(?=[[\]])/g, "$1\\").substr(1);
                     
@@ -1918,7 +1918,7 @@
         chunk.before = chunk.before.replace(/(\n|^)[ ]{0,3}>[ \t]*\n$/, "\n\n");
         chunk.before = chunk.before.replace(/(\n|^)[ \t]+\n$/, "\n\n");
         
-        // There's no selection, end_date the cursor wasn't at the end_date of the line:
+        // There's no selection, end the cursor wasn't at the end of the line:
         // The user wants to split the current list item / code line / blockquote line
         // (for the latter it doesn't really matter) in two. Temporarily select the
         // (rest of the) line to achieve this.
@@ -2017,7 +2017,7 @@
                 } else if (/^[ \t]*$/.test(line)) {   // b)
                     good = true;
                 } else {
-                    good = inChain;                   // c) the line is not empty and does not start_date with ">", so it matches if and only if we're in the chain
+                    good = inChain;                   // c) the line is not empty and does not start with ">", so it matches if and only if we're in the chain
                 }
                 if (good) {
                     match += line + "\n";
@@ -2035,7 +2035,7 @@
         chunk.startTag = match;
         chunk.before = leftOver;
 
-        // end_date of change
+        // end of change
 
         if (chunk.after) {
             chunk.after = chunk.after.replace(/^\n?/, "\n");
@@ -2163,7 +2163,7 @@
 
     commandProto.doList = function (chunk, postProcessing, isNumberedList) {
 
-        // These are identical except at the very beginning and end_date.
+        // These are identical except at the very beginning and end.
         // Should probably use the regex extension function to make this clearer.
         var previousItemsRegex = /(\n|^)(([ ]{0,3}([*+-]|\d+[.])[ \t]+.*)(\n.+|\n{2,}([*+-].*|\d+[.])[ \t]+.*|\n{2,}[ \t]+\S.*)*)\n*$/;
         var nextItemsRegex = /^\n*(([ ]{0,3}([*+-]|\d+[.])[ \t]+.*)(\n.+|\n{2,}([*+-].*|\d+[.])[ \t]+.*|\n{2,}[ \t]+\S.*)*)\n*/;

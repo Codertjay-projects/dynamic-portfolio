@@ -3,17 +3,17 @@ from decouple import config, Csv
 from .installed import INSTALLED_APPS
 
 DEBUG = config('DEBUG')
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+SECRET_KEY = config('SECRET_KEY')
+
 if DEBUG:
     from Portfolio.local import *
 else:
     from Portfolio.production import *
 
-SECRET_KEY = config('SECRET_KEY')
-
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start_date development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -94,9 +94,9 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static_files'),
-)
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]
+
 # for django allauth
 SITE_ID = 1
 ACCOUNT_UNIQUE_EMAIL = True

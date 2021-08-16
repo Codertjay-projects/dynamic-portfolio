@@ -67,8 +67,8 @@
   }
 
   // JS regexes don't support \A or \Z, so we add sentinels, as Pagedown
-  // does. In this case, we add the ascii codes for start_date of text (STX) and
-  // end_date of text (ETX), an idea borrowed from:
+  // does. In this case, we add the ascii codes for start of text (STX) and
+  // end of text (ETX), an idea borrowed from:
   // https://github.com/tanakahisateru/js-markdown-extra
   function addAnchors(text) {
     if(text.charAt(0) != '\x02')
@@ -126,8 +126,8 @@
     .replace(/\s+/g, '-') // Replace spaces with -
     .replace(/[^\w\-]+/g, '') // Remove all non-word chars
     .replace(/\-\-+/g, '-') // Replace multiple - with single -
-    .replace(/^-+/, '') // Trim - from start_date of text
-    .replace(/-+$/, ''); // Trim - from end_date of text
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, ''); // Trim - from end of text
   }
 
   /*****************************************************************************
@@ -538,7 +538,7 @@
     return text;
   };
 
-  // Print footnotes at the end_date of the document
+  // Print footnotes at the end of the document
   Markdown.Extra.prototype.printFootnotes = function(text) {
     var self = this;
 
@@ -800,7 +800,7 @@
        ')'                       ,
        '([\\s\\S]+?)'            , // definition text = $3
        '(?=\\n*'                 , // stop at next definition mark,
-         '(?:'                   , // next term or end_date of text
+         '(?:'                   , // next term or end of text
            '\\n[ ]{0,3}[:][ ]|'  ,
            '<dt>|\\x03'          , // \z
          ')'                     ,

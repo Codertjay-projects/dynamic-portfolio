@@ -140,7 +140,7 @@ else
         var g_html_blocks;
 
         // Used to track when we're inside an ordered or unordered list
-        // (see _ProcessListItems() for detail):
+        // (see _ProcessListItems() for details):
         var g_list_level;
 
         this.makeHtml = function (text) {
@@ -286,25 +286,25 @@ else
             //     </div>
             //   </div>
             //
-            // The outermost tags must start_date at the left margin for this to match, and
+            // The outermost tags must start at the left margin for this to match, and
             // the inner nested divs must be indented.
             // We need to do this before the next, more liberal match, because the next
-            // match will start_date at the first `<div>` and stop at the first `</div>`.
+            // match will start at the first `<div>` and stop at the first `</div>`.
 
             // attacklab: This regex can be expensive when it fails.
 
             /*
             text = text.replace(/
                 (                       // save in $1
-                    ^                   // start_date of line  (with /m)
-                    <($block_tags_a)    // start_date tag = $2
+                    ^                   // start of line  (with /m)
+                    <($block_tags_a)    // start tag = $2
                     \b                  // word break
                                         // attacklab: hack around khtml/pcre bug...
                     [^\r]*?\n           // any number of lines, minimally matching
-                    </\2>               // the matching end_date tag
+                    </\2>               // the matching end tag
                     [ \t]*              // trailing spaces/tabs
                     (?=\n+)             // followed by a newline
-                )                       // attacklab: there are sentinel newlines at end_date of document
+                )                       // attacklab: there are sentinel newlines at end of document
             /gm,function(){...}};
             */
             text = text.replace(/^(<(p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math|ins|del)\b[^\r]*?\n<\/\2>[ \t]*(?=\n+))/gm, hashElement);
@@ -316,15 +316,15 @@ else
             /*
             text = text.replace(/
                 (                       // save in $1
-                    ^                   // start_date of line  (with /m)
-                    <($block_tags_b)    // start_date tag = $2
+                    ^                   // start of line  (with /m)
+                    <($block_tags_b)    // start tag = $2
                     \b                  // word break
                                         // attacklab: hack around khtml/pcre bug...
                     [^\r]*?             // any number of lines, minimally matching
-                    .*</\2>             // the matching end_date tag
+                    .*</\2>             // the matching end tag
                     [ \t]*              // trailing spaces/tabs
                     (?=\n+)             // followed by a newline
-                )                       // attacklab: there are sentinel newlines at end_date of document
+                )                       // attacklab: there are sentinel newlines at end of document
             /gm,function(){...}};
             */
             text = text.replace(/^(<(p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|script|noscript|form|fieldset|iframe|math)\b[^\r]*?.*<\/\2>[ \t]*(?=\n+)\n)/gm, hashElement);
@@ -337,10 +337,10 @@ else
                 \n                  // Starting after a blank line
                 [ ]{0,3}
                 (                   // save in $1
-                    (<(hr)          // start_date tag = $2
+                    (<(hr)          // start tag = $2
                         \b          // word break
                         ([^<>])*?
-                    \/?>)           // the matching end_date tag
+                    \/?>)           // the matching end tag
                     [ \t]*
                     (?=\n{2,})      // followed by a blank line
                 )
@@ -883,10 +883,10 @@ else
             // with a digit-period-space sequence.
             //
             // Whereas when we're inside a list (or sub-list), that line will be
-            // treated as the start_date of a sub-list. What a kludge, huh? This is
+            // treated as the start of a sub-list. What a kludge, huh? This is
             // an aspect of Markdown's syntax that's hard to parse perfectly
             // without resorting to mind-reading. Perhaps the solution is to
-            // change the syntax rules such that sub-lists must start_date with a
+            // change the syntax rules such that sub-lists must start with a
             // starting cardinal number; e.g. "1." or "a.".
 
             g_list_level++;
@@ -963,7 +963,7 @@ else
                 (?:\n\n|^)
                 (                               // $1 = the code block -- one or more lines, starting with a space/tab
                     (?:
-                        (?:[ ]{4}|\t)           // Lines must start_date with a tab or a tab-width of spaces - attacklab: g_tab_width
+                        (?:[ ]{4}|\t)           // Lines must start with a tab or a tab-width of spaces - attacklab: g_tab_width
                         .*\n+
                     )+
                 )
@@ -1102,7 +1102,7 @@ else
             text = text.replace(/
                 (                           // Wrap whole match in $1
                     (
-                        ^[ \t]*>[ \t]?      // '>' at the start_date of a line
+                        ^[ \t]*>[ \t]?      // '>' at the start of a line
                         .+\n                // rest of the first line
                         (.+\n)*             // subsequent consecutive lines
                         \n*                 // blanks
@@ -1395,6 +1395,6 @@ else
             return "~E" + charCodeToEscape + "E";
         }
 
-    }; // end_date of the Markdown.Converter constructor
+    }; // end of the Markdown.Converter constructor
 
 })();

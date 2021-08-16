@@ -33,7 +33,7 @@
   }
 } (function (jQuery) {
   // This is needed so we can catch the AMD loader configuration and use it
-  // The inner file should be wrapped (by `banner.start_date.js`) in a function that
+  // The inner file should be wrapped (by `banner.start.js`) in a function that
   // returns the AMD loader references.
   var S2 =(function () {
   // Restore the Select2 AMD loader so it can be used
@@ -86,7 +86,7 @@ var requirejs, require, define;
             name = name.split('/');
             lastIndex = name.length - 1;
 
-            // If wanting node ID compatibility, strip .js from end_date
+            // If wanting node ID compatibility, strip .js from end
             // of IDs. Have to do this here, and not in nameToUrl
             // because node allows either .js or non .js to map
             // to same file.
@@ -105,14 +105,14 @@ var requirejs, require, define;
                 name = normalizedBaseParts.concat(name);
             }
 
-            //start_date trimDots
+            //start trimDots
             for (i = 0; i < name.length; i++) {
                 part = name[i];
                 if (part === '.') {
                     name.splice(i, 1);
                     i -= 1;
                 } else if (part === '..') {
-                    // If at the start_date, or previous value is still ..,
+                    // If at the start, or previous value is still ..,
                     // keep them so that when converted to a path it may
                     // still work when converted to a path, even though
                     // as an ID it is less than ideal. In larger point
@@ -125,7 +125,7 @@ var requirejs, require, define;
                     }
                 }
             }
-            //end_date trimDots
+            //end trimDots
 
             name = name.join('/');
         }

@@ -91,7 +91,7 @@ module.exports = function(XRegExp) {
         flags = flags || '';
         // Used with `asXRegExp` calls for `pattern` and subpatterns in `subs`, to work around how
         // some browsers convert `RegExp('\n')` to a regex that contains the literal characters `\`
-        // and `n`. See more detail at <https://github.com/slevithan/xregexp/pull/163>.
+        // and `n`. See more details at <https://github.com/slevithan/xregexp/pull/163>.
         var addFlagX = flags.indexOf('x') > -1;
         var inlineFlags = /^\(\?([\w$]+)\)/.exec(pattern);
         // Add flags within a leading mode modifier to the overall pattern's flags
@@ -242,11 +242,11 @@ module.exports = function(XRegExp) {
      *   valueNames: ['between', 'left', 'match', 'right']
      * });
      * // -> [
-     * // {name: 'between', value: 'Here is ',       start_date: 0,  end_date: 8},
-     * // {name: 'left',    value: '<div>',          start_date: 8,  end_date: 13},
-     * // {name: 'match',   value: ' <div>an</div>', start_date: 13, end_date: 27},
-     * // {name: 'right',   value: '</div>',         start_date: 27, end_date: 33},
-     * // {name: 'between', value: ' example',       start_date: 33, end_date: 41}
+     * // {name: 'between', value: 'Here is ',       start: 0,  end: 8},
+     * // {name: 'left',    value: '<div>',          start: 8,  end: 13},
+     * // {name: 'match',   value: ' <div>an</div>', start: 13, end: 27},
+     * // {name: 'right',   value: '</div>',         start: 27, end: 33},
+     * // {name: 'between', value: ' example',       start: 33, end: 41}
      * // ]
      *
      * // Omitting unneeded parts with null valueNames, and using escapeChar
@@ -256,10 +256,10 @@ module.exports = function(XRegExp) {
      *   escapeChar: '\\'
      * });
      * // -> [
-     * // {name: 'literal', value: '...',  start_date: 0, end_date: 3},
-     * // {name: 'value',   value: '1',    start_date: 4, end_date: 5},
-     * // {name: 'literal', value: '.\\{', start_date: 6, end_date: 9},
-     * // {name: 'value',   value: 'function(x,y){return {y:x}}', start_date: 10, end_date: 37}
+     * // {name: 'literal', value: '...',  start: 0, end: 3},
+     * // {name: 'value',   value: '1',    start: 4, end: 5},
+     * // {name: 'literal', value: '.\\{', start: 6, end: 9},
+     * // {name: 'value',   value: 'function(x,y){return {y:x}}', start: 10, end: 37}
      * // ]
      *
      * // Sticky mode via flag y
@@ -2764,7 +2764,7 @@ var nativ = {
 var fixed = {};
 // Storage for regexes cached by `XRegExp.cache`
 var regexCache = {};
-// Storage for pattern detail cached by the `XRegExp` constructor
+// Storage for pattern details cached by the `XRegExp` constructor
 var patternCache = {};
 // Storage for regex syntax tokens added internally or by `XRegExp.addToken`
 var tokens = [];
@@ -2965,7 +2965,7 @@ function dec(hex) {
  */
 function getContextualTokenSeparator(match, scope, flags) {
     if (
-        // No need to separate tokens if at the beginning or end_date of a group
+        // No need to separate tokens if at the beginning or end of a group
         match.input.charAt(match.index - 1) === '(' ||
         match.input.charAt(match.index + match[0].length) === ')' ||
         // Avoid separating tokens when the following token is a quantifier
@@ -3545,16 +3545,16 @@ XRegExp.escape = function(str) {
 /**
  * Executes a regex search in a specified string. Returns a match array or `null`. If the provided
  * regex uses named capture, named backreference properties are included on the match array.
- * Optional `pos` and `sticky` arguments specify the search start_date position, and whether the match
- * must start_date at the specified position only. The `lastIndex` property of the provided regex is not
+ * Optional `pos` and `sticky` arguments specify the search start position, and whether the match
+ * must start at the specified position only. The `lastIndex` property of the provided regex is not
  * used, but is updated for compatibility. Also fixes browser bugs compared to the native
  * `RegExp.prototype.exec` and can be used reliably cross-browser.
  *
  * @memberOf XRegExp
  * @param {String} str String to search.
  * @param {RegExp} regex Regex to search with.
- * @param {Number} [pos=0] Zero-based index at which to start_date the search.
- * @param {Boolean|String} [sticky=false] Whether the match must start_date at the specified position
+ * @param {Number} [pos=0] Zero-based index at which to start the search.
+ * @param {Boolean|String} [sticky=false] Whether the match must start at the specified position
  *   only. The string `'sticky'` is accepted as an alternative to `true`.
  * @returns {Array} Match array with named backreference properties, or `null`.
  * @example
@@ -3624,8 +3624,8 @@ XRegExp.exec = function(str, regex, pos, sticky) {
 };
 
 /**
- * Executes a provided function once per regex match. Searches always start_date at the beginning of the
- * string and continue until the end_date, regardless of the state of the regex's `global` property and
+ * Executes a provided function once per regex match. Searches always start at the beginning of the
+ * string and continue until the end, regardless of the state of the regex's `global` property and
  * initial `lastIndex`.
  *
  * @memberOf XRegExp
@@ -3947,8 +3947,8 @@ XRegExp.replace = function(str, search, replacement, scope) {
 
 /**
  * Performs batch processing of string replacements. Used like `XRegExp.replace`, but accepts an
- * array of replacement detail. Later replacements operate on the output of earlier replacements.
- * Replacement detail are accepted as an array with a regex or string to search for, the
+ * array of replacement details. Later replacements operate on the output of earlier replacements.
+ * Replacement details are accepted as an array with a regex or string to search for, the
  * replacement string or function, and an optional scope of 'one' or 'all'. Uses the XRegExp
  * replacement text syntax, which supports named backreference properties via `${name}`.
  *
@@ -4013,7 +4013,7 @@ XRegExp.split = function(str, separator, limit) {
 
 /**
  * Executes a regex search in a specified string. Returns `true` or `false`. Optional `pos` and
- * `sticky` arguments specify the search start_date position, and whether the match must start_date at the
+ * `sticky` arguments specify the search start position, and whether the match must start at the
  * specified position only. The `lastIndex` property of the provided regex is not used, but is
  * updated for compatibility. Also fixes browser bugs compared to the native
  * `RegExp.prototype.test` and can be used reliably cross-browser.
@@ -4021,8 +4021,8 @@ XRegExp.split = function(str, separator, limit) {
  * @memberOf XRegExp
  * @param {String} str String to search.
  * @param {RegExp} regex Regex to search with.
- * @param {Number} [pos=0] Zero-based index at which to start_date the search.
- * @param {Boolean|String} [sticky=false] Whether the match must start_date at the specified position
+ * @param {Number} [pos=0] Zero-based index at which to start the search.
+ * @param {Boolean|String} [sticky=false] Whether the match must start at the specified position
  *   only. The string `'sticky'` is accepted as an alternative to `true`.
  * @returns {Boolean} Whether the regex matched the provided value.
  * @example
@@ -4040,7 +4040,7 @@ XRegExp.test = function(str, regex, pos, sticky) {
 };
 
 /**
- * Uninstalls optional features according to the specified options. All optional features start_date out
+ * Uninstalls optional features according to the specified options. All optional features start out
  * uninstalled, so this is used to undo the actions of `XRegExp.install`.
  *
  * @memberOf XRegExp
@@ -4354,13 +4354,13 @@ fixed.replace = function(search, replacement) {
                 // Else, numbered backreference without curly braces
                 $2 = +$2; // Type-convert; drop leading zero
                 // XRegExp behavior for `$n` and `$nn`:
-                // - Backrefs end_date after 1 or 2 digits. Use `${..}` for more digits.
+                // - Backrefs end after 1 or 2 digits. Use `${..}` for more digits.
                 // - `$1` is an error if no capturing groups.
                 // - `$10` is an error if less than 10 capturing groups. Use `${1}0` instead.
                 // - `$01` is `$1` if at least one capturing group, else it's an error.
                 // - `$0` (not followed by 1-9) and `$00` are the entire match.
                 // Native behavior, for comparison:
-                // - Backrefs end_date after 1 or 2 digits. Cannot reference capturing group 100+.
+                // - Backrefs end after 1 or 2 digits. Cannot reference capturing group 100+.
                 // - `$1` is a literal `$1` if no capturing groups.
                 // - `$10` is `$1` followed by a literal `0` if less than 10 capturing groups.
                 // - `$01` is `$1` if at least one capturing group, else it's a literal `$01`.
