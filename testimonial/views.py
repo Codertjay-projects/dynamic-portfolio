@@ -18,15 +18,15 @@ def testimonial_delete_view(request):
         if skill:
             skill.delete()
             messages.success(request, 'the item has being deleted')
-            return redirect('dashboard:testimonialCreate')
-    messages.warning(request, 'There was an error proccessing your request')
-    return redirect('dashboard:testimonialCreate')
+            return redirect('testimonial:testimonialCreate')
+    messages.warning(request, 'There was an error processing your request')
+    return redirect('testimonial:testimonialCreate')
 
 
 @login_required()
 def testimonail_update_view(request):
     test_form = TestimonialForm(request.POST, request.FILES)
-    print('the psot files', request.POST)
+    print('the post files', request.POST)
     test = Testimonial.objects.filter(id=request.POST.get('id'), user=request.user).first()
     if test:
         test.client_name = test_form['client_name'].value()
@@ -36,9 +36,9 @@ def testimonail_update_view(request):
         test.detail = test_form['detail'].value()
         test.save()
         messages.success(request, f'{test.client_name} has being updated ')
-        return redirect('dashboard:testimonialCreate')
+        return redirect('testimonial:testimonialCreate')
     messages.warning(request, f'There was an error updating the reviews ')
-    return redirect('dashboard:testimonialCreate')
+    return redirect('testimonial:testimonialCreate')
 
 
 
@@ -64,8 +64,8 @@ class UserTestimonialCreate(LoginRequiredMixin, View):
             form.save()
             print('the form was valid')
             messages.success(self.request, f'Your account has been updated')
-            return redirect('dashboard:testimonialCreate')
+            return redirect('testimonial:testimonialCreate')
         messages.warning(self.request, f'{testimonial_form.errors}')
-        return redirect('dashboard:testimonialCreate')
+        return redirect('testimonial:testimonialCreate')
 
 

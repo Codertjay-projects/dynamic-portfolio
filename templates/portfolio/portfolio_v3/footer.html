@@ -1,33 +1,34 @@
 {% load static %}
-<footer class="footer text-center">
-    <!-- Container Starts -->
+
+<footer class="pFooter">
+
     <div class="container">
-        <p>{{ website_name }}</p>
 
-        <!-- Copyright Text Ends -->
-        <!-- Social Media Links Starts -->
-        <div class="social-icons">
-            <ul class="social">
-                <li>
-                    <a class="twitter" href="{{ twitter_url }}" title="twitter"></a>
-                </li>
-                <li>
-                    <a class="facebook" href="{{ facebook_url }}" title="facebook"></a>
-                </li>
-
-                <li>
-                    <a class="skype" href="{{ skype_url }}" title="skype"></a>
-                </li>
-                <li>
-                    <a class="instagram" href="{{ instagram_url }}" title="instagram"></a>
-                </li>
-                <li>
-                    <a class="linkedin" href="{{ linkedin_url }}" title="linkedin"></a>
-                </li>
-
-            </ul>
+        <div class="col-md-4 col-sm-4 col-xs-12 fCopy">
+            <span>{{ website_name }}</span>
         </div>
-        <!-- Social Media Links Ends -->
+
+        <div class="col-md-4 col-sm-4 col-xs-12 fScroll">
+            <a class="easing scroll-up" href="#sectionIntro">
+                BACK TO TOP<span aria-hidden="true" class="arrow_carrot-up"></span>
+            </a>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-12 fIcons">
+            <a href="{{ facebook_url }}">
+                <span aria-hidden="true" class="social_facebook_circle"></span>
+            </a>
+            <a href="{{ twitter_url }}">
+                <span aria-hidden="true" class="social_twitter_circle"></span>
+            </a>
+            <a href="{{ dribble_url }}">
+                <span aria-hidden="true" class="social_dribbble_circle"></span>
+            </a>
+            <a href="{{ instagram_url }}">
+                <span aria-hidden="true" class="social_instagram_circle"></span>
+            </a>
+        </div>
+
     </div>
-    <!-- Container Ends -->
+
 </footer>

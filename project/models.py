@@ -40,6 +40,7 @@ class ProjectItem(models.Model):
             image = DEFAULT_REDIRECT_URL + image_
         except:
             image = ''
+        print('aaaaaaaaaaaaaaaaaaaaa',image)
         return image
 
     def __str__(self):

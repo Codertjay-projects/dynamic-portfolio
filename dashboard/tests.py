@@ -6,7 +6,10 @@ from selenium import webdriver
 
 from _profile.models import Profile, Layout
 from blog.models import Post
-from .models import Resume, Skills, Testimonial, Service
+from resume.models import Resume
+from service.models import Service
+from skill.models import Skill
+from testimonial.models import Testimonial
 
 User = get_user_model()
 ss = webdriver.Edge()
@@ -21,7 +24,7 @@ class PortfolioCase(TestCase):
         self.userB = User.objects.create_user(username='coderjay', password='thankgod12')
         Testimonial.objects.create(user=self.user, client_name='client_name', image='',
                                    detail='detail', url='https://www.google.com')
-        Skills.objects.create(description='my skill ', user=self.user, percent=14, icon='')
+        Skill.objects.create(description='my skill ', user=self.user, percent=14, icon='')
         Resume.objects.create(name='my resume name', detail='my resume name', start_date=datetime.now(),
                               end_date=datetime.now(), user=self.user)
         Post.objects.create(user=self.user, title='my title',
@@ -55,7 +58,7 @@ class PortfolioCase(TestCase):
         self.assertEqual(resume.user, self.user)
 
     def test_skill_created(self):
-        skill = Skills.objects.create(description='my skill ', user=self.user, percent=14, icon='')
+        skill = Skill.objects.create(description='my skill ', user=self.user, percent=14, icon='')
         self.assertEqual(skill.id, 2)
         self.assertEqual(skill.user, self.user)
 

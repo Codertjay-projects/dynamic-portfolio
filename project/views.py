@@ -33,9 +33,9 @@ class ProjectView(LoginRequiredMixin, View):
                 print('the data', self.request.POST.get('the_user'))
                 messages.success(self.request, f'{form.name} added to {form.project}')
                 return HttpResponseRedirect(self.request.user.profile.get_portfolio_absolute_url())
-            return redirect('dashboard:projectCreate')
+            return redirect('project:projectCreate')
         messages.warning(self.request, f'{project_form.errors}')
-        return redirect('dashboard:projectCreate')
+        return redirect('project:projectCreate')
 
 
 class ProjectItemsView(LoginRequiredMixin, View):
@@ -71,9 +71,9 @@ class ProjectItemsView(LoginRequiredMixin, View):
                         print('the data', self.request.POST.get('the_user'))
                         messages.success(self.request, f'{form.name} added to {form.project}')
                         return HttpResponseRedirect(self.request.user.profile.get_portfolio_absolute_url())
-                    return redirect('dashboard:projectItemsCreate')
+                    return redirect('project:projectItemsCreate')
         messages.warning(self.request, f'{project_items_form.errors}')
-        return redirect('dashboard:projectItemsCreate')
+        return redirect('project:projectItemsCreate')
 
 
 @login_required()
@@ -111,9 +111,9 @@ def project_items_update_view(request):
         if project_item_form.is_valid():
             project_item.save()
             messages.success(request, f'{project_item.name} has being updated ')
-            return redirect('dashboard:projectItemsCreate')
+            return redirect('project:projectItemsCreate')
     messages.warning(request, f'{project_item_form.errors}')
-    return redirect('dashboard:projectItemsCreate')
+    return redirect('project:projectItemsCreate')
 
 
 @login_required()
@@ -126,9 +126,9 @@ def project_delete_view(request):
             print('project', project)
             project.delete()
             messages.success(request, 'the item has being deleted')
-            return redirect('dashboard:projectCreate')
+            return redirect('project:projectCreate')
     messages.warning(request, 'There was an error proccessing your request')
-    return redirect('dashboard:projectCreate')
+    return redirect('project:projectCreate')
 
 
 @login_required()

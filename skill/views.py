@@ -34,9 +34,9 @@ class UserSkillCreate(LoginRequiredMixin, View):
             if self.request.user.username == self.request.POST.get('the_user'):
                 print('the data', self.request.POST.get('the_user'))
                 return HttpResponseRedirect(self.request.user.profile.get_portfolio_absolute_url())
-            return redirect('dashboard:skillCreate')
+            return redirect('skill:skillCreate')
         messages.warning(self.request, f'{skill_form.errors}')
-        return redirect('dashboard:skillCreate')
+        return redirect('skill:skillCreate')
 
 
 @login_required()
@@ -46,7 +46,7 @@ def skill_update_view(request):
     skill = Skill.objects.filter(id=request.POST.get('id'), user=request.user).first()
     if skill:
         print('this is the skill name', skill_form['name'].value())
-        print('this is the skill descrip', skill_form['description'].value())
+        print('this is the skill description', skill_form['description'].value())
         print('this is the skill percent', skill_form['percent'].value())
         skill.name = skill_form['name'].value()
         if skill_form['icon'].value() != None:
@@ -58,18 +58,18 @@ def skill_update_view(request):
         messages.success(request, f'{skill.name} has being updated ')
     else:
         messages.warning(request, f'There was an error updating the skill')
-    return redirect('dashboard:skillCreate')
+    return redirect('skill:skillCreate')
 
 
 @login_required()
 def skill_delete_view(request):
     form = request.POST.get('id')
-    print('fotm', form)
+    print('form', form)
     if form:
         skill = Skill.objects.filter(id=form, user=request.user).first()
         if skill:
             skill.delete()
             messages.success(request, 'the item has being deleted')
-            return redirect('dashboard:skillCreate')
+            return redirect('skill:skillCreate')
     messages.warning(request, 'There was an error proccessing your request')
-    return redirect('dashboard:skillCreate')
+    return redirect('skill:skillCreate')

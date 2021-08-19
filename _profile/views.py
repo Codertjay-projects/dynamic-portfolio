@@ -42,10 +42,10 @@ class UserProfileUpdate(LoginRequiredMixin, View):
             if self.request.user.username == self.request.POST.get('the_user'):
                 print('the data', self.request.POST.get('the_user'))
                 return HttpResponseRedirect(self.request.user.profile.get_portfolio_absolute_url())
-            return redirect('dashboard:profileUpdate')
+            return redirect('profile:profileUpdate')
 
         messages.warning(self.request, f'{p_form.errors}')
-        return redirect('dashboard:profileUpdate')
+        return redirect('profile:profileUpdate')
 
 
 class UserNameUpdate(LoginRequiredMixin, View):
@@ -94,7 +94,7 @@ class UserNameUpdate(LoginRequiredMixin, View):
                 return HttpResponseRedirect(self.request.user.profile.get_portfolio_absolute_url())
         else:
             messages.warning(self.request, 'The username has already being taken')
-        return redirect('dashboard:userUpdate')
+        return redirect('profile:userUpdate')
 
 
 class UserLayoutUpdate(LoginRequiredMixin, View):

@@ -1,62 +1,42 @@
 {% load hosts %}
 {% load static %}
-<section class="blog" id="blog">
-    <!-- Container Starts -->
-    <div class="container">
-        <!-- Main Heading Starts -->
-        <div class="text-center top-text">
-            <h1><span>Blog</span> Posts</h1>
-            <h4>Latest Articles</h4>
-        </div>
-        <!-- Main Heading Starts -->
-        <!-- Divider Starts -->
-        <div class="divider text-center">
-            <span class="outer-line"></span>
-            <span class="fa fa-comments" aria-hidden="true"></span>
-            <span class="outer-line"></span>
-        </div>
-        <!-- Divider Ends -->
-        <div class="row latest-posts-content">
-            <!-- Article Starts -->
-            {% for item in post %}
-                <div class="col-sm-12 col-md-4 col-xs-12">
-                    <div class="latest-post">
-                        <!-- Featured Image Starts -->
-                        <a class="img-thumb"
-                           href="{% host_url 'blog:blog_detail' item.slug host 'www' %}">
-                            <img class="img-fluid"
-                                 src="{{ item.imageURL }}"
-                                 alt="img"
-                                 style="height: 30vh; width: 100%"></a>
-                        <!-- Featured Image Ends -->
-                        <!-- Article Content Starts -->
-                        <div class="post-body">
-                            <h4 class="post-title">
-                                <a href="{% host_url 'blog:blog_detail' item.slug host 'www' %}"
-                                   class="text-capitalize">
-                                    {{ item.title }}
-                                </a>
-                            </h4>
-                            <div class="post-text">
-                                <p>{{ item.get_markdown|truncatechars:50 }}</p>
-                            </div>
-                        </div>
-                        <!-- Post Date Starts -->
-                        <div class="post-date">
-                            <span>{{ item.published_date|date }}</span>
-                        </div>
-                        <!-- Post Date Ends -->
-                        <!-- Article Content Ends -->
-                    </div>
-                </div>
-            {% endfor %}
-            <!-- Article Ends -->
+<section id="sectionBlog">
+    <div class="sectionTitle">
+        <h1>Journal</h1>
+        <h6 class="whiteTitle">My latest news</h6>
+    </div>
 
-            <div class="mx-auto">
-                <a class="custom-button link-blog"
-                   href="{% host_url 'blog:blog_user_list' profile.user.username host 'www' %}">See all Posts</a>
+    <div class="container">
+
+        <div id="blog-grid" class="bGrid">
+
+            <div class="gutter-sizer"></div>
+
+            {% for item in post %}
+                <div class="blog-item item-four item-margin">
+                    <img src="{{ item.imageURL }}" alt="">
+                    <a href=""><h3>{{ item.name }}</h3></a>
+                    <p>
+                        {{ item.get_markdown|truncatewords:10 }}.<br>
+                        <b><a href="{% host_url 'blog:blog_detail' item.slug host 'www' %}">Read more</a></b>
+                    </p>
+                    <h6>Category <span class="separator">|</span>{{ item.timestamp }} <span class="separator">|</span><a
+                            href=""> {{ item.comments.count }}
+                        comments</a></h6>
+                </div>
+
+            {% endfor %}
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="{% host_url 'blog:blog_user_list' profile.user.username host 'www' %}" class="p-5">
+                    <button class="btn-primary">More</button>
+                </a>
             </div>
         </div>
-        <!-- Latest Blog Posts Ends -->
+
     </div>
 </section>

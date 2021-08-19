@@ -115,8 +115,9 @@ def my_portfolio(request, username):
             return render(request,
                           f'portfolio/{layout.portfolio_version.portfolio_version}/{layout.portfolio_version.portfolio_version}.html',
                           context)
-        except:
+        except Exception as a:
             print('except', layout.portfolio_version.portfolio_version)
+            print(a)
             return render(request, 'portfolio/portfolio_v1/portfolio_v1.html', context)
     else:
         messages.warning(request, "the site does not exist")

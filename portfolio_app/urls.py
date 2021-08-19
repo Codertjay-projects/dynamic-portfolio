@@ -5,3 +5,4 @@ app_name = 'portfolio'
 urlpatterns = [
     path('<str:username>/', my_portfolio, name='portfolio'),
 ]
+

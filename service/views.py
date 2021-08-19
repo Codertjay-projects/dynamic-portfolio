@@ -34,9 +34,9 @@ class UserServiceCreate(LoginRequiredMixin, View):
             if self.request.user.username == self.request.POST.get('the_user'):
                 print('the data', self.request.POST.get('the_user'))
                 return HttpResponseRedirect(self.request.user.profile.get_portfolio_absolute_url())
-            return redirect('dashboard:serviceCreate')
+            return redirect('service:serviceCreate')
         messages.warning(self.request, f'{service_form.errors}')
-        return redirect('dashboard:serviceCreate')
+        return redirect('service:serviceCreate')
 
 
 @login_required()
@@ -52,9 +52,9 @@ def services_update_view(request):
         service.description = service_form['description'].value()
         service.save()
         messages.success(request, f'{service.name} has being updated ')
-        return redirect('dashboard:serviceUpdate')
+        return redirect('service:serviceUpdate')
     messages.warning(request, f'There was an error updating the service ')
-    return redirect('dashboard:serviceUpdate')
+    return redirect('service:serviceUpdate')
 
 
 @login_required()

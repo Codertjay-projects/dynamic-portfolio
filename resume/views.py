@@ -30,9 +30,9 @@ class UserResumeCreate(LoginRequiredMixin, View):
             form.save()
             print('the form was valid')
             messages.success(self.request, f'Your account has been updated')
-            return redirect('dashboard:resumeCreate')
+            return redirect('resume:resumeCreate')
         messages.warning(self.request, f'{resume_form.errors}')
-        return redirect('dashboard:resumeCreate')
+        return redirect('resume:resumeCreate')
 
 @login_required()
 def resume_update_view(request):
@@ -46,9 +46,9 @@ def resume_update_view(request):
         resume.end_date = resume_form['end_date'].value()
         resume.save()
         messages.success(request, f'{resume.name} has being updated ')
-        return redirect('dashboard:resumeCreate')
+        return redirect('resume:resumeCreate')
     messages.warning(request, f'There was an error updating the resume {resume_form.errors} ')
-    return redirect('dashboard:resumeCreate')
+    return redirect('resume:resumeCreate')
 
 
 
@@ -61,6 +61,6 @@ def resume_delete_view(request):
         if resume:
             resume.delete()
             messages.success(request, 'the item has being deleted')
-            return redirect('dashboard:resumeCreate')
-    messages.warning(request, 'There was an error proccessing your request')
-    return redirect('dashboard:resumeCreate')
+            return redirect('resume:resumeCreate')
+    messages.warning(request, 'There was an error processing your request')
+    return redirect('resume:resumeCreate')

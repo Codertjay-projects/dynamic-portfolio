@@ -1,39 +1,65 @@
 {% load static %}
+<section id="sectionAbout">
 
-<section id="about" class="about">
-    <!-- Container Starts -->
-    <div class="container">
-        <!-- Main Heading Starts -->
-        <div class="text-center top-text">
-            <h1><span>About</span> Us</h1>
-            <h4>Who We Are</h4>
-        </div>
-        <!-- Main Heading Ends -->
-        <!-- Divider Starts -->
-        <div class="divider text-center">
-            <span class="outer-line"></span>
-            <span class="fa fa-user" aria-hidden="true"></span>
-            <span class="outer-line"></span>
-        </div>
-        <!-- Divider Ends -->
-        <!-- About Content Starts -->
-        <div class="row about-content">
-            <div class="col-sm-12 col-md-12 col-lg-6 about-left-side">
-                <h3 class="title-about"><strong>{{ profile.user.first_name }}  {{ profile.user.last_name }}  </strong></h3>
-                <hr>
-                <p>{{ profile.about|linebreaks }}. </p>
-                <!-- Tabs Heading Starts -->
-
-                <!-- Tabs Content Ends -->
-                <a class="custom-button scroll-to-target" href="#portfolio">Our Portfolio {{ request }} </a>
-            </div>
-            <div class="col-md-12 col-lg-6 about-right">
-                <div class="about-right-side">
-                    <img class="img-fluid" src="{{ layout.profilePicsImageURL }}" alt="">
-                </div>
-            </div>
-        </div>
-        <!-- About Content Ends -->
+    <div class="sectionTitle">
+        <h1>About me</h1>
+        <h6>Let me introduce myself</h6>
     </div>
-    <!-- Container Ends -->
+
+    <div class="about">
+        <div class="container">
+
+            <div class="col-md-12 col-sm-12 col-xs-12 story">
+                <div class="profileText">
+
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="storyText">
+                            <h4>Profile</h4>
+                            <h6>Complete name:</h6>
+                            <p>{{ profile.user.last_name }} {{ profile.user.first_name }} </p>
+                            <h6>Phone number:</h6>
+                            <p>{{ profile.phone_number }}</p>
+                            <h6>Website:</h6>
+                            <p>{{ profile.website }}</p>
+                            <h6>E-mail:</h6>
+                            <p>{{ profile.user.email }}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-3 col-xs-12">
+                        <img src="{{ layout.profilePicsImageURL }}" alt="" style="max-height: 150px;">
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="storyText">
+                        {% for item in skills %}
+                            <h6>{{ item.name|capfirst }}
+                                {% if item.icon %}
+                                    {{ item.icon.as_html }}
+                                {% endif %}</h6>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                     aria-valuemax="100" style="width: {{ item.percent }}%;">
+                                    {{ item.percent }}%
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="col-md-12 col-sm-12 col-xs-12 quote">
+                <h4>Quote</h4>
+                <p>{{ profile.motto }}.</p>
+            </div>
+        </div>
+
+
+    </div>
+
+
 </section>

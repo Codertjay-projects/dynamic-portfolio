@@ -2,10 +2,6 @@ from decouple import config, Csv
 
 print('using local')
 
-PARENT_HOST = '.localhost:8000'
-DEFAULT_HOST = "www"
-DEFAULT_REDIRECT_URL = "http://www.localhost:8000"
-
 # for django debug toolbar
 INTERNAL_IPS = [
     '127.0.0.1',
@@ -22,3 +18,7 @@ DATABASES = {
 
 PAYSTACK_LIVE_KEY = config('PAYSTACK_DEBUG_LIVE_KEY', default='')
 PAYSTACK_PUBLIC_KEY = config('PAYSTACK_DEBUG_PUBLIC_KEY', default='')
+
+PARENT_HOST = '.localhost:8000'
+DEFAULT_HOST = "www"
+DEFAULT_REDIRECT_URL = "http://www.localhost:8000"

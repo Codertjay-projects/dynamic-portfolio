@@ -1,0 +1,44 @@
+{% load static %}
+<section id="sectionResume">
+
+    <!-- section TITLE -->
+    <div class="sectionTitle">
+        <h1>Resume</h1>
+        <h6 class="whiteTitle">More about my past</h6>
+    </div>
+
+    <div class="container">
+        <div class="row resumeRow">
+
+            <div class="col-12 resumeEd">
+
+                <div class="resumeList">
+                    <div class="row">
+
+                        {% for item in resume %}
+                            <div class="col-md-5 resumeList m-5 mx-auto" style="background-color: white" >
+                                <div class="resumeIcon">
+                                    <div class="icon icon-basic-book"></div>
+                                </div>
+                                <div class="resumeContent">
+                                    <h5>{{ item.name }}</h5>
+                                    <span>{{ item.start_date }}  -  {{ item.end_date }}</span>
+                                    <p class="plineheight">
+                                        {{ item.description }}.</p>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+</section>
+
