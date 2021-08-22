@@ -20,6 +20,7 @@ def get_user_subscription(request):
     else:
         return None
 
+
 class UserProfileUpdate(LoginRequiredMixin, View):
 
     def get(self, *args, **kwargs):
@@ -115,15 +116,16 @@ class UserLayoutUpdate(LoginRequiredMixin, View):
                             self.request.FILES,
                             instance=self.request.user.layout)
         if l_form.is_valid():
-            print('the portfolio version', l_form.cleaned_data['portfolio_version'])
             porfolio_type = l_form.cleaned_data['portfolio_version']
             user_subscription = get_user_subscription(self.request)
+            print('the portfolio version', porfolio_type.paid)
             if user_subscription:
                 if user_subscription.membership.membership_type != 'Free' and user_subscription.expiration_date > datetime.now():
                     l_form.save()
-                elif porfolio_type.paid == 'False':
+                elif porfolio_type.paid == False:
                     l_form.save()
                 else:
+                    # todo : fix mssage
                     l_form.save(commit=False)
                     l_form.portfolio_version = self.request.user.layout.portfolio_version
                     l_form.save()
@@ -137,4 +139,3 @@ class UserLayoutUpdate(LoginRequiredMixin, View):
                 return redirect('dashboard:layoutUpdate')
         messages.warning(self.request, f'{l_form.errors}')
         return redirect('profile:layoutUpdate')
-

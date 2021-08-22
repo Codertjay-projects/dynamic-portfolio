@@ -6,8 +6,8 @@
         <h6>Let me introduce myself</h6>
     </div>
 
-    <div class="about dark_background">
-        <div class="container">
+    <div class="about ">
+        <div class="container dark_background">
 
             <div class="col-md-12 col-sm-12 col-xs-12 story">
                 <div class="profileText">
@@ -32,14 +32,15 @@
                 </div>
 
                 <div class="col-md-4 col-sm-5 col-xs-12">
-                    <div class="storyText">
+                    <div class="storyText ">
                         {% for item in skills %}
-                            <h6>{{ item.name|capfirst }}
+                            <h6 class="secondary_color">{{ item.name|capfirst }}
                                 {% if item.icon %}
                                     {{ item.icon.as_html }}
                                 {% endif %}</h6>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                            <div class="progress primary_color">
+                                <div class="progress-bar  primary_color" role="progressbar" aria-valuenow="70"
+                                     aria-valuemin="0"
                                      aria-valuemax="100" style="width: {{ item.percent }}%;">
                                     {{ item.percent }}%
                                 </div>
@@ -52,9 +53,9 @@
         </div>
 
         <div class="container">
-            <div class="col-md-12 col-sm-12 col-xs-12 quote">
-                <h4>Quote</h4>
-                <p>{{ profile.motto }}.</p>
+            <div class="col-md-12 col-sm-12 col-xs-12 quote primary_color">
+                <h4 class="primary_color">Quote</h4>
+                <p class="primary_color">{{ profile.motto }}.</p>
             </div>
         </div>
 

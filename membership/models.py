@@ -71,7 +71,7 @@ class Membership(models.Model):
     name = models.CharField(max_length=20)
     membership_type = models.CharField(
         choices=MembershipType, default='Free', max_length=50)
-    membership_plan_id = models.CharField(max_length=40)
+    membership_plan_id = models.CharField(max_length=40,blank=True,null=True)
     info = models.TextField()
     objects = MembershipManager()
 

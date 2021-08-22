@@ -1,6 +1,6 @@
 {% load hosts %}
 {% load static %}
-<section id="sectionBlog">
+<section id="sectionBlog" class="primary_rgba">
     <div class="sectionTitle">
         <h1>Journal</h1>
         <h6 class="whiteTitle">My latest news</h6>
@@ -13,14 +13,14 @@
             <div class="gutter-sizer"></div>
 
             {% for item in post %}
-                <div class="blog-item item-four item-margin">
+                <div class="blog-item item-four item-margin dark_background">
                     <img src="{{ item.imageURL }}" alt="">
-                    <a href=""><h3>{{ item.name }}</h3></a>
-                    <p>
+                    <a href=""><h3 class="secondary_color">{{ item.title }}</h3></a>
+                    <p >
                         {{ item.get_markdown|truncatewords:10 }}.<br>
                         <b><a href="{% host_url 'blog:blog_detail' item.slug host 'www' %}">Read more</a></b>
                     </p>
-                    <h6>Category <span class="separator">|</span>{{ item.timestamp }} <span class="separator">|</span><a
+                    <h6 class="secondary_color">Category <span class="separator secondary_color">|</span>{{ item.timestamp }} <span class="separator">|</span><a
                             href=""> {{ item.comments.count }}
                         comments</a></h6>
                 </div>
@@ -32,8 +32,8 @@
 
         <div class="row">
             <div class="col-12 text-center">
-                <a href="{% host_url 'blog:blog_user_list' profile.user.username host 'www' %}" class="p-5">
-                    <button class="btn-primary">More</button>
+                <a href="{% host_url 'blog:blog_user_list' profile.user.username host 'www' %}" class="">
+                    <button class="btn-primary p-5 m-5 btn-outline btn">More</button>
                 </a>
             </div>
         </div>

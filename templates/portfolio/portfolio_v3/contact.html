@@ -1,54 +1,24 @@
 {% load static %}
 <section id="sectionContact">
-    <div class="sectionTitle LessPaddingTitle">
-        <h1>Contact</h1>
-        <h6>Get in touch</h6>
-    </div>
-
+    <div class="sectionTitle LessPaddingTitle"><h1>Contact</h1><h6>Get in touch</h6></div>
     <div class="container">
-
         <div class="contactForm">
-
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <!--MESSAGE SENT SUCCESFULLY-->
-                <div id="message"></div>
-
-                <!--MAIN FORM-->
-
-                <form method="post" action="#" name="contactform"
-                      id="contactform">
-
+            <div class="col-md-12 col-sm-12 col-xs-12"><!--MESSAGE SENT SUCCESFULLY-->
+                <div id="message"></div><!--MAIN FORM-->
+                <form method="post" action="#" name="contactform" id="contactform">
                     <fieldset>
-
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <input name="name" type="text" id="name" placeholder="Name* :" size="30" value=""/>
+                        <div class="col-md-4 col-sm-6 col-xs-12"><input name="name" type="text" id="name"
+                                                                        placeholder="Name* :" size="30" value=""/></div>
+                        <div class="col-md-4 col-sm-6 col-xs-12"><input name="email" type="text" id="email"
+                                                                        placeholder="E-mail* :" size="30" value=""/>
                         </div>
-
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <input name="email" type="text" id="email" placeholder="E-mail* :" size="30" value=""/>
+                        <div class="col-md-4 col-sm-12 col-xs-12"><input name="subject" type="text" id="subject"
+                                                                         placeholder="Subject* :" size="30" value=""/>
                         </div>
-
-                        <div class="col-md-4 col-sm-12 col-xs-12">
-                            <input name="subject" type="text" id="subject" placeholder="Subject* :" size="30" value=""/>
-                        </div>
-
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <textarea name="comments" cols="40" rows="3" placeholder="Message* :"
-                                      id="comments"></textarea>
-                        </div>
-
-                        <input type="submit" class="submit" id="submit" value="Send message"/>
-
-
-                    </fieldset>
-
-                </form>
-                <!--END Main form-->
-            </div>
-
-        </div>
-        <!-- END contact FORM-->
-    </div>
-
-
+                        <div class="col-md-12 col-sm-12 col-xs-12"><textarea name="comments" cols="40" rows="3"
+                                                                             placeholder="Message* :"
+                                                                             id="comments"></textarea></div>
+                        <input type="submit" class="submit" id="submit" value="Send message"/></fieldset>
+                </form><!--END Main form--></div>
+        </div><!-- END contact FORM--></div>
 </section>

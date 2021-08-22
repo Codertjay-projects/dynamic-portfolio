@@ -40,10 +40,63 @@
             background: url({{ layout.backgroundImageURL }}) !important;
         }
 
-        .dark_background{
-            background-color: #3b3535 !important;
-            color: {{ layout.secondary_clor }} !important;
+
+        .secondary_color {
+            color: {{ layout.secondary_color }} !important;
         }
+
+        .primary_color {
+            background-color: {{ layout.primary_color }} !important;
+        }
+
+
+        h1 {
+            color: {{ layout.secondary_color }} !important;
+        }
+
+        h6 {
+            color: {{ layout.secondary_color }} !important;
+        }
+
+        i {
+            color: {{ layout.secondary_color }} !important;
+        }
+
+        .icon {
+            color: {{ layout.secondary_color }} !important;
+        }
+
+        .navbar li.active a {
+            color: {{ layout.secondary_color }} !important;
+            border-bottom: 2px solid !important;
+        }
+
+        {% if  layout.background_color == 'dark' %}
+            * {
+                color: white !important;
+            }
+            * {
+                background-color: #212020 !important;
+            }
+            .dark_background {
+                background-color: #3b3535 !important;
+            }
+            input {
+                color: {{ layout.secondary_color }} !important;
+                background-color: white !important;
+            }
+            textarea {
+                color: {{ layout.secondary_color }} !important;
+                background-color: white !important;
+            }
+
+        {% else %}
+            .primary_rgba {
+                background-color: rgba({{ primary_color_rgba }}, 0.2) !important;
+            }
+
+
+        {% endif %}
     </style>
 </head>
 
@@ -66,9 +119,9 @@
 <!-- section Intro
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
-<section id="sectionIntro" class="parallax">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="container">
+<section id="sectionIntro" class="parallax" style="background-color:rgba(255,255,255,0.1) !important;">
+    <div class="col-md-12 col-sm-12 col-xs-12" style="background-color:rgba(255,255,255,0.1) !important;">
+        <div class="container" style="background-color:rgba(255,255,255,0.1) !important;">
 
             <div class="textIntro col-md-6">
                 <div class="hi">

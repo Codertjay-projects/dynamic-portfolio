@@ -75,6 +75,7 @@ def my_portfolio(request, username):
     else:
         messages.warning(request, "the site does not exist")
         return HttpResponseRedirect(DEFAULT_REDIRECT_URL)
+    print(f'{primary_color_1},{primary_color_2},{primary_color_3}')
     context = {
         'project': project,
         'ProjectItem': project_items,
@@ -87,11 +88,7 @@ def my_portfolio(request, username):
         'resume': resume,
         'media_url': DEFAULT_REDIRECT_URL,
         'host_url': host_url,
-        'primary_color': {
-            'primary_color_1': primary_color_1,
-            'primary_color_2': primary_color_2,
-            'primary_color_3': primary_color_3,
-        },
+        'primary_color_rgba': f'{primary_color_1},{primary_color_2},{primary_color_3}',
         'secondary_color': {
             'secondary_color_1': secondary_color_1,
             'secondary_color_2': secondary_color_2,
