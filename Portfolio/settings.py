@@ -7,7 +7,7 @@ DEBUG = config('DEBUG')
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 SECRET_KEY = config('SECRET_KEY')
 
-if DEBUG:
+if DEBUG == True:
     from Portfolio.local import *
 else:
     from Portfolio.production import *

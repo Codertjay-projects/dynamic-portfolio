@@ -136,6 +136,6 @@ class UserLayoutUpdate(LoginRequiredMixin, View):
                 if self.request.user.username == self.request.POST.get('the_user'):
                     return HttpResponseRedirect(self.request.user.profile.get_portfolio_absolute_url())
                 messages.success(self.request, f'Layout has been updated')
-                return redirect('dashboard:layoutUpdate')
+                return redirect('profile:layoutUpdate')
         messages.warning(self.request, f'{l_form.errors}')
         return redirect('profile:layoutUpdate')
