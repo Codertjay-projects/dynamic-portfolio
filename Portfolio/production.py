@@ -10,7 +10,7 @@ DATABASES = {
         'USER': config('POSTGRESQL_DATABASE_USER'),
         'PASSWORD': config('POSTGRESQL_DATABASE_PASSWORD'),
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': 5432,
     }
 }
 PARENT_HOST = '104.131.111.54:8000'

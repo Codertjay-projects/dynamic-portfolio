@@ -1,6 +1,6 @@
 import os
 from decouple import config, Csv
-from .installed import INSTALLED_APPS
+from .installed import *
 
 DEBUG = config('DEBUG')
 
@@ -9,7 +9,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 if DEBUG == True:
     from Portfolio.local import *
-else:
+elif DEBUG == False:
     from Portfolio.production import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
