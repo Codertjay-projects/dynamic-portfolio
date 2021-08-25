@@ -1,3 +1,4 @@
+from .base import *
 from decouple import config
 
 # Todo change database

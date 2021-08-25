@@ -7,13 +7,8 @@ DEBUG = config('DEBUG')
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 SECRET_KEY = config('SECRET_KEY')
 
-if DEBUG == True:
-    from Portfolio.local import *
-elif DEBUG == False:
-    from Portfolio.production import *
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Quick-start_date development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
