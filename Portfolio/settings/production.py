@@ -2,7 +2,7 @@ from .base import *
 from decouple import config
 
 # Todo change database
-Database
+
 https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 DATABASES = {
     'default': {
