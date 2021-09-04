@@ -15,7 +15,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     motto = models.CharField(blank=True, null=True, max_length=100)
     main_skill = models.CharField(blank=True, null=True, max_length=100)
-    # country = CountryField(multiple=False,db_collation = False)
+    country = CountryField(multiple=False,db_collation = False)
     address = models.CharField(max_length=200, blank=True, null=True)
     phone_number = models.IntegerField(blank=True, null=True)
     website = models.URLField(blank=True, null=True)
