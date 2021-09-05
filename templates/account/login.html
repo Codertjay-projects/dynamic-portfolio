@@ -9,14 +9,14 @@
 
 {% block content %}
     <div class="d-flex justify-content-center align-items-center">
-        <div class="card bg-light" style="max-width: 40vw;">
+        <div class="card bg-light" >
             <div class="header header-primary text-center">
                 <h4 class="card-title text-light">Log in</h4>
 
                 {% get_providers as socialaccount_providers %}
 
                 {% if socialaccount_providers %}
-                    <p class="mx-auto col-6  text-light">{% blocktrans with site.name as site_name %}Please sign in with
+                    <p class="mx-auto col-6  text-light font-italic">{% blocktrans with site.name as site_name %}Please sign in with
                         one
                         of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
                         for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
@@ -34,18 +34,18 @@
                     {% include "socialaccount/snippets/login_extra.html" %}
 
                 {% else %}
-                    <p class="mx-auto col-12 ">{% blocktrans %}If you have not created an account yet, then
+                    <p class="mx-auto col-12 text-capitalize ">{% blocktrans %}If you have not created an account yet, then
                         please
-                        <a href="{{ signup_url }}" style="color: rgba(250,17,12,0.76) !important;">sign up</a>
+                        <a href="{{ signup_url }}" style="color: rgba(12,115,250,0.76) !important;">sign up</a>
                         first.{% endblocktrans %}</p>
                 {% endif %}
 
             </div>
             <div class="card-content pl-3 pb-3 " >
-                <form class="login col-6 offset-3 form-group" method="POST" action="{% url 'account_login' %}">
+                <form class="login col-12 offset-3 form-group text-capitalize" method="POST" action="{% url 'account_login' %}">
                     {% csrf_token %}
                     <div class="row">
-                        <div class="col-11" style="">
+                        <div class="col-11 text-capitalize" style="">
                             {{ form|crispy }}
                         </div>
                     </div>

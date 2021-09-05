@@ -43,6 +43,10 @@
             background-color: #9c27b0 !important;
         }
 
+        * {
+            font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+        }
+
         .btn-outline-primary {
             color: white !important;
             border-color: #9c27b0 !important;
@@ -98,8 +102,8 @@
                                 <!-- Logo -->
                                 <div class="logo">
                                     <a class="logo-1" href="{% url 'home_page:home' %}">
-                                        <h4>{{ website_name }}</h4>{% comment %}<img
-                                            src="{% static 'HomePage/img/main-logo.png' %}" alt="#">{% endcomment %}</a>
+                                        <h4 style="font-family: Impact; color: #26313C">{{ website_name }}</h4>
+                                    </a>
                                 </div>
                                 <!-- End-Logo -->
                                 <div class="mobile-nav"></div>
@@ -212,7 +216,7 @@
                         <div class="footer-logo">
                             <a class="logo" href="#">
                                 {% comment %} Todo create logo for website{% endcomment %}
-                               <h2 style="color: white">{{ website_name }}</h2>
+                                <h2 style="color: white">{{ website_name }}</h2>
                                 {% comment %}<img src="{% static 'HomePage/img/footer-logo.png' %}" alt="#">{% endcomment %}
                             </a>
                         </div>
@@ -307,7 +311,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="footer-bottom-img text-right">
-                        <img src="{% static 'HomePage/img/payment-img.png' %}" alt="#">
+                        {% comment %}Todo add copyrght% endcomment %}{% endcomment %}
                     </div>
                 </div>
             </div>

@@ -31,9 +31,14 @@
     </title>
 
     <style>
+        * {
+            font-family: italic;
+        }
+
         .card {
-            background-color: black !important;
+            background-color: #26313C !important;
             color: white !important;
+            font-family: italic;
         }
 
         .card-title {
@@ -70,7 +75,8 @@
                         <div class="row no-gutters">
                             <div class="col-10 col-lg-10 mx-auto">
                                 <div class="logo mt-5 mb-5 mb-lg-0"><a href="{% url 'home_page:home' %}"
-                                                                       title="{{ website_name }}" style="font-size: 50px">{{ website_name }}</a>
+                                                                       title="{{ website_name }}"
+                                                                       style="font-size: 50px">{{ website_name }}</a>
                                 </div>
                             </div>
                         </div>

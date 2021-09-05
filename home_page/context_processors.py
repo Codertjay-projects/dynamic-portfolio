@@ -23,7 +23,7 @@ def add_variable_to_context(request):
     if Post.objects.count() > 3:
         older_posts = Post.objects.all().order_by('-id')[:3]
         latest_posts = Post.objects.all()[:3]
-    about_website = "PortfolioInc is all about crating portfolio " \
+    about_website = "PortfolioInc is all about crating Portfolio " \
                     "website for individual with low or no cost We love the web and care deeply for how users interact with a digital product. We power " \
                     "" \
                     "businesses and individuals to create better looking web projects around the world"
