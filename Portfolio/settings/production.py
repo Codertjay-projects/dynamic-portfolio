@@ -18,5 +18,6 @@ PARENT_HOST = 'portfolioinc.studio'
 DEFAULT_HOST = "www"
 DEFAULT_REDIRECT_URL = "http://www.portfolioinc.studio"
 
+
 PAYSTACK_LIVE_KEY = config('PAYSTACK_LIVE_KEY', default='')
 PAYSTACK_PUBLIC_KEY = config('PAYSTACK_PUBLIC_KEY', default='')
