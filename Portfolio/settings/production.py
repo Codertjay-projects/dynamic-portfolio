@@ -14,10 +14,9 @@ DATABASES = {
         'PORT': 5432,
     }
 }
-PARENT_HOST = '52.35.31.177'
+PARENT_HOST = 'portfolioinc.studio'
 DEFAULT_HOST = "www"
-DEFAULT_REDIRECT_URL = "http://52.35.31.177"
+DEFAULT_REDIRECT_URL = "http://www.portfolioinc.studio"
 
 PAYSTACK_LIVE_KEY = config('PAYSTACK_LIVE_KEY', default='')
 PAYSTACK_PUBLIC_KEY = config('PAYSTACK_PUBLIC_KEY', default='')
-
