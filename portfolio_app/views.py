@@ -32,6 +32,7 @@ def handler500(request, exception):
     response.status_code = 500
     return response
 
+
 def my_portfolio(request, username):
     print('the requsest get_raw_uri', request.get_raw_uri())
     print('this is the username', username)
@@ -73,7 +74,10 @@ def my_portfolio(request, username):
             secondary_color_2 = None
             secondary_color_3 = None
     else:
-        messages.warning(request, "the site does not exist")
+        try:
+            messages.warning(request, "the site does not exist")
+        except:
+            pass
         return HttpResponseRedirect(DEFAULT_REDIRECT_URL)
     print(f'{primary_color_1},{primary_color_2},{primary_color_3}')
     context = {
@@ -119,5 +123,3 @@ def my_portfolio(request, username):
     else:
         messages.warning(request, "the site does not exist")
         return HttpResponseRedirect(DEFAULT_REDIRECT_URL)
-
-

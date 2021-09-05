@@ -21,15 +21,14 @@ def add_variable_to_context(request):
     latest_posts = Post.objects.all()
 
     if Post.objects.count() > 3:
-        older_posts = Post.objects.all().order_by('-id')[3]
-        # latest_posts = Post.objects.all()[3]
-    about_website = "Dynamic portfolio is all about crating portfolio " \
+        older_posts = Post.objects.all().order_by('-id')[:3]
+        latest_posts = Post.objects.all()[:3]
+    about_website = "PortfolioInc is all about crating portfolio " \
                     "website for individual with low or no cost We love the web and care deeply for how users interact with a digital product. We power " \
                     "" \
                     "businesses and individuals to create better looking web projects around the world"
 
     return {
-        'testme': "hello world",
         'latest_posts': latest_posts,
         'older_posts': older_posts,
         'about_website': about_website,
@@ -37,11 +36,11 @@ def add_variable_to_context(request):
         'twitter_url': 'https://twitter.com/',
         'facebook_url': 'https://instagram.com/',
         'email': 'portfolio@gmail.com',
-        'phone_number': '1234567890',
+        'phone_number': '2348061715291',
         'service': service,
         'home_page_testimonial': testimonial,
         'portfolio_template': portfolio_template,
-        'website_name': 'Pcreator',
+        'website_name': 'PortfolioInc',
         'tag_choice': TagChoice,
         'Free': Free,
         'Standard': Standard,

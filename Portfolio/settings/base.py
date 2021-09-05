@@ -87,8 +87,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]
 
@@ -122,7 +122,8 @@ handler404 = 'portfolio_app.views.handler404'
 handler500 = 'portfolio_app.views.handler500'
 
 CORS_ALLOWED_REGEX = config('CORS_ALLOWED_REGEX', cast=Csv())
-
 CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', cast=Csv())
 
 SKIP_PREFLIGHT_CHECK = True
+
+
