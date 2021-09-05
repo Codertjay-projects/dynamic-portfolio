@@ -1,4 +1,5 @@
 import debug_toolbar
+from decouple import config
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -13,7 +14,7 @@ urlpatterns = [
     path('', include('testimonial.urls')),
     path('dashboard/', include('dashboard.urls')),
 
-    path('administrator/', admin.site.urls),
+    path(f"{config('ADMIN_URL')}/", admin.site.urls),
     path('__debug__/', include(debug_toolbar.urls)),
     path('accounts/', include('allauth.urls')),
 
