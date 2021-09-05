@@ -43,9 +43,6 @@
             background-color: #9c27b0 !important;
         }
 
-        * {
-            font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
-        }
 
         .btn-outline-primary {
             color: white !important;
@@ -57,7 +54,16 @@
             color: #9c27b0 !important;;
         }
 
+        @font-face {
+            src: url("{% static 'HomePage/fonts/BestStories.otf' %}");
+            font-family: font1;
+        }
+
+        * {
+            font-family: handwritting;
+        }
     </style>
+
     {% block style %}
 
     {% endblock %}
