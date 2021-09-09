@@ -23,8 +23,9 @@ class ServiceView(View):
         return render(request, 'HomePage/service_rendered/services.html')
 
 
-def services_view(request):
-    return render(request, 'HomePage/services.html')
+class OfferView(View):
+    def get(self, request):
+        return render(request, 'HomePage/offer.html')
 
 
 class FaqView(View):

@@ -1,13 +1,13 @@
 from django.urls import path
 from .views import HomePageView, ServiceView, FaqView, AboutView, TestimonialView, ContactView, PricingView, \
-    subscribe_user, services_view
+    subscribe_user, OfferView
 
 app_name = 'home_page'
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('#/subscribe/', subscribe_user, name='subscribe'),
-    # path('#/service/', ServiceView.as_view(), name='service'),
-    path('#/#/services/', services_view, name='service'),
+    path('#/service/', ServiceView.as_view(), name='service'),
+    path('#/offer/', OfferView.as_view(), name='offer'),
     path('#/faq/', FaqView.as_view(), name='faq'),
     path('#/about/', AboutView.as_view(), name='about'),
     path('#/testimonial/', TestimonialView.as_view(), name='testimonial'),
