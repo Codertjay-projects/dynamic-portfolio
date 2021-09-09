@@ -23,6 +23,10 @@ class ServiceView(View):
         return render(request, 'HomePage/service_rendered/services.html')
 
 
+def services_view(request):
+    return render(request, 'HomePage/services.html')
+
+
 class FaqView(View):
 
     def get(self, request):
