@@ -6,10 +6,10 @@
 {% endblock %}
 
 {% block title %}
-About  || PortfolioINc
+    About  || PortfolioINc
 {% endblock %}
 
-{% block about %} active {% endblock  %}
+{% block about %} active {% endblock %}
 {% block content %}
     <!-- Breadcrumbs -->
     <div class="breadcrumbs" style="background-image:url({% static  'HomePage/img/breadcrumbs-bg.jpg' %})">
@@ -19,8 +19,8 @@ About  || PortfolioINc
                 <div class="col-lg-7 col-md-7 col-12">
                     <div class="breadcrumbs-content">
                         <h2>About Us</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.</p>
+                        <p>{{ website_name }} is all about creating portfolio for designers and developers without
+                            taking much time by choosing what suit you.</p>
                     </div>
                 </div>
                 <!-- Breadcrumbs-Menu -->
@@ -43,7 +43,7 @@ About  || PortfolioINc
     {% include 'HomePage/include/about_include.html' %}
     {% comment %} end of about include{% endcomment %}
 
-{% comment %}
+    {% comment %}
     <!-- Team Area -->
     <section class="team-area">
         <div class="container">
