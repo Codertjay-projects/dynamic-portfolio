@@ -20,7 +20,7 @@ class HomePageView(View):
 class ServiceView(View):
 
     def get(self, request):
-        return render(request, 'HomePage/service.html')
+        return render(request, 'HomePage/base/service.html')
 
 
 class FaqView(View):

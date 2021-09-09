@@ -8,7 +8,7 @@
 {% block title %}
     Faq
 {% endblock %}
-
+{% block faq %}  {% endblock  %}
 {% block content %}
     <!-- Breadcrumbs -->
     <div class="breadcrumbs" style="background-image:url({% static 'HomePage/img/breadcrumbs-bg.jpg' %})">
@@ -167,7 +167,7 @@
                                     <div id="faq3" class="panel-collapse collapse" role="tabpanel"
                                          aria-labelledby="FaqTitle3">
                                         <div class="faq-body"><p>
-                                            step 1, click on this link <a href="{% url 'dashboard:profileUpdate' %}"><i
+                                            step 1, click on this link <a href="{% url 'profile:profileUpdate' %}"><i
                                                 class="fa fa-link"></i></a>
                                             <br>
                                             step 2, View changes and pick what suit you and note there are so many
@@ -198,7 +198,7 @@
                                     <div id="faq4" class="panel-collapse collapse" role="tabpanel"
                                          aria-labelledby="FaqTitle4">
                                         <div class="faq-body"><p>
-                                            step 1, click on this link <a href="{% url 'dashboard:layoutUpdate' %}"><i
+                                            step 1, click on this link <a href="{% url 'profile:layoutUpdate' %}"><i
                                                 class="fa fa-link"></i></a>
                                             <br>
                                             step 2, View changes and pick what suit you and note there are so many
@@ -232,7 +232,7 @@
                                             <div>
                                                 <h3> Creating Skill </h3>
                                                 <p>
-                                                    click on this link <a href="{% url 'dashboard:skillUpdate' %}"><i
+                                                    click on this link <a href="{% url 'skill:skillUpdate' %}"><i
                                                         class="fa fa-link"></i></a>
                                                     <br>
                                                 <p>
@@ -250,7 +250,7 @@
                                                 <h3> Update Skill </h3>
                                                 <p>
                                                     click on this link <a
-                                                        href="{% url 'dashboard:testimonialUpdate' %}"><i
+                                                        href="{% url 'testimonial:testimonialUpdate' %}"><i
                                                         class="fa fa-link"></i></a>
                                                     <br>
                                                 <p>
@@ -280,7 +280,7 @@
                                             <div>
                                                 <h3> Creating Service </h3>
                                                 <p>
-                                                    click on this link <a href="{% url 'dashboard:serviceUpdate' %}"><i
+                                                    click on this link <a href="{% url 'service:serviceUpdate' %}"><i
                                                         class="fa fa-link"></i></a>
                                                     <br>
                                                 <p>
@@ -295,7 +295,7 @@
                                             <div>
                                                 <h3><strong> Update Service </strong></h3>
                                                 <p>
-                                                    click on this link <a href="{% url 'dashboard:serviceUpdate' %}"><i
+                                                    click on this link <a href="{% url 'service:serviceUpdate' %}"><i
                                                         class="fa fa-link"></i></a>
                                                     <br>
                                                 <p>
@@ -325,7 +325,7 @@
                                             <div>
                                                 <h3> Creating Project </h3>
                                                 <p>
-                                                    click on this link <a href="{% url 'dashboard:projectUpdate' %}"><i
+                                                    click on this link <a href="{% url 'project:projectUpdate' %}"><i
                                                         class="fa fa-link"></i></a>
                                                     <br>
                                                 <p>
@@ -347,7 +347,7 @@
                                             <div>
                                                 <h3><strong> Update Project </strong></h3>
                                                 <p>
-                                                    click on this link <a href="{% url 'dashboard:projectUpdate' %}"><i
+                                                    click on this link <a href="{% url 'project:projectUpdate' %}"><i
                                                         class="fa fa-link"></i></a>
                                                     <br>
                                                 <p>
@@ -379,7 +379,7 @@
                                                 <h3> Creating Project </h3>
                                                 <p>
                                                     click on this link <a
-                                                        href="{% url 'dashboard:projectItemUpdate' %}"><i
+                                                        href="{% url 'project:projectItemUpdate' %}"><i
                                                         class="fa fa-link"></i></a>
                                                     <br>
                                                 <p>
@@ -399,7 +399,7 @@
                                                 <h3><strong> Update Item </strong></h3>
                                                 <p>
                                                     click on this link <a
-                                                        href="{% url 'dashboard:projectItemUpdate' %}"><i
+                                                        href="{% url 'project:projectItemUpdate' %}"><i
                                                         class="fa fa-link"></i></a>
                                                     <br>
                                                 <p>

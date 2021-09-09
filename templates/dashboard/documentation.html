@@ -1,5 +1,3 @@
-
-
 <div class="content  ">
     <div class="container">
         <div class="row text-center "
@@ -15,13 +13,14 @@
                 <h2><strong> Name :</strong></h2>
                 <p class="text-muted font-weight-bold">
 
-                    Dynamic portfolio enable you to edit your name and not you can change your username only three times
+                    {{ website_name }} enable you to edit your name and not you can change your username only three
+                    times
                     in a month
                     because that is what we use to identify your portfolio and you have for example if your username is
                     <strong>username</strong> then your portfolio
                     url which would be the public one you can share to any one would be a
-                    <span class="text-primary">https://username.dynamicptl.com</span> the dynamicptl is the default
-                    dynamic portfolio url
+                    <span class="text-primary">https://username.{{ website_name }}.com</span> the {{ website_name }} is the default
+                     portfolio url
                     you also have access to changing you first name ,last name and email any time you want but please do
                     it
                     with care
@@ -34,7 +33,8 @@
                 <h2><strong> Profile :</strong></h2>
                 <p class="text-muted font-weight-bold  pl-5">
 
-                    Dynamic portfolio enable you to change so many things in your portfolio you can change the portfolio
+                    {{ website_name }} enable you to change so many things in your portfolio you can change the
+                    portfolio
                     version in there.
                     There are somany things you can change in there for example :
                     <br>

@@ -14,7 +14,7 @@
     <!-- Site Title -->
     <title>
         {% block title %}
-
+            Home || PortfolioInc
         {% endblock %}
     </title>
     <!-- Fav Icon -->
@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="{% static 'HomePage/css/animate-text.css' %}">
     <link rel="stylesheet" href="{% static 'HomePage/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'HomePage/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
     <!-- Theme Default CSS -->
     <link rel="stylesheet" href="{% static 'HomePage/css/reset.css' %}">
@@ -42,7 +44,6 @@
         .bg-primary {
             background-color: #9c27b0 !important;
         }
-
 
         .btn-outline-primary {
             color: white !important;
@@ -121,21 +122,29 @@
                                             <div class="nav-item">
                                                 <!-- Main-Menu -->
                                                 <ul class="nav-menu mobile-menu navigation">
-                                                    <li class="active"><a href="{% url 'home_page:home' %}">Home</a>
+                                                    <li class="{% block home %} {% endblock %}"><a
+                                                            href="{% url 'home_page:home' %}">Home</a>
                                                     </li>
-                                                    <li><a href="{% url 'home_page:service' %}">Services</a></li>
-                                                    <li><a href="{% url 'blog:blog_list' %}">Blog</a></li>
-                                                    <li><a href="{% url 'home_page:price' %}">Pricing</a></li>
-                                                    <li><a href="{% url 'home_page:faq' %}">Faq's</a></li>
+                                                    <li><a class="{% block service %} {% endblock %}"
+                                                           href="{% url 'home_page:service' %}">Services</a></li>
+                                                    <li><a class="{% block blog %} {% endblock %}"
+                                                           href="{% url 'blog:blog_list' %}">Blog</a></li>
+                                                    <li><a class="{% block pricing %} {% endblock %}"
+                                                           href="{% url 'home_page:price' %}">Pricing</a></li>
+                                                    <li><a class="{% block faq %} {% endblock %}"
+                                                           href="{% url 'home_page:faq' %}">Faq's</a></li>
 
                                                     <li><a href="#">Pages<i class="fa fa-angle-down"></i></a>
                                                         <ul class="sub-menu">
-                                                            <li><a href="{% url 'home_page:about' %}">About Us</a>
+                                                            <li><a class="{% block about %} {% endblock %}"
+                                                                   href="{% url 'home_page:about' %}">About Us</a>
                                                             </li>
                                                             <li>
-                                                                <a href="{% url 'home_page:testimonial' %}">Testimonials</a>
+                                                                <a class="{% block testimonial %} {% endblock %}"
+                                                                   href="{% url 'home_page:testimonial' %}">Testimonials</a>
                                                             </li>
-                                                            <li><a href="{% url 'home_page:contact' %}">Contact</a></li>
+                                                            <li><a class="{% block contact %} {% endblock %}"
+                                                                   href="{% url 'home_page:contact' %}">Contact</a></li>
                                                         </ul>
                                                     </li>
                                                     {% if request.user.is_authenticated %}
@@ -298,10 +307,10 @@
                         <!-- Footer Social -->
                         <div class="f-social">
                             <ul>
-                                <li><a href="{{ facebook_url }}"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="{{ twitter_url }}"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="{{ linkedin_url }}"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="{{ instagram_url }}"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="{{ facebook_url }}"><i class="fab fa-facebook"></i></a></li>
+                                <li><a href="{{ twitter_url }}"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="{{ linkedin_url }}"><i class="fab fa-linkedin"></i></a></li>
+                                <li><a href="{{ instagram_url }}"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>
