@@ -2,6 +2,7 @@ from decouple import config, Csv
 from .base import *
 
 print('using local')
+DEBUG = False
 
 
 # Database
