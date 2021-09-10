@@ -27,6 +27,7 @@ def payment_view(request, payment_type=None):
         return redirect('home_page:price')
 
 
+
 # 'T985946375823995'
 @login_required()
 def payment_done(request):
