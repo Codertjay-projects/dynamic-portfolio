@@ -40,7 +40,7 @@ background_colors = (
 
 class Layout(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pics = models.ImageField(upload_to='profile_pics', default='profile_pics/profile_pics.jpg')
+    profile_pics = models.ImageField(upload_to='profile_pics', default='profile/profile_pics.png')
     logo = models.ImageField(blank=True, null=True)
     background_image = models.ImageField(upload_to='background_image',
                                          default='profile/backgroundImage.jpg')

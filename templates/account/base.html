@@ -27,7 +27,7 @@
     <title>
         {% block  head_title %}
 
-        {% endblock  %}
+        {% endblock %}
     </title>
 
     <style>
@@ -43,6 +43,11 @@
 
         .card-title {
             color: white;
+        }
+
+        @font-face {
+            src: url("{% static 'HomePage/fonts/BestStories.otf' %}");
+            font-family: font1;
         }
 
     </style>
@@ -62,7 +67,7 @@
 <!-- Preloader End -->
 
 <div id="main-wrapper" class="oxyy-login-register " style="background-color: #26313C !important;">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row no-gutters min-vh-100 py-5">
             <!-- Welcome Text
             ========================= -->
@@ -98,11 +103,11 @@
 
             <!-- Forgot password Form
             ========================= -->
-            <div class="col-lg-6 shadow-lg d-flex align-items-center rounded-lg rounded-left-0   p-5">
+            <div class="col-lg-6 shadow-lg d-flex align-items-center rounded-lg rounded-left-0   ">
                 <div class="container my-auto py-5">
                     <div class="row">
 
-                        <div class="col-11 col-lg-10 mx-auto">
+                        <div class="col-12 col-lg-10 mx-auto">
                             {% block  content %}
 
                             {% endblock content %}

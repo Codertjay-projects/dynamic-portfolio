@@ -264,24 +264,18 @@
                     <!-- Latest Post -->
                     <div class="single-widget">
                         <h3 class="widget-title">Latest News</h3>
-                        <div class="widget-post">
-                            <div class="post-img">
-                                <a href="#"><img src="{% static 'HomePage/img/feed-1.jpg' %}" alt="#"></a>
+                        {% for item in latest_post_footer %}
+                            <div class="widget-post">
+                                <div class="post-img">
+                                    <a href="#"><img src="{{ item.imageURL }}" alt="#"></a>
+                                </div>
+                                <div class="post-content">
+                                    <h4><a href="#">{{ item.title }}</a></h4>
+                                    <span class="post-date"><i
+                                            class="fa fa-clock-o"></i>{{ item.published_date }}</span>
+                                </div>
                             </div>
-                            <div class="post-content">
-                                <h4><a href="#">Define World Best IT Solution Technology</a></h4>
-                                <span class="post-date"><i class="fa fa-clock-o"></i>24th March 2020</span>
-                            </div>
-                        </div>
-                        <div class="widget-post">
-                            <div class="post-img">
-                                <a href="#"><img src="{% static 'HomePage/img/feed-1.jpg' %}" alt="#"></a>
-                            </div>
-                            <div class="post-content">
-                                <h4><a href="#">Define World Best IT Solution Technology</a></h4>
-                                <span class="post-date"><i class="fa fa-clock-o"></i>24th March 2020</span>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <!-- Single-Widget -->
