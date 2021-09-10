@@ -34,12 +34,31 @@
             background-image: url("{{ layout.backgroundImageURL }}");
         }
 
+        .dtr-preloader {
+            background: {{ layout.primary_color }} !important;
+        }
+
+        .transparent_color {
+            background-color: transparent !important;
+        }
+
+
         .primary_color {
             background-color: {{ layout.primary_color }} !important;
         }
 
         * {
             color: {{ layout.secondary_color }} !important;
+        }
+
+        nav .active {
+            color: {{ layout.primary_color }} !important;
+        }
+
+        .btn-blue {
+            border-color: {{ layout.secondary_color }} !important;
+            background-color: {{ layout.primary_color }} !important;
+            color: black !important;
         }
 
 
@@ -66,6 +85,9 @@
             }
             .dtr-portfolio-hover-content {
                 background-color: transparent !important;
+            }
+            .transparent_color:hover {
+                color: black !important;
             }
 
         {% endif %}
@@ -132,16 +154,16 @@
 
         <!-- cta section starts
 ================================================== -->
-        <section class=" dtr-section parallax dtr-py-100"
-                 style="background-image: url({{ layout.backgroundImageURL }});">
-            <div class="container">
+        <section class=" dtr-section parallax dtr-py-100 transparent_color "
+                 style="background-image: url({{ layout.backgroundImageURL }});background:  !important;">
+            <div class="container  transparent_color" >
 
                 <!--== row starts ==-->
-                <div class="row text-center">
-                    <div class="col-12 primary_color">
-                        <h3 class=" font-family-alt font-weight-700 color-dark primary_color">Want to work
+                <div class="row text-center transparent_color "{% comment %} style="border-radius: 80%"{% endcomment %}>
+                    <div class="col-12 ">
+                        <h3 class=" font-family-alt font-weight-700 transparent_color">Want to work
                             together!</h3>
-                        <p class=" color-dark text-size-md primary_color">I’m available for freelance work.</p>
+                        <p class=" color-dark text-size-md ">I’m available for freelance work.</p>
                         <!-- link starts -->
                         <a href="#" class=" dtr-btn btn-white dtr-mt-30">Hire Me <i
                                 class="icon-chevron-compact-right"></i></a>

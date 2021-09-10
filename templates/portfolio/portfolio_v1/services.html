@@ -12,11 +12,14 @@
 
             {% for item in service %}
                 <div class="col-12 col-sm-6 col-lg-4" style="height:346px; ">
-                    <div class="dark_background dtr-service-box bg-white" style="background-color: white !important;">
-                        <p class="secondary_color dtr-service-number color-blue" >0{{ forloop.counter }}</p>
+                    <div class="dark_background dtr-service-box " >
+                        <p class="secondary_color dtr-service-number color-blue" style="border-radius: 80%">
+                            0{{ forloop.counter }}</p>
                         <img src="{{ item.imageURL }}" alt="image" style="width: 50px;height: 48px">
-                        <h4 class="secondary_color dtr-service-heading">{{ item.name }}</h4>
-                        <div class="secondary_color small">{{ item.description|truncatewords:200 }}.</div>
+                        <p class="primary_color">
+                        <h4 class="transparent_color dtr-service-heading ">{{ item.name }}</h4>
+                        <div class="transparent_color small ">{{ item.description|truncatewords:200 }}.</div>
+                        </p>
                     </div>
                 </div>
             {% endfor %}

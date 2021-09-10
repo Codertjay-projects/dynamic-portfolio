@@ -24,6 +24,9 @@ class HomePageTestimonial(models.Model):
     title = models.CharField(max_length=50)
     image = models.ImageField(upload_to='testimonial')
     description = models.CharField(max_length=50)
+    linkedin_url = models.URLField(blank=True, null=True)
+    twitter_url = models.URLField(blank=True, null=True)
+    facebook_url = models.URLField(blank=True, null=True)
 
     @property
     def imageURL(self):

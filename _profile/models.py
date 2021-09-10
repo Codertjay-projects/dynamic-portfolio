@@ -15,7 +15,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     motto = models.CharField(blank=True, null=True, max_length=100)
     main_skill = models.CharField(blank=True, null=True, max_length=100)
-    country = CountryField(multiple=False,blank=True, null=True,)
+    country = CountryField(multiple=False, blank=True, null=True, )
     address = models.CharField(max_length=200, blank=True, null=True)
     phone_number = models.IntegerField(blank=True, null=True)
     website = models.URLField(blank=True, null=True)
@@ -40,14 +40,15 @@ background_colors = (
 
 class Layout(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pics = models.ImageField(upload_to='profile_pics', default='profile/profile_pics.png')
+    profile_pics = models.ImageField(upload_to='profile_pics', default='layout/profile_pics.png')
     logo = models.ImageField(blank=True, null=True)
     background_image = models.ImageField(upload_to='background_image',
-                                         default='profile/backgroundImage.jpg')
+                                         default='layout/backgroundImage.jpg')
     background_color = models.CharField(choices=background_colors, max_length=10, default='light')
     primary_color = RGBColorField(default='#100F0F')
     secondary_color = RGBColorField(default='#838FF')
-    portfolio_version = models.OneToOneField(PortfolioTemplate, on_delete=models.CASCADE, blank=True, null=True)
+    portfolio_version = models.OneToOneField(PortfolioTemplate, on_delete=models.CASCADE, blank=True, null=True,
+                                             default=1)
 
     @property
     def backgroundImageURL(self):

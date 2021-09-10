@@ -54,14 +54,12 @@ def convert_to_usd(amount):
 class MembershipManager(models.Manager):
     def get_membership_type(self, membership_type):
         membership = self.filter(membership_type=membership_type)
-        print('membership manager', membership)
         if membership:
             return membership.first()
         return None
 
     def get_membership_plan_id(self, membership_plan_id):
         membership = self.filter(membership_plan_id=membership_plan_id)
-        print('membership manager', membership)
         if membership:
             return membership.first()
         return None
@@ -71,7 +69,7 @@ class Membership(models.Model):
     name = models.CharField(max_length=20)
     membership_type = models.CharField(
         choices=MembershipType, default='Free', max_length=50)
-    membership_plan_id = models.CharField(max_length=40,blank=True,null=True)
+    membership_plan_id = models.CharField(max_length=40, blank=True, null=True)
     info = models.TextField()
     objects = MembershipManager()
 
@@ -89,7 +87,7 @@ class Membership(models.Model):
             print('paystack price', paystack.plan.get(
                 self.membership_plan_id)['data']['amount'])
             membership_price = paystack.plan.get(self.membership_plan_id)[
-                'data']['amount'] / 100
+                                   'data']['amount'] / 100
         except:
             membership_price = 0
         return membership_price
@@ -106,7 +104,7 @@ class Membership(models.Model):
             print('paystack price', paystack.plan.get(
                 self.membership_plan_id)['data']['amount'])
             discount_price = paystack.plan.get(self.membership_plan_id)[
-                'data']['amount'] / 90
+                                 'data']['amount'] / 90
         except:
             discount_price = 0
         return discount_price
@@ -170,7 +168,6 @@ class UserMembershipSubscription(models.Model):
 def post_save_user_membership_subscription_create(sender, instance, created, *args, **kwargs):
     free_membership = Membership.objects.get_membership_type('Free')
     if free_membership:
-        print(free_membership)
         if created:
             UserMembershipSubscription.objects.get_or_create(user=instance,
                                                              membership=free_membership)

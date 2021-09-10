@@ -107,6 +107,7 @@ class BlogCreateView(LoginRequiredMixin, View):
 @login_required
 def update_post_view(request, slug=None):
     instance = get_object_or_404(Post, slug=slug)
+    posts = Post.objects.filter(user=request.user)
     form = PostCreateForm(request.POST or None, request.FILES or None, instance=instance)
     if form.is_valid():
         instance = form.save(commit=False)
@@ -120,7 +121,7 @@ def update_post_view(request, slug=None):
     else:
         messages.warning(request, 'The form isn\'t valid')
 
-    return render(request, 'HomePage/blog/blog_update.html', {'form': form, 'post': instance})
+    return render(request, 'dashboard/blog_update.html', {'form': form, 'post': instance, 'posts': posts})
 
 
 class DeletePostView(DeleteView):

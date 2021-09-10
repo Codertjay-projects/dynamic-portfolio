@@ -7,9 +7,9 @@
             <div class="row">
                 <div class="col-lg-7 col-12">
                     <div class="section-title">
-                        <h3>CLient Testimonials</h3>
+                        <h3>Client Testimonials</h3>
                         <div class="line-bot"></div>
-                        <p>These are list of testimonials from our client who enjoyed our product.</p>
+                        <p>These are list of testimonials from our client who enjoyed our services.</p>
                     </div>
                 </div>
             </div>
@@ -21,13 +21,13 @@
             <div class="row">
                 <div class="col-12">
                     <!-- Testimonial-Slider -->
-                    <div class="testimnial-slider">
+                    <div class="testimonial-slider">
                         {% for item in home_page_testimonial %}
                             <!-- Single Testimonial -->
                             <div class="testimonial-item">
                                 <div class="row">
                                     <div class="col-lg-4 col-md-6 col-12">
-                                        <div class="testimnial-left">
+                                        <div class="testimonial-left">
                                             <div class="testimonial-head">
                                                 <img src="{{ item.imageURL }}" alt="#">
                                             </div>
@@ -37,9 +37,12 @@
                                             </div>
                                             <!-- Social Links -->
                                             <ul class="testimonial-social">
-                                                <li><a href="{{ facebook_url }}"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="{{ twitter_url }}"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="{{ linkedin_url }}"><i class="fa fa-linkedin"></i></a></li>
+                                                <li><a href="{{ item.facebook_url }}"><i
+                                                        class="fab fa-facebook"></i></a></li>
+                                                <li><a href="{{ item.twitter_url }}"><i class="fab fa-twitter"></i></a>
+                                                </li>
+                                                <li><a href="{{ item.linkedin_url }}"><i
+                                                        class="fab fa-linkedin"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
