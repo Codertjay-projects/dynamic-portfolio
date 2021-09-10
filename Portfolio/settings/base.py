@@ -1,7 +1,7 @@
+import datetime
 import os
 from decouple import config, Csv
 from .installed import *
-
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 SECRET_KEY = config('SECRET_KEY')
@@ -31,8 +31,9 @@ INSTALLED_APPS = INSTALLED_APPS
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 "/home/ubuntu/Portfolio/templates"
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,4 +126,12 @@ CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', cast=Csv())
 
 SKIP_PREFLIGHT_CHECK = True
 
+POST_OFFICE = {
+    'DEFAULT_PRIORITY': 'now',
+    'MESSAGE_ID_ENABLED': True,
+    'MAX_RETRIES': 5,
+    'RETRY_INTERVAL': datetime.timedelta(minutes=15),  # Schedule to be retried 15 minutes later
+    'THREADS_PER_PROCESS': 10,
+}
 
+ADMINS = [('Afenikhena Favour', ('codertjay@gmail.com',))]
