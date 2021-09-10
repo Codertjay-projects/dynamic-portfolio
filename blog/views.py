@@ -90,8 +90,6 @@ class BlogCreateView(LoginRequiredMixin, View):
 
     def post(self, *args, **kwargs):
         form = PostCreateForm(self.request.POST, self.request.FILES or None)
-        print(self.request.POST)
-        print('form:', form.errors)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.user = self.request.user
@@ -111,11 +109,7 @@ def update_post_view(request, slug=None):
     form = PostCreateForm(request.POST or None, request.FILES or None, instance=instance)
     if form.is_valid():
         instance = form.save(commit=False)
-        print(instance.read_time)
-        print(instance.slug)
-        print(instance.slug)
         instance.save()
-        print('updating the post', request.POST, '\n', instance.user)
         messages.success(request, 'Successfully updated article')
         return HttpResponseRedirect(instance.get_absolute_url())
     else:

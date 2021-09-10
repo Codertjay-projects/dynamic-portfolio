@@ -123,3 +123,5 @@ def my_portfolio(request, username):
     else:
         messages.warning(request, "the site does not exist")
         return HttpResponseRedirect(DEFAULT_REDIRECT_URL)
+
+

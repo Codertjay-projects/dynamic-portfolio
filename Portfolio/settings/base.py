@@ -32,11 +32,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
-                 "/home/ubuntu/Portfolio/templates",
-                 "/Portfolio/templates",
-                 "Portfolio/templates",
-                 "templates"
-
                  ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -47,6 +42,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'home_page.context_processors.add_variable_to_context',
             ],
+            'builtins': [
+                'users.templatetags.users',
+            ]
         },
     },
 ]
@@ -91,7 +89,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_in_env')]

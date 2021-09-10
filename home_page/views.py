@@ -93,3 +93,7 @@ def subscribe_user(request):
     else:
         messages.info(request, 'There was an error subscribing to our mailing list ')
     return redirect('home_page:home')
+
+
+def test_amplify_view(request):
+    return render(request, 'test_code.html')
