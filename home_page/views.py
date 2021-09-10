@@ -17,12 +17,6 @@ class HomePageView(View):
         return render(request, 'HomePage/index.html')
 
 
-class ServiceView(View):
-
-    def get(self, request):
-        return render(request, 'HomePage/service_rendered/services.html')
-
-
 class OfferView(View):
     def get(self, request):
         return render(request, 'HomePage/offer.html')

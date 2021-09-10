@@ -1,0 +1,4 @@
+sudo systmectl restart gunicorn
+sudo systmectl restart nginx
+git pull origin master
+

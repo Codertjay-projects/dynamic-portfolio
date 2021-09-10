@@ -13,22 +13,20 @@ paystack = Paystack(secret_key=paystack_secret_key)
 
 
 @login_required()
-def payment_view(request, payment_type=None):
+def payment_progress_view(request, payment_type=None):
     print(payment_type)
     membership = Membership.objects.get_membership_type(payment_type)
     user_membership = UserMembershipSubscription.objects.filter(user=request.user).first()
     if user_membership.membership.membership_type != 'Free':
         messages.success(request, 'Your current subscription is still active')
-        return redirect('profile:dashboard')
+        return redirect('home_page:price')
     if membership:
-        return render(request, 'HomePage/payment.html', {'membership_type': membership})
+        return render(request, 'HomePage/payment_progress.html', {'membership_type': membership})
     else:
         messages.warning(request, 'Please click on the right link ')
         return redirect('home_page:price')
 
 
-
-# 'T985946375823995'
 @login_required()
 def payment_done(request):
     print(request.POST)
