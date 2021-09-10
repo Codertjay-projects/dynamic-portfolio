@@ -32,7 +32,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
-                 "/home/ubuntu/Portfolio/templates"
+                 "/home/ubuntu/Portfolio/templates",
+                 "/Portfolio/templates",
                  ],
         'APP_DIRS': True,
         'OPTIONS': {
