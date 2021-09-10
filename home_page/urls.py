@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import HomePageView, FaqView, AboutView, TestimonialView, ContactView, PricingView, \
-    subscribe_user, OfferView
+    subscribe_user, OfferView,test_amplify_view
 
 app_name = 'home_page'
 urlpatterns = [
@@ -12,4 +12,5 @@ urlpatterns = [
     path('#/testimonial/', TestimonialView.as_view(), name='testimonial'),
     path('#/contact/', ContactView.as_view(), name='contact'),
     path('#/pricing/', PricingView.as_view(), name='price'),
+    path('#/test/', test_amplify_view, name='test_amplify'),
 ]
