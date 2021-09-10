@@ -1,11 +1,11 @@
-{#{% extends 'Homepage/base/home_base.html' %}#}
+{% include 'HomePage/include_base.html' %}
 {% load static %}
 
 
 {% block title %}
-Payment || PortfolioInc
+    Payment || PortfolioInc
 {% endblock %}
-{% block payment %} active {% endblock  %}
+{% block payment %} active {% endblock %}
 {% block content %}
     <div class="breadcrumbs" style="background-image:url('{% static 'HomePage/img/breadcrumbs-bg.jpg' %}')">
         <div class="container">
