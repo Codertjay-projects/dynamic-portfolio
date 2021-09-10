@@ -36,6 +36,7 @@ TEMPLATES = [
                  "/Portfolio/templates",
                  "Portfolio/templates",
                  "templates"
+
                  ],
         'APP_DIRS': True,
         'OPTIONS': {
