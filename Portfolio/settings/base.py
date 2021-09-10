@@ -34,6 +34,8 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
                  "/home/ubuntu/Portfolio/templates",
                  "/Portfolio/templates",
+                 "Portfolio/templates",
+                 "templates"
                  ],
         'APP_DIRS': True,
         'OPTIONS': {
