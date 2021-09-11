@@ -1,14 +1,14 @@
-{% load ampimg %}
+{% load users users.ampimg %}
 <!doctype html>
 <html amp lang="en">
 <head>
     <meta charset="utf-8">
-    <title>sssssssssssssssss</title>
+    <title>{{ object.title }}</title>
     <meta name="description" content="ssssssssssssssssss"/>
     <meta property="og:title" content="cccccccc">
     <meta property="og:site_name" content="GeeksForGeeks">
     <meta property="og:url" content="###ssss">
-    <meta property="og:description" content="ssssssssssssssssss">
+    <meta property="og:description" content="{{ object.metades }}">
     <meta property="og:type" content="article">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
     <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
@@ -194,12 +194,12 @@
         <li><a href="">RSS</a></li>
     </ul>
 </amp-sidebar>
-<div class="container text-center" id="banner"><h1>ssssssss</h1></div>
+<div class="container text-center" id="banner"><h1>ssssssss My site {% if request.is_amp_detect %}(amp version){% endif %}< /h1></div>
 <div class="container"><h3 style="text-align: center;"></h3>
     <p id="amp_page">For Dark mode and better view on desktop, Go to our <span><a href=""><button
             class="btn btn-outline-primary">Desktop page</button></a></span></p>
 
-    <p id="storycontent">ssssssssssssssssssss</p>
+    <p id="storycontent">{{ object.content | ampimg | safe }}</p>
 
 </div>
 <footer>© GeeksForGeeks</footer>
