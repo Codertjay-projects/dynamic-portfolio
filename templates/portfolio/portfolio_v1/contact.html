@@ -7,13 +7,7 @@
             <h2 class="">Say Hello</h2>
         </div>
         <!-- heading ends -->
-{% comment %}
-contact_name
-contact_email
-contact_subject
-contact_message
 
-        {% endcomment %}
         <!--== row starts ==-->
         <div class="row">
 
@@ -21,25 +15,26 @@ contact_message
             <div class="col-12 col-md-6">
                 <!-- form starts -->
                 <div class="dtr-form">
-                    <form id="contactform" method="post"   class="submit-form">
+                    <form id="" class="contact-form" method="post"
+                          action="{% host_url 'user:contact_user' host 'www' %}">
                         {% csrf_token %}
 
-                        <input type="hidden" name="to_email" value="{{ profile.user.email }}" id="id_to_email">
+                        <input type="hidden" name="to_email" value="{{ profile.user.email }}" id="to_email">
                         <fieldset>
                             <div class="dtr-form-row dtr-form-row-2col">
                                 <p class="dtr-form-column">
-                                    <input name="contact_name" id="id_contact_name" maxlength="200"
+                                    <input name="contact_name" id="contact_name" maxlength="200"
                                            class="dark_background" type="text" placeholder="Name">
                                 </p>
                                 <p class="dtr-form-column">
                                     <input name="contact_email" maxlength="200" class="required dark_background email"
-                                           id="id_contact_email" type="text"
+                                           id="contact_email" type="text"
                                            placeholder="Email">
                                 </p>
                             </div>
                             <p>
                                 <input class="dark_background" name="contact_subject" maxlength="200" type="text"
-                                       id="id_contact_subject"
+                                       id="contact_subject"
                                        placeholder="Subject">
                             </p>
                             <p class="antispam">Leave this empty: <br/>
@@ -47,7 +42,7 @@ contact_message
                             </p>
                             <p>
                                 <textarea class="dark_background" rows="6" name="contact_message" maxlength="200"
-                                          id="id_contact_message"
+                                          id="contact_message"
                                           class="required"
                                           placeholder="Message"></textarea>
                             </p>

@@ -32,7 +32,6 @@ def handler500(request, exception):
     response.status_code = 500
     return response
 
-
 def my_portfolio(request, username):
     print('the requsest get_raw_uri', request.get_raw_uri())
     print('this is the username', username)
@@ -117,7 +116,6 @@ def my_portfolio(request, username):
                           f'portfolio/{layout.portfolio_version.portfolio_version}/{layout.portfolio_version.portfolio_version}.html',
                           context)
         except Exception as a:
-            print('except', layout.portfolio_version.portfolio_version)
             print(a)
             return render(request, 'portfolio/portfolio_v1/portfolio_v1.html', context)
     else:

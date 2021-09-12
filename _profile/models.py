@@ -62,8 +62,7 @@ class Layout(models.Model):
     @property
     def profilePicsImageURL(self):
         try:
-            image_ = self.profile_pics.url
-            image = DEFAULT_REDIRECT_URL + image_
+            image = self.profile_pics.url
         except:
             image = ''
         return image
@@ -71,8 +70,7 @@ class Layout(models.Model):
     @property
     def logoImageURL(self):
         try:
-            image_ = self.logo.url
-            image = DEFAULT_REDIRECT_URL + image_
+            image = self.logo.url
         except:
             image = ''
         return image

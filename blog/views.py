@@ -113,7 +113,7 @@ def update_post_view(request, slug=None):
         messages.success(request, 'Successfully updated article')
         return HttpResponseRedirect(instance.get_absolute_url())
     else:
-        messages.warning(request, 'The form isn\'t valid')
+        messages.warning(request, f'{form.errors}')
 
     return render(request, 'dashboard/blog_update.html', {'form': form, 'post': instance, 'posts': posts})
 

@@ -18,3 +18,4 @@ PAYSTACK_PUBLIC_KEY = config('PAYSTACK_DEBUG_PUBLIC_KEY', default='')
 PARENT_HOST = '.localhost:8000'
 DEFAULT_HOST = "www"
 DEFAULT_REDIRECT_URL = "http://www.localhost:8000"
+

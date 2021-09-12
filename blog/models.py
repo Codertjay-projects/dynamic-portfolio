@@ -63,8 +63,7 @@ class Post(models.Model):
     @property
     def imageURL(self):
         try:
-            image_ = self.image.url
-            image = DEFAULT_REDIRECT_URL + image_
+            image = self.image.url
         except:
             image = ''
         return image

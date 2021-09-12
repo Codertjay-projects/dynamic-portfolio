@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
-    <title>{{ profile.user.username|capfirst }} Portfolio</title>
+    <title>{{ profile.user.username|capfirst }} || Portfolio</title>
     <meta name="author" content="tansh">
     <meta name="description" content="HTML Teamplate">
     <meta name="keywords" content="agency, personal, photography, one page">
@@ -155,7 +155,7 @@
         <!-- cta section starts
 ================================================== -->
         <section class=" dtr-section parallax dtr-py-100 transparent_color "
-                 style="background-image: url({{ layout.backgroundImageURL }});background:  !important;">
+                 style="background-image: url({{ layout.backgroundImageURL }});">
             <div class="container  transparent_color" >
 
                 <!--== row starts ==-->
@@ -206,7 +206,10 @@
 <script src="{% static 'portfolio/portfolio_v1/assets/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'portfolio/portfolio_v1/assets/js/plugins.js' %}"></script>
 <script src="{% static 'portfolio/portfolio_v1/assets/js/custom.js' %}"></script>
-<script src="{% static 'portfolio/contact_js/contact.js' %}"></script>
+<script>
+    const host_url = "{{ domain }}"
+</script>
+<script type="text/javascript" src="{% static  'portfolio/contact_js/contact.js' %}"></script>
 
 </body>
 </html>

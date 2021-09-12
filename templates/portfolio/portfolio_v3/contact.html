@@ -5,19 +5,24 @@
         <div class="contactForm">
             <div class="col-md-12 col-sm-12 col-xs-12"><!--MESSAGE SENT SUCCESFULLY-->
                 <div id="message"></div><!--MAIN FORM-->
-                <form method="post" action="#" name="contactform" id="contactform">
+                <form method="post" action="#" class="contact-form">
+                    <input type="hidden" name="to_email" id="to_email" value="{{ profile.user.email }}">
                     <fieldset>
-                        <div class="col-md-4 col-sm-6 col-xs-12"><input name="name" type="text" id="name"
-                                                                        placeholder="Name* :" size="30" value=""/></div>
-                        <div class="col-md-4 col-sm-6 col-xs-12"><input name="email" type="text" id="email"
-                                                                        placeholder="E-mail* :" size="30" value=""/>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <input name="name" type="text" id="contact_name"
+                                   placeholder="Name* :" size="30" value=""/></div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <input name="email" type="text" id="contact_email"
+                                   placeholder="E-mail* :" size="30" value=""/>
                         </div>
-                        <div class="col-md-4 col-sm-12 col-xs-12"><input name="subject" type="text" id="subject"
-                                                                         placeholder="Subject* :" size="30" value=""/>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <input name="subject" type="text" id="contact_subject"
+                                   placeholder="Subject* :" size="30" value=""/>
                         </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12"><textarea name="comments" cols="40" rows="3"
-                                                                             placeholder="Message* :"
-                                                                             id="comments"></textarea></div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <textarea name="comments" cols="40" rows="3"
+                                      placeholder="Message* :"
+                                      id="contact_message"></textarea></div>
                         <input type="submit" class="submit" id="submit" value="Send message"/></fieldset>
                 </form><!--END Main form--></div>
         </div><!-- END contact FORM--></div>

@@ -38,6 +38,9 @@
     <style>
         #sectionIntro {
             background: url({{ layout.backgroundImageURL }}) !important;
+            background-repeat: no-repeat !important;
+            background-position: center !important;
+            background-size: cover !important;
         }
 
 
@@ -138,7 +141,7 @@
                     {% endfor %}
                     </h4>
                     <p>
-                        {{ profile.about }}
+                        {{ profile.about|truncatewords:50 }}
                     </p>
                 </div>
             </div>
@@ -197,6 +200,11 @@
 <script src="{% static 'portfolio/portfolio_v3/assets/js/jquery-parallax.js' %}"></script>
 <!-- Masonry Package -->
 <script src="{% static 'portfolio/portfolio_v3/assets/js/isotope.pkgd.min.js' %}"></script>
+<script>
+    const host_url = "{{ domain }}"
+</script>
+<script type="text/javascript" src="{% static  'portfolio/contact_js/contact.js' %}"></script>
+
 <script>
     new WOW().init();
 </script>
