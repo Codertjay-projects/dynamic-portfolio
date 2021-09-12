@@ -53,8 +53,7 @@ class Layout(models.Model):
     @property
     def backgroundImageURL(self):
         try:
-            image_ = self.background_image.url
-            image = DEFAULT_REDIRECT_URL + image_
+            image = self.background_image.url
         except:
             image = ''
         return image
