@@ -139,3 +139,5 @@ POST_OFFICE = {
 
 ADMINS = [('Afenikhena Favour', ('codertjay@gmail.com',))]
 
+PAGEDOWN_IMAGE_UPLOAD_ENABLED = True
+PAGEDOWN_IMAGE_UPLOAD_UNIQUE = False

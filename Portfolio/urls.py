@@ -12,6 +12,7 @@ urlpatterns = [
     path('', include('resume.urls')),
     path('', include('project.urls')),
     path('', include('testimonial.urls')),
+    path('', include('pagedown.urls')),
     path('dashboard/', include('dashboard.urls')),
 
     path(f"{config('ADMIN_URL')}/", admin.site.urls),

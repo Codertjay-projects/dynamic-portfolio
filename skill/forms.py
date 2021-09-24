@@ -12,7 +12,7 @@ class SkillsForm(forms.ModelForm):
         'cols': ' 10',
         'rows': '4',
     }))
-    percent = forms.IntegerField(required=False, max_value=100, min_value=1, widget=forms.NumberInput(attrs={
+    percent = forms.IntegerField( max_value=100, min_value=1, widget=forms.NumberInput(attrs={
         'class': ' font-weight-bold mt-3',
         'placeholder': 'maximum number of 100 and minimum of 1',
         'maxlength': "100",
