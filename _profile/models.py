@@ -50,8 +50,6 @@ class Layout(models.Model):
     portfolio_version = models.OneToOneField(PortfolioTemplate, on_delete=models.CASCADE, blank=True, null=True,
                                              default=1)
 
-
-
     @property
     def backgroundImageURL(self):
         try:
@@ -86,17 +84,9 @@ class Layout(models.Model):
 def post_save_user_profile_create(sender, instance, created, *args, **kwargs):
     if created:
         Profile.objects.get_or_create(user=instance)
+        Layout.objects.get_or_create(user=instance)
     user_profile, created = Profile.objects.get_or_create(user=instance)
+    user_layout, created = Layout.objects.get_or_create(user=instance)
 
 
 post_save.connect(post_save_user_profile_create, sender=settings.AUTH_USER_MODEL)
-
-
-def post_save_user_layout_create(sender, instance, created, *args, **kwargs):
-    if instance:
-        user_layout = Layout.objects.filter(user=instance).first()
-        if not user_layout:
-            Layout.objects.create(user=instance)
-
-
-post_save.connect(post_save_user_layout_create, sender=settings.AUTH_USER_MODEL)
