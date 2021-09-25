@@ -2,9 +2,23 @@
 {% load crispy_forms_filters %}
 
 {% block service_update %}
-active
+    active
 {% endblock %}
 
+{% block style %}
+    <style>
+        .iframe {
+            width: 800px;
+            height: 520px;
+            border: none;
+            -moz-transform: scale(0.2);
+            -moz-transform-origin: 0 0;
+            -o-transform: scale(0.2);
+            -o-transform-origin: 0 0;
+            -webkit-transform: scale(0.2);
+            -webkit-transform-origin: 0 0;
+        }</style>
+{% endblock %}
 {% block panel %}
 
 
@@ -189,6 +203,11 @@ active
                                         <button class=" btn btn-outline-primary text-red">
                                             Update
                                         </button>
+                                        <iframe
+                                                height="300" width="200"
+                                                src="http://codertjay.localhost:8000/" allowfullscreen class="iframe">
+                                            Preview
+                                        </iframe>
                                     </form>
                                 </div>
 
