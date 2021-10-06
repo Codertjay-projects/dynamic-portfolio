@@ -9,6 +9,7 @@ from Portfolio.settings import EMAIL_HOST_USER
 from home_page.forms import SubscribeForm
 from users.forms import ContactAdminForm
 from users.models import ContactAdmin
+from django.http import HttpResponse
 
 
 class HomePageView(View):
