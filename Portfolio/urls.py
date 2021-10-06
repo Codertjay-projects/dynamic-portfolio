@@ -4,8 +4,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from home_page.views import AdsView
 
 urlpatterns = [
+    path('ads.txt', AdsView.as_view()),
     path('', include('_profile.urls')),
     path('', include('skill.urls')),
     path('', include('service.urls')),

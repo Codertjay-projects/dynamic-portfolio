@@ -97,3 +97,9 @@ def subscribe_user(request):
 
 def test_amplify_view(request):
     return render(request, 'test_code.html')
+
+class AdsView(View):
+    """Replace pub-0000000000000000 with your own publisher ID"""
+    line  =  "google.com, pub-8515488467518904, DIRECT, f08c47fec0942fa0"
+    def get(self, request, *args, **kwargs):
+        return HttpResponse(line)
