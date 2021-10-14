@@ -1,8 +1,10 @@
 from django.contrib import messages
+from django.contrib.sitemaps import Sitemap
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 # Create your views here.
 from django.template.loader import get_template
+from django.urls import reverse
 from django.views.generic.base import View
 
 from Portfolio.settings import EMAIL_HOST_USER
@@ -10,6 +12,23 @@ from home_page.forms import SubscribeForm
 from users.forms import ContactAdminForm
 from users.models import ContactAdmin
 from django.http import HttpResponse
+
+
+class StaticSitemap(Sitemap):
+    changefreq = "weekly"
+    priority = 0.8
+    protocol = 'https'
+
+    def items(self):
+        return [
+            'home_page:home', 'home_page:subscribe', 'home_page:offer',
+            'home_page:faq', 'home_page:about', 'home_page:testimonial',
+            'home_page:contact', 'home_page:price', 'blog:blog_list',
+            'account_login', 'account_signup',
+        ]
+
+    def location(self, item):
+        return reverse(item)
 
 
 class HomePageView(View):

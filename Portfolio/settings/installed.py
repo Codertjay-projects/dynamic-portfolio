@@ -26,6 +26,7 @@ THIRD_PARTY_APPS = [
     'colorful',
     'comments',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'rest_framework',
 
     # subdomains

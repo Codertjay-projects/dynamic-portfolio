@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.sitemaps import Sitemap
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
@@ -17,6 +18,33 @@ from blog.utils import get_read_time
 from comments.forms import CommentForm
 from comments.models import Comment
 from users.models import User
+
+
+class ArticleSitemap(Sitemap):
+    changefreq = "daily"
+    priority = 0.8
+    protocol = 'https'
+
+    def items(self):
+        return Post.objects.all()
+
+    def lastmod(self, obj):
+        return obj.timestamp
+
+    def location(self, obj):
+        return obj.get_absolute_url()
+
+
+class UserArticleSitemap(Sitemap):
+    changefreq = "daily"
+    priority = 0.8
+    protocol = 'http'
+
+    def items(self):
+        return User.objects.all()
+
+    def location(self, obj):
+        return f'/blog/%23/%23/{obj.username}/'
 
 
 class BlogListView(ListView):
