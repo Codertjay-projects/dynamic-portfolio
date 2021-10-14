@@ -14,7 +14,6 @@ LOCAL_APPS = [
     'service',
     'testimonial',
 
-
 ]
 THIRD_PARTY_APPS = [
 
