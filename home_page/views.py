@@ -125,3 +125,9 @@ class AdsView(View):
     def get(self, request, *args, **kwargs):
         line = "google.com, pub-8515488467518904, DIRECT, f08c47fec0942fa0"
         return HttpResponse(line)
+
+
+class BingXmlView(View):
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'BingSiteAuth.xml', content_type='text/xml')

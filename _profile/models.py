@@ -86,7 +86,7 @@ def post_save_user_profile_create(sender, instance, created, *args, **kwargs):
         Profile.objects.get_or_create(user=instance)
         Layout.objects.get_or_create(user=instance)
     user_profile, created = Profile.objects.get_or_create(user=instance)
-    user_layout, created = Layout.objects.get_or_create(user=instance)
+    # user_layout, created = Layout.objects.get_or_create(user=instance)
 
 
 post_save.connect(post_save_user_profile_create, sender=settings.AUTH_USER_MODEL)

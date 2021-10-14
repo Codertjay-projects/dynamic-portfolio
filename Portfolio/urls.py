@@ -7,7 +7,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import path, include
 
 from blog.views import ArticleSitemap, UserArticleSitemap
-from home_page.views import AdsView, StaticSitemap
+from home_page.views import AdsView, StaticSitemap, BingXmlView
 
 sitemaps = {
     'blog': ArticleSitemap,
@@ -17,6 +17,7 @@ sitemaps = {
 
 urlpatterns = [
     path('ads.txt', AdsView.as_view()),
+    path('BingSiteAuth.xml', BingXmlView.as_view()),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 
     path('', include('_profile.urls')),

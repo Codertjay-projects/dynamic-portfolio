@@ -1,6 +1,7 @@
 import datetime
 import os
 from decouple import config, Csv
+
 from .installed import *
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
